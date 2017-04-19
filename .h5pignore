@@ -1,0 +1,14 @@
+node_modules
+tests
+src
+.git
+.babelrc
+.gitmodules
+.h5pignore
+.travis.yml
+karma.conf.js
+webpack.config.js
+webpack.dev.config.js
+README.md
+CONTRIBUTING.md
+package.json

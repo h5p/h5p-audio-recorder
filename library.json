@@ -1,0 +1,20 @@
+
+{
+  "title": "Audio Recorder",
+  "description": "Record audio and download it",
+  "machineName": "H5P.AudioRecorder",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
+  "runnable": 1,
+  "author": "Joubel",
+  "license": "MIT",
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "dist/dist.js"
+    }
+  ]
+}
