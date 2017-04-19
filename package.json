@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "description": "H5P content type for recording audio",
   "scripts": {
-    "test": "karma start",
+    "test": "ava",
     "build": "webpack",
-    "watch": "webpack --watch",
-    "dev": "lite-server"
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -15,21 +14,15 @@
   "author": "Joubel",
   "license": "MIT",
   "devDependencies": {
+    "ava": "^0.19.1",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
-    "browsersync": "0.0.1-security",
     "css-loader": "^0.26.2",
     "extract-text-webpack-plugin": "^2.0.0",
-    "jasmine-core": "^2.4.1",
-    "karma": "^1.1.2",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-firefox-launcher": "^1.0.0",
-    "karma-jasmine": "^1.0.2",
-    "lite-server": "^2.2.2",
     "style-loader": "^0.13.2",
     "vue-loader": "^11.2.0",
     "vue-template-compiler": "^2.2.4",

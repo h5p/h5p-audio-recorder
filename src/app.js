@@ -10,10 +10,11 @@ export default class AudioRecorder {
    * @param {object} contentData
    */
   constructor(config, contentId, contentData = {}) {
-    this.element = document.createElement('div');
-    this.element.id = 'hello';
-    this.element.textContent = 'Audio Recorder wrapper';
+    const rootElement = document.createElement('div');
+    rootElement.classList.add('h5p-audio-recorder');
 
+    // Create recording wrapper view
+    const recordingWrapper = new Vue({ ...RecordingWrapper });
 
     /**
      * Attach library to wrapper
@@ -21,13 +22,8 @@ export default class AudioRecorder {
      * @param {jQuery} $wrapper
      */
     this.attach = function($wrapper) {
-      $wrapper.get(0).classList.add('h5p-audio-recorder');
-      $wrapper.get(0).appendChild(this.element);
-      new Vue({
-        ...RecordingWrapper,
-        data: {},
-        el: this.element
-      });
+      $wrapper.get(0).appendChild(rootElement);
+      recordingWrapper.$mount(rootElement);
     };
   }
 }

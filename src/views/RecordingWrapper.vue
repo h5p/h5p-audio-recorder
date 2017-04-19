@@ -1,11 +1,13 @@
 <template>
-  <div class="h5p-audio-recorder-view">Audio Recorder view</div>
+  <div class="h5p-audio-recorder-view">
+    {{ message }}
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'audio-recorder-view',
-    methods: {
+    data: {
+      message: 'Audio Recorder view'
     }
   }
 </script>
