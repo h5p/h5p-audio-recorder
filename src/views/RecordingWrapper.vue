@@ -14,36 +14,42 @@
         <span class="fa-circle"></span>
         Record Answer
       </button>
-      <button class="button inverse red"
-              v-if="state === 'recording'"
-              v-on:click="pause">
-        <span class="fa-pause"></span>
-        Pause
-      </button>
-      <button class="button red"
-              v-if="state === 'paused'"
-              v-on:click="record">
-        <span class="fa-circle"></span>
-        Continue
-      </button>
-      <button class="button"
-              v-if="state === 'recording' || state === 'paused'"
-              v-on:click="finish">
-        <span class="fa-stop"></span>
-        Finish
-      </button>
-      <button class="button green"
-              v-if="state === 'finished'"
-              v-on:click="download">
-        <span class="fa-download"></span>
-        Download
-      </button>
-      <button class="button"
-              v-if="state === 'finished'"
-              v-on:click="retry">
-        <span class="fa-undo"></span>
-        Retry
-      </button>
+
+      <span class="button-row-left">
+        <button class="button inverse red"
+                  v-if="state === 'recording'"
+                  v-on:click="pause">
+          <span class="fa-pause"></span>
+          Pause
+        </button>
+        <button class="button red"
+                v-if="state === 'paused'"
+                v-on:click="record">
+          <span class="fa-circle"></span>
+          Continue
+        </button>
+        <button class="button green"
+                v-if="state === 'finished'"
+                v-on:click="download">
+          <span class="fa-download"></span>
+          Download
+        </button>
+      </span>
+
+      <span class="button-row-right">
+        <button class="button"
+                v-if="state === 'recording' || state === 'paused'"
+                v-on:click="finish">
+          <span class="fa-stop"></span>
+          Finish
+        </button>
+        <button class="button"
+                v-if="state === 'finished'"
+                v-on:click="retry">
+          <span class="fa-undo"></span>
+          Retry
+        </button>
+      </span>
     </div>
   </div>
 </template>
@@ -172,6 +178,21 @@
 
   .h5p-audio-recorder-view .h5p-confirmation-dialog-popup {
     top: 5em;
+
+  .button-row {
+    overflow: hidden;
+  }
+
+  .button-row .button-row-left {
+    width: 50%;
+    float: left;
+    text-align: right;
+  }
+
+  .button-row .button-row-right {
+    width: 50%;
+    float: left;
+    text-align: left;
   }
 
   .button {
