@@ -58,6 +58,14 @@ export default class {
       });
     });
 
+    recordingWrapper.$on('retry', () => {
+      this.recorder.reset();
+    });
+
+    recordingWrapper.$on('paused', () => {
+      this.recorder.pause();
+    });
+
     // Update UI when on recording events
     this.recorder.on('recording-started', () => {
       recordingWrapper.state = 'recording';

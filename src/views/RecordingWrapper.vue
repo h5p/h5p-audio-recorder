@@ -89,6 +89,7 @@
 
       pause: function() {
         this.state = State.PAUSED;
+        this.$emit(this.state);
         console.debug('paused');
       },
 
@@ -112,7 +113,8 @@
         dialog.show();
         var self = this;
         dialog.on('confirmed', function () {
-              self.state = State.READY
+          self.state = State.READY;
+          self.$emit('retry');
         });
       },
 
