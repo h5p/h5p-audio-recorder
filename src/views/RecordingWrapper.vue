@@ -9,11 +9,17 @@
 
     <div class="button-row">
       <button v-on:click="record" class="button red" v-if="state === 'ready'"><span class="fa-circle"></span> Record Answer</button>
-      <button v-on:click="pause" class="button inverse red" v-if="state === 'recording'"><span class="fa-pause"></span> Pause</button>
-      <button v-on:click="record" class="button red" v-if="state === 'paused'"><span class="fa-circle"></span> Continue</button>
-      <button v-on:click="finish" class="button" v-if="state === 'recording' || state === 'paused'"><span class="fa-stop"></span> Finish</button>
-      <button v-on:click="download" class="button green" v-if="state === 'finished'"><span class="fa-download"></span> Download</button>
-      <button v-on:click="retry" class="button" v-if="state === 'finished'"><span class="fa-undo"></span> Retry</button>
+
+      <span class="button-row-left">
+        <button v-on:click="pause" class="button inverse red" v-if="state === 'recording'"><span class="fa-pause"></span> Pause</button>
+        <button v-on:click="record" class="button red" v-if="state === 'paused'"><span class="fa-circle"></span> Continue</button>
+        <button v-on:click="download" class="button green" v-if="state === 'finished'"><span class="fa-download"></span> Download</button>
+      </span>
+
+      <span class="button-row-right">
+        <button v-on:click="finish" class="button" v-if="state === 'recording' || state === 'paused'"><span class="fa-stop"></span> Finish</button>
+        <button v-on:click="retry" class="button" v-if="state === 'finished'"><span class="fa-undo"></span> Retry</button>
+      </span>
     </div>
   </div>
 </template>
@@ -49,10 +55,7 @@
       },
 
       retry: function(){
-        console.debug('retry');
-        // TODO Clear existing recording
-
-        this.record();
+        this.state = State.READY;
       },
 
       download: function(){
@@ -121,6 +124,22 @@
     font-size: 2.5em;
     color: #8f8f8f;
     padding: 2.813rem 0;
+  }
+
+  .button-row {
+    overflow: hidden;
+  }
+
+  .button-row .button-row-left {
+    width: 50%;
+    float: left;
+    text-align: right;
+  }
+
+  .button-row .button-row-right {
+    width: 50%;
+    float: left;
+    text-align: left;
   }
 
   .button {
