@@ -104,6 +104,7 @@
       },
 
       download: function(){
+        this.$emit('download');
         console.debug('TODO: Initialize download');
       }
     }

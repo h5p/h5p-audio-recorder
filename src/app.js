@@ -49,6 +49,12 @@ export default class {
       this.recorder.start();
     });
 
+    recordingWrapper.$on('download', () => {
+      this.recorder.getWavURL().then((url) => {
+        console.log("Let's use this somewhere: " + url);
+      });
+    });
+
     // Update UI when on recording events
     this.recorder.on('recording-started', () => {
       recordingWrapper.state = 'recording';
@@ -57,6 +63,8 @@ export default class {
     this.recorder.on('recording-blocked', () => {
       recordingWrapper.state = 'error';
     });
+
+
 
     /**
      * Attach library to wrapper

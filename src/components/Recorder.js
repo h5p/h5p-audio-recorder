@@ -1,6 +1,4 @@
-class RecorderWorker {
-  onmessage(e) { }
-}
+import RecorderWorker from './RecorderWorker'
 
 const RecorderState = {
   inactive: 'inactive',
@@ -20,10 +18,45 @@ export default class Recorder extends H5P.EventDispatcher{
 
     this.config = {
       bufferLength: 4096,
-      numberOfChannels: 1
-    };
+      numChannels: 1
+    }
 
     this.state = RecorderState.inactive;
+
+    // Create a worker. This is normaløly done using a URL to the js-file
+    let workerBlob = new Blob(
+      [RecorderWorker.toString().replace(/^function .+\{?|\}$/g, '')],
+      {type:'text/javascript'}
+    );
+    var workerBlobUrl = URL.createObjectURL(workerBlob);
+    this.worker = new Worker(workerBlobUrl);
+
+    var self = this;
+    this.worker.onmessage = function (e) {
+      if (e.data.command === 'wav-delivered') {
+        var url = URL.createObjectURL(e.data.data);
+        self.urlResolver(url);
+      }
+    };
+
+    // Prepare promise:
+    this.urlPromise = new Promise((resolve, reject) => {
+      self.urlResolver = resolve;
+    });
+  }
+
+  getWavURL() {
+    this.stop();
+    this.worker.postMessage({
+      command: 'exportWAV',
+      type: 'audio/wav'
+    });
+
+    return this.urlPromise;
+  }
+
+  getMP3Url() {
+    // TODO
   }
 
   init() {
@@ -36,18 +69,30 @@ export default class Recorder extends H5P.EventDispatcher{
       this.audioContext = new AudioContext();
       this.scriptProcessorNode = this.audioContext.createScriptProcessor(
         this.config.bufferLength,
-        this.config.numberOfChannels,
-        this.config.numberOfChannels);
+        this.config.numChannels,
+        this.config.numChannels);
       this.scriptProcessorNode.onaudioprocess = function(e) {
         if (self.state === RecorderState.recording) {
-          // TODO - handle actual recording here!
-          console.log('.');
+          self.worker.postMessage({
+            command: 'record',
+            buffer: [e.inputBuffer.getChannelData(0)]
+          });
         }
       };
 
       navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
         this.sourceNode = this.audioContext.createMediaStreamSource(stream);
+
+        this.worker.postMessage({
+          command: 'init',
+          config: {
+            sampleRate: this.sourceNode.context.sampleRate,
+            numChannels: this.config.numChannels
+          }
+        });
+
         this.sourceNode.connect(this.scriptProcessorNode);
+
         resolve();
       }).catch((e) => {
         reject({
@@ -75,7 +120,7 @@ export default class Recorder extends H5P.EventDispatcher{
         }
         this.trigger('recording-started');
       })
-      .catch(() => {
+      .catch((e) => {
         this.trigger('recording-blocked');
       });
   }
@@ -99,12 +144,11 @@ export default class Recorder extends H5P.EventDispatcher{
     return AudioContext && navigator.mediaDevices.getUserMedia;
   }
 
-  getData() {
-    // TODO
-  }
-
   reset() {
-    // TODO
+    this._setState(RecorderState.inactive);
+    this.worker.postMessage({
+      command: 'clear'
+    });
   }
 
   _errorToCode(e) {
