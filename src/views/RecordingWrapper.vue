@@ -9,38 +9,44 @@
 
     <div class="recording-counter">00:00</div>
 
-    <button class="button button-record" v-if="state === 'ready'" v-on:click="record">Record Answer</button>
-    <button class="button button-pause" v-if="state === 'recording'" v-on:click="pause">Pause</button>
-    <button class="button button-continue" v-if="state === 'paused'" v-on:click="record">Continue</button>
-    <button class="button button-finish" v-if="state === 'recording' || state === 'paused'" v-on:click="finish">Finish</button>
-
     <div class="button-row">
-      <button class="button button-record" v-if="state === 'ready' || state === 'error'"
+      <button class="button red"
+              v-if="state === 'ready' || state === 'error'"
               v-on:click="record">
+        <span class="fa-circle"></span>
         Record Answer
       </button>
-      <button class="button button-pause" v-if="state === 'recording'" v-on:click="pause">
+      <button class="button inverse red"
+              v-if="state === 'recording'"
+              v-on:click="pause">
+        <span class="fa-pause"></span>
         Pause
       </button>
-      <button class="button button-continue" v-if="state === 'paused'" v-on:click="record">
+      <button class="button red"
+              v-if="state === 'paused'"
+              v-on:click="record">
+        <span class="fa-circle"></span>
         Continue
       </button>
-      <button class="button button-finish" v-if="state === 'recording' || state === 'paused'"
+      <button class="button"
+              v-if="state === 'recording' || state === 'paused'"
               v-on:click="finish">
+        <span class="fa-stop"></span>
         Finish
       </button>
-
-      <button class="button button-download" v-if="state === 'finished'" v-on:click="download">
+      <button class="button green"
+              v-if="state === 'finished'"
+              v-on:click="download">
+        <span class="fa-download"></span>
         Download
       </button>
-      <button class="button button-retry" v-if="state === 'finished'" v-on:click="retry">Retry</button>
-
-      <button v-on:click="record" class="button red" v-if="state === 'ready'"><span class="fa-circle"></span> Record Answer</button>
-      <button v-on:click="pause" class="button inverse red" v-if="state === 'recording'"><span class="fa-pause"></span> Pause</button>
-      <button v-on:click="record" class="button red" v-if="state === 'paused'"><span class="fa-circle"></span> Continue</button>
-    <button v-on:click="finish"class="button " v-if="state === 'recording' || state === 'paused'"><span class="fa-stop"></span> Finish</button>
-      <button v-on:click="download" class="button green" v-if="state === 'finished'"><span class="fa-download"></span> Download</button>
-      <button v-on:click="retry"class="button" v-if="state === 'finished'"><span class="fa-undo"></span>Retry</button></div>
+      <button class="button"
+              v-if="state === 'finished'"
+              v-on:click="retry">
+        <span class="fa-undo"></span>
+        Retry
+      </button>
+    </div>
   </div>
 </template>
 
@@ -180,5 +186,6 @@
   }
   .h5p-audio-recorder-view .status-bar.error {
     background-color: #db8b8b;
+    color: black;
   }
 </style>
