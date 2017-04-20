@@ -44,7 +44,12 @@ const config = {
           }],
           fallback: "style-loader"
         })
-      }
+      },
+      {
+        test: /\.(svg)$/,
+        include: path.join(__dirname, 'src/images'),
+        loader: 'url-loader?limit=10000'
+      } // inline base64 URLs for <=10k images, direct URLs for the rest
     ]
   },
   plugins: [

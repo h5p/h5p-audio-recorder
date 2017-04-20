@@ -16,5 +16,12 @@
     {
       "path": "dist/dist.js"
     }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 5
+    }
   ]
 }
