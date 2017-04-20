@@ -1,16 +1,19 @@
 <template>
   <div class="h5p-audio-recorder-view">
-    <div class="icon-microphone"></div>
+    <div class="recording-indicator">
+      <div class="fa-microphone"></div>
+    </div>
+
     <div class="title">Q: {{ title }}</div>
     <div class="status-bar" v-bind:class="state">{{statusMessages[state]}}</div>
 
     <div class="button-row">
-      <button v-on:click="record" class="button red" v-if="state === 'ready'">Record Answer</button>
-      <button v-on:click="pause" class="button inverse red" v-if="state === 'recording'">Pause</button>
-      <button v-on:click="record" class="button red" v-if="state === 'paused'">Continue</button>
-      <button v-on:click="finish" class="button" v-if="state === 'recording' || state === 'paused'">Finish</button>
-      <button v-on:click="download" class="button green" v-if="state === 'finished'">Download</button>
-      <button v-on:click="retry" class="button" v-if="state === 'finished'">Retry</button>
+      <button v-on:click="record" class="button red" v-if="state === 'ready'"><span class="fa-circle"></span> Record Answer</button>
+      <button v-on:click="pause" class="button inverse red" v-if="state === 'recording'"><span class="fa-pause"></span> Pause</button>
+      <button v-on:click="record" class="button red" v-if="state === 'paused'"><span class="fa-circle"></span> Continue</button>
+      <button v-on:click="finish" class="button" v-if="state === 'recording' || state === 'paused'"><span class="fa-stop"></span> Finish</button>
+      <button v-on:click="download" class="button green" v-if="state === 'finished'"><span class="fa-download"></span> Download</button>
+      <button v-on:click="retry" class="button" v-if="state === 'finished'"><span class="fa-undo"></span> Retry</button>
     </div>
 
   </div>
@@ -61,10 +64,34 @@
 </script>
 
 <style>
+  .h5p-audio-recorder-view {
+    padding: 1.750em;
+    text-align: center;
+  }
+
+  .h5p-audio-recorder-view [class^="fa-"] {
+    font-family: 'H5PFontAwesome4';
+  }
+
+  .h5p-audio-recorder-view .recording-indicator {
+    height: 9.375em;
+    width: 9.375em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 9.375em;
+    background-image: url('../images/08-vu-meter.svg');
+    color: #8e8e8e;
+  }
+
+  .h5p-audio-recorder-view .recording-indicator .fa-microphone {
+    font-size: 3em;
+    background-color: white;
+  }
+
+
   .h5p-audio-recorder-view .title {
     color: black;
     font-size: 1.875em;
-    text-align: center;
   }
 
   /* status bar */
@@ -73,7 +100,6 @@
     color: #777777;
     font-size: 1.250em;
     line-height: 3.750em;
-    text-align: center;
     padding: 0 1em;
   }
 
@@ -85,10 +111,6 @@
   .h5p-audio-recorder-view .status-bar.finished {
     background-color: #e0f9e3;
     color:  #20603d;
-  }
-
-  .button-row {
-    text-align: center;
   }
 
   .button {
@@ -103,11 +125,15 @@
     color: white;
   }
 
+  .button [class^="fa-"] {
+    margin-right: 0.4em;
+  }
+
   .button.red {
     background-color: #d95354;
   }
 
-  .button.red.inverse {
+  .button.inverse.red {
     background-color: white;
     border: 2px solid #d95354;
     color: #d95354;
