@@ -4,8 +4,10 @@
       <div class="fa-microphone"></div>
     </div>
 
-    <div class="title">Q: {{ title }}</div>
+    <div class="title"><span class="title-label">Q:</span> {{ title }}</div>
     <div class="status-bar" v-bind:class="state">{{statusMessages[state]}}</div>
+
+    <div class="recording-counter">00:00</div>
 
     <div class="button-row">
       <button v-on:click="record" class="button red" v-if="state === 'ready'"><span class="fa-circle"></span> Record Answer</button>
@@ -15,7 +17,6 @@
       <button v-on:click="download" class="button green" v-if="state === 'finished'"><span class="fa-download"></span> Download</button>
       <button v-on:click="retry" class="button" v-if="state === 'finished'"><span class="fa-undo"></span> Retry</button>
     </div>
-
   </div>
 </template>
 
@@ -92,6 +93,11 @@
   .h5p-audio-recorder-view .title {
     color: black;
     font-size: 1.875em;
+    margin-bottom: 1em;
+  }
+
+  .h5p-audio-recorder-view .title-label {
+    color: #8f8f8f;
   }
 
   /* status bar */
@@ -111,6 +117,12 @@
   .h5p-audio-recorder-view .status-bar.finished {
     background-color: #e0f9e3;
     color:  #20603d;
+  }
+
+  .h5p-audio-recorder-view .recording-counter {
+    font-size: 2.5em;
+    color: #8f8f8f;
+    padding: 2.813rem 0;
   }
 
   .button {
