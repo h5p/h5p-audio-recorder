@@ -2,7 +2,7 @@
   {
     "label": "Text",
     "importance": "high",
-    "name": "textField",
+    "name": "title",
     "type": "text",
     "widget": "textarea",
     "description": "Question text"

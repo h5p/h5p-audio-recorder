@@ -13,6 +13,20 @@ export default class AudioRecorder {
     const rootElement = document.createElement('div');
     rootElement.classList.add('h5p-audio-recorder');
 
+    const statusMessages = {
+      ready: 'Press a button below to record your answer',
+      recording: 'Recording...',
+      paused: 'Recording paused. Press a button to continue recording.',
+      finished: 'You have successfully recorded your answer! Listen to the recording below.'
+    };
+
+
+    RecordingWrapper.data = () => ({
+      title: config.title,
+      state: 'ready',
+      statusMessages
+    });
+
     // Create recording wrapper view
     const recordingWrapper = new Vue({ ...RecordingWrapper });
 
