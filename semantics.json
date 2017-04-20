@@ -5,8 +5,6 @@
     "name": "textField",
     "type": "text",
     "widget": "textarea",
-    "placeholder": "Hello world",
-    "default": "Hello %username",
-    "description": "Says hello to someone"
+    "description": "Question text"
   }
 ]
