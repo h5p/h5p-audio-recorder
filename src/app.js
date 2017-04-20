@@ -11,6 +11,7 @@ export default class {
    * @property {Object} l10n Translations
    * @property {string} l10n.finishedRecording Finished recording audio
    * @property {string} l10n.microphoneInaccessible Microphone blocked
+   * @property {string} l10n.downloadRecording Download recording message
    */
 
   /**
@@ -38,7 +39,8 @@ export default class {
       title: params.title,
       state: 'ready',
       statusMessages,
-      l10n: params.l10n
+      l10n: params.l10n,
+      audioSrc: ''
     });
 
     // Create recording wrapper view
@@ -47,6 +49,11 @@ export default class {
     // Start recording when record button is pressed
     recordingWrapper.$on('recording', () => {
       this.recorder.start();
+    });
+
+    recordingWrapper.$on('finished', () => {
+      this.recorder.stop();
+      recordingWrapper.audioSrc = this.recorder.getData();
     });
 
     // Update UI when on recording events

@@ -25,6 +25,12 @@
         "default": "You have successfully recorded your answer! Listen to the recording below."
       },
       {
+        "name": "downloadRecording",
+        "label": "Download recording message",
+        "type": "text",
+        "default": "Download this recording or retry."
+      },
+      {
         "name": "retryDialogHeaderText",
         "label": "Retry dialog header text",
         "type": "text",

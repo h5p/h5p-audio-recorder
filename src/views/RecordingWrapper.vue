@@ -3,9 +3,22 @@
     <div class="recording-indicator">
       <div class="fa-microphone"></div>
     </div>
-    <div class="title"><span class="title-label">Q:</span> {{ title }}</div>
+    <div v-if="state !== 'finished'" class="title">
+      <span class="title-label">Q:</span>
+      {{ title }}
+    </div>
     <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
-    <div role="timer">00:00</div>
+
+    <audio class="h5p-audio-recorder-player" v-if="state === 'finished' && audioSrc !== ''"
+           controls="controls">
+      Your browser does not support the <code>audio</code> element.
+      <source v-bind:src="audioSrc">
+    </audio>
+
+    <div v-if="state !== 'finished'" role="timer">00:00</div>
+    <div v-else class="h5p-audio-recorder-download">
+      {{ l10n.downloadRecording }}
+    </div>
 
     <div class="button-row">
       <button class="button red"
@@ -81,7 +94,7 @@
 
       finish: function() {
         this.state = State.FINISHED;
-        console.debug('finished');
+        this.$emit(State.FINISHED);
       },
 
       retry: function(){
@@ -135,6 +148,13 @@
     background-color: white;
   }
 
+  .h5p-audio-recorder-player {
+    width: 100%;
+    padding: 0 1em;
+    box-sizing: border-box;
+    height: 2em;
+    margin-top: 1.25em;
+  }
 
   .h5p-audio-recorder-view .title {
     color: black;
@@ -174,6 +194,11 @@
     font-size: 2.5em;
     color: #8f8f8f;
     padding: 2.813rem 0;
+  }
+
+  .h5p-audio-recorder-download {
+    font-size: 1.2em;
+    padding: 2em;
   }
 
   .h5p-audio-recorder-view .h5p-confirmation-dialog-popup {

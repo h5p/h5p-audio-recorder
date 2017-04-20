@@ -100,7 +100,8 @@ export default class Recorder extends H5P.EventDispatcher{
   }
 
   getData() {
-    // TODO
+    // TODO, returns dummy data src for now
+    return 'http://www.html5tutorial.info/media/vincent.mp3';
   }
 
   reset() {
