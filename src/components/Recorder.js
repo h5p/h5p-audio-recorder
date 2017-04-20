@@ -1,34 +1,56 @@
-export default class Recorder {
+export default class Recorder extends H5P.EventDispatcher {
   // Record logic API goes here
   constructor() {
-    this.getUserMedia = navigator.getUserMedia ||
-                        navigator.webkitGetUserMedia ||
-                        navigator.mozGetUserMedia;
+    super();
+    navigator.getUserMedia = navigator.getUserMedia ||
+      navigator.webkitGetUserMedia ||
+      navigator.mozGetUserMedia ||
+      navigator.msGetUserMedia;
+    this.isInited = false;
   }
 
   init() {
     this.chunks = [];
 
-    this.getUserMedia({
-      audio: true
-    },
-    function(stream) {
-      this.recorder = new MediaRecorder(stream);
+    this.userMedia = new Promise((resolve, reject) => {
+      navigator.getUserMedia(
+        {
+          audio: true
+        }, (stream) => {
+          // Get user media was accepted
+          this.recorder = new MediaRecorder(stream);
 
-      this.recorder.ondataavailable = function (event) {
-        this.chunks.push(event.data);
-      }
+          this.recorder.ondataavailable = function (event) {
+            this.chunks.push(event.data);
+          };
 
-      // Need to trigger events, eg:
-      // this.recorder.onstop
-    },
-    function(err) {
-      // TODO - Trigger event here
-    }
+          // Need to trigger events, eg:
+          // this.recorder.onstop
+
+          resolve(this.recorder);
+        },
+        (err) => {
+          // TODO - Trigger event here
+          reject(err);
+        }
+      );
+    });
+    return this.userMedia;
   }
 
   start() {
-    this.recorder.start();
+    // Initialize user media stream if not initialized
+    if (!this.isInited) {
+      this.init();
+    }
+
+    // Start recording when user media is ready
+    this.userMedia.then(recorder => {
+      this.trigger('recording-started');
+      recorder.start();
+    }).catch(() => {
+      this.trigger('recording-blocked');
+    });
   }
 
   stop() {

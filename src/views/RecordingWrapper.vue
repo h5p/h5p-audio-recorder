@@ -4,12 +4,24 @@
     <h2>Q: {{ title }}</h2>
     <div class="status-bar" v-bind:class="state">{{statusMessages[state]}}</div>
 
-    <button class="button button-record" v-if="state === 'ready'" v-on:click="record">Record Answer</button>
-    <button class="button button-pause" v-if="state === 'recording'" v-on:click="pause">Pause</button>
-    <button class="button button-continue" v-if="state === 'paused'" v-on:click="record">Continue</button>
-    <button class="button button-finish" v-if="state === 'recording' || state === 'paused'" v-on:click="finish">Finish</button>
+    <button class="button button-record" v-if="state === 'ready' || state === 'error'"
+            v-on:click="record">
+      Record Answer
+    </button>
+    <button class="button button-pause" v-if="state === 'recording'" v-on:click="pause">
+      Pause
+    </button>
+    <button class="button button-continue" v-if="state === 'paused'" v-on:click="record">
+      Continue
+    </button>
+    <button class="button button-finish" v-if="state === 'recording' || state === 'paused'"
+            v-on:click="finish">
+      Finish
+    </button>
 
-    <button class="button button-download" v-if="state === 'finished'" v-on:click="download">Download</button>
+    <button class="button button-download" v-if="state === 'finished'" v-on:click="download">
+      Download
+    </button>
     <button class="button button-retry" v-if="state === 'finished'" v-on:click="retry">Retry</button>
   </div>
 </template>
@@ -19,7 +31,8 @@
     READY: 'ready',
     RECORDING: 'recording',
     PAUSED: 'paused',
-    FINISHED: 'finished'
+    FINISHED: 'finished',
+    ERROR: 'error'
   };
 
   export default {
@@ -30,8 +43,7 @@
 
     methods: {
       record: function() {
-        this.state = State.RECORDING;
-        console.debug('recording');
+        this.$emit(State.RECORDING);
       },
 
       pause: function() {
@@ -61,5 +73,8 @@
 <style>
   .h5p-audio-recorder-view .status-bar {
     background-color: #f8f8f8;
+  }
+  .h5p-audio-recorder-view .status-bar.error {
+    background-color: #db8b8b;
   }
 </style>
