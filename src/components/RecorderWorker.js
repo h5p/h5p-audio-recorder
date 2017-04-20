@@ -53,7 +53,7 @@ export default function recorderWorker() {
 
     this.postMessage({
       command: 'wav-delivered',
-      data: audioBlob
+      blob: audioBlob
     });
   }
 

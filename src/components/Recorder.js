@@ -33,16 +33,8 @@ export default class Recorder extends H5P.EventDispatcher{
 
     var self = this;
     this.worker.onmessage = function (e) {
-      if (e.data.command === 'wav-delivered') {
-        var url = URL.createObjectURL(e.data.data);
-        self.urlResolver(url);
-      }
+      self.trigger(e.data.command, e.data.blob);
     };
-
-    // Prepare promise:
-    this.urlPromise = new Promise((resolve, reject) => {
-      self.urlResolver = resolve;
-    });
   }
 
   getWavURL() {
@@ -52,7 +44,11 @@ export default class Recorder extends H5P.EventDispatcher{
       type: 'audio/wav'
     });
 
-    return this.urlPromise;
+    return new Promise((resolve, reject) => {
+      this.on('wav-delivered', (e) => {
+        resolve(URL.createObjectURL(e.data));
+      });
+    });
   }
 
   getMP3Url() {
