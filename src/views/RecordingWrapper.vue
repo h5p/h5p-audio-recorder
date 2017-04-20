@@ -81,8 +81,20 @@
       retry: function(){
         console.debug('retry');
         // TODO Clear existing recording
-
-        this.record();
+        var dialog = new H5P.ConfirmationDialog(
+          {
+            headerText: this.l10n.retryDialogHeaderText,
+            dialogText: this.l10n.retryDialogBodyText,
+            cancelText: this.l10n.retryDialogCancelText,
+            confirmText: this.l10n.retryDialogConfirmText
+          }
+        );
+        dialog.appendTo(H5P.jQuery(".h5p-audio-recorder-view")[0]);
+        dialog.show();
+        var self = this;
+        dialog.on('confirmed', function () {
+              self.state = State.READY
+        });
       },
 
       download: function(){
@@ -156,6 +168,10 @@
     font-size: 2.5em;
     color: #8f8f8f;
     padding: 2.813rem 0;
+  }
+
+  .h5p-audio-recorder-view .h5p-confirmation-dialog-popup {
+    top: 5em;
   }
 
   .button {

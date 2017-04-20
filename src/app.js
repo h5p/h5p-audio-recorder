@@ -37,7 +37,8 @@ export default class {
     RecordingWrapper.data = () => ({
       title: params.title,
       state: 'ready',
-      statusMessages
+      statusMessages,
+      l10n: params.l10n
     });
 
     // Create recording wrapper view
