@@ -6,5 +6,24 @@
     "type": "text",
     "widget": "textarea",
     "description": "Question text"
+  },
+  {
+    "label": "Localization",
+    "name": "l10n",
+    "type": "group",
+    "fields": [
+      {
+        "name": "microphoneInaccessible",
+        "label": "Microphone inaccessible error message",
+        "type": "text",
+        "default": "Microphone was not accessible. Adjust your settings and try again."
+      },
+      {
+        "name": "finishedRecording",
+        "label": "Finished recording message",
+        "type": "text",
+        "default": "You have successfully recorded your answer! Listen to the recording below."
+      }
+    ]
   }
 ]

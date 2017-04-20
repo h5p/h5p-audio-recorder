@@ -8,17 +8,47 @@
     <div role="timer">00:00</div>
 
     <div class="button-row">
-      <button v-on:click="record" class="button red" v-if="state === 'ready'"><span class="fa-circle"></span> Record Answer</button>
+      <button class="button red"
+              v-if="state === 'ready' || state === 'error'"
+              v-on:click="record">
+        <span class="fa-circle"></span>
+        Record Answer
+      </button>
 
       <span class="button-row-left">
-        <button v-on:click="pause" class="button inverse red" v-if="state === 'recording'"><span class="fa-pause"></span> Pause</button>
-        <button v-on:click="record" class="button red" v-if="state === 'paused'"><span class="fa-circle"></span> Continue</button>
-        <button v-on:click="download" class="button green" v-if="state === 'finished'"><span class="fa-download"></span> Download</button>
+        <button class="button inverse red"
+                  v-if="state === 'recording'"
+                  v-on:click="pause">
+          <span class="fa-pause"></span>
+          Pause
+        </button>
+        <button class="button red"
+                v-if="state === 'paused'"
+                v-on:click="record">
+          <span class="fa-circle"></span>
+          Continue
+        </button>
+        <button class="button green"
+                v-if="state === 'finished'"
+                v-on:click="download">
+          <span class="fa-download"></span>
+          Download
+        </button>
       </span>
 
       <span class="button-row-right">
-        <button v-on:click="finish" class="button" v-if="state === 'recording' || state === 'paused'"><span class="fa-stop"></span> Finish</button>
-        <button v-on:click="retry" class="button" v-if="state === 'finished'"><span class="fa-undo"></span> Retry</button>
+        <button class="button"
+                v-if="state === 'recording' || state === 'paused'"
+                v-on:click="finish">
+          <span class="fa-stop"></span>
+          Finish
+        </button>
+        <button class="button"
+                v-if="state === 'finished'"
+                v-on:click="retry">
+          <span class="fa-undo"></span>
+          Retry
+        </button>
       </span>
     </div>
   </div>
@@ -29,7 +59,8 @@
     READY: 'ready',
     RECORDING: 'recording',
     PAUSED: 'paused',
-    FINISHED: 'finished'
+    FINISHED: 'finished',
+    ERROR: 'error'
   };
 
   export default {
@@ -40,8 +71,7 @@
 
     methods: {
       record: function() {
-        this.state = State.RECORDING;
-        console.debug('recording');
+        this.$emit(State.RECORDING);
       },
 
       pause: function() {
@@ -118,6 +148,11 @@
   .h5p-audio-recorder-view [role="status"].finished {
     background-color: #e0f9e3;
     color:  #20603d;
+  }
+
+  .h5p-audio-recorder-view [role="status"].error {
+    background-color: #db8b8b;
+    color: black;
   }
 
   .h5p-audio-recorder-view [role="timer"] {
