@@ -11,7 +11,7 @@ const RecorderState = {
 const errorMessageToCodeMap = {
   PermissionDeniedError: 'permission-denied',
   NotAllowedError: 'permission-denied'
-}
+};
 
 export default class Recorder extends H5P.EventDispatcher{
   // Record logic API goes here
@@ -21,14 +21,14 @@ export default class Recorder extends H5P.EventDispatcher{
     this.config = {
       bufferLength: 4096,
       numberOfChannels: 1
-    }
+    };
 
     this.state = RecorderState.inactive;
   }
 
   init() {
     let self = this;
-    return new Promise((resolve, reject) => {
+    this.userMedia = new Promise((resolve, reject) => {
       if (!this.supported()) {
         return reject('browser-unsupported');
       }
@@ -56,16 +56,28 @@ export default class Recorder extends H5P.EventDispatcher{
         });
       });
     });
+    return this.userMedia;
   }
 
   start() {
-    if (this.state === RecorderState.paused) {
-      return this.resume();
+    if (!this.userMedia) {
+      this.init();
     }
 
-    if (this._setState(RecorderState.recording, RecorderState.inactive)) {
-      this.scriptProcessorNode.connect(this.audioContext.destination);
-    }
+    this.userMedia
+      .then(() => {
+        if (this.state === RecorderState.paused) {
+          return this.resume();
+        }
+
+        if (this._setState(RecorderState.recording, RecorderState.inactive)) {
+          this.scriptProcessorNode.connect(this.audioContext.destination);
+        }
+        this.trigger('recording-started');
+      })
+      .catch(() => {
+        this.trigger('recording-blocked');
+      });
   }
 
   stop() {
