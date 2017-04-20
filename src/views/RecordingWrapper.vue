@@ -147,6 +147,11 @@
     color:  #20603d;
   }
 
+  .h5p-audio-recorder-view [role="status"].error {
+    background-color: #db8b8b;
+    color: black;
+  }
+
   .h5p-audio-recorder-view [role="timer"] {
     font-size: 2.5em;
     color: #8f8f8f;
@@ -181,9 +186,5 @@
 
   .button.green {
     background-color: #1f824c;
-  }
-  .h5p-audio-recorder-view .status-bar.error {
-    background-color: #db8b8b;
-    color: black;
   }
 </style>
