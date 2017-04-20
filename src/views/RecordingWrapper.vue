@@ -178,6 +178,7 @@
 
   .h5p-audio-recorder-view .h5p-confirmation-dialog-popup {
     top: 5em;
+  }
 
   .button-row {
     overflow: hidden;
