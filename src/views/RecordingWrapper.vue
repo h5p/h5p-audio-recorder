@@ -3,11 +3,9 @@
     <div class="recording-indicator">
       <div class="fa-microphone"></div>
     </div>
-
     <div class="title"><span class="title-label">Q:</span> {{ title }}</div>
-    <div class="status-bar" v-bind:class="state">{{statusMessages[state]}}</div>
-
-    <div class="recording-counter">00:00</div>
+    <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
+    <div role="timer">00:00</div>
 
     <div class="button-row">
       <button class="button red"
@@ -131,7 +129,7 @@
   }
 
   /* status bar */
-  .h5p-audio-recorder-view .status-bar {
+  .h5p-audio-recorder-view [role="status"] {
     background-color: #f8f8f8;
     color: #777777;
     font-size: 1.250em;
@@ -139,17 +137,17 @@
     padding: 0 1em;
   }
 
-  .h5p-audio-recorder-view .status-bar.recording {
+  .h5p-audio-recorder-view [role="status"].recording {
     background-color: #f9e5e6;
     color: #da5254;
   }
 
-  .h5p-audio-recorder-view .status-bar.finished {
+  .h5p-audio-recorder-view [role="status"].finished {
     background-color: #e0f9e3;
     color:  #20603d;
   }
 
-  .h5p-audio-recorder-view .recording-counter {
+  .h5p-audio-recorder-view [role="timer"] {
     font-size: 2.5em;
     color: #8f8f8f;
     padding: 2.813rem 0;
