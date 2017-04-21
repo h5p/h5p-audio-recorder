@@ -52,7 +52,7 @@
         "name": "microphoneInaccessible",
         "label": "Microphone inaccessible error message",
         "type": "text",
-        "default": "Microphone was not accessible. Adjust your settings and try again."
+        "default": "Microphone was not accessible. Make sure you are using Chrome, Firefox or Edge and that your microphone is enabled."
       },
       {
         "name": "statusReadyToRecord",

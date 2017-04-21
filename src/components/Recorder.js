@@ -175,7 +175,7 @@ export default class Recorder extends H5P.EventDispatcher{
    * @return {boolean}
    */
   supported() {
-    return AudioContext && navigator.mediaDevices.getUserMedia;
+    return window.AudioContext !== undefined && navigator.mediaDevices.getUserMedia;
   }
 
   /**
