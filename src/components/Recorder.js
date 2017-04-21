@@ -89,15 +89,6 @@ export default class Recorder extends H5P.EventDispatcher{
   }
 
   /**
-   * Creates a URL to an mp3 blob
-   *
-   * @return {Promise}
-   */
-  getMP3Url() {
-    // TODO
-  }
-
-  /**
    * Initialize microphone
    */
   init() {
