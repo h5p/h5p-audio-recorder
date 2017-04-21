@@ -107,10 +107,9 @@
         );
         dialog.appendTo(H5P.jQuery(".h5p-audio-recorder-view")[0]);
         dialog.show();
-        const self = this;
-        dialog.on('confirmed', function () {
-          self.state = State.READY;
-          self.$emit('retry');
+        dialog.on('confirmed', () => {
+          this.state = State.READY;
+          this.$emit('retry');
         });
       }
     }
