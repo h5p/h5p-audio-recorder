@@ -10,6 +10,8 @@ export default class {
    *
    * @property {string} title Title
    * @property {Object} l10n Translations
+   * @property {string} l10n.download Download button text
+   * @property {string} l10n.retry Retry button text
    * @property {string} l10n.finishedRecording Finished recording audio
    * @property {string} l10n.microphoneInaccessible Microphone blocked
    * @property {string} l10n.downloadRecording Download recording message
@@ -41,7 +43,8 @@ export default class {
       state: 'ready',
       statusMessages,
       l10n: params.l10n,
-      audioSrc: ''
+      audioSrc: '',
+      audioFilename: ''
     });
 
     // Create recording wrapper view
@@ -61,23 +64,27 @@ export default class {
       this.recorder.stop();
       this.recorder.getWavURL().then((url) => {
         recordingWrapper.audioSrc = url;
+        // Create a filename using the title
+        let filename = params.title.length > 20 ? params.title.substr(0, 20) : params.title;
+        recordingWrapper.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
       });
     });
 
     recordingWrapper.$on('retry', () => {
       this.recorder.reset();
+      recordingWrapper.audioSrc = '';
     });
 
     recordingWrapper.$on('paused', () => {
-      this.recorder.pause();
+      this.recorder.stop();
     });
 
     // Update UI when on recording events
-    this.recorder.on('recording-started', () => {
+    this.recorder.on('recording', () => {
       recordingWrapper.state = 'recording';
     });
 
-    this.recorder.on('recording-blocked', () => {
+    this.recorder.on('blocked', () => {
       recordingWrapper.state = 'error';
     });
 
