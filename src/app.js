@@ -1,7 +1,8 @@
 import Vue from 'vue';
-import RecordingWrapper from './views/RecordingWrapper.vue';
+import AudioRecorderView from './views/AudioRecorder.vue';
 import Timer from './views/Timer.vue';
 import Recorder from 'components/Recorder';
+import State from 'components/State';
 
 export default class {
 
@@ -28,19 +29,18 @@ export default class {
     const rootElement = document.createElement('div');
     rootElement.classList.add('h5p-audio-recorder');
 
-    const statusMessages = {
-      ready: params.l10n.statusReadyToRecord,
-      recording: params.l10n.statusRecording,
-      paused: params.l10n.statusPaused,
-      finished: params.l10n.statusFinishedRecording,
-      error: params.l10n.microphoneInaccessible
-    };
+    const recorder = this.recorder = new Recorder();
 
-    this.recorder = new Recorder();
+    const statusMessages = {};
+    statusMessages[State.READY] = params.l10n.statusReadyToRecord;
+    statusMessages[State.RECORDING] = params.l10n.statusRecording;
+    statusMessages[State.PAUSED] = params.l10n.statusPaused;
+    statusMessages[State.FINISHED] = params.l10n.statusFinishedRecording;
+    statusMessages[State.ERROR] = params.l10n.microphoneInaccessible;
 
-    RecordingWrapper.data = () => ({
+    AudioRecorderView.data = () => ({
       title: params.title,
-      state: 'ready',
+      state: State.READY,
       statusMessages,
       l10n: params.l10n,
       audioSrc: '',
@@ -48,44 +48,44 @@ export default class {
     });
 
     // Create recording wrapper view
-    const recordingWrapper = new Vue({
-      ...RecordingWrapper,
+    const viewModel = new Vue({
+      ...AudioRecorderView,
       components: {
         timer: Timer
       }
     });
 
     // Start recording when record button is pressed
-    recordingWrapper.$on('recording', () => {
-      this.recorder.start();
+    viewModel.$on('recording', () => {
+      recorder.start();
     });
 
-    recordingWrapper.$on('finished', () => {
-      this.recorder.stop();
-      this.recorder.getWavURL().then((url) => {
-        recordingWrapper.audioSrc = url;
+    viewModel.$on('finished', () => {
+      recorder.stop();
+      recorder.getWavURL().then((url) => {
+        viewModel.audioSrc = url;
         // Create a filename using the title
         let filename = params.title.length > 20 ? params.title.substr(0, 20) : params.title;
-        recordingWrapper.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+        viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
       });
     });
 
-    recordingWrapper.$on('retry', () => {
-      this.recorder.reset();
-      recordingWrapper.audioSrc = '';
+    viewModel.$on('retry', () => {
+      recorder.reset();
+      viewModel.audioSrc = '';
     });
 
-    recordingWrapper.$on('paused', () => {
-      this.recorder.stop();
+    viewModel.$on('paused', () => {
+      recorder.stop();
     });
 
     // Update UI when on recording events
-    this.recorder.on('recording', () => {
-      recordingWrapper.state = 'recording';
+    recorder.on('recording', () => {
+      viewModel.state = State.RECORDING;
     });
 
-    this.recorder.on('blocked', () => {
-      recordingWrapper.state = 'error';
+    recorder.on('blocked', () => {
+      viewModel.state = State.ERROR;
     });
 
     /**
@@ -95,7 +95,7 @@ export default class {
      */
     this.attach = function ($wrapper) {
       $wrapper.get(0).appendChild(rootElement);
-      recordingWrapper.$mount(rootElement);
+      viewModel.$mount(rootElement);
     };
   }
 }
