@@ -13,11 +13,8 @@ export default function recorderWorker() {
       case 'record':
         record(e.data.buffer);
         break;
-      case 'exportWAV':
-        exportWAV(e.data.type);
-        break;
-      case 'getBuffer':
-        getBuffer();
+      case 'export-wav':
+        exportWAV();
         break;
       case 'clear':
         clear();
@@ -38,7 +35,7 @@ export default function recorderWorker() {
     recLength += inputBuffer[0].length;
   }
 
-  function exportWAV(type){
+  function exportWAV(){
     var buffers = [];
     for (var channel = 0; channel < numChannels; channel++){
       buffers.push(mergeBuffers(recBuffers[channel], recLength));
@@ -49,20 +46,12 @@ export default function recorderWorker() {
         var interleaved = buffers[0];
     }
     var dataview = encodeWAV(interleaved);
-    var audioBlob = new Blob([dataview], { type: type });
+    var audioBlob = new Blob([dataview], { type: 'audio/wav' });
 
     this.postMessage({
       command: 'wav-delivered',
       blob: audioBlob
     });
-  }
-
-  function getBuffer(){
-    var buffers = [];
-    for (var channel = 0; channel < numChannels; channel++){
-      buffers.push(mergeBuffers(recBuffers[channel], recLength));
-    }
-    this.postMessage(buffers);
   }
 
   function clear(){

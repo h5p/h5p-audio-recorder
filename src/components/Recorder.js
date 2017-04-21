@@ -82,8 +82,7 @@ export default class Recorder extends H5P.EventDispatcher{
     });
 
     this.worker.postMessage({
-      command: 'exportWAV',
-      type: 'audio/wav'
+      command: 'export-wav'
     });
 
     return promise;
