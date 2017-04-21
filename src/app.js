@@ -40,7 +40,7 @@ export default class {
 
     AudioRecorderView.data = () => ({
       title: params.title,
-      state: State.READY,
+      state: recorder.supported() ? State.READY : State.ERROR,
       statusMessages,
       l10n: params.l10n,
       audioSrc: '',
