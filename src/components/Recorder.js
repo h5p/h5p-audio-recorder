@@ -2,8 +2,7 @@ import RecorderWorker from './RecorderWorker'
 
 const RecorderState = {
   inactive: 'inactive',
-  recording: 'recording',
-  paused: 'paused'
+  recording: 'recording'
 };
 
 const errorMessageToCodeMap = {
@@ -24,14 +23,14 @@ export default class Recorder extends H5P.EventDispatcher{
     this.state = RecorderState.inactive;
 
     // Create a worker. This is normaløly done using a URL to the js-file
-    let workerBlob = new Blob(
+    const workerBlob = new Blob(
       [RecorderWorker.toString().replace(/^function .+\{?|\}$/g, '')],
       {type:'text/javascript'}
     );
-    var workerBlobUrl = URL.createObjectURL(workerBlob);
+    const workerBlobUrl = URL.createObjectURL(workerBlob);
     this.worker = new Worker(workerBlobUrl);
 
-    var self = this;
+    const self = this;
     this.worker.onmessage = function (e) {
       self.trigger(e.data.command, e.data.blob);
     };
@@ -39,16 +38,19 @@ export default class Recorder extends H5P.EventDispatcher{
 
   getWavURL() {
     this.stop();
+
+    const promise = new Promise((resolve, reject) => {
+      this.once('wav-delivered', (e) => {
+        resolve(URL.createObjectURL(e.data));
+      });
+    });
+
     this.worker.postMessage({
       command: 'exportWAV',
       type: 'audio/wav'
     });
 
-    return new Promise((resolve, reject) => {
-      this.on('wav-delivered', (e) => {
-        resolve(URL.createObjectURL(e.data));
-      });
-    });
+    return promise;
   }
 
   getMP3Url() {
@@ -56,7 +58,7 @@ export default class Recorder extends H5P.EventDispatcher{
   }
 
   init() {
-    let self = this;
+    const self = this;
     this.userMedia = new Promise((resolve, reject) => {
       if (!this.supported()) {
         return reject('browser-unsupported');
@@ -88,6 +90,7 @@ export default class Recorder extends H5P.EventDispatcher{
         });
 
         this.sourceNode.connect(this.scriptProcessorNode);
+        this.scriptProcessorNode.connect(this.audioContext.destination);
 
         resolve();
       }).catch((e) => {
@@ -97,7 +100,6 @@ export default class Recorder extends H5P.EventDispatcher{
         });
       });
     });
-    return this.userMedia;
   }
 
   start() {
@@ -107,33 +109,15 @@ export default class Recorder extends H5P.EventDispatcher{
 
     this.userMedia
       .then(() => {
-        if (this.state === RecorderState.paused) {
-          return this.resume();
-        }
-
-        if (this._setState(RecorderState.recording, RecorderState.inactive)) {
-          this.scriptProcessorNode.connect(this.audioContext.destination);
-        }
-        this.trigger('recording-started');
+        this._setState(RecorderState.recording);
       })
       .catch((e) => {
-        this.trigger('recording-blocked');
+        this.trigger('blocked');
       });
   }
 
   stop() {
-    if (this.state !== RecorderState.inactive) {
-      this._setState(RecorderState.inactive);
-      this.scriptProcessorNode.disconnect();
-    }
-  }
-
-  pause() {
-    this._setState(RecorderState.paused, RecorderState.recording);
-  }
-
-  resume() {
-    this._setState(RecorderState.resume, RecorderState.paused);
+    this._setState(RecorderState.inactive);
   }
 
   supported() {
@@ -154,13 +138,8 @@ export default class Recorder extends H5P.EventDispatcher{
     return 'unknown';
   }
 
-  _setState(state, condition) {
-    if (condition === undefined || this.state === condition) {
-      this.state = state;
-      this.trigger(this.state);
-
-      return true;
-    }
-    return false;
+  _setState(state) {
+    this.state = state;
+    this.trigger(this.state);
   }
 }

@@ -44,12 +44,13 @@
           <span class="fa-circle"></span>
           {{ l10n.continue }}
         </button>
-        <button class="button download"
+        <a class="button download"
                 v-if="state === 'finished'"
-                v-on:click="download">
+                v-bind:href="audioSrc"
+                v-bind:download="audioFilename">
           <span class="fa-download"></span>
           {{ l10n.download }}
-        </button>
+        </a>
       </span>
 
       <span class="button-row-right">
@@ -96,9 +97,8 @@
       },
 
       retry: function(){
-        console.debug('retry');
         // TODO Clear existing recording
-        var dialog = new H5P.ConfirmationDialog(
+        const dialog = new H5P.ConfirmationDialog(
           {
             headerText: this.l10n.retryDialogHeaderText,
             dialogText: this.l10n.retryDialogBodyText,
@@ -108,15 +108,11 @@
         );
         dialog.appendTo(H5P.jQuery(".h5p-audio-recorder-view")[0]);
         dialog.show();
-        var self = this;
+        const self = this;
         dialog.on('confirmed', function () {
           self.state = State.READY;
           self.$emit('retry');
         });
-      },
-
-      download: function(){
-        console.debug('TODO: Initialize download');
       }
     }
   }
