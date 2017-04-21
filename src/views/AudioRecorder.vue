@@ -1,8 +1,7 @@
 <template>
   <div class="h5p-audio-recorder-view">
-    <div class="recording-indicator">
-      <div class="fa-microphone"></div>
-    </div>
+    <div v-bind:class="['recording-indicator-wrapper', {'background-enabled pulse' : state=='recording'}]"></div>
+    <div class="fa-microphone"></div>
     <div v-if="state !== 'finished'" class="title">
       <span class="title-label">Q:</span>
       {{ title }}
@@ -102,10 +101,9 @@
         );
         dialog.appendTo(H5P.jQuery(".h5p-audio-recorder-view")[0]);
         dialog.show();
-        const self = this;
-        dialog.on('confirmed', function () {
-          self.state = State.READY;
-          self.$emit('retry');
+        dialog.on('confirmed', () => {
+          this.state = State.READY;
+          this.$emit('retry');
         });
       }
     }
@@ -125,19 +123,34 @@
       font-family: 'H5PFontAwesome4';
     }
 
-    .recording-indicator {
+    .recording-indicator-wrapper {
       height: 9.375em;
       width: 9.375em;
       margin-left: auto;
       margin-right: auto;
       line-height: 9.375em;
-      background-image: url('../images/08-vu-meter.svg');
       color: #8e8e8e;
+    }
 
-      .fa-microphone {
-        font-size: 3em;
-        background-color: white;
-      }
+    .background-enabled {
+      background-image: url('../images/08-vu-meter.svg');
+    }
+
+    .fa-microphone {
+      font-size: 3em;
+      top: 12%;
+      left: 44.26%;
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: white;
+    }
+
+    .fa-microphone::before {
+      top: 39%;
+      left: 31%;
+      position: absolute;
     }
 
     .h5p-audio-recorder-player {
@@ -302,5 +315,23 @@
         @include button-inverse(white, #d95354);
       }
     }
+  }
+
+  .pulse {
+  	animation-name: pulse_animation;
+  	animation-duration: 3000ms;
+  	animation-iteration-count: infinite;
+  	animation-timing-function: linear;
+  }
+
+  @keyframes pulse_animation {
+  	0%  { transform: scale(1); }
+  	30% { transform: scale(1); }
+  	40% { transform: scale(1.08); }
+  	50% { transform: scale(1); }
+  	60% { transform: scale(1); }
+  	70% { transform: scale(1.05); }
+  	80% { transform: scale(1); }
+  	100% { transform: scale(1); }
   }
 </style>
