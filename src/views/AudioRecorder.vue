@@ -1,7 +1,12 @@
 <template>
   <div class="h5p-audio-recorder-view">
-    <div v-bind:class="['recording-indicator-wrapper', {'background-enabled pulse' : state=='recording'}]"></div>
-    <div class="fa-microphone"></div>
+    <div class="recording-indicator-wrapper">
+      <div v-bind:class="[{'background-enabled pulse' : state=='recording'}]"></div>
+      <div v-if="state !== 'finished'" class="title">
+        <div class="fa-microphone"></div>
+      </div>
+    </div>
+    <!-- <div v-bind:class="['recording-indicator-wrapper', {'background-enabled pulse' : state=='recording'}]"></div> -->
     <div v-if="state !== 'finished'" class="title">
       <span class="title-label">Q:</span>
       {{ title }}
@@ -130,27 +135,27 @@
       margin-right: auto;
       line-height: 9.375em;
       color: #8e8e8e;
+      position: relative;
     }
 
     .background-enabled {
+      height: 100%;
+      width: 100%;
       background-image: url('../images/08-vu-meter.svg');
+      position: absolute;
     }
 
     .fa-microphone {
-      font-size: 3em;
-      top: 12%;
-      left: 44.26%;
+      width: 60%;
+      height: 60%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
       position: absolute;
-      width: 80px;
-      height: 80px;
+      font-size: 2em;
       border-radius: 50%;
       background-color: white;
-    }
-
-    .fa-microphone::before {
-      top: 39%;
-      left: 31%;
-      position: absolute;
+      line-height: 1.5em;
     }
 
     .h5p-audio-recorder-player {
