@@ -42,12 +42,13 @@
           <span class="fa-circle"></span>
           {{ l10n.continue }}
         </button>
-        <button class="button green"
+        <a class="button green"
                 v-if="state === 'finished'"
-                v-on:click="download">
+                v-bind:href="audioSrc"
+                v-bind:download="audioFilename">
           <span class="fa-download"></span>
           {{ l10n.download }}
-        </button>
+        </a>
       </span>
 
       <span class="button-row-right">
@@ -94,7 +95,6 @@
       },
 
       retry: function(){
-        console.debug('retry');
         // TODO Clear existing recording
         var dialog = new H5P.ConfirmationDialog(
           {
@@ -111,10 +111,6 @@
           self.state = State.READY;
           self.$emit('retry');
         });
-      },
-
-      download: function(){
-        console.debug('TODO: Initialize download');
       }
     }
   }
@@ -222,6 +218,8 @@
     cursor: pointer;
     background-color: #5e5e5e;
     color: white;
+    text-decoration: none;
+    text-align: center;
   }
 
   .button [class^="fa-"] {
