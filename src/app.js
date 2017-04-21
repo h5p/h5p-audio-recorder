@@ -62,11 +62,11 @@ export default class {
 
     viewModel.$on('finished', () => {
       recorder.stop();
-      recorder.getWavURL().then((url) => {
+      recorder.getMP3URL().then((url) => {
         viewModel.audioSrc = url;
         // Create a filename using the title
         let filename = params.title.length > 20 ? params.title.substr(0, 20) : params.title;
-        viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+        viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.mp3';
       });
     });
 

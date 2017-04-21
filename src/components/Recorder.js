@@ -82,8 +82,7 @@ export default class Recorder extends H5P.EventDispatcher{
     });
 
     this.worker.postMessage({
-      command: 'exportWAV',
-      type: 'audio/wav'
+      command: 'export-wav'
     });
 
     return promise;
@@ -94,8 +93,18 @@ export default class Recorder extends H5P.EventDispatcher{
    *
    * @return {Promise}
    */
-  getMP3Url() {
-    // TODO
+  getMP3URL() {
+    const promise = new Promise((resolve, reject) => {
+      this.once('mp3-delivered', (e) => {
+        resolve(URL.createObjectURL(e.data));
+      });
+    });
+
+    this.worker.postMessage({
+      command: 'export-mp3'
+    });
+
+    return promise;
   }
 
   /**
@@ -129,7 +138,9 @@ export default class Recorder extends H5P.EventDispatcher{
           command: 'init',
           config: {
             sampleRate: this.sourceNode.context.sampleRate,
-            numChannels: this.config.numChannels
+            numChannels: this.config.numChannels,
+            // TODO - needs to be figured out:
+            lameScriptURL: 'http://localhost/d7/sites/default/files/h5p/development/h5p-audio-recorder/libmp3lame.js'
           }
         });
 
