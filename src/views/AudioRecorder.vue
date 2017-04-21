@@ -72,13 +72,7 @@
 </template>
 
 <script>
-  const State = {
-    READY: 'ready',
-    RECORDING: 'recording',
-    PAUSED: 'paused',
-    FINISHED: 'finished',
-    ERROR: 'error'
-  };
+  import State from '../components/State';
 
   export default {
     methods: {
