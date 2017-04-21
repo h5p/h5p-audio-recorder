@@ -10,6 +10,8 @@ export default class {
    *
    * @property {string} title Title
    * @property {Object} l10n Translations
+   * @property {string} l10n.download Download button text
+   * @property {string} l10n.retry Retry button text
    * @property {string} l10n.finishedRecording Finished recording audio
    * @property {string} l10n.microphoneInaccessible Microphone blocked
    * @property {string} l10n.downloadRecording Download recording message
@@ -70,6 +72,7 @@ export default class {
 
     recordingWrapper.$on('retry', () => {
       this.recorder.reset();
+      recordingWrapper.audioSrc = '';
     });
 
     recordingWrapper.$on('paused', () => {
