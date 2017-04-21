@@ -41,7 +41,8 @@ export default class {
       state: 'ready',
       statusMessages,
       l10n: params.l10n,
-      audioSrc: ''
+      audioSrc: '',
+      audioFilename: ''
     });
 
     // Create recording wrapper view
@@ -61,6 +62,7 @@ export default class {
       this.recorder.stop();
       this.recorder.getWavURL().then((url) => {
         recordingWrapper.audioSrc = url;
+        recordingWrapper.audioFilename = 'my-filename.wav';
       });
     });
 
