@@ -113,6 +113,7 @@ export default class Recorder extends H5P.EventDispatcher{
       };
 
       navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
+        console.log('JALLA');
         this.sourceNode = this.audioContext.createMediaStreamSource(stream);
 
         this.worker.postMessage({
@@ -124,7 +125,6 @@ export default class Recorder extends H5P.EventDispatcher{
         });
 
         this.sourceNode.connect(this.scriptProcessorNode);
-        this.scriptProcessorNode.connect(this.audioContext.destination);
 
         resolve();
       }).catch((e) => {
@@ -146,6 +146,7 @@ export default class Recorder extends H5P.EventDispatcher{
 
     this.userMedia
       .then(() => {
+        this.scriptProcessorNode.connect(this.audioContext.destination);
         this._setState(RecorderState.recording);
       })
       .catch((e) => {
@@ -157,6 +158,7 @@ export default class Recorder extends H5P.EventDispatcher{
    * Stop/pause a recording
    */
   stop() {
+    this.scriptProcessorNode.disconnect();
     this._setState(RecorderState.inactive);
   }
 

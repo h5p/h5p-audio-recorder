@@ -28,7 +28,7 @@
     <div class="button-row">
       <div class="button-row-double">
         <button class="button record"
-                v-if="state === 'ready' || state !== 'error'"
+                v-if="state === 'ready'"
                 v-on:click="record">
           <span class="fa-circle"></span>
           {{ l10n.recordAnswer }}
