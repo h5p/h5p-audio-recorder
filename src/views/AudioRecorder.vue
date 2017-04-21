@@ -325,19 +325,13 @@
 
   .pulse {
   	animation-name: pulse_animation;
-  	animation-duration: 3000ms;
+  	animation-duration: 1000ms;
   	animation-iteration-count: infinite;
   	animation-timing-function: linear;
   }
 
   @keyframes pulse_animation {
   	0%  { transform: scale(1); }
-  	30% { transform: scale(1); }
-  	40% { transform: scale(1.08); }
-  	50% { transform: scale(1); }
-  	60% { transform: scale(1); }
-  	70% { transform: scale(1.05); }
-  	80% { transform: scale(1); }
-  	100% { transform: scale(1); }
+  	100% { transform: scale(1.1); }
   }
 </style>
