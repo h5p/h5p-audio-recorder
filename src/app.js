@@ -12,6 +12,7 @@ export default class {
    * @property {Object} l10n Translations
    * @property {string} l10n.finishedRecording Finished recording audio
    * @property {string} l10n.microphoneInaccessible Microphone blocked
+   * @property {string} l10n.downloadRecording Download recording message
    */
 
   /**
@@ -38,7 +39,9 @@ export default class {
     RecordingWrapper.data = () => ({
       title: params.title,
       state: 'ready',
-      statusMessages
+      statusMessages,
+      l10n: params.l10n,
+      audioSrc: ''
     });
 
     // Create recording wrapper view
@@ -54,6 +57,21 @@ export default class {
       this.recorder.start();
     });
 
+    recordingWrapper.$on('finished', () => {
+      this.recorder.stop();
+      this.recorder.getWavURL().then((url) => {
+        recordingWrapper.audioSrc = url;
+      });
+    });
+
+    recordingWrapper.$on('retry', () => {
+      this.recorder.reset();
+    });
+
+    recordingWrapper.$on('paused', () => {
+      this.recorder.pause();
+    });
+
     // Update UI when on recording events
     this.recorder.on('recording-started', () => {
       recordingWrapper.state = 'recording';
@@ -62,6 +80,8 @@ export default class {
     this.recorder.on('recording-blocked', () => {
       recordingWrapper.state = 'error';
     });
+
+
 
     /**
      * Attach library to wrapper

@@ -3,9 +3,24 @@
     <div class="recording-indicator">
       <div class="fa-microphone"></div>
     </div>
-    <div class="title"><span class="title-label">Q:</span> {{ title }}</div>
+    <div v-if="state !== 'finished'" class="title">
+      <span class="title-label">Q:</span>
+      {{ title }}
+    </div>
     <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
-    <timer v-bind:stopped="state !== 'recording'"></timer>
+
+
+    <audio class="h5p-audio-recorder-player" v-if="state === 'finished' && audioSrc !== ''"
+           controls="controls">
+      Your browser does not support the <code>audio</code> element.
+      <source v-bind:src="audioSrc">
+    </audio>
+
+    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'finished'"></timer>
+
+    <div v-else class="h5p-audio-recorder-download">
+      {{ l10n.downloadRecording }}
+    </div>
 
     <div class="button-row">
       <button class="button red"
@@ -71,16 +86,33 @@
 
       pause: function() {
         this.state = State.PAUSED;
+        this.$emit(this.state);
         console.debug('paused');
       },
 
       finish: function() {
         this.state = State.FINISHED;
-        console.debug('finished');
+        this.$emit(State.FINISHED);
       },
 
       retry: function(){
-        this.state = State.READY;
+        console.debug('retry');
+        // TODO Clear existing recording
+        var dialog = new H5P.ConfirmationDialog(
+          {
+            headerText: this.l10n.retryDialogHeaderText,
+            dialogText: this.l10n.retryDialogBodyText,
+            cancelText: this.l10n.retryDialogCancelText,
+            confirmText: this.l10n.retryDialogConfirmText
+          }
+        );
+        dialog.appendTo(H5P.jQuery(".h5p-audio-recorder-view")[0]);
+        dialog.show();
+        var self = this;
+        dialog.on('confirmed', function () {
+          self.state = State.READY;
+          self.$emit('retry');
+        });
       },
 
       download: function(){
@@ -115,6 +147,13 @@
     background-color: white;
   }
 
+  .h5p-audio-recorder-player {
+    width: 100%;
+    padding: 0 1em;
+    box-sizing: border-box;
+    height: 2em;
+    margin-top: 1.25em;
+  }
 
   .h5p-audio-recorder-view .title {
     color: black;
@@ -148,6 +187,15 @@
   .h5p-audio-recorder-view [role="status"].error {
     background-color: #db8b8b;
     color: black;
+  }
+
+  .h5p-audio-recorder-download {
+    font-size: 1.2em;
+    padding: 2em;
+  }
+
+  .h5p-audio-recorder-view .h5p-confirmation-dialog-popup {
+    top: 5em;
   }
 
   .button-row {

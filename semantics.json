@@ -23,6 +23,36 @@
         "label": "Finished recording message",
         "type": "text",
         "default": "You have successfully recorded your answer! Listen to the recording below."
+      },
+      {
+        "name": "downloadRecording",
+        "label": "Download recording message",
+        "type": "text",
+        "default": "Download this recording or retry."
+      },
+      {
+        "name": "retryDialogHeaderText",
+        "label": "Retry dialog header text",
+        "type": "text",
+        "default": "Retry recording"
+      },
+      {
+        "name": "retryDialogBodyText",
+        "label": "Retry dialog body text",
+        "type": "text",
+        "default": "You will lose your current recording. Do wish to continue?"
+      },
+      {
+        "name": "retryDialogConfirmText",
+        "label": "Retry dialog confirm text",
+        "type": "text",
+        "default": "Retry"
+      },
+      {
+        "name": "retryDialogCancelText",
+        "label": "Retry dialog cancel text",
+        "type": "text",
+        "default": "Cancel"
       }
     ]
   }
