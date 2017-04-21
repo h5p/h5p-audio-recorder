@@ -289,6 +289,7 @@
       border: 0;
       display: inline-block;
       cursor: pointer;
+      text-decoration: none;
 
       [class^="fa-"] {
         margin-right: 0.4em;
