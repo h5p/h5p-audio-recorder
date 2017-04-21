@@ -1,10 +1,4 @@
 var path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-const extractSass = new ExtractTextPlugin({
-  filename: "dist.css"
-});
-
 
 const config = {
   entry: "./src/entries/dist.js",
@@ -29,8 +23,11 @@ const config = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          preserveWhitespace: false
-        }
+          preserveWhitespace: false,
+          loaders: {
+            scss: 'vue-style-loader!css-loader!sass-loader'
+          }
+        },
       },
       {
         test: /\.js$/,
@@ -38,12 +35,7 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: extractSass.extract({
-          use: [{
-            loader: "css-loader"
-          }],
-          fallback: "style-loader"
-        })
+        loader: "css-loader"
       },
       {
         test: /\.(svg)$/,
@@ -51,10 +43,7 @@ const config = {
         loader: 'url-loader?limit=10000'
       } // inline base64 URLs for <=10k images, direct URLs for the rest
     ]
-  },
-  plugins: [
-    extractSass
-  ]
+  }
 };
 
 module.exports = config;

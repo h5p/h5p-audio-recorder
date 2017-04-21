@@ -22,27 +22,29 @@
     </div>
 
     <div class="button-row">
-      <button class="button red"
-              v-if="state === 'ready' || state === 'error'"
-              v-on:click="record">
-        <span class="fa-circle"></span>
-        {{ l10n.recordAnswer }}
-      </button>
+      <div class="button-row-double">
+        <button class="button record"
+                v-if="state === 'ready' || state === 'error'"
+                v-on:click="record">
+          <span class="fa-circle"></span>
+          {{ l10n.recordAnswer }}
+        </button>
+      </div>
 
       <span class="button-row-left">
-        <button class="button inverse red"
+        <button class="button pause"
                   v-if="state === 'recording'"
                   v-on:click="pause">
           <span class="fa-pause"></span>
           {{ l10n.pause }}
         </button>
-        <button class="button red"
+        <button class="button record"
                 v-if="state === 'paused'"
                 v-on:click="record">
           <span class="fa-circle"></span>
           {{ l10n.continue }}
         </button>
-        <button class="button green"
+        <button class="button download"
                 v-if="state === 'finished'"
                 v-on:click="download">
           <span class="fa-download"></span>
@@ -51,13 +53,13 @@
       </span>
 
       <span class="button-row-right">
-        <button class="button"
+        <button class="button finish"
                 v-if="state === 'recording' || state === 'paused'"
                 v-on:click="finish">
           <span class="fa-stop"></span>
           {{ l10n.finish }}
         </button>
-        <button class="button"
+        <button class="button retry"
                 v-if="state === 'finished'"
                 v-on:click="retry">
           <span class="fa-undo"></span>
@@ -120,125 +122,195 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  @import "~susy/sass/susy";
+
+  $screen-small: 576px;
+
   .h5p-audio-recorder-view {
     padding: 1.750em;
     text-align: center;
-  }
 
-  .h5p-audio-recorder-view [class^="fa-"] {
-    font-family: 'H5PFontAwesome4';
-  }
+    [class^="fa-"] {
+      font-family: 'H5PFontAwesome4';
+    }
 
-  .h5p-audio-recorder-view .recording-indicator {
-    height: 9.375em;
-    width: 9.375em;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 9.375em;
-    background-image: url('../images/08-vu-meter.svg');
-    color: #8e8e8e;
-  }
+    .recording-indicator {
+      height: 9.375em;
+      width: 9.375em;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 9.375em;
+      background-image: url('../images/08-vu-meter.svg');
+      color: #8e8e8e;
 
-  .h5p-audio-recorder-view .recording-indicator .fa-microphone {
-    font-size: 3em;
-    background-color: white;
-  }
+      .fa-microphone {
+        font-size: 3em;
+        background-color: white;
+      }
+    }
 
-  .h5p-audio-recorder-player {
-    width: 100%;
-    padding: 0 1em;
-    box-sizing: border-box;
-    height: 2em;
-    margin-top: 1.25em;
-  }
+    .h5p-audio-recorder-player {
+      width: 100%;
+      padding: 0 1em;
+      box-sizing: border-box;
+      height: 2em;
+      margin-top: 1.25em;
+    }
 
-  .h5p-audio-recorder-view .title {
-    color: black;
-    font-size: 1.875em;
-    margin-bottom: 1em;
-  }
+    .title {
+      color: black;
+      font-size: 1.875em;
+      margin-bottom: 1em;
+    }
 
-  .h5p-audio-recorder-view .title-label {
-    color: #8f8f8f;
-  }
+    .title-label {
+      color: #8f8f8f;
+    }
 
-  /* status bar */
-  .h5p-audio-recorder-view [role="status"] {
-    background-color: #f8f8f8;
-    color: #777777;
-    font-size: 1.250em;
-    line-height: 3.750em;
-    padding: 0 1em;
-  }
+    /* status bar */
+    [role="status"] {
+      background-color: #f8f8f8;
+      color: #777777;
+      font-size: 1.250em;
+      padding: 1.250em;
 
-  .h5p-audio-recorder-view [role="status"].recording {
-    background-color: #f9e5e6;
-    color: #da5254;
-  }
+      &.recording {
+       background-color: #f9e5e6;
+       color: #da5254;
+      }
 
-  .h5p-audio-recorder-view [role="status"].finished {
-    background-color: #e0f9e3;
-    color:  #20603d;
-  }
+      &.finished {
+        background-color: #e0f9e3;
+        color:  #20603d;
+      }
 
-  .h5p-audio-recorder-view [role="status"].error {
-    background-color: #db8b8b;
-    color: black;
-  }
+      &.error {
+        background-color: #db8b8b;
+        color: black;
+      }
+    }
 
-  .h5p-audio-recorder-download {
-    font-size: 1.2em;
-    padding: 2em;
-  }
+    .h5p-audio-recorder-download {
+      font-size: 1.2em;
+      padding: 2em;
+    }
 
-  .h5p-audio-recorder-view .h5p-confirmation-dialog-popup {
-    top: 5em;
-  }
+    .h5p-confirmation-dialog-popup {
+      top: 5em;
+    }
 
-  .button-row {
-    overflow: hidden;
-  }
+    .button-row {
+      @include container;
 
-  .button-row .button-row-left {
-    width: 50%;
-    float: left;
-    text-align: right;
-  }
+      .button-row-double {
+        @include span(1 of 1);
+      }
 
-  .button-row .button-row-right {
-    width: 50%;
-    float: left;
-    text-align: left;
-  }
+      .button-row-left {
+        @include span(1 of 1);
+        margin-bottom: 0.5em;
+      }
 
-  .button {
-    font-size: 1.563em;
-    padding: 0.708em 1.250em;
-    border-radius: 1.375em;
-    margin: 0 0.5em;
-    border: 0;
-    display: inline-block;
-    cursor: pointer;
-    background-color: #5e5e5e;
-    color: white;
-  }
+      .button-row-right {
+        @include span(1 of 1);
+        margin-bottom: 0.5em;
+      }
 
-  .button [class^="fa-"] {
-    margin-right: 0.4em;
-  }
+      @media (min-width: $screen-small) {
+        .button-row-left {
+          @include span(first 50% no-gutters);
+          text-align: right;
+        }
 
-  .button.red {
-    background-color: #d95354;
-  }
+        .button-row-right {
+          @include span(last 50% no-gutters);
+          text-align: left;
+        }
+      }
+    }
 
-  .button.inverse.red {
-    background-color: white;
-    border: 2px solid #d95354;
-    color: #d95354;
-  }
+    @mixin button-filled($background-color, $color) {
+      background-color: $background-color;
+      color: $color;
+      border-color: $background-color;
 
-  .button.green {
-    background-color: #1f824c;
+      &:hover {
+         background-color: darken($background-color, 5%);
+         border-color: darken($background-color, 5%);
+       }
+
+      &:active {
+         background-color: darken($background-color, 10%);
+         border-color: darken($background-color, 10%);
+       }
+
+      &[disabled] {
+         background-color: lighten($background-color, 40%);
+         border-color: lighten($background-color, 40%);
+      }
+    }
+
+    @mixin button-inverse($background-color, $color) {
+      background-color: $background-color;
+      color: $color;
+      border: 2px solid $color;
+
+      &:hover {
+        color: lighten($color, 10%);
+        border-color: lighten($color, 10%);
+      }
+
+      &:active {
+        color: darken($color, 10%);
+        border-color: darken($color, 10%);
+      }
+
+      &[disabled],
+      &[aria-disabled] {
+        color: lighten($color, 40%);
+        border-color: lighten($color, 40%);
+      }
+    }
+
+    @mixin blueGlow {
+      outline: 0;
+      box-shadow: 0.06em 0 0.6em 0.1em lighten(#0a78d1, 30%);
+    }
+
+    .button {
+      font-size: 1.563em;
+      padding: 0.708em 1.250em;
+      border-radius: 1.375em;
+      margin: 0 0.5em;
+      border: 0;
+      display: inline-block;
+      cursor: pointer;
+
+      [class^="fa-"] {
+        margin-right: 0.4em;
+      }
+
+      &:focus {
+        @include blueGlow
+      }
+
+      &.finish,
+      &.retry {
+        @include button-filled(#5e5e5e, white);
+      }
+
+      &.record {
+        @include button-filled(#d95354, white);
+      }
+
+      &.download {
+        @include button-filled(#1f824c, white);
+      }
+
+      &.pause {
+        @include button-inverse(white, #d95354);
+      }
+    }
   }
 </style>
