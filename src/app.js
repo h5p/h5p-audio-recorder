@@ -76,15 +76,15 @@ export default class {
     });
 
     recordingWrapper.$on('paused', () => {
-      this.recorder.pause();
+      this.recorder.stop();
     });
 
     // Update UI when on recording events
-    this.recorder.on('recording-started', () => {
+    this.recorder.on('recording', () => {
       recordingWrapper.state = 'recording';
     });
 
-    this.recorder.on('recording-blocked', () => {
+    this.recorder.on('blocked', () => {
       recordingWrapper.state = 'error';
     });
 

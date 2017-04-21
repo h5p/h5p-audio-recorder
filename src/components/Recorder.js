@@ -2,8 +2,7 @@ import RecorderWorker from './RecorderWorker'
 
 const RecorderState = {
   inactive: 'inactive',
-  recording: 'recording',
-  paused: 'paused'
+  recording: 'recording'
 };
 
 const errorMessageToCodeMap = {
@@ -91,6 +90,7 @@ export default class Recorder extends H5P.EventDispatcher{
         });
 
         this.sourceNode.connect(this.scriptProcessorNode);
+        this.scriptProcessorNode.connect(this.audioContext.destination);
 
         resolve();
       }).catch((e) => {
@@ -100,7 +100,6 @@ export default class Recorder extends H5P.EventDispatcher{
         });
       });
     });
-    return this.userMedia;
   }
 
   start() {
@@ -110,34 +109,15 @@ export default class Recorder extends H5P.EventDispatcher{
 
     this.userMedia
       .then(() => {
-        if (this.state === RecorderState.paused) {
-          return this.resume();
-        }
-
-        if (this._setState(RecorderState.recording, RecorderState.inactive)) {
-          this.scriptProcessorNode.connect(this.audioContext.destination);
-        }
-        this.trigger('recording-started');
+        this._setState(RecorderState.recording);
       })
       .catch((e) => {
-        this.trigger('recording-blocked');
+        this.trigger('blocked');
       });
   }
 
   stop() {
-    if (this.state !== RecorderState.inactive) {
-      this._setState(RecorderState.inactive);
-      this.scriptProcessorNode.disconnect();
-    }
-  }
-
-  pause() {
-    this._setState(RecorderState.paused, RecorderState.recording);
-  }
-
-  resume() {
-    this._setState(RecorderState.recording, RecorderState.paused);
-    this.trigger('recording-started');
+    this._setState(RecorderState.inactive);
   }
 
   supported() {
@@ -158,13 +138,8 @@ export default class Recorder extends H5P.EventDispatcher{
     return 'unknown';
   }
 
-  _setState(state, condition) {
-    if (condition === undefined || this.state === condition) {
-      this.state = state;
-      this.trigger(this.state);
-
-      return true;
-    }
-    return false;
+  _setState(state) {
+    this.state = state;
+    this.trigger(this.state);
   }
 }
