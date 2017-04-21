@@ -133,7 +133,7 @@ export default class Recorder extends H5P.EventDispatcher{
   }
 
   resume() {
-    this._setState(RecorderState.resume, RecorderState.paused);
+    this._setState(RecorderState.recording, RecorderState.paused);
   }
 
   supported() {
