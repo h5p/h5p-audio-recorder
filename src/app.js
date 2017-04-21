@@ -62,7 +62,9 @@ export default class {
       this.recorder.stop();
       this.recorder.getWavURL().then((url) => {
         recordingWrapper.audioSrc = url;
-        recordingWrapper.audioFilename = 'my-filename.wav';
+        // Create a filename using the title
+        let filename = params.title.length > 20 ? params.title.substr(0, 20) : params.title;
+        recordingWrapper.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
       });
     });
 
