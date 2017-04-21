@@ -66,6 +66,7 @@ export default class {
 
     recordingWrapper.$on('retry', () => {
       this.recorder.reset();
+      recordingWrapper.audioSrc = '';
     });
 
     recordingWrapper.$on('paused', () => {
