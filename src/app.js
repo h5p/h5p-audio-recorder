@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import RecordingWrapper from './views/RecordingWrapper.vue';
+import Timer from './views/Timer.vue';
 import Recorder from 'components/Recorder';
 
 export default class {
@@ -41,7 +42,12 @@ export default class {
     });
 
     // Create recording wrapper view
-    const recordingWrapper = new Vue({...RecordingWrapper});
+    const recordingWrapper = new Vue({
+      ...RecordingWrapper,
+      components: {
+        timer: Timer
+      }
+    });
 
     // Start recording when record button is pressed
     recordingWrapper.$on('recording', () => {

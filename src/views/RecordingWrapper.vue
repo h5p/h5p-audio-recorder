@@ -5,7 +5,7 @@
     </div>
     <div class="title"><span class="title-label">Q:</span> {{ title }}</div>
     <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
-    <div role="timer">00:00</div>
+    <timer v-bind:stopped="state !== 'recording'"></timer>
 
     <div class="button-row">
       <button class="button red"
@@ -64,11 +64,6 @@
   };
 
   export default {
-    data: {
-      title: '',
-      state: State.READY
-    },
-
     methods: {
       record: function() {
         this.$emit(State.RECORDING);
@@ -153,12 +148,6 @@
   .h5p-audio-recorder-view [role="status"].error {
     background-color: #db8b8b;
     color: black;
-  }
-
-  .h5p-audio-recorder-view [role="timer"] {
-    font-size: 2.5em;
-    color: #8f8f8f;
-    padding: 2.813rem 0;
   }
 
   .button-row {
