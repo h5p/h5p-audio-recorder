@@ -13,14 +13,68 @@
     "type": "group",
     "fields": [
       {
+        "name": "recordAnswer",
+        "label": "Record answer button text",
+        "type": "text",
+        "default": "Record Answer"
+      },
+      {
+        "name": "pause",
+        "label": "Pause button text",
+        "type": "text",
+        "default": "Pause"
+      },
+      {
+        "name": "continue",
+        "label": "Continue button text",
+        "type": "text",
+        "default": "Continue"
+      },
+      {
+        "name": "download",
+        "label": "Download button text",
+        "type": "text",
+        "default": "Download"
+      },
+      {
+        "name": "finish",
+        "label": "Finish button text",
+        "type": "text",
+        "default": "Finish"
+      },
+      {
+        "name": "retry",
+        "label": "Retry button text",
+        "type": "text",
+        "default": "Retry"
+      },
+      {
         "name": "microphoneInaccessible",
         "label": "Microphone inaccessible error message",
         "type": "text",
         "default": "Microphone was not accessible. Adjust your settings and try again."
       },
       {
-        "name": "finishedRecording",
-        "label": "Finished recording message",
+        "name": "statusReadyToRecord",
+        "label": "Ready to record status message",
+        "type": "text",
+        "default": "Press a button below to record your answer."
+      },
+      {
+        "name": "statusRecording",
+        "label": "Recording status message",
+        "type": "text",
+        "default": "Recording..."
+      },
+      {
+        "name": "statusPaused",
+        "label": "Paused status message",
+        "type": "text",
+        "default": "Recording paused. Press a button to continue recording."
+      },
+      {
+        "name": "statusFinishedRecording",
+        "label": "Finished recording status message",
         "type": "text",
         "default": "You have successfully recorded your answer! Listen to the recording below."
       },

@@ -27,10 +27,10 @@ export default class {
     rootElement.classList.add('h5p-audio-recorder');
 
     const statusMessages = {
-      ready: 'Press a button below to record your answer',
-      recording: 'Recording...',
-      paused: 'Recording paused. Press a button to continue recording.',
-      finished: params.l10n.finishedRecording,
+      ready: params.l10n.statusReadyToRecord,
+      recording: params.l10n.statusRecording,
+      paused: params.l10n.statusPaused,
+      finished: params.l10n.statusFinishedRecording,
       error: params.l10n.microphoneInaccessible
     };
 
@@ -80,8 +80,6 @@ export default class {
     this.recorder.on('recording-blocked', () => {
       recordingWrapper.state = 'error';
     });
-
-
 
     /**
      * Attach library to wrapper

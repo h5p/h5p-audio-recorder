@@ -9,7 +9,6 @@
     </div>
     <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
 
-
     <audio class="h5p-audio-recorder-player" v-if="state === 'finished' && audioSrc !== ''"
            controls="controls">
       Your browser does not support the <code>audio</code> element.
@@ -27,7 +26,7 @@
               v-if="state === 'ready' || state === 'error'"
               v-on:click="record">
         <span class="fa-circle"></span>
-        Record Answer
+        {{ l10n.recordAnswer }}
       </button>
 
       <span class="button-row-left">
@@ -35,19 +34,19 @@
                   v-if="state === 'recording'"
                   v-on:click="pause">
           <span class="fa-pause"></span>
-          Pause
+          {{ l10n.pause }}
         </button>
         <button class="button red"
                 v-if="state === 'paused'"
                 v-on:click="record">
           <span class="fa-circle"></span>
-          Continue
+          {{ l10n.continue }}
         </button>
         <button class="button green"
                 v-if="state === 'finished'"
                 v-on:click="download">
           <span class="fa-download"></span>
-          Download
+          {{ l10n.download }}
         </button>
       </span>
 
@@ -56,13 +55,13 @@
                 v-if="state === 'recording' || state === 'paused'"
                 v-on:click="finish">
           <span class="fa-stop"></span>
-          Finish
+          {{ l10n.finish }}
         </button>
         <button class="button"
                 v-if="state === 'finished'"
                 v-on:click="retry">
           <span class="fa-undo"></span>
-          Retry
+          {{ l10n.retry }}
         </button>
       </span>
     </div>
@@ -87,7 +86,6 @@
       pause: function() {
         this.state = State.PAUSED;
         this.$emit(this.state);
-        console.debug('paused');
       },
 
       finish: function() {
