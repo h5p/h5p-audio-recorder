@@ -1,9 +1,15 @@
-var recLength = 0,
-  recBuffers = [],
-  sampleRate,
-  numChannels;
+/**
+ * This is a web worker responsible for recording/buffering the sound and
+ * encoding it as wav.
+ */
 
-this.onmessage = function(e){
+var recLength = 0;
+var recBuffers = [];
+var sampleRate;
+var numChannels;
+
+// Listen to incoming messages
+this.onmessage = function(e) {
   switch(e.data.command){
     case 'init':
       init(e.data.config);
@@ -20,20 +26,33 @@ this.onmessage = function(e){
   }
 };
 
-function init(config){
+/**
+ * Initialization
+ *
+ * @param  {Object} config
+ */
+function init(config) {
   sampleRate = config.sampleRate;
   numChannels = config.numChannels;
   initBuffers();
 }
 
-function record(inputBuffer){
+/**
+ * Storing the data buffer
+ *
+ * @param  {Float32Array} inputBuffer
+ */
+function record(inputBuffer) {
   for (var channel = 0; channel < numChannels; channel++){
     recBuffers[channel].push(inputBuffer[channel]);
   }
   recLength += inputBuffer[0].length;
 }
 
-function exportWAV(){
+/**
+ * Export buffered data as a wav encoded blob
+ */
+function exportWAV() {
   var buffers = [];
   for (var channel = 0; channel < numChannels; channel++){
     buffers.push(mergeBuffers(recBuffers[channel], recLength));
@@ -52,18 +71,31 @@ function exportWAV(){
   });
 }
 
-function clear(){
+/**
+ * Clear the buffers
+ */
+function clear() {
   recLength = 0;
   recBuffers = [];
   initBuffers();
 }
 
-function initBuffers(){
+/**
+ * Initialize the buffers
+ */
+function initBuffers() {
   for (var channel = 0; channel < numChannels; channel++){
     recBuffers[channel] = [];
   }
 }
 
+/**
+ * Merge buffers
+ *
+ * @param {Array} recBuffers
+ * @param {[type]} recLength
+ * @return {Float32Array}
+ */
 function mergeBuffers(recBuffers, recLength){
   var result = new Float32Array(recLength);
   var offset = 0;
@@ -74,6 +106,13 @@ function mergeBuffers(recBuffers, recLength){
   return result;
 }
 
+/**
+ * Interleave two channels
+ *
+ * @param {Array} inputL
+ * @param {Array} inputR
+ * @return {Float32Array}
+ */
 function interleave(inputL, inputR){
   var length = inputL.length + inputR.length;
   var result = new Float32Array(length);
@@ -89,20 +128,40 @@ function interleave(inputL, inputR){
   return result;
 }
 
-function floatTo16BitPCM(output, offset, input){
+/**
+ * Convert floats to 16 bit PCMs
+ *
+ * @param {DataView} output
+ * @param {number} offset
+ * @param {Array} input
+ */
+function floatTo16BitPCM(output, offset, input) {
   for (var i = 0; i < input.length; i++, offset+=2){
     var s = Math.max(-1, Math.min(1, input[i]));
     output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
   }
 }
 
-function writeString(view, offset, string){
+/**
+ * Write string to wav header
+ *
+ * @param {DataView} view
+ * @param {number} offset
+ * @param {string} string
+ */
+function writeString(view, offset, string) {
   for (var i = 0; i < string.length; i++){
     view.setUint8(offset + i, string.charCodeAt(i));
   }
 }
 
-function encodeWAV(samples){
+/**
+ * Encode as wav
+ *
+ * @param {Array} samples
+ * @return {DataView}
+ */
+function encodeWAV(samples) {
   var buffer = new ArrayBuffer(44 + samples.length * 2);
   var view = new DataView(buffer);
 
