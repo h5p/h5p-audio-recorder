@@ -1,35 +1,35 @@
 {
   "semantics":[
     {
-      "label":"Text",
-      "description":"Question text"
+      "label":"Tekst",
+      "description":"Spørsmålstekst"
     },
     {
-      "label":"Localization",
+      "label":"Oversettelser",
       "fields":[
         {
-          "label":"Record answer button text",
-          "default":"Record Answer"
+          "label":"Ta opp svar knappetekst",
+          "default":"Ta opp svar"
         },
         {
-          "label":"Pause button text",
+          "label":"Pause knappetekst",
           "default":"Pause"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Fortsett knappetekst",
+          "default":"Fortsett"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Last ned knappetekst",
+          "default":"Last ned"
         },
         {
-          "label":"Finish button text",
-          "default":"Finish"
+          "label":"Avslutt knappetekst",
+          "default":"Avslutt"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"Prøv igjen knappetekst",
+          "default":"Prøv igjen"
         },
         {
           "label":"Microphone not supported error message",
@@ -45,7 +45,7 @@
         },
         {
           "label":"Recording status message",
-          "default":"Recording..."
+          "default":"Opptak..."
         },
         {
           "label":"Paused status message",
@@ -69,11 +69,11 @@
         },
         {
           "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "default":"Prøv igjen"
         },
         {
           "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "default":"Avbryt"
         }
       ]
     }
