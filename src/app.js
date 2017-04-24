@@ -71,7 +71,7 @@ export default class {
       recorder.getWavURL().then(url => {
         viewModel.audioSrc = url;
         // Create a filename using the title
-        let filename = params.title.length > 20 ? params.title.substr(0, 20) : params.title;
+        let filename = params.title.substr(0, 20);
         viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
         this.trigger('resize')
       }).catch((e) => {
