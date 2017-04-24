@@ -32,47 +32,47 @@
           "default":"Prøv igjen"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"Mikrofon er ikke støttet feilmelding",
+          "default":"Mikrofon støttes ikke. Kontrollér at du bruker en nettleser som tillater opptak fra mikrofon."
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"Mikrofon utilgjengelig feilmelding",
+          "default":"Mikrofonen er ikke tilgjengelig. Kontrollér at nettleseren tillater bruk av mikrofon."
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Klar til opptak statusmelding",
+          "default":"Trykk på knappen nedenfor, for å starte opptaket."
         },
         {
-          "label":"Recording status message",
+          "label":"Opptak statusmelding",
           "default":"Opptak..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Pauset statusmelding",
+          "default":"Opptaket er pauset. Trykk på knappen for å fortsette opptaket."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Opptaket avsluttet statusmelding",
+          "default":"Du har spilt inn svaret! Hør på opptaket nedenfor."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Last ned opptaket beskjed",
+          "default":"Last ned opptaket, eller prøv igjen."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording"
+          "label":"Gjør nytt opptak dialog header tekst",
+          "default":"Gjør nytt opptak"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"You will lose your current recording. Do you wish to continue?"
+          "label":"Gjør nytt opptak body tekst",
+          "default":"Du vil miste det nåværende oppdaktet. Er du sikker på at du fortsette?"
         },
         {
-          "label":"Retry dialog confirm text",
+          "label":"Prøv igjen dialog bekreft tekst",
           "default":"Prøv igjen"
         },
         {
-          "label":"Retry dialog cancel text",
+          "label":"Prøv igjen dialog avbryt tekst",
           "default":"Avbryt"
         }
       ]
