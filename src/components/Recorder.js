@@ -61,13 +61,12 @@ export default class Recorder extends H5P.EventDispatcher{
     const workerBlobUrl = URL.createObjectURL(workerBlob);
     this.worker = new Worker(workerBlobUrl);
 
-    const self = this;
-    this.worker.onmessage = function (e) {
-      self.trigger(e.data.command, e.data.blob);
+    this.worker.onmessage = e => {
+      this.trigger(e.data.command, e.data.blob);
     };
 
-    this.worker.onerror = function (e) {
-      self.trigger('worker-error', e);
+    this.worker.onerror = e => {
+      this.trigger('worker-error', e);
     };
 
     this.init();
@@ -82,11 +81,11 @@ export default class Recorder extends H5P.EventDispatcher{
     this.stop();
 
     const loadAudioUrl = new Promise((resolve, reject) => {
-      this.once('wav-delivered', (e) => {
+      this.once('wav-delivered', e => {
         resolve(URL.createObjectURL(e.data));
       });
 
-      this.once('worker-error', (e) => {
+      this.once('worker-error', e => {
         reject(e);
       });
     });
@@ -102,8 +101,6 @@ export default class Recorder extends H5P.EventDispatcher{
    * Initialize
    */
   init() {
-    const self = this;
-
     if (!this.supported()) {
       return;
     }
@@ -117,9 +114,9 @@ export default class Recorder extends H5P.EventDispatcher{
 
     // Handle the actual input
     // If in recording mode, sends the recorded data to the worker
-    this.scriptProcessorNode.onaudioprocess = function(e) {
-      if (self.state === RecorderState.recording) {
-        self.worker.postMessage({
+    this.scriptProcessorNode.onaudioprocess = e => {
+      if (this.state === RecorderState.recording) {
+        this.worker.postMessage({
           command: 'record',
           buffer: [e.inputBuffer.getChannelData(0)]
         });
@@ -134,10 +131,9 @@ export default class Recorder extends H5P.EventDispatcher{
    */
   grabMic() {
     if (this.userMedia === undefined) {
-      const self = this;
       this.userMedia = new Promise((resolve, reject) => {
         // Ask for access to the user's microphone
-        navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
+        navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
           // Creates the media stream, and connects the mic source to the
           // processor node
           this.sourceNode = this.audioContext.createMediaStreamSource(stream);
@@ -154,7 +150,7 @@ export default class Recorder extends H5P.EventDispatcher{
           });
 
           resolve();
-        }).catch((e) => {
+        }).catch(e => {
           // Typically this means user has no mic, or user has not approved
           // microphone access
           reject({
@@ -176,7 +172,7 @@ export default class Recorder extends H5P.EventDispatcher{
       .then(() => {
         this._setState(RecorderState.recording);
       })
-      .catch((e) => {
+      .catch(e => {
         this.trigger('blocked');
       });
   }
