@@ -4,6 +4,8 @@ import Timer from './views/Timer.vue';
 import Recorder from 'components/Recorder';
 import State from 'components/State';
 
+const AUDIO_SRC_NOT_SPECIFIED = '';
+
 export default class {
 
   /**
@@ -44,7 +46,7 @@ export default class {
       state: recorder.supported() ? State.READY : State.UNSUPPORTED,
       statusMessages,
       l10n: params.l10n,
-      audioSrc: '',
+      audioSrc: AUDIO_SRC_NOT_SPECIFIED,
       audioFilename: ''
     });
 
@@ -73,7 +75,7 @@ export default class {
 
     viewModel.$on('retry', () => {
       recorder.reset();
-      viewModel.audioSrc = '';
+      viewModel.audioSrc = AUDIO_SRC_NOT_SPECIFIED;
     });
 
     viewModel.$on('paused', () => {

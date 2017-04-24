@@ -2,7 +2,7 @@
   <div class="h5p-audio-recorder-view">
     <div class="recording-indicator-wrapper">
       <div v-bind:class="[{'background-enabled pulse' : state=='recording'}]"></div>
-      <div v-if="state !== 'finished'" class="title">
+      <div class="title">
         <div class="fa-microphone"></div>
       </div>
     </div>
