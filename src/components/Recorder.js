@@ -1,4 +1,4 @@
-import RecorderWorker from './RecorderWorker'
+import recorderWorker from 'raw-loader!./RecorderWorker.js.txt';
 
 const RecorderState = {
   inactive: 'inactive',
@@ -55,11 +55,10 @@ export default class Recorder extends H5P.EventDispatcher{
 
     // Create a worker. This is normally done using a URL to the js-file
     const workerBlob = new Blob(
-      [RecorderWorker.toString().replace(/^function .+\{?|\}$/g, '')],
+      [recorderWorker],
       {type:'text/javascript'}
     );
-    const workerBlobUrl = URL.createObjectURL(workerBlob);
-    this.worker = new Worker(workerBlobUrl);
+    this.worker = new Worker(URL.createObjectURL(workerBlob));
 
     this.worker.onmessage = e => {
       this.trigger(e.data.command, e.data.blob);
