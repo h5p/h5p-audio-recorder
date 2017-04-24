@@ -5,11 +5,6 @@ const RecorderState = {
   recording: 'recording'
 };
 
-const errorMessageToCodeMap = {
-  PermissionDeniedError: 'permission-denied',
-  NotAllowedError: 'permission-denied'
-};
-
 /**
  * Event triggered when recorder goes from recording to inactive
  *
@@ -32,7 +27,15 @@ const errorMessageToCodeMap = {
  */
 
 /**
- * The recorder class
+ * The recorder class.
+ *
+ * Note: When using this class, supported() should be invoked
+ * before start(). Example:
+ *
+ * const recorder = new Recorder();
+ * if (recorder.supported()) {
+ *   recorder.start();
+ * }
  *
  * @fires Recorder#inactive
  * @fires Recorder#recording
@@ -130,33 +133,25 @@ export default class Recorder extends H5P.EventDispatcher{
    */
   grabMic() {
     if (this.userMedia === undefined) {
-      this.userMedia = new Promise((resolve, reject) => {
-        // Ask for access to the user's microphone
-        navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
-          // Creates the media stream, and connects the mic source to the
-          // processor node
-          this.sourceNode = this.audioContext.createMediaStreamSource(stream);
-          this.sourceNode.connect(this.scriptProcessorNode);
-          this.scriptProcessorNode.connect(this.audioContext.destination);
+      // Ask for access to the user's microphone
+      this.userMedia = navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
+        // Creates the media stream, and connects the mic source to the
+        // processor node
+        this.sourceNode = this.audioContext.createMediaStreamSource(stream);
+        this.sourceNode.connect(this.scriptProcessorNode);
+        this.scriptProcessorNode.connect(this.audioContext.destination);
 
-          // Initialize the worker
-          this.worker.postMessage({
-            command: 'init',
-            config: {
-              sampleRate: this.sourceNode.context.sampleRate,
-              numChannels: this.config.numChannels
-            }
-          });
-
-          resolve();
-        }).catch(e => {
-          // Typically this means user has no mic, or user has not approved
-          // microphone access
-          reject({
-            code: this._errorToCode(e),
-            error: e
-          });
+        // Initialize the worker
+        this.worker.postMessage({
+          command: 'init',
+          config: {
+            sampleRate: this.sourceNode.context.sampleRate,
+            numChannels: this.config.numChannels
+          }
         });
+      }).catch(e => {
+        delete this.userMedia;
+        return Promise.reject();
       });
     }
 
@@ -201,20 +196,6 @@ export default class Recorder extends H5P.EventDispatcher{
     this.worker.postMessage({
       command: 'clear'
     });
-  }
-
-  /**
-   * Maps different browsers error codes to a common one
-   *
-   * @param {Object} e Error object from browser
-   * @private
-   * @return {string}
-   */
-  _errorToCode(e) {
-    if (e.name && errorMessageToCodeMap[e.name]) {
-      return errorMessageToCodeMap[e.name];
-    }
-    return 'unknown';
   }
 
   /**
