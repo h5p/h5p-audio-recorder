@@ -32,15 +32,16 @@ export default class {
     const recorder = this.recorder = new Recorder();
 
     const statusMessages = {};
+    statusMessages[State.UNSUPPORTED] = params.l10n.microphoneNotSupported;
+    statusMessages[State.BLOCKED] = params.l10n.microphoneInaccessible;
     statusMessages[State.READY] = params.l10n.statusReadyToRecord;
     statusMessages[State.RECORDING] = params.l10n.statusRecording;
     statusMessages[State.PAUSED] = params.l10n.statusPaused;
     statusMessages[State.FINISHED] = params.l10n.statusFinishedRecording;
-    statusMessages[State.ERROR] = params.l10n.microphoneInaccessible;
 
     AudioRecorderView.data = () => ({
       title: params.title,
-      state: recorder.supported() ? State.READY : State.ERROR,
+      state: recorder.supported() ? State.READY : State.UNSUPPORTED,
       statusMessages,
       l10n: params.l10n,
       audioSrc: '',
@@ -85,7 +86,7 @@ export default class {
     });
 
     recorder.on('blocked', () => {
-      viewModel.state = State.ERROR;
+      viewModel.state = State.BLOCKED;
     });
 
     /**

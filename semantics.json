@@ -49,10 +49,16 @@
         "default": "Retry"
       },
       {
+        "name": "microphoneNotSupported",
+        "label": "Microphone not supported error message",
+        "type": "text",
+        "default": "Microphone not supported. Make sure you are using a browser that allows microphone recording."
+      },
+      {
         "name": "microphoneInaccessible",
         "label": "Microphone inaccessible error message",
         "type": "text",
-        "default": "Microphone was not accessible. Make sure you are using Chrome, Firefox or Edge and that your microphone is enabled."
+        "default": "Microphone is not accessible. Make sure that the browser microphone is enabled."
       },
       {
         "name": "statusReadyToRecord",
