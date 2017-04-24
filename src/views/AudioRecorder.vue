@@ -2,9 +2,7 @@
   <div class="h5p-audio-recorder-view">
     <div class="recording-indicator-wrapper">
       <div v-bind:class="[{'background-enabled pulse' : state=='recording'}]"></div>
-      <div class="title">
-        <div class="fa-microphone"></div>
-      </div>
+      <div class="fa-microphone"></div>
     </div>
     <div v-if="state !== 'finished'" class="title">
       <span class="title-label">Q:</span>
@@ -134,6 +132,7 @@
       line-height: 9.375em;
       color: #8e8e8e;
       position: relative;
+      margin-bottom: 1em;
     }
 
     .background-enabled {
@@ -150,10 +149,10 @@
       top: 50%;
       transform: translate(-50%,-50%);
       position: absolute;
-      font-size: 2em;
+      font-size: 2.5em;
       border-radius: 50%;
       background-color: white;
-      line-height: 1.5em;
+      line-height: 2.5em;
     }
 
     .h5p-audio-recorder-player {
