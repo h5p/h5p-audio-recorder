@@ -1,0 +1,81 @@
+{
+  "semantics": [
+    {
+      "label": "Text",
+      "description": "Question text"
+    },
+    {
+      "label": "Localization",
+      "fields": [
+        {
+          "label": "Record answer button text",
+          "default": "Record Answer"
+        },
+        {
+          "label": "Pause button text",
+          "default": "Pause"
+        },
+        {
+          "label": "Continue button text",
+          "default": "Continue"
+        },
+        {
+          "label": "Download button text",
+          "default": "Download"
+        },
+        {
+          "label": "Finish button text",
+          "default": "Finish"
+        },
+        {
+          "label": "Retry button text",
+          "default": "Retry"
+        },
+        {
+          "label": "Microphone not supported error message",
+          "default": "Microphone not supported. Make sure you are using a browser that allows microphone recording."
+        },
+        {
+          "label": "Microphone inaccessible error message",
+          "default": "Microphone is not accessible. Make sure that the browser microphone is enabled."
+        },
+        {
+          "label": "Ready to record status message",
+          "default": "Press a button below to record your answer."
+        },
+        {
+          "label": "Recording status message",
+          "default": "Recording..."
+        },
+        {
+          "label": "Paused status message",
+          "default": "Recording paused. Press a button to continue recording."
+        },
+        {
+          "label": "Finished recording status message",
+          "default": "You have successfully recorded your answer! Listen to the recording below."
+        },
+        {
+          "label": "Download recording message",
+          "default": "Download this recording or retry."
+        },
+        {
+          "label": "Retry dialog header text",
+          "default": "Retry recording"
+        },
+        {
+          "label": "Retry dialog body text",
+          "default": "You will lose your current recording. Do you wish to continue?"
+        },
+        {
+          "label": "Retry dialog confirm text",
+          "default": "Retry"
+        },
+        {
+          "label": "Retry dialog cancel text",
+          "default": "Cancel"
+        }
+      ]
+    }
+  ]
+}
