@@ -57,6 +57,9 @@ export default class {
       }
     });
 
+    // resize iframe on state change
+    viewModel.$watch('state', () => this.trigger('resize'));
+
     // Start recording when record button is pressed
     viewModel.$on('recording', () => {
       recorder.start();
@@ -64,11 +67,13 @@ export default class {
 
     viewModel.$on('finished', () => {
       recorder.stop();
-      recorder.getWavURL().then((url) => {
+      recorder.getWavURL().then(url => {
         viewModel.audioSrc = url;
         // Create a filename using the title
         let filename = params.title.length > 20 ? params.title.substr(0, 20) : params.title;
         viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+
+        this.trigger('resize')
       });
     });
 

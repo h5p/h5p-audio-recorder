@@ -41,6 +41,7 @@
 
 <style>
   .audio-recorder-timer {
+    font-family: 'Open Sans', sans-serif;
     font-size: 2.5em;
     color: #8f8f8f;
     padding: 2.813rem 0;
