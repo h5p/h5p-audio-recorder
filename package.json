@@ -21,11 +21,15 @@
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
+    "browser-env": "^2.0.30",
     "cross-env": "^4.0.0",
     "css-loader": "^0.26.2",
     "extract-text-webpack-plugin": "^2.0.0",
     "node-sass": "^4.5.2",
     "raw-loader": "^0.5.1",
+    "require-extension-hooks": "^0.2.0",
+    "require-extension-hooks-babel": "^0.1.0",
+    "require-extension-hooks-vue": "^0.2.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.2",
     "susy": "^2.2.12",
@@ -37,5 +41,11 @@
   },
   "dependencies": {
     "vue": "^2.2.4"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "./tests/helpers/setup.js"
+    ]
   }
 }
