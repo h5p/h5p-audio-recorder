@@ -107,11 +107,12 @@
           this.$emit('retry');
         });
       }
-    }
+    },
   }
 </script>
 
 <style lang="scss">
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
   @import "~susy/sass/susy";
 
   $screen-small: 576px;
@@ -119,6 +120,7 @@
   .h5p-audio-recorder-view {
     padding: 1.750em;
     text-align: center;
+    font-family: Arial, 'Open Sans', sans-serif;
 
     [class^="fa-"] {
       font-family: 'H5PFontAwesome4';
@@ -167,6 +169,7 @@
       color: black;
       font-size: 1.875em;
       margin-bottom: 1em;
+      line-height: 1.5em;
     }
 
     .title-label {
@@ -290,6 +293,7 @@
 
     .button {
       font-size: 1.563em;
+      font-family: 'Open Sans', sans-serif;
       padding: 0.708em 1.250em;
       border-radius: 1.375em;
       margin: 0 0.5em;
