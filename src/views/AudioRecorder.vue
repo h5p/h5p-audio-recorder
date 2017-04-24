@@ -6,7 +6,6 @@
         <div class="fa-microphone"></div>
       </div>
     </div>
-    <!-- <div v-bind:class="['recording-indicator-wrapper', {'background-enabled pulse' : state=='recording'}]"></div> -->
     <div v-if="state !== 'finished'" class="title">
       <span class="title-label">Q:</span>
       {{ title }}
@@ -19,9 +18,9 @@
       <source v-bind:src="audioSrc">
     </audio>
 
-    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'finished'"></timer>
+    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'error' && state !== 'unsupported' && state !== 'finished'"></timer>
 
-    <div v-else class="h5p-audio-recorder-download">
+    <div v-if="state !== 'error' && state !== 'unsupported' && state === 'finished'" class="h5p-audio-recorder-download">
       {{ l10n.downloadRecording }}
     </div>
 
@@ -77,7 +76,6 @@
 
 <script>
   import State from '../components/State';
-
   export default {
     methods: {
       record: function() {
@@ -197,6 +195,11 @@
       }
 
       &.error {
+        background-color: #db8b8b;
+        color: black;
+      }
+
+      &.unsupported {
         background-color: #db8b8b;
         color: black;
       }

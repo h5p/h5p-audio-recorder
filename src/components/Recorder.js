@@ -65,6 +65,8 @@ export default class Recorder extends H5P.EventDispatcher{
     this.worker.onmessage = function (e) {
       self.trigger(e.data.command, e.data.blob);
     };
+
+    this.init();
   }
 
   /**
@@ -89,64 +91,73 @@ export default class Recorder extends H5P.EventDispatcher{
   }
 
   /**
-   * Initialize microphone
+   * Initialize
    */
   init() {
     const self = this;
-    this.userMedia = new Promise((resolve, reject) => {
-      if (!this.supported()) {
-        return reject('browser-unsupported');
-      }
 
-      this.audioContext = new AudioContext();
-      this.scriptProcessorNode = this.audioContext.createScriptProcessor(
-        this.config.bufferLength,
-        this.config.numChannels,
-        this.config.numChannels);
-      this.scriptProcessorNode.onaudioprocess = function(e) {
-        if (self.state === RecorderState.recording) {
-          self.worker.postMessage({
-            command: 'record',
-            buffer: [e.inputBuffer.getChannelData(0)]
-          });
-        }
-      };
+    if (!this.supported()) {
+      return;
+    }
 
-      navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
-        console.log('JALLA');
-        this.sourceNode = this.audioContext.createMediaStreamSource(stream);
+    this.audioContext = new AudioContext();
+    this.scriptProcessorNode = this.audioContext.createScriptProcessor(
+      this.config.bufferLength,
+      this.config.numChannels,
+      this.config.numChannels);
 
-        this.worker.postMessage({
-          command: 'init',
-          config: {
-            sampleRate: this.sourceNode.context.sampleRate,
-            numChannels: this.config.numChannels
-          }
+    this.scriptProcessorNode.onaudioprocess = function(e) {
+      if (self.state === RecorderState.recording) {
+        self.worker.postMessage({
+          command: 'record',
+          buffer: [e.inputBuffer.getChannelData(0)]
         });
+      }
+    };
+  }
 
-        this.sourceNode.connect(this.scriptProcessorNode);
+  /**
+   * Grab the mic
+   *
+   * @return {Promise}
+   */
+  grabMic() {
+    if (this.userMedia === undefined) {
+      const self = this;
+      this.userMedia = new Promise((resolve, reject) => {
+        navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
+          self.stream = stream;
+          this.sourceNode = this.audioContext.createMediaStreamSource(stream);
+          this.sourceNode.connect(this.scriptProcessorNode);
+          this.scriptProcessorNode.connect(this.audioContext.destination);
 
-        resolve();
-      }).catch((e) => {
-        reject({
-          code: this._errorToCode(e),
-          error: e
+          this.worker.postMessage({
+            command: 'init',
+            config: {
+              sampleRate: this.sourceNode.context.sampleRate,
+              numChannels: this.config.numChannels
+            }
+          });
+
+          resolve();
+        }).catch((e) => {
+          reject({
+            code: this._errorToCode(e),
+            error: e
+          });
         });
       });
-    });
+    }
+
+    return this.userMedia;
   }
 
   /**
    * Start or resume a recording
    */
   start() {
-    if (!this.userMedia) {
-      this.init();
-    }
-
-    this.userMedia
+    this.grabMic()
       .then(() => {
-        this.scriptProcessorNode.connect(this.audioContext.destination);
         this._setState(RecorderState.recording);
       })
       .catch((e) => {
@@ -158,7 +169,6 @@ export default class Recorder extends H5P.EventDispatcher{
    * Stop/pause a recording
    */
   stop() {
-    this.scriptProcessorNode.disconnect();
     this._setState(RecorderState.inactive);
   }
 
@@ -167,7 +177,9 @@ export default class Recorder extends H5P.EventDispatcher{
    * @return {boolean}
    */
   supported() {
-    return window.AudioContext !== undefined && navigator.mediaDevices.getUserMedia;
+    return window.AudioContext !== undefined &&
+           navigator.mediaDevices &&
+           navigator.mediaDevices.getUserMedia;
   }
 
   /**
