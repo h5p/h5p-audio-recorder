@@ -141,7 +141,7 @@
     .background-enabled {
       height: 100%;
       width: 100%;
-      background-image: url('../images/08-vu-meter.svg');
+      background-image: url('../images/recording-indicator.svg');
       position: absolute;
     }
 

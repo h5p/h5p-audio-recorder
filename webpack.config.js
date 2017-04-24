@@ -5,7 +5,7 @@ const config = {
   devtool: 'inline-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: "dist.js",
+    filename: "h5p-audio-recorder.js",
     sourceMapFilename: '[file].map'
   },
   resolve: {
