@@ -21,6 +21,7 @@
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-3": "^6.24.1",
     "browser-env": "^2.0.30",
     "cross-env": "^4.0.0",
     "css-loader": "^0.26.2",
@@ -43,8 +44,11 @@
     "vue": "^2.2.4"
   },
   "ava": {
-    "babel": "inherit",
+    "babel": {
+      "presets": ["@ava/stage-4", "stage-3"]
+    },
     "require": [
+      "babel-polyfill",
       "./tests/helpers/setup.js"
     ]
   }
