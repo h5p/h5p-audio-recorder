@@ -25,6 +25,7 @@
     <div class="button-row">
       <div class="button-row-double">
         <button class="button record"
+                ref="button-record"
                 v-if="state === 'ready'"
                 v-on:click="record">
           <span class="fa-circle"></span>
@@ -34,18 +35,22 @@
 
       <span class="button-row-left">
         <button class="button pause"
-                  v-if="state === 'recording'"
-                  v-on:click="pause">
+                ref="button-pause"
+                v-if="state === 'recording'"
+                v-on:click="pause">
           <span class="fa-pause"></span>
           {{ l10n.pause }}
         </button>
         <button class="button record"
+                ref="button-continue"
                 v-if="state === 'paused'"
                 v-on:click="record">
           <span class="fa-circle"></span>
           {{ l10n.continue }}
         </button>
+
         <a class="button download"
+                ref="button-download"
                 v-if="state === 'finished'"
                 v-bind:href="audioSrc"
                 v-bind:download="audioFilename">
@@ -74,6 +79,14 @@
 
 <script>
   import State from '../components/State';
+
+  // focus on ref when state is changed
+  const refToFocusOnStateChange = {};
+  refToFocusOnStateChange[State.READY] = 'button-record';
+  refToFocusOnStateChange[State.RECORDING] = 'button-pause';
+  refToFocusOnStateChange[State.PAUSED] = 'button-continue';
+  refToFocusOnStateChange[State.FINISHED] = 'button-download';
+
   export default {
     methods: {
       record: function() {
@@ -108,6 +121,13 @@
         });
       }
     },
+    watch: {
+      state: function(state){
+        if(refToFocusOnStateChange[state]) {
+          this.$nextTick(() => this.$refs[refToFocusOnStateChange[state]].focus());
+        }
+      }
+    }
   }
 </script>
 
