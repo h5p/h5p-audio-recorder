@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+const webpack = require('webpack');
 
 const config = {
   entry: "./src/entries/dist.js",
@@ -10,7 +11,7 @@ const config = {
   },
   resolve: {
     alias: {
-      vue: 'vue/dist/vue.js'
+      'vue$': 'vue/dist/vue.esm.js'
     },
     modules: [
       path.resolve('./src'),
@@ -43,7 +44,15 @@ const config = {
         loader: 'url-loader?limit=10000'
       } // inline base64 URLs for <=10k images, direct URLs for the rest
     ]
-  }
+  },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+  ]
 };
 
 module.exports = config;

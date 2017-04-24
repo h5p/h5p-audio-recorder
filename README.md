@@ -8,7 +8,7 @@ Grab all the modules:
 npm install
 ```
 
-Build project:
+Build project for production:
 
 ```bash
 npm run build
