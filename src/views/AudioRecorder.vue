@@ -2,11 +2,8 @@
   <div class="h5p-audio-recorder-view">
     <div class="recording-indicator-wrapper">
       <div v-bind:class="[{'background-enabled pulse' : state=='recording'}]"></div>
-      <div class="title">
-        <div class="fa-microphone"></div>
-      </div>
+      <div class="fa-microphone"></div>
     </div>
-    <!-- <div v-bind:class="['recording-indicator-wrapper', {'background-enabled pulse' : state=='recording'}]"></div> -->
     <div v-if="state !== 'finished'" class="title">
       <span class="title-label">Q:</span>
       {{ title }}
@@ -19,9 +16,9 @@
       <source v-bind:src="audioSrc">
     </audio>
 
-    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'finished'"></timer>
+    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'blocked' && state !== 'unsupported' && state !== 'finished'"></timer>
 
-    <div v-else class="h5p-audio-recorder-download">
+    <div v-if="state !== 'blocked' && state !== 'unsupported' && state === 'finished'" class="h5p-audio-recorder-download">
       {{ l10n.downloadRecording }}
     </div>
 
@@ -77,7 +74,6 @@
 
 <script>
   import State from '../components/State';
-
   export default {
     methods: {
       record: function() {
@@ -111,11 +107,12 @@
           this.$emit('retry');
         });
       }
-    }
+    },
   }
 </script>
 
 <style lang="scss">
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
   @import "~susy/sass/susy";
 
   $screen-small: 576px;
@@ -123,6 +120,7 @@
   .h5p-audio-recorder-view {
     padding: 1.750em;
     text-align: center;
+    font-family: Arial, 'Open Sans', sans-serif;
 
     [class^="fa-"] {
       font-family: 'H5PFontAwesome4';
@@ -136,6 +134,7 @@
       line-height: 9.375em;
       color: #8e8e8e;
       position: relative;
+      margin-bottom: 1em;
     }
 
     .background-enabled {
@@ -152,10 +151,10 @@
       top: 50%;
       transform: translate(-50%,-50%);
       position: absolute;
-      font-size: 2em;
+      font-size: 2.5em;
       border-radius: 50%;
       background-color: white;
-      line-height: 1.5em;
+      line-height: 2.5em;
     }
 
     .h5p-audio-recorder-player {
@@ -170,6 +169,7 @@
       color: black;
       font-size: 1.875em;
       margin-bottom: 1em;
+      line-height: 1.5em;
     }
 
     .title-label {
@@ -193,7 +193,12 @@
         color:  #20603d;
       }
 
-      &.error {
+      &.blocked {
+        background-color: #db8b8b;
+        color: black;
+      }
+
+      &.unsupported {
         background-color: #db8b8b;
         color: black;
       }
@@ -288,6 +293,7 @@
 
     .button {
       font-size: 1.563em;
+      font-family: 'Open Sans', sans-serif;
       padding: 0.708em 1.250em;
       border-radius: 1.375em;
       margin: 0 0.5em;

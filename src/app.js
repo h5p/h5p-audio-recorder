@@ -34,15 +34,16 @@ export default class {
     const recorder = this.recorder = new Recorder();
 
     const statusMessages = {};
+    statusMessages[State.UNSUPPORTED] = params.l10n.microphoneNotSupported;
+    statusMessages[State.BLOCKED] = params.l10n.microphoneInaccessible;
     statusMessages[State.READY] = params.l10n.statusReadyToRecord;
     statusMessages[State.RECORDING] = params.l10n.statusRecording;
     statusMessages[State.PAUSED] = params.l10n.statusPaused;
     statusMessages[State.FINISHED] = params.l10n.statusFinishedRecording;
-    statusMessages[State.ERROR] = params.l10n.microphoneInaccessible;
 
     AudioRecorderView.data = () => ({
       title: params.title,
-      state: recorder.supported() ? State.READY : State.ERROR,
+      state: recorder.supported() ? State.READY : State.UNSUPPORTED,
       statusMessages,
       l10n: params.l10n,
       audioSrc: AUDIO_SRC_NOT_SPECIFIED,
@@ -57,6 +58,9 @@ export default class {
       }
     });
 
+    // resize iframe on state change
+    viewModel.$watch('state', () => this.trigger('resize'));
+
     // Start recording when record button is pressed
     viewModel.$on('recording', () => {
       recorder.start();
@@ -64,11 +68,12 @@ export default class {
 
     viewModel.$on('finished', () => {
       recorder.stop();
-      recorder.getWavURL().then((url) => {
+      recorder.getWavURL().then(url => {
         viewModel.audioSrc = url;
         // Create a filename using the title
         let filename = params.title.length > 20 ? params.title.substr(0, 20) : params.title;
         viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+        this.trigger('resize')
       }).catch((e) => {
         // TODO - add something in the UI!
         console.log('Could not generate wav file');
@@ -90,7 +95,7 @@ export default class {
     });
 
     recorder.on('blocked', () => {
-      viewModel.state = State.ERROR;
+      viewModel.state = State.BLOCKED;
     });
 
     /**
