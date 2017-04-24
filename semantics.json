@@ -100,7 +100,7 @@
         "name": "retryDialogBodyText",
         "label": "Retry dialog body text",
         "type": "text",
-        "default": "You will lose your current recording. Do wish to continue?"
+        "default": "You will lose your current recording. Do you wish to continue?"
       },
       {
         "name": "retryDialogConfirmText",
