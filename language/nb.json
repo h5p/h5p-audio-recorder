@@ -1,0 +1,81 @@
+{
+  "semantics":[
+    {
+      "label":"Tekst",
+      "description":"Spørsmålstekst"
+    },
+    {
+      "label":"Oversettelser",
+      "fields":[
+        {
+          "label":"Ta opp svar knappetekst",
+          "default":"Ta opp svar"
+        },
+        {
+          "label":"Pause knappetekst",
+          "default":"Pause"
+        },
+        {
+          "label":"Fortsett knappetekst",
+          "default":"Fortsett"
+        },
+        {
+          "label":"Last ned knappetekst",
+          "default":"Last ned"
+        },
+        {
+          "label":"Avslutt knappetekst",
+          "default":"Avslutt"
+        },
+        {
+          "label":"Prøv igjen knappetekst",
+          "default":"Prøv igjen"
+        },
+        {
+          "label":"Mikrofon er ikke støttet feilmelding",
+          "default":"Mikrofon støttes ikke. Kontrollér at du bruker en nettleser som tillater opptak fra mikrofon."
+        },
+        {
+          "label":"Mikrofon utilgjengelig feilmelding",
+          "default":"Mikrofonen er ikke tilgjengelig. Kontrollér at nettleseren tillater bruk av mikrofon."
+        },
+        {
+          "label":"Klar til opptak statusmelding",
+          "default":"Trykk på knappen nedenfor, for å starte opptaket."
+        },
+        {
+          "label":"Opptak statusmelding",
+          "default":"Opptak..."
+        },
+        {
+          "label":"Pauset statusmelding",
+          "default":"Opptaket er pauset. Trykk på knappen for å fortsette opptaket."
+        },
+        {
+          "label":"Opptaket avsluttet statusmelding",
+          "default":"Du har spilt inn svaret! Hør på opptaket nedenfor."
+        },
+        {
+          "label":"Last ned opptaket beskjed",
+          "default":"Last ned opptaket, eller prøv igjen."
+        },
+        {
+          "label":"Gjør nytt opptak dialog header tekst",
+          "default":"Gjør nytt opptak"
+        },
+        {
+          "label":"Gjør nytt opptak body tekst",
+          "default":"Du vil miste det nåværende oppdaktet. Er du sikker på at du fortsette?"
+        },
+        {
+          "label":"Prøv igjen dialog bekreft tekst",
+          "default":"Prøv igjen"
+        },
+        {
+          "label":"Prøv igjen dialog avbryt tekst",
+          "default":"Avbryt"
+        }
+      ]
+    }
+  ]
+}
