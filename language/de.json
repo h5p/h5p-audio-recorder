@@ -2,78 +2,78 @@
   "semantics":[
     {
       "label":"Text",
-      "description":"Question text"
+      "description":"Text der Aufgabe"
     },
     {
-      "label":"Localization",
+      "label":"Lokalisierung",
       "fields":[
         {
-          "label":"Record answer button text",
-          "default":"Record Answer"
+          "label":"Button-Text der Antwort-Aufnahme",
+          "default":"Antwort aufnehmen"
         },
         {
-          "label":"Pause button text",
+          "label":"Button-Text für Pause",
           "default":"Pause"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Button-Text für Weiter",
+          "default":"Weiter"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Button-Text für Download",
+          "default":"Herunterladen"
         },
         {
-          "label":"Finish button text",
-          "default":"Finish"
+          "label":"Button-Text für Beenden",
+          "default":"Beenden"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"Button-Text für Wiederholen",
+          "default":"Wiederholen"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"Fehlermeldung für nicht unterstützte Mikrofone",
+          "default":"Das Mikrofon wird nicht unterstützt. Stelle sicher, dass die Erstellung von Mikrofonaufnahmen nicht durch Browsereinstellungen verhindert wird."
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"Fehlermeldung für nicht nutzbares Mikrofon",
+          "default":"Das Mikrofon ist nicht nutzbar. Stelle sicher, dass das Mikrofon in den Browser-Einstellungen aktiviert ist."
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Statusmeldung für Bereit zum Aufnehmen",
+          "default":"Drücke den Button, um deine Antwort aufzunehmen."
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"Statusmeldung für Ausnehmen",
+          "default":"Aufnahme läuft..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Statusmeldung für Pause",
+          "default":"Aufnahme unterbrochen. Drücke den Aufnahme noch einmal, um die Aufnahme fortzusetzen."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Statusmeldung für fertiggestelle Aufnahmen",
+          "default":"Du hast deine Antwort erfolgreich aufgenommen! Höre dir die Aufnahme nachträglich noch einmal an."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Meldung für Aufnahme herunterladen",
+          "default":"Lade diese Aufnahme herunter oder starte nochmal von vorn."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording"
+          "label":"Überschrift des Wiederholung-Dialogs",
+          "default":"Aufnahme wiederholen"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"You will lose your current recording. Do you wish to continue?"
+          "label":"Inhalt des Wiederholungs-Dialogs",
+          "default":"Die aktuelle Aufnahme wird gelöscht. Möchtest Du fortfahren?"
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"Bestätigungstext für den Wiederholungs-Dialog",
+          "default":"Wiederholen"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"Abbruchstext für den Wiederholungs-Dialog",
+          "default":"Abbrechen"
         }
       ]
     }
