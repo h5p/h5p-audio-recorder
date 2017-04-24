@@ -16,7 +16,7 @@
       <source v-bind:src="audioSrc">
     </audio>
 
-    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'blocked' && state !== 'unsupported' && state !== 'finished'"></timer>
+    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'unsupported' && state !== 'finished'"></timer>
 
     <div v-if="state !== 'blocked' && state !== 'unsupported' && state === 'finished'" class="h5p-audio-recorder-download">
       {{ l10n.downloadRecording }}
@@ -25,7 +25,7 @@
     <div class="button-row">
       <div class="button-row-double">
         <button class="button record"
-                v-if="state === 'ready'"
+                v-if="state === 'ready' || state === 'blocked'"
                 v-on:click="record">
           <span class="fa-circle"></span>
           {{ l10n.recordAnswer }}
