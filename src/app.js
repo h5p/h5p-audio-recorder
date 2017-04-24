@@ -69,6 +69,9 @@ export default class {
         // Create a filename using the title
         let filename = params.title.length > 20 ? params.title.substr(0, 20) : params.title;
         viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+      }).catch((e) => {
+        // TODO - add something in the UI!
+        console.log('Could not generate wav file');
       });
     });
 

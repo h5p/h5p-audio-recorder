@@ -66,6 +66,10 @@ export default class Recorder extends H5P.EventDispatcher{
       self.trigger(e.data.command, e.data.blob);
     };
 
+    this.worker.onerror = function (e) {
+      self.trigger('worker-error', e);
+    };
+
     this.init();
   }
 
@@ -77,9 +81,13 @@ export default class Recorder extends H5P.EventDispatcher{
   getWavURL() {
     this.stop();
 
-    const promise = new Promise((resolve, reject) => {
+    const loadAudioUrl = new Promise((resolve, reject) => {
       this.once('wav-delivered', (e) => {
         resolve(URL.createObjectURL(e.data));
+      });
+
+      this.once('worker-error', (e) => {
+        reject(e);
       });
     });
 
@@ -87,7 +95,7 @@ export default class Recorder extends H5P.EventDispatcher{
       command: 'export-wav'
     });
 
-    return promise;
+    return loadAudioUrl;
   }
 
   /**
@@ -100,12 +108,15 @@ export default class Recorder extends H5P.EventDispatcher{
       return;
     }
 
+    // Create the audio context
     this.audioContext = new AudioContext();
     this.scriptProcessorNode = this.audioContext.createScriptProcessor(
       this.config.bufferLength,
       this.config.numChannels,
       this.config.numChannels);
 
+    // Handle the actual input
+    // If in recording mode, sends the recorded data to the worker
     this.scriptProcessorNode.onaudioprocess = function(e) {
       if (self.state === RecorderState.recording) {
         self.worker.postMessage({
@@ -125,12 +136,15 @@ export default class Recorder extends H5P.EventDispatcher{
     if (this.userMedia === undefined) {
       const self = this;
       this.userMedia = new Promise((resolve, reject) => {
+        // Ask for access to the user's microphone
         navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
-          self.stream = stream;
+          // Creates the media stream, and connects the mic source to the
+          // processor node
           this.sourceNode = this.audioContext.createMediaStreamSource(stream);
           this.sourceNode.connect(this.scriptProcessorNode);
           this.scriptProcessorNode.connect(this.audioContext.destination);
 
+          // Initialize the worker
           this.worker.postMessage({
             command: 'init',
             config: {
@@ -141,6 +155,8 @@ export default class Recorder extends H5P.EventDispatcher{
 
           resolve();
         }).catch((e) => {
+          // Typically this means user has no mic, or user has not approved
+          // microphone access
           reject({
             code: this._errorToCode(e),
             error: e
