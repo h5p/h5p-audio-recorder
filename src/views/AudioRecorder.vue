@@ -16,9 +16,9 @@
       <source v-bind:src="audioSrc">
     </audio>
 
-    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'error' && state !== 'unsupported' && state !== 'finished'"></timer>
+    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'blocked' && state !== 'unsupported' && state !== 'finished'"></timer>
 
-    <div v-if="state !== 'error' && state !== 'unsupported' && state === 'finished'" class="h5p-audio-recorder-download">
+    <div v-if="state !== 'blocked' && state !== 'unsupported' && state === 'finished'" class="h5p-audio-recorder-download">
       {{ l10n.downloadRecording }}
     </div>
 
@@ -193,7 +193,7 @@
         color:  #20603d;
       }
 
-      &.error {
+      &.blocked {
         background-color: #db8b8b;
         color: black;
       }

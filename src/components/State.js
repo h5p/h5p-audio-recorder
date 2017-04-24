@@ -4,6 +4,7 @@
  */
 const State = {
   UNSUPPORTED: 'unsupported',
+  BLOCKED: 'blocked',
   READY: 'ready',
   RECORDING: 'recording',
   PAUSED: 'paused',
