@@ -64,16 +64,16 @@
           "default":"Aufnahme wiederholen"
         },
         {
-          "label":"Bodytext Aufnahme wiederholen",
-          "default":"You will lose your current recording. Do you wish to continue?"
+          "label":"Dialogbox Aufnahme wiederholen",
+          "default":"Die aktuelle Aufnahme wird gelöscht. Möchten Sie fortfahren?"
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"Dialogbox Bestätigen",
+          "default":"Wiederholen"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"Dialogbox Wiederholen abbrechen",
+          "default":"Abbrechen"
         }
       ]
     }
