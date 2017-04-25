@@ -70,8 +70,6 @@ export default class Recorder extends H5P.EventDispatcher{
     this.worker.onerror = e => {
       this.trigger('worker-error', e);
     };
-
-    this.init();
   }
 
   /**
@@ -101,11 +99,12 @@ export default class Recorder extends H5P.EventDispatcher{
 
   /**
    * Initialize
+   *
+   * @private
+   * @param {MediaStream} stream
    */
-  init() {
-    if (!this.supported()) {
-      return;
-    }
+  _setupAudioProcessing(stream) {
+    this.stream = stream;
 
     // Create the audio context
     this.audioContext = new AudioContext();
@@ -124,6 +123,12 @@ export default class Recorder extends H5P.EventDispatcher{
         });
       }
     };
+
+    // Creates the media stream, and connects the mic source to the
+    // processor node
+    this.sourceNode = this.audioContext.createMediaStreamSource(stream);
+    this.sourceNode.connect(this.scriptProcessorNode);
+    this.scriptProcessorNode.connect(this.audioContext.destination);
   }
 
   /**
@@ -132,14 +137,15 @@ export default class Recorder extends H5P.EventDispatcher{
    * @return {Promise}
    */
   grabMic() {
+    if (!this.supported()) {
+      return Promise.reject();
+    }
+
     if (this.userMedia === undefined) {
       // Ask for access to the user's microphone
       this.userMedia = navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
-        // Creates the media stream, and connects the mic source to the
-        // processor node
-        this.sourceNode = this.audioContext.createMediaStreamSource(stream);
-        this.sourceNode.connect(this.scriptProcessorNode);
-        this.scriptProcessorNode.connect(this.audioContext.destination);
+
+        this._setupAudioProcessing(stream);
 
         // Initialize the worker
         this.worker.postMessage({
@@ -189,13 +195,21 @@ export default class Recorder extends H5P.EventDispatcher{
   }
 
   /**
-   * Reset previous recording
+   * Release the MIC
    */
-  reset() {
+  releaseMic() {
     this._setState(RecorderState.inactive);
+    // Clear the buffers:
     this.worker.postMessage({
       command: 'clear'
     });
+    
+    this.stream.getAudioTracks().forEach(track => track.stop());
+    this.sourceNode.disconnect();
+    this.scriptProcessorNode.disconnect();
+    this.audioContext.close();
+
+    delete this.userMedia;
   }
 
   /**
