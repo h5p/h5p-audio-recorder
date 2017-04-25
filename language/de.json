@@ -2,69 +2,69 @@
   "semantics":[
     {
       "label":"Text",
-      "description":"Question text"
+      "description":"Fragetext"
     },
     {
-      "label":"Localization",
+      "label":"Lokalisierung",
       "fields":[
         {
-          "label":"Record answer button text",
-          "default":"Record Answer"
+          "label":"Schaltflächentext Antwort aufnehmen",
+          "default":"Antwort aufnehmen"
         },
         {
-          "label":"Pause button text",
+          "label":"Schaltflächentext Pause",
           "default":"Pause"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Schaltflächentext Weiterfahren",
+          "default":"Fortfahren"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Schaltflächentext herunterladen",
+          "default":"Herunterladen"
         },
         {
-          "label":"Finish button text",
-          "default":"Finish"
+          "label":"Schaltflächentext Beenden",
+          "default":"Beenden"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"Schaltflächentext wiederholen",
+          "default":"Wiederholen"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"Fehlermeldung Mikrofon wird nicht unterstützt",
+          "default":"Mikrofon nicht unterstützt. Stellen Sie sicher, dass Sie einen Browser benützen, der Mikrofon-Aufnahmen ermöglicht."
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"Fehlermeldung Mikrofon nicht verfügbar",
+          "default":"Mikrofon ist nicht verfügbar. Stellen Sie sicher, dass das Browser-Mikrofon aktiviert ist."
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Statusmeldung Aufnahmebereit",
+          "default":"Drücken Sie den unteren Knopf um ihre Antwort aufzunehmen."
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"Statusmeldung Aufnahme läuft",
+          "default":"Aufnahme..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Statusmeldung Pause",
+          "default":"Die Aufzeichnung wurde angehalten. Drücken Sie eine Taste um die Aufzeichnung fortzusetzen."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Statusmeldung Aufnahme abgeschlossen",
+          "default":"Sie haben Ihre Aufnahme erfolgreich aufgezeichnet. Hören Sie Ihre Aufnahme an."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Die Aufnahme herunterladen",
+          "default":"Aufnahme herunterladen oder wiederholen."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording"
+          "label":"Titeltext Aufnahme wiederholen",
+          "default":"Aufnahme wiederholen"
         },
         {
-          "label":"Retry dialog body text",
+          "label":"Bodytext Aufnahme wiederholen",
           "default":"You will lose your current recording. Do you wish to continue?"
         },
         {
