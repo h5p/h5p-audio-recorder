@@ -25,27 +25,27 @@
    * @return {number} A transformed scale for the pulsating element, determined by settings
    */
   const micFrequencyToPulseScale = (frequency) => {
-     // Set outer bounds
-     if (frequency > settings.upperFreqBound) {
-       frequency = settings.upperFreqBound;
-     }
-     else if (frequency < settings.lowerFreqBound) {
-       frequency = settings.lowerFreqBound;
-     }
+    // Set outer bounds
+    if (frequency > settings.upperFreqBound) {
+      frequency = settings.upperFreqBound;
+    }
+    else if (frequency < settings.lowerFreqBound) {
+      frequency = settings.lowerFreqBound;
+    }
 
-     // Normalize within min/max scale
+    // Normalize within min/max scale
     const normalized = (frequency - settings.lowerFreqBound) / settings.upperFreqBound;
     const deltaScale = settings.maxPulseScale - settings.minPulseScale;
     const vuScaled = (deltaScale * normalized) + settings.minPulseScale;
 
-     // Round to nearest step to reduce jitter
-     return Math.round(vuScaled / settings.pulseScaleStep) * settings.pulseScaleStep;
+    // Round to nearest step to reduce jitter
+    return Math.round(vuScaled / settings.pulseScaleStep) * settings.pulseScaleStep;
   };
 
   export default {
     props: ['avgMicFrequency', 'enablePulse'],
     computed: {
-      pulseScale: function() {
+      pulseScale: function () {
         return micFrequencyToPulseScale(this.avgMicFrequency);
       }
     }

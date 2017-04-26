@@ -147,7 +147,7 @@ export default class Recorder extends H5P.EventDispatcher {
     // Creates the media stream, and connects the mic source to the
     // processor node
     this.sourceNode = this.audioContext.createMediaStreamSource(stream);
-    this.sourceNode.connect(freqAnalyser);
+    this.sourceNode.connect(this.freqAnalyser);
     this.freqAnalyser.connect(this.scriptProcessorNode);
     this.scriptProcessorNode.connect(this.audioContext.destination);
   }
