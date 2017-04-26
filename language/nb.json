@@ -40,40 +40,45 @@
           "default":"Mikrofonen er ikke tilgjengelig. Kontrollér at nettleseren tillater bruk av mikrofon."
         },
         {
-          "label":"Klar til opptak statusmelding",
-          "default":"Trykk på knappen nedenfor, for å starte opptaket."
+          "label":"Message displayed when insecure access is not allowed",
+          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTP. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
-          "label":"Opptak statusmelding",
-          "default":"Opptak..."
+          "label":"Ready to record status message",
+          "default":"Press a button below to record your answer."
         },
         {
-          "label":"Pauset statusmelding",
-          "default":"Opptaket er pauset. Trykk på knappen for å fortsette opptaket."
+          "label":"Recording status message",
+          "default":"Recording..."
         },
         {
-          "label":"Opptaket avsluttet statusmelding",
-          "default":"Du har spilt inn svaret! Hør på opptaket nedenfor."
+          "label":"Paused status message",
+          "default":"Recording paused. Press a button to continue recording."
         },
         {
-          "label":"Last ned opptaket beskjed",
-          "default":"Last ned opptaket, eller prøv igjen."
+          "label":"Finished recording status message",
+          "default":"You have successfully recorded your answer! Listen to the recording below."
         },
         {
-          "label":"Gjør nytt opptak dialog header tekst",
-          "default":"Gjør nytt opptak"
+          "label":"Download recording message",
+          "default":"Download this recording or retry."
         },
         {
-          "label":"Gjør nytt opptak body tekst",
-          "default":"Du vil miste det nåværende oppdaktet. Er du sikker på at du fortsette?"
+          "label":"Retry dialog header text",
+          "default":"Retry recording"
         },
         {
-          "label":"Prøv igjen dialog bekreft tekst",
-          "default":"Prøv igjen"
+          "label":"Retry dialog body text",
+          "default":"You will lose your current recording. Do you wish to continue?"
         },
         {
-          "label":"Prøv igjen dialog avbryt tekst",
-          "default":"Avbryt"
+          "label":"Retry dialog confirm text",
+          "default":"Retry"
+        },
+        {
+          "label":"Retry dialog cancel text",
+          "default":"Cancel"
         }
       ]
     }
