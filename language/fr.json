@@ -40,6 +40,11 @@
           "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
         },
         {
+          "label":"Message displayed when insecure access is not allowed",
+          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTP. Please contact the author, and ask him to make this available using HTTPS"
+        },
+        {
           "label":"Ready to record status message",
           "default":"Press a button below to record your answer."
         },
