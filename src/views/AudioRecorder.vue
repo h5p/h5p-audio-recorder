@@ -1,13 +1,10 @@
 <template>
   <div class="h5p-audio-recorder-view">
-    <div class="recording-indicator-wrapper">
-      <div v-bind:class="[{'background-enabled pulse' : state=='recording'}]"></div>
-      <div class="fa-microphone"></div>
-    </div>
     <div v-if="state !== 'finished'" class="title">
       <span class="title-label">Q:</span>
       <span clasS="title-text">{{ title }}</span>
     </div>
+    <vuMeter :avgMicFrequency="avgMicFrequency" :enablePulse="state === 'recording'"></vuMeter>
     <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
 
     <audio class="h5p-audio-recorder-player" v-if="state === 'finished' && audioSrc !== ''"
@@ -144,24 +141,6 @@
 
     [class^="fa-"] {
       font-family: 'H5PFontAwesome4';
-    }
-
-    .recording-indicator-wrapper {
-      height: 9.375em;
-      width: 9.375em;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 9.375em;
-      color: #8e8e8e;
-      position: relative;
-      margin-bottom: 1em;
-    }
-
-    .background-enabled {
-      height: 100%;
-      width: 100%;
-      background-image: url('../images/recording-indicator.svg');
-      position: absolute;
     }
 
     .fa-microphone {
@@ -344,17 +323,5 @@
         @include button-inverse(white, #d95354);
       }
     }
-  }
-
-  .pulse {
-  	animation-name: pulse_animation;
-  	animation-duration: 1000ms;
-  	animation-iteration-count: infinite;
-  	animation-timing-function: linear;
-  }
-
-  @keyframes pulse_animation {
-  	0%  { transform: scale(1); }
-  	100% { transform: scale(1.1); }
   }
 </style>
