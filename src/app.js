@@ -69,6 +69,7 @@ export default class {
     viewModel.$on('finished', () => {
       recorder.stop();
       recorder.getWavURL().then(url => {
+        recorder.releaseMic();
         viewModel.audioSrc = url;
         // Create a filename using the title
         let filename = params.title.substr(0, 20);
@@ -81,7 +82,6 @@ export default class {
     });
 
     viewModel.$on('retry', () => {
-      recorder.reset();
       viewModel.audioSrc = AUDIO_SRC_NOT_SPECIFIED;
     });
 

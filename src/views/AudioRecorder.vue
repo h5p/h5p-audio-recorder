@@ -6,7 +6,7 @@
     </div>
     <div v-if="state !== 'finished'" class="title">
       <span class="title-label">Q:</span>
-      {{ title }}
+      <span clasS="title-text">{{ title }}</span>
     </div>
     <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
 

@@ -2,77 +2,77 @@
   "semantics":[
     {
       "label":"Text",
-      "description":"Fragetext"
+      "description":"Text der Aufgabe"
     },
     {
       "label":"Lokalisierung",
       "fields":[
         {
-          "label":"Schaltflächentext Antwort aufnehmen",
+          "label":"Button-Text der Antwort-Aufnahme",
           "default":"Antwort aufnehmen"
         },
         {
-          "label":"Schaltflächentext Pause",
+          "label":"Button-Text für Pause",
           "default":"Pause"
         },
         {
-          "label":"Schaltflächentext Weiterfahren",
-          "default":"Fortfahren"
+          "label":"Button-Text für Weiter",
+          "default":"Weiter"
         },
         {
-          "label":"Schaltflächentext herunterladen",
+          "label":"Button-Text für Download",
           "default":"Herunterladen"
         },
         {
-          "label":"Schaltflächentext Beenden",
+          "label":"Button-Text für Beenden",
           "default":"Beenden"
         },
         {
-          "label":"Schaltflächentext wiederholen",
+          "label":"Button-Text für Wiederholen",
           "default":"Wiederholen"
         },
         {
-          "label":"Fehlermeldung Mikrofon wird nicht unterstützt",
-          "default":"Mikrofon nicht unterstützt. Stellen Sie sicher, dass Sie einen Browser benützen, der Mikrofon-Aufnahmen ermöglicht."
+          "label":"Fehlermeldung für nicht unterstützte Mikrofone",
+          "default":"Das Mikrofon wird nicht unterstützt. Stelle sicher, dass die Erstellung von Mikrofonaufnahmen nicht durch Browsereinstellungen verhindert wird."
         },
         {
-          "label":"Fehlermeldung Mikrofon nicht verfügbar",
-          "default":"Mikrofon ist nicht verfügbar. Stellen Sie sicher, dass das Browser-Mikrofon aktiviert ist."
+          "label":"Fehlermeldung für nicht nutzbares Mikrofon",
+          "default":"Das Mikrofon ist nicht nutzbar. Stelle sicher, dass das Mikrofon in den Browser-Einstellungen aktiviert ist."
         },
         {
-          "label":"Statusmeldung Aufnahmebereit",
-          "default":"Drücken Sie den unteren Knopf um ihre Antwort aufzunehmen."
+          "label":"Statusmeldung für Bereit zum Aufnehmen",
+          "default":"Drücke den Button, um deine Antwort aufzunehmen."
         },
         {
-          "label":"Statusmeldung Aufnahme läuft",
-          "default":"Aufnahme..."
+          "label":"Statusmeldung für Ausnehmen",
+          "default":"Aufnahme läuft..."
         },
         {
-          "label":"Statusmeldung Pause",
-          "default":"Die Aufzeichnung wurde angehalten. Drücken Sie eine Taste um die Aufzeichnung fortzusetzen."
+          "label":"Statusmeldung für Pause",
+          "default":"Aufnahme unterbrochen. Drücke den Aufnahme noch einmal, um die Aufnahme fortzusetzen."
         },
         {
-          "label":"Statusmeldung Aufnahme abgeschlossen",
-          "default":"Sie haben Ihre Aufnahme erfolgreich aufgezeichnet. Hören Sie Ihre Aufnahme an."
+          "label":"Statusmeldung für fertiggestelle Aufnahmen",
+          "default":"Du hast deine Antwort erfolgreich aufgenommen! Höre dir die Aufnahme nachträglich noch einmal an."
         },
         {
-          "label":"Die Aufnahme herunterladen",
-          "default":"Aufnahme herunterladen oder wiederholen."
+          "label":"Meldung für Aufnahme herunterladen",
+          "default":"Lade diese Aufnahme herunter oder starte nochmal von vorn."
         },
         {
-          "label":"Titeltext Aufnahme wiederholen",
+          "label":"Überschrift des Wiederholung-Dialogs",
           "default":"Aufnahme wiederholen"
         },
         {
-          "label":"Dialogbox Aufnahme wiederholen",
-          "default":"Die aktuelle Aufnahme wird gelöscht. Möchten Sie fortfahren?"
+          "label":"Inhalt des Wiederholungs-Dialogs",
+          "default":"Die aktuelle Aufnahme wird gelöscht. Möchtest Du fortfahren?"
         },
         {
-          "label":"Dialogbox Bestätigen",
+          "label":"Bestätigungstext für den Wiederholungs-Dialog",
           "default":"Wiederholen"
         },
         {
-          "label":"Dialogbox Wiederholen abbrechen",
+          "label":"Abbruchstext für den Wiederholungs-Dialog",
           "default":"Abbrechen"
         }
       ]
