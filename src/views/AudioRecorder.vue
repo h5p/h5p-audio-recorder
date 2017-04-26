@@ -25,7 +25,7 @@
     <div class="button-row">
       <div class="button-row-double">
         <button class="button record"
-                v-if="state === 'ready' || state === 'blocked'"
+                v-if="state === 'ready' || state === 'blocked' || state === 'insecure-not-allowed'"
                 ref="button-record"
                 v-on:click="record">
           <span class="fa-circle"></span>
@@ -213,12 +213,9 @@
         color:  #20603d;
       }
 
-      &.blocked {
-        background-color: #db8b8b;
-        color: black;
-      }
-
-      &.unsupported {
+      &.blocked,
+      &.unsupported,
+      &.insecure-not-allowed {
         background-color: #db8b8b;
         color: black;
       }

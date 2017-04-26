@@ -40,6 +40,11 @@
           "default":"Mikrofonen er ikke tilgjengelig. Kontrollér at nettleseren tillater bruk av mikrofon."
         },
         {
+          "label": "Melding som vises når mikrofon ikke kan bruker pga sikkerhetshensyn",
+          "description": "Noen nettlesere tillater ikke tilgang til mikrofonen når siden lastes via HTTP. Denne meldinga vises når det er tilfellet.",
+          "default": "Nettleseren din tillater ikke tilgang til mikrofonen fordi nettsiden er lastet via HTTP. Ta kontakt med forfatteren, og spør om nettsiden kan tilgjengeliggjøres via HTTPS"
+        },
+        {
           "label":"Klar til opptak statusmelding",
           "default":"Trykk på knappen nedenfor, for å starte opptaket."
         },

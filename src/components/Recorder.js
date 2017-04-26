@@ -156,8 +156,12 @@ export default class Recorder extends H5P.EventDispatcher{
           }
         });
       }).catch(e => {
+        let reason = 'blocked';
+        if (e.name && ['NotSupportedError', 'NotSupportedError', 'NotAllowedError'].indexOf(e.name) !== -1) {
+          reason = 'insecure-not-allowed';
+        }
         delete this.userMedia;
-        return Promise.reject();
+        return Promise.reject(reason);
       });
     }
 
@@ -173,7 +177,7 @@ export default class Recorder extends H5P.EventDispatcher{
         this._setState(RecorderState.recording);
       })
       .catch(e => {
-        this.trigger('blocked');
+        this.trigger(e);
       });
   }
 
@@ -203,7 +207,7 @@ export default class Recorder extends H5P.EventDispatcher{
     this.worker.postMessage({
       command: 'clear'
     });
-    
+
     this.stream.getAudioTracks().forEach(track => track.stop());
     this.sourceNode.disconnect();
     this.scriptProcessorNode.disconnect();

@@ -40,6 +40,7 @@ export default class {
     statusMessages[State.RECORDING] = params.l10n.statusRecording;
     statusMessages[State.PAUSED] = params.l10n.statusPaused;
     statusMessages[State.FINISHED] = params.l10n.statusFinishedRecording;
+    statusMessages[State.INSECURE_NOT_ALLOWED] = params.l10n.insecureNotAllowed;
 
     AudioRecorderView.data = () => ({
       title: params.title,
@@ -94,8 +95,14 @@ export default class {
       viewModel.state = State.RECORDING;
     });
 
+    // Blocked probably means user has no mic, or has not allowed access to one
     recorder.on('blocked', () => {
       viewModel.state = State.BLOCKED;
+    });
+
+    // May be sent from Chrome, which don't allow use of mic when using http (need https)
+    recorder.on('insecure-not-allowed', () => {
+      viewModel.state = State.INSECURE_NOT_ALLOWED;
     });
 
     /**
