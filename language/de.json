@@ -1,7 +1,7 @@
 {
   "semantics":[
     {
-      "label":"Question",
+      "label":"Frage",
       "description":"Optional text to display above the audio recorder"
     },
     {
@@ -42,42 +42,42 @@
         {
           "label":"Message displayed when insecure access is not allowed",
           "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTP. Please contact the author, and ask him to make this available using HTTPS"
+          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Statusmeldung Aufnahmebereit",
+          "default":"Drücken Sie den unteren Knopf um ihre Antwort aufzunehmen."
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"Statusmeldung Aufnahme läuft",
+          "default":"Aufnahme..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Statusmeldung Pause",
+          "default":"Die Aufzeichnung wurde angehalten. Drücken Sie eine Taste um die Aufzeichnung fortzusetzen."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Statusmeldung Aufnahme abgeschlossen",
+          "default":"Sie haben Ihre Aufnahme erfolgreich aufgezeichnet. Hören Sie Ihre Aufnahme an."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Die Aufnahme herunterladen",
+          "default":"Aufnahme herunterladen oder wiederholen."
         },
         {
-          "label":"Retry dialog header text",
+          "label":"Titeltext Aufnahme wiederholen",
           "default":"Retry recording?"
         },
         {
-          "label":"Retry dialog body text",
+          "label":"Dialogbox Aufnahme wiederholen",
           "default":"By pressing \"Retry\" you will loose your current recording."
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"Dialogbox Bestätigen",
+          "default":"Wiederholen"
         },
         {
-          "label":"Retry dialog cancel text",
+          "label":"Dialogbox Wiederholen abbrechen",
           "default":"Abbrechen"
         }
       ]
