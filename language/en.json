@@ -1,7 +1,7 @@
 {
   "semantics":[
     {
-      "label":"Question",
+      "label":"Task Description",
       "description":"Optional text to display above the audio recorder"
     },
     {
