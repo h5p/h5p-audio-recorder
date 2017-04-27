@@ -1,15 +1,15 @@
 {
   "semantics":[
     {
-      "label":"Question",
-      "description":"Optional text to display above the audio recorder"
+      "label":"Spørsmål",
+      "description":"Tekst som vises over lydopptakeren"
     },
     {
       "label":"Oversettelser",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Tekst for opptaksknappen",
+          "default":"Ta opp"
         },
         {
           "label":"Pause knappetekst",
@@ -24,8 +24,8 @@
           "default":"Last ned"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"Tekst for ferdig knapp",
+          "default":"Ferdig"
         },
         {
           "label":"Prøv igjen knappetekst",
@@ -40,7 +40,7 @@
           "default":"Mikrofonen er ikke tilgjengelig. Kontrollér at nettleseren tillater bruk av mikrofon."
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
+          "label":"Melding som vises når https ikke er aktivert",
           "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
           "default":"Access to microphone is not allowed in your browser since this page is not served using HTTP. Please contact the author, and ask him to make this available using HTTPS"
         },
