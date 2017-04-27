@@ -42,7 +42,7 @@
         {
           "label":"Melding som vises når https ikke er aktivert",
           "description":"Noen nettlesere lar ikke brukeren benytte mikrofonen når siden ikke har HTTPS. Denne meldingen vises for å forklare hvorfor mikrofonen ikke kan brukes i slike tilfeller",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTP. Please contact the author, and ask him to make this available using HTTPS"
+          "default":"Tilgang til mikrofonen er ikke tillatt i nettleseren siden denne siden ikke betjenes via HTTPS. Kontakt forfatteren, og be ham om å gjøre denne tilgjengelig med HTTPS"
         },
         {
           "label":"Ready to record status message",
@@ -70,15 +70,15 @@
         },
         {
           "label":"Tekst for prøv igjen bekreftelsesboks",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "default":"Ved å trykke \"Prøv igjen\" vil du miste gjeldende opptak."
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"Tekst for bekreftelsesknapp i prøv igjen bekreftelsesboks",
+          "default":"Prøv igjen"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"Tekst for avbryt knapp i prøv igjen bekreftelsesboks",
+          "default":"Avbryt"
         }
       ]
     }
