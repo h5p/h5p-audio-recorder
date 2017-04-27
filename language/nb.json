@@ -45,11 +45,11 @@
           "default":"Tilgang til mikrofonen er ikke tillatt i nettleseren siden denne siden ikke betjenes via HTTPS. Kontakt forfatteren, og be ham om å gjøre denne tilgjengelig med HTTPS"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Klar til opptak statusmelding",
+          "default":"Trykk på knappen nedenfor, for å starte opptaket."
         },
         {
-          "label":"Recording status message",
+          "label":"Statusmelding vist når lyd blir tatt opp",
           "default":"Opptak..."
         },
         {
