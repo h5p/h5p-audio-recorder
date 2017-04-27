@@ -79,6 +79,10 @@
         {
           "label":"Dialogbox Wiederholen abbrechen",
           "default":"Abbrechen"
+        },
+        {
+          "label":"Can't create audio file status message",
+          "default":"Can't create the audio file."
         }
       ]
     }
