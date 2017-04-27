@@ -1,11 +1,12 @@
 [
   {
-    "label": "Text",
+    "label": "Question",
     "importance": "high",
     "name": "title",
     "type": "text",
     "widget": "textarea",
-    "description": "Question text"
+    "description": "Optional question to display above the audio recorder",
+    "optional": true
   },
   {
     "label": "Localization",
@@ -14,9 +15,9 @@
     "fields": [
       {
         "name": "recordAnswer",
-        "label": "Record answer button text",
+        "label": "Record button text",
         "type": "text",
-        "default": "Record Answer"
+        "default": "Record"
       },
       {
         "name": "pause",
@@ -37,10 +38,10 @@
         "default": "Download"
       },
       {
-        "name": "finish",
-        "label": "Finish button text",
+        "name": "done",
+        "label": "Done button text",
         "type": "text",
-        "default": "Finish"
+        "default": "Done"
       },
       {
         "name": "retry",
@@ -94,13 +95,13 @@
         "name": "retryDialogHeaderText",
         "label": "Retry dialog header text",
         "type": "text",
-        "default": "Retry recording"
+        "default": "Retry recording?"
       },
       {
         "name": "retryDialogBodyText",
         "label": "Retry dialog body text",
         "type": "text",
-        "default": "You will lose your current recording. Do you wish to continue?"
+        "default": "By pressing \"Retry\" you will loose your current recording."
       },
       {
         "name": "retryDialogConfirmText",

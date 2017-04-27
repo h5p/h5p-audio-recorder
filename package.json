@@ -33,7 +33,6 @@
     "require-extension-hooks-vue": "^0.2.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.2",
-    "susy": "^2.2.12",
     "timer-machine": "^1.1.0",
     "url-loader": "^0.5.8",
     "vue-loader": "^11.2.0",

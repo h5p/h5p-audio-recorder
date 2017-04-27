@@ -15,7 +15,7 @@ export default class {
    * @property {Object} l10n Translations
    * @property {string} l10n.download Download button text
    * @property {string} l10n.retry Retry button text
-   * @property {string} l10n.finishedRecording Finished recording audio
+   * @property {string} l10n.finishedRecording Done recording audio
    * @property {string} l10n.microphoneInaccessible Microphone blocked
    * @property {string} l10n.downloadRecording Download recording message
    */
@@ -39,7 +39,7 @@ export default class {
     statusMessages[State.READY] = params.l10n.statusReadyToRecord;
     statusMessages[State.RECORDING] = params.l10n.statusRecording;
     statusMessages[State.PAUSED] = params.l10n.statusPaused;
-    statusMessages[State.FINISHED] = params.l10n.statusFinishedRecording;
+    statusMessages[State.DONE] = params.l10n.statusFinishedRecording;
 
     AudioRecorderView.data = () => ({
       title: params.title,
@@ -66,7 +66,7 @@ export default class {
       recorder.start();
     });
 
-    viewModel.$on('finished', () => {
+    viewModel.$on('done', () => {
       recorder.stop();
       recorder.getWavURL().then(url => {
         recorder.releaseMic();

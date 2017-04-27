@@ -8,7 +8,7 @@ const State = {
   READY: 'ready',
   RECORDING: 'recording',
   PAUSED: 'paused',
-  FINISHED: 'finished',
+  DONE: 'done',
   ERROR: 'error'
 };
 
