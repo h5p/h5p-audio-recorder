@@ -5,7 +5,7 @@
     "name": "title",
     "type": "text",
     "widget": "textarea",
-    "description": "Optional question to display above the audio recorder",
+    "description": "Optional text to display above the audio recorder",
     "optional": true
   },
   {

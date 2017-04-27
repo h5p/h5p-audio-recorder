@@ -109,7 +109,6 @@
       },
 
       retry: function(){
-        // TODO Clear existing recording
         const dialog = new H5P.ConfirmationDialog(
           {
             headerText: this.l10n.retryDialogHeaderText,
@@ -195,7 +194,6 @@
     [role="status"] {
       background-color: #f8f8f8;
       color: #777777;
-      font-size: 1.250em;
       padding: 0.6em;
 
       &.recording {
@@ -230,6 +228,8 @@
     }
 
     .button-row {
+      margin-bottom: 1em;
+
       .button-row-double {
         width: 100%;
       }
