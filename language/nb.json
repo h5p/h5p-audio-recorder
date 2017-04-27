@@ -1,7 +1,7 @@
 {
   "semantics":[
     {
-      "label":"Spørsmål",
+      "label":"Task Description",
       "description":"Tekst som vises over lydopptakeren"
     },
     {
