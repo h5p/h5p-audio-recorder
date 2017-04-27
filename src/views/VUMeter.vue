@@ -1,7 +1,9 @@
 <template>
   <div class="recording-indicator-wrapper">
     <div v-bind:style="{ transform: `scale(${pulseScale})`}"
-         v-bind:class="[{'background-enabled pulse' : enablePulse}]"></div>
+         v-bind:class="[{'hidden' : !enablePulse}]"
+         class="h5p-audio-recorder-vu-meter"
+    ></div>
     <div class="fa-microphone"></div>
   </div>
 </template>
@@ -13,8 +15,8 @@
   const settings = {
     lowerFreqBound: 4,
     upperFreqBound: 30,
-    minPulseScale: 0.8,
-    maxPulseScale: 1.4,
+    minPulseScale: 0.7,
+    maxPulseScale: 1.3,
     pulseScaleStep: 0.005
   };
 
@@ -53,7 +55,7 @@
 
 </script>
 
-<style>
+<style lang="scss">
   .recording-indicator-wrapper {
     height: 9.375em;
     width: 9.375em;
@@ -65,14 +67,15 @@
     margin-bottom: 1em;
   }
 
-  .background-enabled {
+  .h5p-audio-recorder-vu-meter {
     height: 100%;
     width: 100%;
     background-image: url('../images/recording-indicator.svg');
     position: absolute;
-  }
-
-  .pulse {
     transform: scale(0.8);
+
+    &.hidden {
+      display: none;
+    }
   }
 </style>
