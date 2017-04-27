@@ -41,7 +41,7 @@
         },
         {
           "label":"Melding som vises når https ikke er aktivert",
-          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "description":"Noen nettlesere lar ikke brukeren benytte mikrofonen når siden ikke har HTTPS. Denne meldingen vises for å forklare hvorfor mikrofonen ikke kan brukes i slike tilfeller",
           "default":"Access to microphone is not allowed in your browser since this page is not served using HTTP. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
@@ -50,26 +50,26 @@
         },
         {
           "label":"Recording status message",
-          "default":"Recording..."
+          "default":"Opptak..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Status melding når opptak er satt på pause",
+          "default":"Opptak er satt på pause. Trykk på en knapp for å fortsette opptaket."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Statusmelding når opptaket er ferdig",
+          "default":"Du har spilt inn svaret! Hør på opptaket nedenfor."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Beskjed vist når opptaket kan lastes ned",
+          "default":"Last ned opptaket, eller prøv igjen."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"Overskrift for prøv igjen bekreftelsesboks",
+          "default":"Gjør nytt opptak?"
         },
         {
-          "label":"Retry dialog body text",
+          "label":"Tekst for prøv igjen bekreftelsesboks",
           "default":"By pressing \"Retry\" you will loose your current recording."
         },
         {
