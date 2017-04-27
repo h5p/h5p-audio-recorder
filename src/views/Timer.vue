@@ -19,6 +19,13 @@
       secondsPassed: 0
     }),
 
+    methods: {
+      reset: function() {
+        this.secondsPassed = 0;
+        this.timer = new Timer();
+      }
+    },
+
     filters: {
       formatTime: value => {
         const prependZero = num => (num < 10) ? `0${num}`: `${num}`;

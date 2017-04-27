@@ -12,7 +12,7 @@
       <source v-bind:src="audioSrc">
     </audio>
 
-    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'unsupported' && state !== 'done' && state !== 'insecure-not-allowed'"></timer>
+    <timer ref="timer" v-bind:stopped="state !== 'recording'" v-if="state !== 'unsupported' && state !== 'done' && state !== 'insecure-not-allowed'"></timer>
 
     <div v-if="state !== 'blocked' && state !== 'unsupported' && state === 'done'" class="h5p-audio-recorder-download">
       {{ l10n.downloadRecording }}
@@ -105,7 +105,7 @@
         this.$emit(State.DONE);
       },
 
-      retry: function(){
+      retry: function() {
         const dialog = new H5P.ConfirmationDialog(
           {
             headerText: this.l10n.retryDialogHeaderText,
@@ -118,6 +118,7 @@
         dialog.show();
         dialog.on('confirmed', () => {
           this.state = State.READY;
+          this.$refs.timer.reset();
           this.$emit('retry');
         });
       }
