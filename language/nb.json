@@ -1,15 +1,15 @@
 {
   "semantics":[
     {
-      "label":"Tekst",
-      "description":"Spørsmålstekst"
+      "label":"Question",
+      "description":"Optional question to display above the audio recorder"
     },
     {
       "label":"Oversettelser",
       "fields":[
         {
-          "label":"Ta opp svar knappetekst",
-          "default":"Ta opp svar"
+          "label":"Record button text",
+          "default":"Record"
         },
         {
           "label":"Pause knappetekst",
@@ -24,8 +24,8 @@
           "default":"Last ned"
         },
         {
-          "label":"Avslutt knappetekst",
-          "default":"Avslutt"
+          "label":"Done button text",
+          "default":"Done"
         },
         {
           "label":"Prøv igjen knappetekst",
@@ -66,11 +66,11 @@
         },
         {
           "label":"Retry dialog header text",
-          "default":"Retry recording"
+          "default":"Retry recording?"
         },
         {
           "label":"Retry dialog body text",
-          "default":"You will lose your current recording. Do you wish to continue?"
+          "default":"By pressing \"Retry\" you will loose your current recording."
         },
         {
           "label":"Retry dialog confirm text",
