@@ -42,6 +42,7 @@ export default class {
     statusMessages[State.PAUSED] = params.l10n.statusPaused;
     statusMessages[State.DONE] = params.l10n.statusFinishedRecording;
     statusMessages[State.INSECURE_NOT_ALLOWED] = params.l10n.insecureNotAllowed;
+    statusMessages[State.CANT_CREATE_AUDIO_FILE] = params.l10n.statusCantCreateTheAudioFile;
 
     AudioRecorderView.data = () => ({
       title: params.title,
@@ -75,13 +76,17 @@ export default class {
       recorder.getWavURL().then(url => {
         recorder.releaseMic();
         viewModel.audioSrc = url;
+
         // Create a filename using the title
-        let filename = params.title.substr(0, 20);
-        viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+        if(params.title && params.title.length > 0) {
+          const filename = params.title.substr(0, 20);
+          viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+        }
+
         this.trigger('resize')
-      }).catch((e) => {
-        // TODO - add something in the UI!
-        console.log('Could not generate wav file');
+      }).catch(e => {
+        viewModel.state = State.CANT_CREATE_AUDIO_FILE;
+        console.error(params.l10n.statusCantCreateTheAudioFile, e);
       });
     });
 

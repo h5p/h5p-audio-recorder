@@ -4,7 +4,7 @@
 
     <div v-if="state !== 'done'  && title" class="title">{{ title }}</div>
 
-    <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
+    <div role="status" v-bind:class="state">{{statusMessages[state] | unEscape}}</div>
 
     <audio class="h5p-audio-recorder-player" v-if="state === 'done' && audioSrc !== ''"
            controls="controls">
@@ -69,7 +69,7 @@
 
       <span class="button-row-right">
         <button class="button retry"
-                v-if="state === 'done'"
+                v-if="state === 'done' || state === 'cant-create-audio-file'"
                 v-on:click="retry">
           <span class="fa-undo"></span>
           <span class="small-screen-hidden">{{ l10n.retry }}</span>
@@ -114,7 +114,7 @@
             confirmText: this.l10n.retryDialogConfirmText
           }
         );
-        dialog.appendTo(H5P.jQuery(".h5p-audio-recorder-view")[0]);
+        dialog.appendTo(this.$el);
         dialog.show();
         dialog.on('confirmed', () => {
           this.state = State.READY;
@@ -122,6 +122,13 @@
         });
       }
     },
+
+    filters: {
+      unEscape: str => {
+        return str.replace(/&#039;/g, '\'');
+      },
+    },
+
     watch: {
       state: function(state){
         if(refToFocusOnStateChange[state]) {
@@ -201,7 +208,8 @@
 
       &.blocked,
       &.unsupported,
-      &.insecure-not-allowed {
+      &.insecure-not-allowed,
+      &.cant-create-audio-file {
         background-color: #db8b8b;
         color: black;
       }
@@ -218,6 +226,9 @@
 
     .h5p-confirmation-dialog-popup {
       top: 5em;
+      width: 35em;
+      max-width: 100%;
+      min-width: 0;
     }
 
     .button-row {

@@ -121,6 +121,12 @@
         "label": "Retry dialog cancel text",
         "type": "text",
         "default": "Cancel"
+      },
+      {
+        "name": "statusCantCreateTheAudioFile",
+        "label": "Can't create audio file status message",
+        "type": "text",
+        "default": "Can't create the audio file."
       }
     ]
   }

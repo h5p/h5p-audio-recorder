@@ -10,7 +10,8 @@ const State = {
   PAUSED: 'paused',
   DONE: 'done',
   ERROR: 'error',
-  INSECURE_NOT_ALLOWED: 'insecure-not-allowed'
+  INSECURE_NOT_ALLOWED: 'insecure-not-allowed',
+  CANT_CREATE_AUDIO_FILE: 'cant-create-audio-file'
 };
 
 export default State;

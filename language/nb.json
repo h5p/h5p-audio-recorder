@@ -79,6 +79,10 @@
         {
           "label":"Prøv igjen dialog avbryt tekst",
           "default":"Avbryt"
+        },
+        {
+          "label":"Kan ikke opprette lydfil status melding",
+          "default":"Kan ikke opprette lydfil."
         }
       ]
     }
