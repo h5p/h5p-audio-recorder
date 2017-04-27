@@ -2,6 +2,7 @@ import test from 'ava';
 import Vue from 'vue';
 import AudioRecorderView from '../../src/views/AudioRecorder.vue';
 import Timer from '../../src/views/Timer.vue';
+import VUMeter from '../../src/views/VUMeter.vue';
 import State from '../../src/components/State';
 
 const statusMessages = {};
@@ -15,7 +16,8 @@ const initialData = {
   statusMessages,
   l10n: {},
   audioSrc: '',
-  audioFilename: ''
+  audioFilename: '',
+  avgMicFrequency: 0
 };
 
 AudioRecorderView.data = () => initialData;
@@ -25,7 +27,8 @@ test.beforeEach(t => {
   t.context.vm = new Vue({
     ...AudioRecorderView,
     components: {
-      timer: Timer
+      timer: Timer,
+      vuMeter: VUMeter
     }
   }).$mount();
 });
