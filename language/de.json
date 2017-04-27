@@ -78,7 +78,7 @@
         },
         {
           "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "default":"Abbrechen"
         }
       ]
     }
