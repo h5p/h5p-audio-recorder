@@ -2,10 +2,7 @@
   <div class="h5p-audio-recorder-view">
     <vuMeter :avgMicFrequency="avgMicFrequency" :enablePulse="state === 'recording'"></vuMeter>
 
-    <div v-if="state !== 'done'  && title" class="title">
-      <span class="title-label">Q:</span>
-      <span clasS="title-text">{{ title }}</span>
-    </div>
+    <div v-if="state !== 'done'  && title" class="title">{{ title }}</div>
 
     <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
 
@@ -184,10 +181,6 @@
         font-family: 'H5PFontIcons';
         content: '\e918';
       }
-    }
-
-    .title-label {
-      color: #8f8f8f;
     }
 
     /* status bar */
