@@ -6,6 +6,16 @@ const RecorderState = {
 };
 
 /**
+ * Frequency analyser settings
+ */
+const frequencyAnalyserSettings = {
+  minDecibels: -90,
+  maxDecibels: -10,
+  smoothingTimeConstant: 0.85,
+  fftSize: 256
+};
+
+/**
  * Event triggered when recorder goes from recording to inactive
  *
  * @event Recorder#inactive
@@ -41,7 +51,7 @@ const RecorderState = {
  * @fires Recorder#recording
  * @fires Recorder#blocked
  */
-export default class Recorder extends H5P.EventDispatcher{
+export default class Recorder extends H5P.EventDispatcher {
 
   /**
    * @constructor
@@ -52,14 +62,14 @@ export default class Recorder extends H5P.EventDispatcher{
     this.config = {
       bufferLength: 4096,
       numChannels: 1
-    }
+    };
 
     this.state = RecorderState.inactive;
 
     // Create a worker. This is normally done using a URL to the js-file
     const workerBlob = new Blob(
       [recorderWorker],
-      {type:'text/javascript'}
+      {type: 'text/javascript'}
     );
     this.worker = new Worker(URL.createObjectURL(workerBlob));
 
@@ -124,11 +134,37 @@ export default class Recorder extends H5P.EventDispatcher{
       }
     };
 
+    // Create analyzer for extracting audio data and configure it
+    const freqAnalyser = this.audioContext.createAnalyser();
+    freqAnalyser.minDecibels = frequencyAnalyserSettings.minDecibels;
+    freqAnalyser.maxDecibels = frequencyAnalyserSettings.maxDecibels;
+    freqAnalyser.smoothingTimeConstant = frequencyAnalyserSettings.smoothingTimeConstant;
+    freqAnalyser.fftSize = frequencyAnalyserSettings.fftSize;
+    this.freqBufferLength = freqAnalyser.frequencyBinCount;
+    this.freqDataArray = new Uint8Array(this.freqBufferLength);
+    this.freqAnalyser = freqAnalyser;
+
     // Creates the media stream, and connects the mic source to the
     // processor node
     this.sourceNode = this.audioContext.createMediaStreamSource(stream);
-    this.sourceNode.connect(this.scriptProcessorNode);
+    this.sourceNode.connect(this.freqAnalyser);
+    this.freqAnalyser.connect(this.scriptProcessorNode);
     this.scriptProcessorNode.connect(this.audioContext.destination);
+  }
+
+  /**
+   * Get average microphone frequency
+   *
+   * @return {number} Average frequency of microphone input
+   */
+  getAverageMicFrequency() {
+    this.freqAnalyser.getByteFrequencyData(this.freqDataArray);
+    const sum = this.freqDataArray.reduce((prev, curr) => {
+      return prev + curr;
+    }, 0);
+
+    // Average the frequency
+    return sum / this.freqBufferLength;
   }
 
   /**
