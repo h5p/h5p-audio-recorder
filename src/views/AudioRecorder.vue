@@ -1,13 +1,12 @@
 <template>
   <div class="h5p-audio-recorder-view">
-    <div class="recording-indicator-wrapper">
-      <div v-bind:class="[{'background-enabled pulse' : state=='recording'}]"></div>
-      <div class="fa-microphone"></div>
-    </div>
-    <div v-if="state !== 'done' && title" class="title">
+    <vuMeter :avgMicFrequency="avgMicFrequency" :enablePulse="state === 'recording'"></vuMeter>
+
+    <div v-if="state !== 'done'  && title" class="title">
       <span class="title-label">Q:</span>
       <span clasS="title-text">{{ title }}</span>
     </div>
+
     <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
 
     <audio class="h5p-audio-recorder-player" v-if="state === 'done' && audioSrc !== ''"
@@ -25,7 +24,7 @@
     <div class="button-row">
       <div class="button-row-double">
         <button class="button record"
-                v-if="state === 'ready' || state === 'blocked'"
+                v-if="state === 'ready' || state === 'blocked' || state === 'insecure-not-allowed'"
                 ref="button-record"
                 v-on:click="record">
           <span class="fa-circle"></span>
@@ -153,24 +152,6 @@
       font-family: 'H5PFontAwesome4';
     }
 
-    .recording-indicator-wrapper {
-      height: 9.375em;
-      width: 9.375em;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 9.375em;
-      color: #8e8e8e;
-      position: relative;
-      margin-bottom: 1em;
-    }
-
-    .background-enabled {
-      height: 100%;
-      width: 100%;
-      background-image: url('../images/recording-indicator.svg');
-      position: absolute;
-    }
-
     .fa-microphone {
       width: 60%;
       height: 60%;
@@ -227,12 +208,9 @@
         color:  #20603d;
       }
 
-      &.blocked {
-        background-color: #db8b8b;
-        color: black;
-      }
-
-      &.unsupported {
+      &.blocked,
+      &.unsupported,
+      &.insecure-not-allowed {
         background-color: #db8b8b;
         color: black;
       }
@@ -380,17 +358,5 @@
         }
       }
     }
-  }
-
-  .pulse {
-  	animation-name: pulse_animation;
-  	animation-duration: 1000ms;
-  	animation-iteration-count: infinite;
-  	animation-timing-function: linear;
-  }
-
-  @keyframes pulse_animation {
-  	0%  { transform: scale(1); }
-  	100% { transform: scale(1.1); }
   }
 </style>

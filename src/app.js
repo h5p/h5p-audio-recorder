@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import AudioRecorderView from './views/AudioRecorder.vue';
+import VUMeter from './views/VUMeter.vue';
 import Timer from './views/Timer.vue';
 import Recorder from 'components/Recorder';
 import State from 'components/State';
@@ -40,6 +41,7 @@ export default class {
     statusMessages[State.RECORDING] = params.l10n.statusRecording;
     statusMessages[State.PAUSED] = params.l10n.statusPaused;
     statusMessages[State.DONE] = params.l10n.statusFinishedRecording;
+    statusMessages[State.INSECURE_NOT_ALLOWED] = params.l10n.insecureNotAllowed;
 
     AudioRecorderView.data = () => ({
       title: params.title,
@@ -47,14 +49,16 @@ export default class {
       statusMessages,
       l10n: params.l10n,
       audioSrc: AUDIO_SRC_NOT_SPECIFIED,
-      audioFilename: ''
+      audioFilename: '',
+      avgMicFrequency: 0
     });
 
     // Create recording wrapper view
     const viewModel = new Vue({
       ...AudioRecorderView,
       components: {
-        timer: Timer
+        timer: Timer,
+        vuMeter: VUMeter
       }
     });
 
@@ -92,11 +96,41 @@ export default class {
     // Update UI when on recording events
     recorder.on('recording', () => {
       viewModel.state = State.RECORDING;
+
+      // Start update loop for microphone frequency
+      this.updateMicFrequency();
     });
 
+    // Blocked probably means user has no mic, or has not allowed access to one
     recorder.on('blocked', () => {
       viewModel.state = State.BLOCKED;
     });
+
+    // May be sent from Chrome, which don't allow use of mic when using http (need https)
+    recorder.on('insecure-not-allowed', () => {
+      viewModel.state = State.INSECURE_NOT_ALLOWED;
+    });
+
+    /**
+     * Initialize microphone frequency update loop. Will run until no longer recording.
+     */
+    this.updateMicFrequency = function () {
+      // Stop updating if no longer recording
+      if (viewModel.state !== State.RECORDING) {
+        window.cancelAnimationFrame(this.animateVUMeter);
+        return;
+      }
+
+      // Grab average microphone frequency
+      viewModel.avgMicFrequency = recorder.getAverageMicFrequency();
+
+      // Throttle updating slightly
+      setTimeout(() => {
+        this.animateVUMeter = window.requestAnimationFrame(() => {
+          this.updateMicFrequency();
+        });
+      }, 10)
+    };
 
     /**
      * Attach library to wrapper

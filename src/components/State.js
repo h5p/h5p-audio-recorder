@@ -9,7 +9,8 @@ const State = {
   RECORDING: 'recording',
   PAUSED: 'paused',
   DONE: 'done',
-  ERROR: 'error'
+  ERROR: 'error',
+  INSECURE_NOT_ALLOWED: 'insecure-not-allowed'
 };
 
 export default State;
