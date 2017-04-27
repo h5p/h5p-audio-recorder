@@ -125,7 +125,7 @@
     },
 
     filters: {
-      unEscape: str => {
+      unEscape: function(str) {
         return str.replace(/&#039;/g, '\'');
       },
     },
