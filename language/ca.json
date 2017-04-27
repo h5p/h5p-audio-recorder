@@ -79,6 +79,10 @@
         {
           "label":"Retry dialog cancel text",
           "default":"Cancel"
+        },
+        {
+          "label":"Can't create audio file status message",
+          "default":"Can't create the audio file."
         }
       ]
     }
