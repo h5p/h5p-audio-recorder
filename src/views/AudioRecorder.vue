@@ -118,7 +118,9 @@
         dialog.show();
         dialog.on('confirmed', () => {
           this.state = State.READY;
-          this.$refs.timer.reset();
+          if(this.$refs.timer) {
+            this.$refs.timer.reset();
+          }
           this.$emit('retry');
         });
       }
