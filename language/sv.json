@@ -2,14 +2,14 @@
   "semantics":[
     {
       "label":"Uppgiftsbeskrivning",
-      "description":"Optional text to display above the audio recorder"
+      "description":"Text som visas ovanför ljudinspelaren"
     },
     {
-      "label":"Localization",
+      "label":"Plats",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Text på inspelningsknappen",
+          "default":"Spela in"
         },
         {
           "label":"Pause button text",
