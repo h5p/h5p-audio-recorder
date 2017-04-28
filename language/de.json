@@ -1,84 +1,88 @@
 {
   "semantics":[
     {
-      "label":"Text",
-      "description":"Text der Aufgabe"
+      "label":"Beschreibung der Aufgabe",
+      "description":"Optionaler Text, der über dem Audio-Rekorder angezeigt wird"
     },
     {
       "label":"Lokalisierung",
       "fields":[
         {
-          "label":"Button-Text der Antwort-Aufnahme",
-          "default":"Antwort aufnehmen"
+          "label":"Text des Aufnahme-Buttons",
+          "default":"Aufnahme"
         },
         {
-          "label":"Button-Text für Pause",
+          "label":"Schaltflächentext Pause",
           "default":"Pause"
         },
         {
-          "label":"Button-Text für Weiter",
-          "default":"Weiter"
+          "label":"Schaltflächentext Weiterfahren",
+          "default":"Fortfahren"
         },
         {
-          "label":"Button-Text für Download",
+          "label":"Schaltflächentext herunterladen",
           "default":"Herunterladen"
         },
         {
-          "label":"Button-Text für Beenden",
-          "default":"Beenden"
+          "label":"Text des Fertig-Buttons",
+          "default":"Fertig"
         },
         {
-          "label":"Button-Text für Wiederholen",
+          "label":"Schaltflächentext wiederholen",
           "default":"Wiederholen"
         },
         {
-          "label":"Fehlermeldung für nicht unterstützte Mikrofone",
-          "default":"Das Mikrofon wird nicht unterstützt. Stelle sicher, dass die Erstellung von Mikrofonaufnahmen nicht durch Browsereinstellungen verhindert wird."
+          "label":"Fehlermeldung Mikrofon wird nicht unterstützt",
+          "default":"Mikrofon nicht unterstützt. Stellen Sie sicher, dass Sie einen Browser benützen, der Mikrofon-Aufnahmen ermöglicht."
         },
         {
-          "label":"Fehlermeldung für nicht nutzbares Mikrofon",
-          "default":"Das Mikrofon ist nicht nutzbar. Stelle sicher, dass das Mikrofon in den Browser-Einstellungen aktiviert ist."
+          "label":"Fehlermeldung Mikrofon nicht verfügbar",
+          "default":"Mikrofon ist nicht verfügbar. Stellen Sie sicher, dass das Browser-Mikrofon aktiviert ist."
         },
         {
-          "label": "Message displayed when insecure access is not allowed",
-          "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label":"Meldung, die angezeigt wird, wenn ein unsicherer Zugriff nicht erlaubt ist",
+          "description":"Einige Browser erlauben nicht das Mikrofon verwenden, wenn die Seite über HTTP bereitgestellt ist. Diese Meldung wird angezeigt, wenn das der Fall ist.",
+          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
-          "label":"Statusmeldung für Bereit zum Aufnehmen",
-          "default":"Drücke den Button, um deine Antwort aufzunehmen."
+          "label":"Statusmeldung Aufnahmebereit",
+          "default":"Drücken Sie den unteren Knopf um ihre Antwort aufzunehmen."
         },
         {
-          "label":"Statusmeldung für Ausnehmen",
-          "default":"Aufnahme läuft..."
+          "label":"Statusmeldung Aufnahme läuft",
+          "default":"Aufnahme..."
         },
         {
-          "label":"Statusmeldung für Pause",
-          "default":"Aufnahme unterbrochen. Drücke den Aufnahme noch einmal, um die Aufnahme fortzusetzen."
+          "label":"Statusmeldung Pause",
+          "default":"Die Aufzeichnung wurde angehalten. Drücken Sie eine Taste um die Aufzeichnung fortzusetzen."
         },
         {
-          "label":"Statusmeldung für fertiggestelle Aufnahmen",
-          "default":"Du hast deine Antwort erfolgreich aufgenommen! Höre dir die Aufnahme nachträglich noch einmal an."
+          "label":"Statusmeldung Aufnahme abgeschlossen",
+          "default":"Sie haben Ihre Aufnahme erfolgreich aufgezeichnet. Hören Sie Ihre Aufnahme an."
         },
         {
-          "label":"Meldung für Aufnahme herunterladen",
-          "default":"Lade diese Aufnahme herunter oder starte nochmal von vorn."
+          "label":"Die Aufnahme herunterladen",
+          "default":"Aufnahme herunterladen oder wiederholen."
         },
         {
-          "label":"Überschrift des Wiederholung-Dialogs",
-          "default":"Aufnahme wiederholen"
+          "label":"Titeltext Aufnahme wiederholen",
+          "default":"Retry recording?"
         },
         {
-          "label":"Inhalt des Wiederholungs-Dialogs",
-          "default":"Die aktuelle Aufnahme wird gelöscht. Möchtest Du fortfahren?"
+          "label":"Dialogbox Aufnahme wiederholen",
+          "default":"By pressing \"Retry\" you will loose your current recording."
         },
         {
-          "label":"Bestätigungstext für den Wiederholungs-Dialog",
+          "label":"Dialogbox Bestätigen",
           "default":"Wiederholen"
         },
         {
-          "label":"Abbruchstext für den Wiederholungs-Dialog",
+          "label":"Dialogbox Wiederholen abbrechen",
           "default":"Abbrechen"
+        },
+        {
+          "label":"Can't create audio file status message",
+          "default":"Can't create the audio file."
         }
       ]
     }

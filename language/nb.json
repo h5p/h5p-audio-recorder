@@ -1,15 +1,15 @@
 {
   "semantics":[
     {
-      "label":"Tekst",
-      "description":"Spørsmålstekst"
+      "label":"Oppgavebeskrivelse",
+      "description":"Tekst som vises over lydopptakeren"
     },
     {
       "label":"Oversettelser",
       "fields":[
         {
-          "label":"Ta opp svar knappetekst",
-          "default":"Ta opp svar"
+          "label":"Tekst for opptaksknappen",
+          "default":"Ta opp"
         },
         {
           "label":"Pause knappetekst",
@@ -24,8 +24,8 @@
           "default":"Last ned"
         },
         {
-          "label":"Avslutt knappetekst",
-          "default":"Avslutt"
+          "label":"Tekst for ferdig knapp",
+          "default":"Ferdig"
         },
         {
           "label":"Prøv igjen knappetekst",
@@ -49,35 +49,35 @@
           "default":"Trykk på knappen nedenfor, for å starte opptaket."
         },
         {
-          "label":"Opptak statusmelding",
+          "label":"Statusmelding vist når lyd blir tatt opp",
           "default":"Opptak..."
         },
         {
-          "label":"Pauset statusmelding",
-          "default":"Opptaket er pauset. Trykk på knappen for å fortsette opptaket."
+          "label":"Status melding når opptak er satt på pause",
+          "default":"Opptak er satt på pause. Trykk på en knapp for å fortsette opptaket."
         },
         {
-          "label":"Opptaket avsluttet statusmelding",
+          "label":"Statusmelding når opptaket er ferdig",
           "default":"Du har spilt inn svaret! Hør på opptaket nedenfor."
         },
         {
-          "label":"Last ned opptaket beskjed",
+          "label":"Beskjed vist når opptaket kan lastes ned",
           "default":"Last ned opptaket, eller prøv igjen."
         },
         {
-          "label":"Gjør nytt opptak dialog header tekst",
-          "default":"Gjør nytt opptak"
+          "label":"Overskrift for prøv igjen bekreftelsesboks",
+          "default":"Gjør nytt opptak?"
         },
         {
-          "label":"Gjør nytt opptak body tekst",
-          "default":"Du vil miste det nåværende oppdaktet. Er du sikker på at du fortsette?"
+          "label":"Tekst for prøv igjen bekreftelsesboks",
+          "default":"Ved å trykke \"Prøv igjen\" vil du miste gjeldende opptak."
         },
         {
-          "label":"Prøv igjen dialog bekreft tekst",
+          "label":"Tekst for bekreftelsesknapp i prøv igjen bekreftelsesboks",
           "default":"Prøv igjen"
         },
         {
-          "label":"Prøv igjen dialog avbryt tekst",
+          "label":"Tekst for avbryt knapp i prøv igjen bekreftelsesboks",
           "default":"Avbryt"
         },
         {
