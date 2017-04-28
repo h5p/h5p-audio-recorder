@@ -1,15 +1,15 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"Beschreibung der Aufgabe",
+      "description":"Optionaler Text, der über dem Audio-Rekorder angezeigt wird"
     },
     {
       "label":"Lokalisierung",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Text des Aufnahme-Buttons",
+          "default":"Aufnahme"
         },
         {
           "label":"Schaltflächentext Pause",
@@ -24,8 +24,8 @@
           "default":"Herunterladen"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"Text des Fertig-Buttons",
+          "default":"Fertig"
         },
         {
           "label":"Schaltflächentext wiederholen",
@@ -40,13 +40,9 @@
           "default":"Mikrofon ist nicht verfügbar. Stellen Sie sicher, dass das Browser-Mikrofon aktiviert ist."
         },
         {
-          "label": "Message displayed when insecure access is not allowed",
-          "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
-        },
-        {
-          "label":"Statusmeldung für Bereit zum Aufnehmen",
-          "default":"Drücke den Button, um deine Antwort aufzunehmen."
+          "label":"Meldung, die angezeigt wird, wenn ein unsicherer Zugriff nicht erlaubt ist",
+          "description":"Einige Browser erlauben nicht das Mikrofon verwenden, wenn die Seite über HTTP bereitgestellt ist. Diese Meldung wird angezeigt, wenn das der Fall ist.",
+          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
           "label":"Statusmeldung Aufnahmebereit",
