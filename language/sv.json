@@ -62,27 +62,27 @@
         },
         {
           "label":"Meddelandet ladda ner inspelning",
-          "default":"Download this recording or retry."
+          "default":"Ladda ner inspelningen eller gör ett nytt försök."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"Texten för rubriken försök på nytt",
+          "default":"Nytt försök?"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "label":"Texten för försök på nytt",
+          "default":"Genom att trycka på \"Nytt försök\" kommer din nuvarande inspelning att försvinna."
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"Texten till dialogen bekräfta nytt försök",
+          "default":"Försök på nytt"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"Texten till dialogen avbryta nytt försök",
+          "default":"Avbryt"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"Statusmeddelandet kan inte skapa ljudfil",
+          "default":"Det går inte att skapa ljudfilen."
         }
       ]
     }
