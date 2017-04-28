@@ -25,23 +25,23 @@
         },
         {
           "label":"Text på knappen klart",
-          "default":"Done"
+          "default":"Klart"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"Text på knappen nytt försök",
+          "default":"Nytt försök"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"Felmeddelande för att mikrofonen inte stöds",
+          "default":"Mikrofonen stöds inte. Kontrollera att du använder en webbläsare som tillåter inspelning med mikrofon."
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"Felmeddelande om att mikrofonen inte är tillgänglig",
+          "default":"Mikrofonen är inte tillgänglig. Kontrollera att webbläsarens mikrofon är aktiverad."
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
-          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "label":"Meddelandet visas när det inte är tillåtet med osäker åtkomst",
+          "description":"Vissa webbläsare tillåter inte användning av mikrofon när webbsidan använder HTTP. Om så är fallet kommer det här meddelandet att visas",
           "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
