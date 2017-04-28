@@ -29,7 +29,7 @@
         },
         {
           "label":"Retry button text",
-          "default":"Retry"
+          "default":"Tentar novamente"
         },
         {
           "label":"Microphone not supported error message",
@@ -74,11 +74,11 @@
         },
         {
           "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "default":"Tentar novamente"
         },
         {
           "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "default":"Cancelar"
         },
         {
           "label":"Can't create audio file status message",
