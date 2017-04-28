@@ -42,26 +42,26 @@
         {
           "label":"Meddelandet visas när det inte är tillåtet med osäker åtkomst",
           "description":"Vissa webbläsare tillåter inte användning av mikrofon när webbsidan använder HTTP. Om så är fallet kommer det här meddelandet att visas",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "default":"Tillgång till mikrofon är inte tillåtet i din webbläsare då sidan inte använder HTTPS. Kontakta webbansvariga för sidan, och be hen att göra denna tillgänglig med HTTPS"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Statusmeddelandet redo att spela in",
+          "default":"Tryck på knappen nedan för att spela in ditt svar."
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"Meddelande för inspelningsstatus",
+          "default":"Spelar in..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Statusmeddelandet för paus",
+          "default":"Inspelningen är pausad. Tryck på en knapp för att fortsätta spela in."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Statusmeddelandet inspelningen klar",
+          "default":"Du har spelat in ditt svar! Lyssna på inspelningen nedan."
         },
         {
-          "label":"Download recording message",
+          "label":"Meddelandet ladda ner inspelning",
           "default":"Download this recording or retry."
         },
         {
