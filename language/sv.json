@@ -1,7 +1,7 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
+      "label":"Uppgiftsbeskrivning",
       "description":"Optional text to display above the audio recorder"
     },
     {
