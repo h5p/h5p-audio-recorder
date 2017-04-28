@@ -19,6 +19,13 @@
       secondsPassed: 0
     }),
 
+    methods: {
+      reset: function() {
+        this.secondsPassed = 0;
+        this.timer = new Timer();
+      }
+    },
+
     filters: {
       formatTime: value => {
         const prependZero = num => (num < 10) ? `0${num}`: `${num}`;
@@ -43,6 +50,7 @@
   .audio-recorder-timer {
     font-family: 'Open Sans', sans-serif;
     font-size: 2.5em;
+    font-weight: 600;
     color: #8f8f8f;
     margin: 1em 0;
   }

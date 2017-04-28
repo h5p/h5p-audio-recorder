@@ -1,11 +1,12 @@
 [
   {
-    "label": "Text",
+    "label": "Task Description",
     "importance": "high",
     "name": "title",
     "type": "text",
     "widget": "textarea",
-    "description": "Question text"
+    "description": "Optional text to display above the audio recorder",
+    "optional": true
   },
   {
     "label": "Localization",
@@ -14,9 +15,9 @@
     "fields": [
       {
         "name": "recordAnswer",
-        "label": "Record answer button text",
+        "label": "Record button text",
         "type": "text",
-        "default": "Record Answer"
+        "default": "Record"
       },
       {
         "name": "pause",
@@ -37,10 +38,10 @@
         "default": "Download"
       },
       {
-        "name": "finish",
-        "label": "Finish button text",
+        "name": "done",
+        "label": "Done button text",
         "type": "text",
-        "default": "Finish"
+        "default": "Done"
       },
       {
         "name": "retry",
@@ -59,6 +60,13 @@
         "label": "Microphone inaccessible error message",
         "type": "text",
         "default": "Microphone is not accessible. Make sure that the browser microphone is enabled."
+      },
+      {
+        "name": "insecureNotAllowed",
+        "type": "text",
+        "label": "Message displayed when insecure access is not allowed",
+        "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+        "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
       },
       {
         "name": "statusReadyToRecord",
@@ -94,13 +102,13 @@
         "name": "retryDialogHeaderText",
         "label": "Retry dialog header text",
         "type": "text",
-        "default": "Retry recording"
+        "default": "Retry recording?"
       },
       {
         "name": "retryDialogBodyText",
         "label": "Retry dialog body text",
         "type": "text",
-        "default": "You will lose your current recording. Do you wish to continue?"
+        "default": "By pressing \"Retry\" you will loose your current recording."
       },
       {
         "name": "retryDialogConfirmText",
@@ -113,6 +121,12 @@
         "label": "Retry dialog cancel text",
         "type": "text",
         "default": "Cancel"
+      },
+      {
+        "name": "statusCantCreateTheAudioFile",
+        "label": "Can't create audio file status message",
+        "type": "text",
+        "default": "Can't create the audio file."
       }
     ]
   }

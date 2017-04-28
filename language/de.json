@@ -40,9 +40,13 @@
           "default":"Mikrofon ist nicht verfügbar. Stellen Sie sicher, dass das Browser-Mikrofon aktiviert ist."
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
-          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label": "Message displayed when insecure access is not allowed",
+          "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+        },
+        {
+          "label":"Statusmeldung für Bereit zum Aufnehmen",
+          "default":"Drücke den Button, um deine Antwort aufzunehmen."
         },
         {
           "label":"Statusmeldung Aufnahmebereit",

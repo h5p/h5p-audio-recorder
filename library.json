@@ -5,7 +5,7 @@
   "machineName": "H5P.AudioRecorder",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 0,
+  "patchVersion": 1,
   "runnable": 1,
   "author": "Joubel",
   "license": "MIT",
@@ -22,6 +22,11 @@
       "machineName": "FontAwesome",
       "majorVersion": 4,
       "minorVersion": 5
+    },
+    {
+      "machineName": "H5P.FontIcons",
+      "majorVersion": 1,
+      "minorVersion": 0
     }
   ]
 }

@@ -1,24 +1,20 @@
 <template>
   <div class="h5p-audio-recorder-view">
-    <div class="recording-indicator-wrapper">
-      <div v-bind:class="[{'background-enabled pulse' : state=='recording'}]"></div>
-      <div class="fa-microphone"></div>
-    </div>
-    <div v-if="state !== 'finished'" class="title">
-      <span class="title-label">Q:</span>
-      <span clasS="title-text">{{ title }}</span>
-    </div>
-    <div role="status" v-bind:class="state">{{statusMessages[state]}}</div>
+    <vuMeter :avgMicFrequency="avgMicFrequency" :enablePulse="state === 'recording'"></vuMeter>
 
-    <audio class="h5p-audio-recorder-player" v-if="state === 'finished' && audioSrc !== ''"
+    <div v-if="state !== 'done'  && title" class="title">{{ title }}</div>
+
+    <div role="status" v-bind:class="state">{{statusMessages[state] | unEscape}}</div>
+
+    <audio class="h5p-audio-recorder-player" v-if="state === 'done' && audioSrc !== ''"
            controls="controls">
       Your browser does not support the <code>audio</code> element.
       <source v-bind:src="audioSrc">
     </audio>
 
-    <timer v-bind:stopped="state !== 'recording'" v-if="state !== 'unsupported' && state !== 'finished'"></timer>
+    <timer ref="timer" v-bind:stopped="state !== 'recording'" v-if="state !== 'unsupported' && state !== 'done' && state !== 'insecure-not-allowed'"></timer>
 
-    <div v-if="state !== 'blocked' && state !== 'unsupported' && state === 'finished'" class="h5p-audio-recorder-download">
+    <div v-if="state !== 'blocked' && state !== 'unsupported' && state === 'done'" class="h5p-audio-recorder-download">
       {{ l10n.downloadRecording }}
     </div>
 
@@ -31,46 +27,52 @@
           <span class="fa-circle"></span>
           {{ l10n.recordAnswer }}
         </button>
-      </div>
 
-      <span class="button-row-left">
+        <button class="button retry small"
+                v-if="state === 'recording' || state === 'paused'"
+                v-on:click="retry">
+          <span class="fa-undo"></span>
+          <span class="small-screen-hidden">{{ l10n.retry }}</span>
+        </button>
         <button class="button pause"
                 ref="button-pause"
                 v-if="state === 'recording'"
                 v-on:click="pause">
           <span class="fa-pause"></span>
-          {{ l10n.pause }}
+          <span class="small-screen-hidden">{{ l10n.pause }}</span>
         </button>
         <button class="button record"
                 ref="button-continue"
                 v-if="state === 'paused'"
                 v-on:click="record">
           <span class="fa-circle"></span>
-          {{ l10n.continue }}
+          <span class="small-screen-hidden">{{ l10n.continue }}</span>
         </button>
+        <button class="button done small"
+                v-if="state === 'recording' || state === 'paused'"
+                v-on:click="done">
+          <span class="fa-play-circle"></span>
+          <span class="small-screen-hidden">{{ l10n.done }}</span>
+        </button>
+      </div>
 
+      <span class="button-row-left">
         <a class="button download"
-                ref="button-download"
-                v-if="state === 'finished'"
-                v-bind:href="audioSrc"
-                v-bind:download="audioFilename">
-          <span class="fa-download"></span>
+           ref="button-download"
+           v-if="state === 'done'"
+           v-bind:href="audioSrc"
+           v-bind:download="audioFilename">
+          <span class="icon-download"></span>
           {{ l10n.download }}
         </a>
       </span>
 
       <span class="button-row-right">
-        <button class="button finish"
-                v-if="state === 'recording' || state === 'paused'"
-                v-on:click="finish">
-          <span class="fa-stop"></span>
-          {{ l10n.finish }}
-        </button>
         <button class="button retry"
-                v-if="state === 'finished'"
+                v-if="state === 'done' || state === 'cant-create-audio-file'"
                 v-on:click="retry">
           <span class="fa-undo"></span>
-          {{ l10n.retry }}
+          <span class="small-screen-hidden">{{ l10n.retry }}</span>
         </button>
       </span>
     </div>
@@ -85,7 +87,7 @@
   refToFocusOnStateChange[State.READY] = 'button-record';
   refToFocusOnStateChange[State.RECORDING] = 'button-pause';
   refToFocusOnStateChange[State.PAUSED] = 'button-continue';
-  refToFocusOnStateChange[State.FINISHED] = 'button-download';
+  refToFocusOnStateChange[State.DONE] = 'button-download';
 
   export default {
     methods: {
@@ -98,13 +100,12 @@
         this.$emit(this.state);
       },
 
-      finish: function() {
-        this.state = State.FINISHED;
-        this.$emit(State.FINISHED);
+      done: function() {
+        this.state = State.DONE;
+        this.$emit(State.DONE);
       },
 
-      retry: function(){
-        // TODO Clear existing recording
+      retry: function() {
         const dialog = new H5P.ConfirmationDialog(
           {
             headerText: this.l10n.retryDialogHeaderText,
@@ -113,14 +114,24 @@
             confirmText: this.l10n.retryDialogConfirmText
           }
         );
-        dialog.appendTo(H5P.jQuery(".h5p-audio-recorder-view")[0]);
+        dialog.appendTo(this.$el);
         dialog.show();
         dialog.on('confirmed', () => {
           this.state = State.READY;
+          if(this.$refs.timer) {
+            this.$refs.timer.reset();
+          }
           this.$emit('retry');
         });
       }
     },
+
+    filters: {
+      unEscape: function(str) {
+        return str.replace(/&#039;/g, '\'');
+      },
+    },
+
     watch: {
       state: function(state){
         if(refToFocusOnStateChange[state]) {
@@ -133,35 +144,18 @@
 
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  @import "~susy/sass/susy";
 
   $screen-small: 576px;
+  $record-button-width: 8.2em;
 
   .h5p-audio-recorder-view {
-    padding: 1.750em;
+    font-size: 1em;
+    padding: 0.9em;
     text-align: center;
     font-family: Arial, 'Open Sans', sans-serif;
 
     [class^="fa-"] {
       font-family: 'H5PFontAwesome4';
-    }
-
-    .recording-indicator-wrapper {
-      height: 9.375em;
-      width: 9.375em;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 9.375em;
-      color: #8e8e8e;
-      position: relative;
-      margin-bottom: 1em;
-    }
-
-    .background-enabled {
-      height: 100%;
-      width: 100%;
-      background-image: url('../images/recording-indicator.svg');
-      position: absolute;
     }
 
     .fa-microphone {
@@ -187,41 +181,45 @@
 
     .title {
       color: black;
-      font-size: 1.875em;
+      font-size: 1.250em;
       margin-bottom: 1em;
       line-height: 1.5em;
     }
 
-    .title-label {
-      color: #8f8f8f;
+    .icon-download {
+      &:before {
+        font-family: 'H5PFontIcons';
+        content: '\e918';
+      }
     }
 
     /* status bar */
     [role="status"] {
       background-color: #f8f8f8;
       color: #777777;
-      font-size: 1.250em;
-      padding: 1.250em;
+      padding: 0.6em;
 
       &.recording {
        background-color: #f9e5e6;
        color: #da5254;
       }
 
-      &.finished {
+      &.done {
         background-color: #e0f9e3;
         color:  #20603d;
       }
 
-      &.blocked {
+      &.blocked,
+      &.unsupported,
+      &.insecure-not-allowed,
+      &.cant-create-audio-file {
         background-color: #db8b8b;
         color: black;
       }
+    }
 
-      &.unsupported {
-        background-color: #db8b8b;
-        color: black;
-      }
+    .small-screen-hidden {
+      display: none;
     }
 
     .h5p-audio-recorder-download {
@@ -231,35 +229,32 @@
 
     .h5p-confirmation-dialog-popup {
       top: 5em;
+      width: 35em;
+      max-width: 100%;
+      min-width: 0;
     }
 
     .button-row {
-      @include container;
+      margin-bottom: 1em;
 
       .button-row-double {
-        @include span(1 of 1);
+        width: 100%;
       }
 
       .button-row-left {
-        @include span(1 of 1);
-        margin-bottom: 0.5em;
+        text-align: right;
+        flex: 1;
       }
 
       .button-row-right {
-        @include span(1 of 1);
-        margin-bottom: 0.5em;
+        text-align: left;
+        flex: 1;
       }
+    }
 
-      @media (min-width: $screen-small) {
-        .button-row-left {
-          @include span(first 50% no-gutters);
-          text-align: right;
-        }
-
-        .button-row-right {
-          @include span(last 50% no-gutters);
-          text-align: left;
-        }
+    @media (min-width: $screen-small) {
+      .small-screen-hidden {
+        display: inherit;
       }
     }
 
@@ -267,20 +262,22 @@
       background-color: $background-color;
       color: $color;
       border-color: $background-color;
+      border: 2px solid $background-color;
+      box-sizing: border-box;
 
       &:hover {
-         background-color: darken($background-color, 5%);
-         border-color: darken($background-color, 5%);
-       }
+        background-color: darken($background-color, 5%);
+        border-color: darken($background-color, 5%);
+      }
 
       &:active {
-         background-color: darken($background-color, 10%);
-         border-color: darken($background-color, 10%);
-       }
+        background-color: darken($background-color, 10%);
+        border-color: darken($background-color, 10%);
+      }
 
       &[disabled] {
-         background-color: lighten($background-color, 40%);
-         border-color: lighten($background-color, 40%);
+        background-color: lighten($background-color, 40%);
+        border-color: lighten($background-color, 40%);
       }
     }
 
@@ -288,6 +285,7 @@
       background-color: $background-color;
       color: $color;
       border: 2px solid $color;
+      box-sizing: border-box;
 
       &:hover {
         color: lighten($color, 10%);
@@ -312,25 +310,34 @@
     }
 
     .button {
-      font-size: 1.563em;
+      font-size: 1.042em;
       font-family: 'Open Sans', sans-serif;
       padding: 0.708em 1.250em;
-      border-radius: 1.375em;
+      border-radius: 2em;
       margin: 0 0.5em;
       border: 0;
       display: inline-block;
       cursor: pointer;
       text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
 
       [class^="fa-"] {
-        margin-right: 0.4em;
+        font-weight: 400;
       }
 
       &:focus {
         @include blueGlow
       }
 
-      &.finish,
+      &.small {
+        font-size: 0.85em;
+      }
+
+      &.done {
+        @include button-inverse(white, #1f824c);
+      }
+
       &.retry {
         @include button-filled(#5e5e5e, white);
       }
@@ -346,18 +353,17 @@
       &.pause {
         @include button-inverse(white, #d95354);
       }
+
+      @media (min-width: $screen-small) {
+        [class^="fa-"] {
+          margin-right: 0.4em;
+        }
+
+        &.record,
+        &.pause {
+          min-width: $record-button-width;
+        }
+      }
     }
-  }
-
-  .pulse {
-  	animation-name: pulse_animation;
-  	animation-duration: 1000ms;
-  	animation-iteration-count: infinite;
-  	animation-timing-function: linear;
-  }
-
-  @keyframes pulse_animation {
-  	0%  { transform: scale(1); }
-  	100% { transform: scale(1.1); }
   }
 </style>

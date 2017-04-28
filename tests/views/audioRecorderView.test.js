@@ -2,6 +2,7 @@ import test from 'ava';
 import Vue from 'vue';
 import AudioRecorderView from '../../src/views/AudioRecorder.vue';
 import Timer from '../../src/views/Timer.vue';
+import VUMeter from '../../src/views/VUMeter.vue';
 import State from '../../src/components/State';
 
 const statusMessages = {};
@@ -15,7 +16,8 @@ const initialData = {
   statusMessages,
   l10n: {},
   audioSrc: '',
-  audioFilename: ''
+  audioFilename: '',
+  avgMicFrequency: 0
 };
 
 AudioRecorderView.data = () => initialData;
@@ -25,19 +27,20 @@ test.beforeEach(t => {
   t.context.vm = new Vue({
     ...AudioRecorderView,
     components: {
-      timer: Timer
+      timer: Timer,
+      vuMeter: VUMeter
     }
   }).$mount();
 });
 
 test('ready state', async t => {
-  t.plan(5);
+  t.plan(4);
 
   Vue.nextTick(() => {
     const el = t.context.vm.$el;
 
     // check that title is rendered
-    const titleEl = el.querySelector('.title-text');
+    const titleEl = el.querySelector('.title');
     t.is(titleEl.textContent, initialData.title);
 
     // check that status message is updated
@@ -45,7 +48,6 @@ test('ready state', async t => {
     t.is(statusEl.textContent, statusMessages[State.READY]);
 
     // check that pulse and record button is present
-    t.falsy(el.querySelector('.background-enabled.pulse'));
     t.truthy(el.querySelector('.button.record'));
 
     // check that only 1 buttons is showing
@@ -67,11 +69,11 @@ test('change state to "RECORDING"', async t => {
     t.is(statusEl.textContent, statusMessages[State.RECORDING]);
 
     // check that pulse, pause button, finish button is present
-    t.truthy(el.querySelector('.background-enabled.pulse'));
+    t.truthy(el.querySelector('.button.retry'));
     t.truthy(el.querySelector('.button.pause'));
-    t.truthy(el.querySelector('.button.finish'));
+    t.truthy(el.querySelector('.button.done'));
 
     // check that only 2 buttons are showing
-    t.is(el.querySelectorAll('.button').length, 2);
+    t.is(el.querySelectorAll('.button').length, 3);
   });
 });
