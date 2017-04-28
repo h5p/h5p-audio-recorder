@@ -12,19 +12,19 @@
           "default":"Spela in"
         },
         {
-          "label":"Pause button text",
-          "default":"Pause"
+          "label":"Text för pausknapp",
+          "default":"Paus"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Text på knappen fortsätt",
+          "default":"Fortsätt"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Texten på knappen ladda ner",
+          "default":"Ladda ner"
         },
         {
-          "label":"Done button text",
+          "label":"Text på knappen klart",
           "default":"Done"
         },
         {
