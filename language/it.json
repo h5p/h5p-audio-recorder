@@ -8,35 +8,35 @@
       "label":"Localizzazione",
       "fields":[
         {
-          "label":"Testo del pulsante di registrazione",
+          "label":"Etichetta del pulsante di registrazione",
           "default":"Registra"
         },
         {
-          "label":"Testo del pulsante \"Pausa\"",
+          "label":"Etichetta del pulsante \"Pausa\"",
           "default":"Pausa"
         },
         {
-          "label":"Testo del pulsante \"Continua\"",
+          "label":"Etichetta del pulsante \"Continua\"",
           "default":"Continua"
         },
         {
-          "label":"Testo del pulsante di download",
+          "label":"Etichetta del pulsante di download",
           "default":"Scarica"
         },
         {
-          "label":"Testo del pulsante di completamento",
+          "label":"Etichetta del pulsante di avvenuto completamento",
           "default":"Completato"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"Etichetta del pulsante \"Riprova\"",
+          "default":"Riprova"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"Messaggio di errore: microfono non supportato",
+          "default":"Microfono non supportato. Assicurati che il browser che stai usando permetta la registrazione dal microfono."
         },
         {
-          "label":"Microphone inaccessible error message",
+          "label":"Messaggio di errore: microfono inaccessibile",
           "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
         },
         {
