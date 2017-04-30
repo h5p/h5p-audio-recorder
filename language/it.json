@@ -1,31 +1,31 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"Descrizione del compito",
+      "description":"Testo opzionale da visualizzare sopra il registratore audio"
     },
     {
-      "label":"Localization",
+      "label":"Localizzazione",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Testo del pulsante di registrazione",
+          "default":"Registra"
         },
         {
-          "label":"Pause button text",
-          "default":"Pause"
+          "label":"Testo del pulsante \"Pausa\"",
+          "default":"Pausa"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Testo del pulsante \"Continua\"",
+          "default":"Continua"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Testo del pulsante di download",
+          "default":"Scarica"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"Testo del pulsante di completamento",
+          "default":"Completato"
         },
         {
           "label":"Retry button text",
