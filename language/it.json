@@ -58,31 +58,31 @@
         },
         {
           "label":"Messaggio di stato: registrazione completata",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "default":"Hai registrato con successo la tua risposta! Ascolta la registrazione qui sotto."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Scarica il messaggio di registrazione",
+          "default":"Scarica questa registrazione o riprova."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"Etichetta dell'intestazione del messaggio \"Riprova\"",
+          "default":"Ritentare la registrazione?"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "label":"Etichetta del corpo del messaggio \"Riprova\"",
+          "default":"Premendo \"Riprova\" perderai la registrazione in corso."
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"Etichetta di conferma del messaggio \"Riprova\"",
+          "default":"Riprova"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"Etichetta di cancellazione del messaggio \"Riprova\"",
+          "default":"Annulla"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"Impossibile creare il messaggio di stato per il file audio",
+          "default":"Impossibile creare il file audio."
         }
       ]
     }
