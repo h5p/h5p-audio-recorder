@@ -12,7 +12,7 @@
           "default":"Registra"
         },
         {
-          "label":"Etichetta del pulsante \"Pausa\"",
+          "label":"Testo del pulsante \"Pausa\"",
           "default":"Pausa"
         },
         {
