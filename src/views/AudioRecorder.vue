@@ -175,7 +175,6 @@
       width: 100%;
       padding: 0 1em;
       box-sizing: border-box;
-      height: 2em;
       margin-top: 1.25em;
     }
 
