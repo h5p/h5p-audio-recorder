@@ -2,7 +2,7 @@
   "semantics":[
     {
       "label":"Consigne",
-      "description":"Optional text to display above the audio recorder"
+      "description":"Texte facultatif affiché au dessus de l'enregistreur"
     },
     {
       "label":"Options et textes",
@@ -24,8 +24,8 @@
           "default":"Télécharger"
         },
         {
-          "label":"Texte pour le bouton \"Enregistrer\"",
-          "default":"Enregistrer"
+          "label":"Texte pour le bouton \"Terminer\"",
+          "default":"Terminer"
         },
         {
           "label":"Texte pour le bouton \"Recommencer\"",
