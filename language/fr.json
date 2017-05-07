@@ -53,36 +53,36 @@
           "default":"Enregistrement..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Message pendant une pause",
+          "default":"Enregistrement en pause. Cliquer sur un bouton pour reprendre."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Message à la fin de l'enregistrement",
+          "default":"Votre réponse à bien été enregistrer. Ecoutez l'enregistrement ci-dessous."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Message pour le téléchargement",
+          "default":"Téléchargez l'enregistrement ou recommencez."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"Titre du message \"Recommencer\"",
+          "default":"Recommencer l'enregistrement ?"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "label":"Texte du message \"Recommencer\"",
+          "default":"En appuyant sur \"Recommencer\" vous effacerez l'enregistrement actuel."
         },
         {
-          "label":"Retry dialog confirm text",
+          "label":"Texte de confirmation pour \"Recommencer\"",
           "default":"Recommencer"
         },
         {
-          "label":"Retry dialog cancel text",
+          "label":"Texte d'annulation pour \"Recommencer\"",
           "default":"Annuler"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"Message d'erreur enregistrement",
+          "default":"Impossible de créer le fichier audio."
         }
       ]
     }
