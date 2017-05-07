@@ -42,7 +42,7 @@
         {
           "label":"Message d'erreur lors d'un accès non sécurisé",
           "description":"Certains navigateurs n'autorise pas l'utilisation du micro si la page n'est pas sécurisée avec HTTPS. Ce message apparaît si la page n'est pas sécurisée (HTTP).",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "default":"L'accès au micro n'est pas autorisé par votre navigateur car cette page n'utilise pas le protocole HTTPS. Contacter l'auteur pour lui demander de rendre ce contenu accessible en utilisant HTTPS"
         },
         {
           "label":"Message à afficher avant l'enregistrement",
