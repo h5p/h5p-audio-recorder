@@ -5,14 +5,14 @@
       "description":"Optional text to display above the audio recorder"
     },
     {
-      "label":"Localization",
+      "label":"Options et textes",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Texte pour le bouton \"Enregistrer\"",
+          "default":"Enregistrer"
         },
         {
-          "label":"Pause button text",
+          "label":"Texte pour le bouton \"Pause\"",
           "default":"Pause"
         },
         {
