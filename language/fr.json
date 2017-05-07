@@ -40,17 +40,17 @@
           "default":"Le micro n'est pas accessible. Assurez-vous d'avoir bien autorisé le navigateur à utiliser votre micro."
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
-          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "label":"Message d'erreur lors d'un accès non sécurisé",
+          "description":"Certains navigateurs n'autorise pas l'utilisation du micro si la page n'est pas sécurisée avec HTTPS. Ce message apparaît si la page n'est pas sécurisée (HTTP).",
           "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Message à afficher avant l'enregistrement",
+          "default":"Cliquer sur le bouton ci-dessous pour enregistrer."
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"Message pendant l'enregistrement",
+          "default":"Enregistrement..."
         },
         {
           "label":"Paused status message",
