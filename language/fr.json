@@ -16,28 +16,28 @@
           "default":"Pause"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Texte pour le bouton \"Reprendre\"",
+          "default":"Reprendre"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Texte pour le bouton \"Télécharger\"",
+          "default":"Télécharger"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"Texte pour le bouton \"Enregistrer\"",
+          "default":"Enregistrer"
         },
         {
-          "label":"Retry button text",
+          "label":"Texte pour le bouton \"Recommencer\"",
           "default":"Recommencer"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"Message d'erreur si le micro n'est pas pris en charge",
+          "default":"Le micro n'est pas pris en charge. Assurez-vous d'utiliser un navigateur qui autorise l'enregistrement audio."
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"Message d'erreur si le micro n'est pas accessible",
+          "default":"Le micro n'est pas accessible. Assurez-vous d'avoir bien autorisé le navigateur à utiliser votre micro."
         },
         {
           "label":"Message displayed when insecure access is not allowed",
