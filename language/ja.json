@@ -1,47 +1,47 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"タスクの説明",
+      "description":"オーディオレコーダーの上に表示するオプションのテキスト"
     },
     {
-      "label":"Localization",
+      "label":"翻訳",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"録音ボタンのテキスト",
+          "default":"録音"
         },
         {
-          "label":"Pause button text",
-          "default":"Pause"
+          "label":"一時停止ボタンのテキスト",
+          "default":"一時停止"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"続けるボタンのテキスト",
+          "default":"続ける"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"ダウンロードボタンのテキスト",
+          "default":"ダウンロード"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"完了ボタンのテキスト",
+          "default":"完了"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"リトライボタンのテキスト",
+          "default":"リトライ"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"マイクがサポートされていないエラーメッセージ",
+          "default":"マイクがサポートされていません。マイクで録音が可能なブラウザを使用していることを確認してください。"
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"マイクにアクセスできないエラーメッセージ",
+          "default":"マイクにアクセスできません。ブラウザのマイクが有効になっていることを確認します。"
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
-          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "label":"安全でないアクセスが許可されていない場合に表示されるメッセージ",
+          "description":"一部のブラウザでは、ページがHTTPを使用して配信されているときに、マイクの使用を許可していません。このメッセージが表示されます",
           "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
