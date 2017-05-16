@@ -73,16 +73,16 @@
           "default":"「再試行」を押すと、現在の録音が失われます。"
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"再試行のダイアログで確認テキスト",
+          "default":"再試行"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"再試行ダイアログのキャンセルテキスト",
+          "default":"キャンセル"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"オーディオ ファイルのステータス メッセージを作成できません。",
+          "default":"オーディオファイルを作成できません。"
         }
       ]
     }
