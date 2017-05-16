@@ -42,35 +42,35 @@
         {
           "label":"安全でないアクセスが許可されていない場合に表示されるメッセージ",
           "description":"一部のブラウザでは、ページがHTTPを使用して配信されているときに、マイクの使用を許可していません。このメッセージが表示されます",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "default":"このページはHTTPSを使用して配信されないため、ブラウザにはマイクへのアクセスは許可されていません。管理者に連絡し、HTTPSを使用してこのページでマイクを利用可能にするよう依頼してください"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"状態メッセージを録音する準備ができました",
+          "default":"あなたの答えを記録するには、下のボタンを押してください。"
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"録音ステータスのメッセージ",
+          "default":"録音中..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"一時停止ステータス メッセージ",
+          "default":"録音を一時停止します。録音を続行するには続行ボタンを押します。"
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"ステータス メッセージの録音を完了",
+          "default":"あなたの答えを正常に録音しました！以下で録音を聞く事ができます。"
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"録音メッセージをダウンロードします。",
+          "default":"この録音をダウンロードするか、再試行してください。"
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"再試行のダイアログヘッダーテキスト",
+          "default":"録音をやり直しますか？"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "label":"再試行のダイアログ本文テキスト",
+          "default":"「再試行」を押すと、現在の録音が失われます。"
         },
         {
           "label":"Retry dialog confirm text",
