@@ -1,7 +1,7 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
+      "label":"Περιγραφή εργασίας",
       "description":"Optional text to display above the audio recorder"
     },
     {
@@ -9,11 +9,11 @@
       "fields":[
         {
           "label":"Record button text",
-          "default":"Record"
+          "default":"Ηχογράφηση"
         },
         {
           "label":"Pause button text",
-          "default":"Pause"
+          "default":"Παύση"
         },
         {
           "label":"Continue button text",
@@ -29,7 +29,7 @@
         },
         {
           "label":"Retry button text",
-          "default":"Retry"
+          "default":"Επανάληψη"
         },
         {
           "label":"Microphone not supported error message",
