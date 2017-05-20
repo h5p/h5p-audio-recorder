@@ -33,7 +33,7 @@
         },
         {
           "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "default":"Μικρόφωνο δεν υποστηρίζεται. Βεβαιωθείτε ότι χρησιμοποιείτε ένα πρόγραμμα περιήγησης που επιτρέπει την καταγραφή από μικρόφωνο."
         },
         {
           "label":"Microphone inaccessible error message",
