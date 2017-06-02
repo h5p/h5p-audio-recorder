@@ -28,11 +28,11 @@
           "default":"Gereed"
         },
         {
-          "label":"Retry button text",
+          "label":"Tekst opnieuw knop",
           "default":"Opnieuw proberen"
         },
         {
-          "label":"Microphone not supported error message",
+          "label":"Foutbericht - microfoon wordt niet ondersteund",
           "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
         },
         {
@@ -81,8 +81,8 @@
           "default":"Annuleren"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"Statusbericht - kan geen audio bestand maken",
+          "default":"Kan het audiobestand niet maken."
         }
       ]
     }
