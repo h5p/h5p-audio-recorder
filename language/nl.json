@@ -1,31 +1,31 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"Beschrijving taak",
+      "description":"Optionele tekst om weer te geven boven de audiorecorder"
     },
     {
-      "label":"Localization",
+      "label":"Localisatie",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Tekst opnameknop",
+          "default":"Opnemen"
         },
         {
-          "label":"Pause button text",
-          "default":"Pause"
+          "label":"Tekst pauzeknop",
+          "default":"Pauze"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Tekst hervatten knop",
+          "default":"Hervatten"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Tekst downloadknop",
+          "default":"Downloaden"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"Tekst Gereed knop",
+          "default":"Gereed"
         },
         {
           "label":"Retry button text",
