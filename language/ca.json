@@ -1,8 +1,8 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"Descripció de la tasca",
+      "description":"Text opcional per mostrar al damunt del gravador"
     },
     {
       "label":"Localization",
