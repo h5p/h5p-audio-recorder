@@ -14,7 +14,7 @@
   "author": "Joubel",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.19.1",
+    "ava": "0.20.0",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
