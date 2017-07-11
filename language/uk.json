@@ -37,7 +37,7 @@
         },
         {
           "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "default":"Мікрофон не доступний. Упевніться у тім, що мікрофон увімкнено."
         },
         {
           "label":"Message displayed when insecure access is not allowed",
