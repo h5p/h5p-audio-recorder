@@ -5,35 +5,35 @@
       "description":"Optional text to display above the audio recorder"
     },
     {
-      "label":"Localization",
+      "label":"Локалізація",
       "fields":[
         {
           "label":"Record button text",
-          "default":"Record"
+          "default":"Записувати"
         },
         {
           "label":"Pause button text",
-          "default":"Pause"
+          "default":"Затримати"
         },
         {
           "label":"Continue button text",
-          "default":"Continue"
+          "default":"Продовжити"
         },
         {
           "label":"Download button text",
-          "default":"Download"
+          "default":"Стягнути"
         },
         {
           "label":"Done button text",
-          "default":"Done"
+          "default":"Виконано"
         },
         {
           "label":"Retry button text",
-          "default":"Retry"
+          "default":"Ще раз"
         },
         {
           "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "default":"Мікрофон не має підтримки. Впевніться у тому що ваш переглядач надає дозвіл для запусування."
         },
         {
           "label":"Microphone inaccessible error message",
@@ -50,7 +50,7 @@
         },
         {
           "label":"Recording status message",
-          "default":"Recording..."
+          "default":"Іде записування..."
         },
         {
           "label":"Paused status message",
@@ -66,7 +66,7 @@
         },
         {
           "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "default":"Повторити записування?"
         },
         {
           "label":"Retry dialog body text",
@@ -74,15 +74,15 @@
         },
         {
           "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "default":"Ще раз"
         },
         {
           "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "default":"Скасувати"
         },
         {
           "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "default":"Застосунок не має можливості створити звуковий файл."
         }
       ]
     }
