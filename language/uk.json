@@ -9,11 +9,11 @@
       "fields":[
         {
           "label":"Record button text",
-          "default":"Записувати"
+          "default":"Запис"
         },
         {
           "label":"Pause button text",
-          "default":"Затримати"
+          "default":"Пауза"
         },
         {
           "label":"Continue button text",
@@ -21,11 +21,11 @@
         },
         {
           "label":"Download button text",
-          "default":"Стягнути"
+          "default":"Завантажити"
         },
         {
           "label":"Done button text",
-          "default":"Виконано"
+          "default":"Готово"
         },
         {
           "label":"Retry button text",
@@ -50,7 +50,7 @@
         },
         {
           "label":"Recording status message",
-          "default":"Іде записування..."
+          "default":"Йде запис..."
         },
         {
           "label":"Paused status message",
@@ -66,7 +66,7 @@
         },
         {
           "label":"Retry dialog header text",
-          "default":"Повторити записування?"
+          "default":"Повторити запис?"
         },
         {
           "label":"Retry dialog body text",
@@ -74,7 +74,7 @@
         },
         {
           "label":"Retry dialog confirm text",
-          "default":"Ще раз"
+          "default":"Повторити"
         },
         {
           "label":"Retry dialog cancel text",
@@ -82,7 +82,7 @@
         },
         {
           "label":"Can't create audio file status message",
-          "default":"Застосунок не має можливості створити звуковий файл."
+          "default":"Неможливо створити аудіо файл."
         }
       ]
     }
