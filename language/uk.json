@@ -40,9 +40,9 @@
           "default":"Мікрофон не доступний. Упевніться в тому, що мікрофон увімкнено."
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
+          "label":"Повідомлення з'являється, коли небезпечний доступ недозволений",
           "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "default":"Доступ до мікрофона недозволений у Вашому браузері через те, що сторінка не використовує HTTPS протокол. Будь ласка, зверніться до автора сторінки з вимогою надати сторінку з використанням HTTPS протокола"
         },
         {
           "label":"Статус \"Готово для запису\"",
