@@ -2,7 +2,7 @@
   "semantics":[
     {
       "label":"Опис завдання",
-      "description":"Optional text to display above the audio recorder"
+      "description":"Необов'язковий текст для показу над аудіо записувачем"
     },
     {
       "label":"Локалізація",
@@ -32,11 +32,11 @@
           "default":"Ще раз"
         },
         {
-          "label":"Microphone not supported error message",
+          "label":"Текст помилки \"Мікрофон не має підтримки\"",
           "default":"Мікрофон не має підтримки. Упевніться в тому, що ваш браузер дозволяє запис з мікрофона."
         },
         {
-          "label":"Microphone inaccessible error message",
+          "label":"Текст помилки \"Немає доступу до мікрофона\"",
           "default":"Мікрофон не доступний. Упевніться в тому, що мікрофон увімкнено."
         },
         {
@@ -49,11 +49,11 @@
           "default":"Press a button below to record your answer."
         },
         {
-          "label":"Recording status message",
+          "label":"Статус \"Йде запис\"",
           "default":"Йде запис..."
         },
         {
-          "label":"Paused status message",
+          "label":"Статус \"На паузі\"",
           "default":"Recording paused. Press a button to continue recording."
         },
         {
