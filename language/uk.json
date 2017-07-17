@@ -1,43 +1,43 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
+      "label":"Опис завдання",
       "description":"Optional text to display above the audio recorder"
     },
     {
       "label":"Локалізація",
       "fields":[
         {
-          "label":"Record button text",
+          "label":"Текст кнопки \"Запис\"",
           "default":"Запис"
         },
         {
-          "label":"Pause button text",
+          "label":"Текст кнопки \"Пауза\"",
           "default":"Пауза"
         },
         {
-          "label":"Continue button text",
+          "label":"Текст кнопки \"Продовжити\"",
           "default":"Продовжити"
         },
         {
-          "label":"Download button text",
+          "label":"Текст кнопки \"Завантажити\"",
           "default":"Завантажити"
         },
         {
-          "label":"Done button text",
+          "label":"Текст кнопки \"Готово\"",
           "default":"Готово"
         },
         {
-          "label":"Retry button text",
+          "label":"Текст кнопки \"Повторити\"",
           "default":"Ще раз"
         },
         {
           "label":"Microphone not supported error message",
-          "default":"Мікрофон не має підтримки. Впевніться у тому що ваш переглядач надає дозвіл для запусування."
+          "default":"Мікрофон не має підтримки. Упевніться в тому, що ваш браузер дозволяє запис з мікрофона."
         },
         {
           "label":"Microphone inaccessible error message",
-          "default":"Мікрофон не доступний. Упевніться у тім, що мікрофон увімкнено."
+          "default":"Мікрофон не доступний. Упевніться в тому, що мікрофон увімкнено."
         },
         {
           "label":"Message displayed when insecure access is not allowed",
