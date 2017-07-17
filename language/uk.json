@@ -45,8 +45,8 @@
           "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Статус \"Готово для запису\"",
+          "default":"Натисніть кнопку нижче для запису своєї відповіді."
         },
         {
           "label":"Статус \"Йде запис\"",
@@ -54,15 +54,15 @@
         },
         {
           "label":"Статус \"На паузі\"",
-          "default":"Recording paused. Press a button to continue recording."
+          "default":"Запис призупинено. Натисніть на кнопку, щоб продовжити запис."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Статус \"Запис закінчено\"",
+          "default":"Ви успішно записали свою відповідь! Прослухайте запис нижче."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Текст \"Завантажити запис\"",
+          "default":"Завантажте цей запис або спробуйте знову."
         },
         {
           "label":"Retry dialog header text",
@@ -73,7 +73,7 @@
           "default":"By pressing \"Retry\" you will loose your current recording."
         },
         {
-          "label":"Retry dialog confirm text",
+          "label":"Текст підтвердження діалогового вікна про нову спробу",
           "default":"Повторити"
         },
         {
@@ -81,7 +81,7 @@
           "default":"Скасувати"
         },
         {
-          "label":"Can't create audio file status message",
+          "label":"Статус \"Не можливо створити аудіо файл\"",
           "default":"Неможливо створити аудіо файл."
         }
       ]
