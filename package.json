@@ -14,7 +14,7 @@
   "author": "Joubel",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.19.1",
+    "ava": "0.20.0",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
@@ -26,7 +26,7 @@
     "cross-env": "^4.0.0",
     "css-loader": "^0.26.2",
     "extract-text-webpack-plugin": "^2.0.0",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "raw-loader": "^0.5.1",
     "require-extension-hooks": "^0.2.0",
     "require-extension-hooks-babel": "^0.1.0",
@@ -44,7 +44,10 @@
   },
   "ava": {
     "babel": {
-      "presets": ["@ava/stage-4", "stage-3"]
+      "presets": [
+        "@ava/stage-4",
+        "stage-3"
+      ]
     },
     "require": [
       "babel-polyfill",
