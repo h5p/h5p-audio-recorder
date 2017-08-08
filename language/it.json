@@ -1,14 +1,14 @@
 {
   "semantics":[
     {
-      "label":"Descrizione del compito",
+      "label":"Descrizione attività",
       "description":"Testo opzionale da visualizzare sopra il registratore audio"
     },
     {
       "label":"Localizzazione",
       "fields":[
         {
-          "label":"Etichetta del pulsante di registrazione",
+          "label":"Testo del pulsante di registrazione",
           "default":"Registra"
         },
         {
@@ -16,19 +16,19 @@
           "default":"Pausa"
         },
         {
-          "label":"Etichetta del pulsante \"Continua\"",
+          "label":"Testo del pulsante \"Continua\"",
           "default":"Continua"
         },
         {
-          "label":"Etichetta del pulsante di download",
+          "label":"Testo del pulsante di download",
           "default":"Scarica"
         },
         {
-          "label":"Etichetta del pulsante di avvenuto completamento",
-          "default":"Completato"
+          "label":"Testo del pulsante di completamento",
+          "default":"Fatto"
         },
         {
-          "label":"Etichetta del pulsante \"Riprova\"",
+          "label":"Testo del pulsante \"Riprova\"",
           "default":"Riprova"
         },
         {
@@ -37,7 +37,7 @@
         },
         {
           "label":"Messaggio di errore: microfono inaccessibile",
-          "default":"Microfono non accessibile. Assicurati che il microfono del browser sia attivato."
+          "default":"Microfono non accessibile. Assicurati che il microfono del browser sia attivato"
         },
         {
           "label":"Messaggio visualizzato quando non è consentito un accesso non sicuro",
@@ -46,7 +46,7 @@
         },
         {
           "label":"Messaggio di stato: pronto per la registrazione",
-          "default":"Premere il pulsante qui sotto per registrare la tua risposta."
+          "default":"Premere il pulsante qui sotto per registrare la tua risposta"
         },
         {
           "label":"Messaggio di stato: registrazione in corso",
@@ -82,7 +82,7 @@
         },
         {
           "label":"Impossibile creare il messaggio di stato per il file audio",
-          "default":"Impossibile creare il file audio."
+          "default":"Impossibile creare il file audio"
         }
       ]
     }
