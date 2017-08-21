@@ -42,7 +42,7 @@
         {
           "label":"Meldung, die angezeigt wird, wenn ein unsicherer Zugriff nicht erlaubt ist",
           "description":"Einige Browser erlauben nicht das Mikrofon verwenden, wenn die Seite über HTTP bereitgestellt ist. Diese Meldung wird angezeigt, wenn das der Fall ist.",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "default":"Der Zugriff auf das Mikrofon ist in Ihrem Browser nicht freigegeben, da diese Seite mit HTTPS nicht erreichbar ist. Bitte kontaktieren Sie den Autor, und bitten Sie ihn, die Seiten über HTTPS zur Verfügung zu stellen."
         },
         {
           "label":"Statusmeldung Aufnahmebereit",
@@ -66,11 +66,11 @@
         },
         {
           "label":"Titeltext Aufnahme wiederholen",
-          "default":"Retry recording?"
+          "default":"Aufnahme wiederholen?"
         },
         {
           "label":"Dialogbox Aufnahme wiederholen",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "default":"Durch Drücken der Taste \"Aufnahme wiederholen\" verlieren Sie Ihre aktuelle Aufnahme."
         },
         {
           "label":"Dialogbox Bestätigen",
@@ -81,8 +81,8 @@
           "default":"Abbrechen"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"Statusmeldung, dass die Audio-Datei nicht erstellt werden kann",
+          "default":"Die Audio-Datei kann nicht erstellt werden."
         }
       ]
     }
