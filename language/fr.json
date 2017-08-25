@@ -1,88 +1,88 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"Consigne",
+      "description":"Texte facultatif affiché au dessus de l'enregistreur"
     },
     {
-      "label":"Localization",
+      "label":"Options et textes",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Texte pour le bouton \"Enregistrer\"",
+          "default":"Enregistrer"
         },
         {
-          "label":"Pause button text",
+          "label":"Texte pour le bouton \"Pause\"",
           "default":"Pause"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Texte pour le bouton \"Reprendre\"",
+          "default":"Reprendre"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Texte pour le bouton \"Télécharger\"",
+          "default":"Télécharger"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"Texte pour le bouton \"Terminer\"",
+          "default":"Terminer"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"Texte pour le bouton \"Recommencer\"",
+          "default":"Recommencer"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"Message d'erreur si le micro n'est pas pris en charge",
+          "default":"Le micro n'est pas pris en charge. Assurez-vous d'utiliser un navigateur qui autorise l'enregistrement audio."
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"Message d'erreur si le micro n'est pas accessible",
+          "default":"Le micro n'est pas accessible. Assurez-vous d'avoir bien autorisé le navigateur à utiliser votre micro."
         },
         {
-          "label": "Message displayed when insecure access is not allowed",
-          "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label":"Message d'erreur lors d'un accès non sécurisé",
+          "description":"Certains navigateurs n'autorise pas l'utilisation du micro si la page n'est pas sécurisée avec HTTPS. Ce message apparaît si la page n'est pas sécurisée (HTTP).",
+          "default":"L'accès au micro n'est pas autorisé par votre navigateur car cette page n'utilise pas le protocole HTTPS. Contacter l'auteur pour lui demander de rendre ce contenu accessible en utilisant HTTPS"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Message à afficher avant l'enregistrement",
+          "default":"Cliquer sur le bouton ci-dessous pour enregistrer."
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"Message pendant l'enregistrement",
+          "default":"Enregistrement..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Message pendant une pause",
+          "default":"Enregistrement en pause. Cliquer sur un bouton pour reprendre."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Message à la fin de l'enregistrement",
+          "default":"Votre réponse à bien été enregistrer. Ecoutez l'enregistrement ci-dessous."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Message pour le téléchargement",
+          "default":"Téléchargez l'enregistrement ou recommencez."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"Titre du message \"Recommencer\"",
+          "default":"Recommencer l'enregistrement ?"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "label":"Texte du message \"Recommencer\"",
+          "default":"En appuyant sur \"Recommencer\" vous effacerez l'enregistrement actuel."
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"Texte de confirmation pour \"Recommencer\"",
+          "default":"Recommencer"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"Texte d'annulation pour \"Recommencer\"",
+          "default":"Annuler"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"Message d'erreur enregistrement",
+          "default":"Impossible de créer le fichier audio."
         }
       ]
     }

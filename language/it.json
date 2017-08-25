@@ -1,88 +1,88 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"Descrizione del compito",
+      "description":"Testo opzionale da visualizzare sopra il registratore audio"
     },
     {
-      "label":"Localization",
+      "label":"Localizzazione",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Etichetta del pulsante di registrazione",
+          "default":"Registra"
         },
         {
-          "label":"Pause button text",
-          "default":"Pause"
+          "label":"Testo del pulsante \"Pausa\"",
+          "default":"Pausa"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Etichetta del pulsante \"Continua\"",
+          "default":"Continua"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Etichetta del pulsante di download",
+          "default":"Scarica"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"Etichetta del pulsante di avvenuto completamento",
+          "default":"Completato"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"Etichetta del pulsante \"Riprova\"",
+          "default":"Riprova"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"Messaggio di errore: microfono non supportato",
+          "default":"Microfono non supportato. Assicurati che il browser che stai usando permetta la registrazione dal microfono."
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"Messaggio di errore: microfono inaccessibile",
+          "default":"Microfono non accessibile. Assicurati che il microfono del browser sia attivato."
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
-          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label":"Messaggio visualizzato quando non è consentito un accesso non sicuro",
+          "description":"Alcuni browser non permettono l'uso del microfono quando la pagina è servita tramite HTTP. Questo messaggio verrà visualizzato se è questo il caso",
+          "default":"L'accesso al microfono non è permesso nel tuo browser perché la pagina non è servita mediante HTTPS. Contatta l'autore e chiedigli di renderla disponibile utilizzando HTTPS"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Messaggio di stato: pronto per la registrazione",
+          "default":"Premere il pulsante qui sotto per registrare la tua risposta."
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"Messaggio di stato: registrazione in corso",
+          "default":"Registrazione in corso..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Messaggio di stato: pausa",
+          "default":"Registrazione in pausa. Premere un tasto per continuare a registrare."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Messaggio di stato: registrazione completata",
+          "default":"Hai registrato con successo la tua risposta! Ascolta la registrazione qui sotto."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Scarica il messaggio di registrazione",
+          "default":"Scarica questa registrazione o riprova."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"Etichetta dell'intestazione del messaggio \"Riprova\"",
+          "default":"Ritentare la registrazione?"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "label":"Etichetta del corpo del messaggio \"Riprova\"",
+          "default":"Premendo \"Riprova\" perderai la registrazione in corso."
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"Etichetta di conferma del messaggio \"Riprova\"",
+          "default":"Riprova"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"Etichetta di cancellazione del messaggio \"Riprova\"",
+          "default":"Annulla"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"Impossibile creare il messaggio di stato per il file audio",
+          "default":"Impossibile creare il file audio."
         }
       ]
     }

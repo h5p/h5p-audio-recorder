@@ -1,88 +1,88 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"タスクの説明",
+      "description":"オーディオレコーダーの上に表示するオプションのテキスト"
     },
     {
-      "label":"Localization",
+      "label":"翻訳",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"録音ボタンのテキスト",
+          "default":"録音"
         },
         {
-          "label":"Pause button text",
-          "default":"Pause"
+          "label":"一時停止ボタンのテキスト",
+          "default":"一時停止"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"続けるボタンのテキスト",
+          "default":"続ける"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"ダウンロードボタンのテキスト",
+          "default":"ダウンロード"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"完了ボタンのテキスト",
+          "default":"完了"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"リトライボタンのテキスト",
+          "default":"リトライ"
         },
         {
-          "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label":"マイクがサポートされていないエラーメッセージ",
+          "default":"マイクがサポートされていません。マイクで録音が可能なブラウザを使用していることを確認してください。"
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"マイクにアクセスできないエラーメッセージ",
+          "default":"マイクにアクセスできません。ブラウザのマイクが有効になっていることを確認します。"
         },
         {
-          "label": "Message displayed when insecure access is not allowed",
-          "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label":"安全でないアクセスが許可されていない場合に表示されるメッセージ",
+          "description":"一部のブラウザでは、ページがHTTPを使用して配信されているときに、マイクの使用を許可していません。このメッセージが表示されます",
+          "default":"このページはHTTPSを使用して配信されないため、ブラウザにはマイクへのアクセスは許可されていません。管理者に連絡し、HTTPSを使用してこのページでマイクを利用可能にするよう依頼してください"
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"状態メッセージを録音する準備ができました",
+          "default":"あなたの答えを記録するには、下のボタンを押してください。"
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"録音ステータスのメッセージ",
+          "default":"録音中..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"一時停止ステータス メッセージ",
+          "default":"録音を一時停止します。録音を続行するには続行ボタンを押します。"
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"ステータス メッセージの録音を完了",
+          "default":"あなたの答えを正常に録音しました！以下で録音を聞く事ができます。"
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"録音メッセージをダウンロードします。",
+          "default":"この録音をダウンロードするか、再試行してください。"
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"再試行のダイアログヘッダーテキスト",
+          "default":"録音をやり直しますか？"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "label":"再試行のダイアログ本文テキスト",
+          "default":"「再試行」を押すと、現在の録音が失われます。"
         },
         {
-          "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "label":"再試行のダイアログで確認テキスト",
+          "default":"再試行"
         },
         {
-          "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "label":"再試行ダイアログのキャンセルテキスト",
+          "default":"キャンセル"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"オーディオ ファイルのステータス メッセージを作成できません。",
+          "default":"オーディオファイルを作成できません。"
         }
       ]
     }

@@ -40,9 +40,9 @@
           "default":"Mikrofonen er ikke tilgjengelig. Kontrollér at nettleseren tillater bruk av mikrofon."
         },
         {
-          "label": "Melding som vises når mikrofon ikke kan bruker pga sikkerhetshensyn",
-          "description": "Noen nettlesere tillater ikke tilgang til mikrofonen når siden lastes via HTTP. Denne meldinga vises når det er tilfellet.",
-          "default": "Nettleseren din tillater ikke tilgang til mikrofonen fordi nettsiden er lastet via HTTP. Ta kontakt med forfatteren, og spør om nettsiden kan tilgjengeliggjøres via HTTPS"
+          "label":"Melding som vises når https ikke er aktivert",
+          "description":"Noen nettlesere lar ikke brukeren benytte mikrofonen når siden ikke har HTTPS. Denne meldingen vises for å forklare hvorfor mikrofonen ikke kan brukes i slike tilfeller",
+          "default":"Tilgang til mikrofonen er ikke tillatt i nettleseren siden denne siden ikke betjenes via HTTPS. Kontakt forfatteren, og be ham om å gjøre denne tilgjengelig med HTTPS"
         },
         {
           "label":"Klar til opptak statusmelding",
@@ -81,8 +81,8 @@
           "default":"Avbryt"
         },
         {
-          "label":"Kan ikke opprette lydfil status melding",
-          "default":"Kan ikke opprette lydfil."
+          "label":"Can't create audio file status message",
+          "default":"Can't create the audio file."
         }
       ]
     }

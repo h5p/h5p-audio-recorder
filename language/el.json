@@ -1,7 +1,7 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
+      "label":"Περιγραφή εργασίας",
       "description":"Optional text to display above the audio recorder"
     },
     {
@@ -9,11 +9,11 @@
       "fields":[
         {
           "label":"Record button text",
-          "default":"Record"
+          "default":"Ηχογράφηση"
         },
         {
           "label":"Pause button text",
-          "default":"Pause"
+          "default":"Παύση"
         },
         {
           "label":"Continue button text",
@@ -29,11 +29,11 @@
         },
         {
           "label":"Retry button text",
-          "default":"Retry"
+          "default":"Επανάληψη"
         },
         {
           "label":"Microphone not supported error message",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "default":"Μικρόφωνο δεν υποστηρίζεται. Βεβαιωθείτε ότι χρησιμοποιείτε ένα πρόγραμμα περιήγησης που επιτρέπει την καταγραφή από μικρόφωνο."
         },
         {
           "label":"Microphone inaccessible error message",
