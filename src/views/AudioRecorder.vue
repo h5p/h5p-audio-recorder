@@ -173,9 +173,8 @@
 
     .h5p-audio-recorder-player {
       width: 100%;
-      padding: 0 1em;
       box-sizing: border-box;
-      margin-top: 1.25em;
+      margin: 1.25em 1em 0 1em;
     }
 
     .title {
