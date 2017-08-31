@@ -6,11 +6,12 @@
 
     <div role="status" v-bind:class="state">{{statusMessages[state] | unEscape}}</div>
 
-    <audio class="h5p-audio-recorder-player" v-if="state === 'done' && audioSrc !== ''"
-           controls="controls">
-      Your browser does not support the <code>audio</code> element.
-      <source v-bind:src="audioSrc">
-    </audio>
+    <div class="h5p-audio-recorder-player" v-if="state === 'done' && audioSrc !== ''">
+      <audio controls="controls">
+        Your browser does not support the <code>audio</code> element.
+        <source v-bind:src="audioSrc">
+      </audio>
+    </div>
 
     <timer ref="timer" v-bind:stopped="state !== 'recording'" v-if="state !== 'unsupported' && state !== 'done' && state !== 'insecure-not-allowed'"></timer>
 
@@ -172,10 +173,12 @@
     }
 
     .h5p-audio-recorder-player {
-      width: 100%;
-      padding: 0 1em;
       box-sizing: border-box;
-      margin-top: 1.25em;
+      margin: 1.25em 1em 0 1em;
+
+      audio {
+        width: 100%;
+      }
     }
 
     .title {
