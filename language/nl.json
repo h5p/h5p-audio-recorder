@@ -1,38 +1,38 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"Beschrijving taak",
+      "description":"Optionele tekst om weer te geven boven de audiorecorder"
     },
     {
-      "label":"Localization",
+      "label":"Localisatie",
       "fields":[
         {
-          "label":"Record button text",
-          "default":"Record"
+          "label":"Tekst opnameknop",
+          "default":"Opnemen"
         },
         {
-          "label":"Pause button text",
-          "default":"Pause"
+          "label":"Tekst pauzeknop",
+          "default":"Pauze"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label":"Tekst hervatten knop",
+          "default":"Hervatten"
         },
         {
-          "label":"Download button text",
-          "default":"Download"
+          "label":"Tekst downloadknop",
+          "default":"Downloaden"
         },
         {
-          "label":"Done button text",
-          "default":"Done"
+          "label":"Tekst Gereed knop",
+          "default":"Gereed"
         },
         {
-          "label":"Retry button text",
-          "default":"Retry"
+          "label":"Tekst opnieuw knop",
+          "default":"Opnieuw proberen"
         },
         {
-          "label":"Microphone not supported error message",
+          "label":"Foutbericht - microfoon wordt niet ondersteund",
           "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
         },
         {
@@ -40,9 +40,9 @@
           "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
         },
         {
-          "label": "Message displayed when insecure access is not allowed",
-          "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label":"Message displayed when insecure access is not allowed",
+          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
           "label":"Ready to record status message",
@@ -74,15 +74,15 @@
         },
         {
           "label":"Retry dialog confirm text",
-          "default":"Retry"
+          "default":"Opnieuw proberen"
         },
         {
           "label":"Retry dialog cancel text",
-          "default":"Cancel"
+          "default":"Annuleren"
         },
         {
-          "label":"Can't create audio file status message",
-          "default":"Can't create the audio file."
+          "label":"Statusbericht - kan geen audio bestand maken",
+          "default":"Kan het audiobestand niet maken."
         }
       ]
     }

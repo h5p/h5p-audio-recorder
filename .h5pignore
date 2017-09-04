@@ -12,3 +12,4 @@ webpack.dev.config.js
 README.md
 CONTRIBUTING.md
 package.json
+crowdin.yml

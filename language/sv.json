@@ -29,7 +29,7 @@
         },
         {
           "label":"Text på knappen nytt försök",
-          "default":"Nytt försök"
+          "default":"Försök på nytt"
         },
         {
           "label":"Felmeddelande för att mikrofonen inte stöds",
