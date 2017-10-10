@@ -28,4 +28,4 @@ If your language isn't on the list, feel free to make a post in the community [f
 
 ## License
 
-*H5P Course Presentation* is [MIT licenced](LICENCE.md)
+*H5P Audio Recorder* is [MIT licenced](LICENCE.md)
