@@ -25,3 +25,7 @@ npm test
 Help translate h5p-audio-recorder on [crowdin.com](https://crowdin.com/project/h5p-audio-recorder).
 
 If your language isn't on the list, feel free to make a post in the community [forum](https://h5p.org/forum/6).
+
+## License
+
+*H5P Course Presentation* is [MIT licenced](LICENCE.md)
