@@ -46,7 +46,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" type="text/scss">
   .audio-recorder-timer {
     font-family: 'Open Sans', sans-serif;
     font-size: 2.5em;
