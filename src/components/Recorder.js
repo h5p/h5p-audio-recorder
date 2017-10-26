@@ -117,6 +117,7 @@ export default class Recorder extends H5P.EventDispatcher {
     this.stream = stream;
 
     // Create the audio context
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
     this.audioContext = new AudioContext();
     this.scriptProcessorNode = this.audioContext.createScriptProcessor(
       this.config.bufferLength,
@@ -229,9 +230,9 @@ export default class Recorder extends H5P.EventDispatcher {
    * @return {boolean}
    */
   supported() {
-    return window.AudioContext !== undefined &&
-           navigator.mediaDevices &&
-           navigator.mediaDevices.getUserMedia;
+    return (window.AudioContext !== undefined || window.webkitAudioContext !== undefined)
+      && navigator.mediaDevices
+      && navigator.mediaDevices.getUserMedia;
   }
 
   /**

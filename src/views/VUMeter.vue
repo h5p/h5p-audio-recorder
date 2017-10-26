@@ -55,7 +55,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" type="text/scss">
   .recording-indicator-wrapper {
     height: 9.375em;
     width: 9.375em;
