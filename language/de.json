@@ -46,7 +46,7 @@
         },
         {
           "label":"Statusmeldung Aufnahmebereit",
-          "default":"Drücken Sie den unteren Knopf um ihre Antwort aufzunehmen."
+          "default":"Drücken Sie den unteren Knopf, um ihre Antwort aufzunehmen."
         },
         {
           "label":"Statusmeldung Aufnahme läuft",
