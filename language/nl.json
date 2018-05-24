@@ -5,7 +5,7 @@
       "description":"Optionele tekst om weer te geven boven de audiorecorder"
     },
     {
-      "label":"Localisatie",
+      "label":"Knopteksten",
       "fields":[
         {
           "label":"Tekst opnameknop",
@@ -33,51 +33,51 @@
         },
         {
           "label":"Foutbericht - microfoon wordt niet ondersteund",
-          "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "default":"De microfoon wordt niet ondersteund. Selecteer een browser die spraakopnamen toestaat."
         },
         {
-          "label":"Microphone inaccessible error message",
-          "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label":"Foutbericht - microfoon is niet toegankelijk",
+          "default":"De microfoon is niet toegankelijk. Zorg ervoor dat de microfoon in de browserinstellingen aan staat."
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
-          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label":"Getoond bericht als de toegang niet is verleend in verband een onveilige verbinding",
+          "description":"Sommige browsers staan het gebruik van de microfoon niet toe als de pagina toegankelijk is via HTTP. Als dit het geval is, wordt dit bericht getoond",
+          "default":"Doordat deze pagina geen gebruik maakt van HTTPS, heb je geen toegang tot je microfoon. Neem contact op met de auteur en vraag om dit beschikbaar te maken via HTTPS."
         },
         {
-          "label":"Ready to record status message",
-          "default":"Press a button below to record your answer."
+          "label":"Statusbericht klaar om op te nemen",
+          "default":"Druk op de onderstaande knop om je spraak op te nemen."
         },
         {
-          "label":"Recording status message",
-          "default":"Recording..."
+          "label":"Statusbericht opnamen",
+          "default":"Opnamen..."
         },
         {
-          "label":"Paused status message",
-          "default":"Recording paused. Press a button to continue recording."
+          "label":"Statusbericht pauze",
+          "default":"Opname gepauzeerd. Druk op de knop om door te gaan met opnemen."
         },
         {
-          "label":"Finished recording status message",
-          "default":"You have successfully recorded your answer! Listen to the recording below."
+          "label":"Statusbericht opname afgerond",
+          "default":"Je opname is correct opgenomen! Luister hieronder naar je opname."
         },
         {
-          "label":"Download recording message",
-          "default":"Download this recording or retry."
+          "label":"Download opgenomen bericht",
+          "default":"Download deze opname of maak een nieuwe."
         },
         {
-          "label":"Retry dialog header text",
-          "default":"Retry recording?"
+          "label":"Koptekst opnieuw proberen",
+          "default":"Opnieuw proberen?"
         },
         {
-          "label":"Retry dialog body text",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "label":"Bodytekst opnieuw proberen",
+          "default":"Als je op \"Retry\" drukt, dan verlies je de huidige opname."
         },
         {
-          "label":"Retry dialog confirm text",
+          "label":"Bevestigingstekst opnieuw proberen",
           "default":"Opnieuw proberen"
         },
         {
-          "label":"Retry dialog cancel text",
+          "label":"Annuleringtekst opnieuw proberen",
           "default":"Annuleren"
         },
         {
