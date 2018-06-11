@@ -1,88 +1,88 @@
 {
-  "semantics":[
+  "semantics": [
     {
-      "label":"Beschreibung der Aufgabe",
-      "description":"Optionaler Text, der über dem Audio-Rekorder angezeigt wird"
+      "label": "Beschreibung der Aufgabe",
+      "description": "Optionaler Text, der über dem Audio-Rekorder angezeigt wird"
     },
     {
-      "label":"Lokalisierung",
-      "fields":[
+      "label": "Lokalisierung",
+      "fields": [
         {
-          "label":"Text des Aufnahme-Buttons",
-          "default":"Aufnahme"
+          "label": "Text des Aufnahme-Buttons",
+          "default": "Aufnahme"
         },
         {
-          "label":"Schaltflächentext Pause",
-          "default":"Pause"
+          "label": "Schaltflächentext Pause",
+          "default": "Pause"
         },
         {
-          "label":"Schaltflächentext Weiterfahren",
-          "default":"Fortfahren"
+          "label": "Schaltflächentext Weiterfahren",
+          "default": "Fortfahren"
         },
         {
-          "label":"Schaltflächentext herunterladen",
-          "default":"Herunterladen"
+          "label": "Schaltflächentext herunterladen",
+          "default": "Herunterladen"
         },
         {
-          "label":"Text des Fertig-Buttons",
-          "default":"Fertig"
+          "label": "Text des Fertig-Buttons",
+          "default": "Fertig"
         },
         {
-          "label":"Schaltflächentext wiederholen",
-          "default":"Wiederholen"
+          "label": "Schaltflächentext wiederholen",
+          "default": "Wiederholen"
         },
         {
-          "label":"Fehlermeldung Mikrofon wird nicht unterstützt",
-          "default":"Mikrofon nicht unterstützt. Stellen Sie sicher, dass Sie einen Browser benützen, der Mikrofon-Aufnahmen ermöglicht."
+          "label": "Fehlermeldung Mikrofon wird nicht unterstützt",
+          "default": "Mikrofon nicht unterstützt. Stellen Sie sicher, dass Sie einen Browser benützen, der Mikrofon-Aufnahmen ermöglicht."
         },
         {
-          "label":"Fehlermeldung Mikrofon nicht verfügbar",
-          "default":"Mikrofon ist nicht verfügbar. Stellen Sie sicher, dass das Browser-Mikrofon aktiviert ist."
+          "label": "Fehlermeldung Mikrofon nicht verfügbar",
+          "default": "Mikrofon ist nicht verfügbar. Stellen Sie sicher, dass das Browser-Mikrofon aktiviert ist."
         },
         {
-          "label":"Meldung, die angezeigt wird, wenn ein unsicherer Zugriff nicht erlaubt ist",
-          "description":"Einige Browser erlauben nicht das Mikrofon verwenden, wenn die Seite über HTTP bereitgestellt ist. Diese Meldung wird angezeigt, wenn das der Fall ist.",
-          "default":"Der Zugriff auf das Mikrofon ist in Ihrem Browser nicht freigegeben, da diese Seite mit HTTPS nicht erreichbar ist. Bitte kontaktieren Sie den Autor, und bitten Sie ihn, die Seiten über HTTPS zur Verfügung zu stellen."
+          "label": "Meldung, die angezeigt wird, wenn ein unsicherer Zugriff nicht erlaubt ist",
+          "description": "Einige Browser erlauben nicht das Mikrofon verwenden, wenn die Seite über HTTP bereitgestellt ist. Diese Meldung wird angezeigt, wenn das der Fall ist.",
+          "default": "Der Zugriff auf das Mikrofon ist in Ihrem Browser nicht freigegeben, da diese Seite mit HTTPS nicht erreichbar ist. Bitte kontaktieren Sie den Autor, und bitten Sie ihn, die Seiten über HTTPS zur Verfügung zu stellen."
         },
         {
-          "label":"Statusmeldung Aufnahmebereit",
-          "default":"Drücken Sie den unteren Knopf, um ihre Antwort aufzunehmen."
+          "label": "Statusmeldung Aufnahmebereit",
+          "default": "Drücken Sie den unteren Knopf, um ihre Antwort aufzunehmen."
         },
         {
-          "label":"Statusmeldung Aufnahme läuft",
-          "default":"Aufnahme..."
+          "label": "Statusmeldung Aufnahme läuft",
+          "default": "Aufnahme..."
         },
         {
-          "label":"Statusmeldung Pause",
-          "default":"Die Aufzeichnung wurde angehalten. Drücken Sie eine Taste um die Aufzeichnung fortzusetzen."
+          "label": "Statusmeldung Pause",
+          "default": "Die Aufzeichnung wurde angehalten. Drücken Sie eine Taste um die Aufzeichnung fortzusetzen."
         },
         {
-          "label":"Statusmeldung Aufnahme abgeschlossen",
-          "default":"Sie haben Ihre Aufnahme erfolgreich aufgezeichnet. Hören Sie Ihre Aufnahme an."
+          "label": "Statusmeldung Aufnahme abgeschlossen",
+          "default": "Sie haben Ihre Aufnahme erfolgreich aufgezeichnet. Hören Sie Ihre Aufnahme an."
         },
         {
-          "label":"Die Aufnahme herunterladen",
-          "default":"Aufnahme herunterladen oder wiederholen."
+          "label": "Die Aufnahme herunterladen",
+          "default": "Aufnahme herunterladen oder wiederholen."
         },
         {
-          "label":"Titeltext Aufnahme wiederholen",
-          "default":"Aufnahme wiederholen?"
+          "label": "Titeltext Aufnahme wiederholen",
+          "default": "Aufnahme wiederholen?"
         },
         {
-          "label":"Dialogbox Aufnahme wiederholen",
-          "default":"Durch Drücken der Taste \"Aufnahme wiederholen\" verlieren Sie Ihre aktuelle Aufnahme."
+          "label": "Dialogbox Aufnahme wiederholen",
+          "default": "Durch Drücken der Taste \"Aufnahme wiederholen\" verlieren Sie Ihre aktuelle Aufnahme."
         },
         {
-          "label":"Dialogbox Bestätigen",
-          "default":"Wiederholen"
+          "label": "Dialogbox Bestätigen",
+          "default": "Wiederholen"
         },
         {
-          "label":"Dialogbox Wiederholen abbrechen",
-          "default":"Abbrechen"
+          "label": "Dialogbox Wiederholen abbrechen",
+          "default": "Abbrechen"
         },
         {
-          "label":"Statusmeldung, dass die Audio-Datei nicht erstellt werden kann",
-          "default":"Die Audio-Datei kann nicht erstellt werden."
+          "label": "Statusmeldung, dass die Audio-Datei nicht erstellt werden kann",
+          "default": "Die Audio-Datei kann nicht erstellt werden."
         }
       ]
     }
