@@ -2,7 +2,7 @@
   "semantics":[
     {
       "label":"Consigne",
-      "description":"Texte facultatif affiché au dessus de l'enregistreur"
+      "description":"Texte facultatif affiché au dessus de l'enregistreur audio"
     },
     {
       "label":"Options et textes",
@@ -42,7 +42,7 @@
         {
           "label":"Message d'erreur lors d'un accès non sécurisé",
           "description":"Certains navigateurs n'autorisent pas l'utilisation du micro si la page n'est pas sécurisée avec HTTPS. Ce message apparaît si la page n'est pas sécurisée (HTTP).",
-          "default":"L'accès au micro n'est pas autorisé par votre navigateur car cette page n'utilise pas le protocole HTTPS. Contacter l'auteur pour lui demander de rendre ce contenu accessible en utilisant HTTPS"
+          "default":"L'accès au micro n'est pas autorisé par votre navigateur car cette page n'utilise pas le protocole HTTPS. Contacter l'auteur pour lui demander de rendre ce contenu accessible en utilisant HTTPS."
         },
         {
           "label":"Message à afficher avant l'enregistrement",
@@ -62,15 +62,15 @@
         },
         {
           "label":"Message pour le téléchargement",
-          "default":"Téléchargez l'enregistrement ou recommencez."
+          "default":"Téléchargez cet enregistrement ou recommencez."
         },
         {
           "label":"Titre du message \"Recommencer\"",
-          "default":"Recommencer l'enregistrement ?"
+          "default":"Recommencer cet enregistrement ?"
         },
         {
           "label":"Texte du message \"Recommencer\"",
-          "default":"En appuyant sur \"Recommencer\" vous effacerez l'enregistrement actuel."
+          "default":"En appuyant sur \"Recommencer\" vous effacerez cet enregistrement."
         },
         {
           "label":"Texte de confirmation pour \"Recommencer\"",
@@ -81,7 +81,7 @@
           "default":"Annuler"
         },
         {
-          "label":"Message d'erreur enregistrement",
+          "label":"Message d'erreur à la création de l'enregistrement",
           "default":"Impossible de créer le fichier audio."
         }
       ]
