@@ -1,18 +1,18 @@
 {
   "semantics":[
     {
-      "label":"Task Description",
-      "description":"Optional text to display above the audio recorder"
+      "label":"وصف المهمة",
+      "description":"نص اختياري لعرضه فوق مسجل الصوت"
     },
     {
-      "label":"Localization",
+      "label":"الموقع",
       "fields":[
         {
-          "label":"Record button text",
+          "label":"نص زر التسجيل",
           "default":"Record"
         },
         {
-          "label":"Pause button text",
+          "label":"نص زر الايقاف",
           "default":"Pause"
         },
         {
@@ -20,68 +20,68 @@
           "default":"Continue"
         },
         {
-          "label":"Download button text",
+          "label":"نص زر التنزيل",
           "default":"Download"
         },
         {
-          "label":"Done button text",
+          "label":"نص زر تم",
           "default":"Done"
         },
         {
-          "label":"Retry button text",
+          "label":"نص زر اعادة المحاولة",
           "default":"Retry"
         },
         {
-          "label":"Microphone not supported error message",
+          "label":"رسالة خطأ الميكرفون غير مدعوم",
           "default":"Microphone not supported. Make sure you are using a browser that allows microphone recording."
         },
         {
-          "label":"Microphone inaccessible error message",
+          "label":"رسالة خطا يتعذر الوصول الى الميكرفون",
           "default":"Microphone is not accessible. Make sure that the browser microphone is enabled."
         },
         {
-          "label":"Message displayed when insecure access is not allowed",
-          "description":"Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
+          "label":"الرسالة التي تعرض عندما لا يُسمح بالوصول غير الآمن",
+          "description":"لا تسمح بعض المتصفحات باستخدام الميكروفون عند عرض الصفحة باستخدام HTTP. سيتم عرض هذه الرسالة إذا كانت هذه هي الحالة",
           "default":"Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
         },
         {
-          "label":"Ready to record status message",
+          "label":"جاهز لتسجيل رسالة الحالة",
           "default":"Press a button below to record your answer."
         },
         {
-          "label":"Recording status message",
+          "label":"تسجيل رسالة الحالة",
           "default":"Recording..."
         },
         {
-          "label":"Paused status message",
+          "label":"توقف رسالة الحالة",
           "default":"Recording paused. Press a button to continue recording."
         },
         {
-          "label":"Finished recording status message",
+          "label":"انتهاء تسجيل رسالة الحالة",
           "default":"You have successfully recorded your answer! Listen to the recording below."
         },
         {
-          "label":"Download recording message",
+          "label":"رسالة تحميل التسجيل",
           "default":"Download this recording or retry."
         },
         {
-          "label":"Retry dialog header text",
+          "label":"نص اعادة محاولة بداية الحوار",
           "default":"Retry recording?"
         },
         {
-          "label":"Retry dialog body text",
+          "label":"نص اعادة محاولة الحوار",
           "default":"By pressing \"Retry\" you will loose your current recording."
         },
         {
-          "label":"Retry dialog confirm text",
+          "label":"نص تاكيد مربع حوار اعادة المحاولة",
           "default":"Retry"
         },
         {
-          "label":"Retry dialog cancel text",
+          "label":"نص الغاء مربع حوار اعادة المحاولة",
           "default":"Cancel"
         },
         {
-          "label":"Can't create audio file status message",
+          "label":"رسالة حالة لا يمكن انشاء ملف صوتي",
           "default":"Can't create the audio file."
         }
       ]
