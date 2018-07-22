@@ -1,5 +1,5 @@
 {
-  "semantics":[
+  "semantics": [
     {
       "label":"وصف المهمة",
       "description":"نص اختياري لعرضه فوق مسجل الصوت"
@@ -16,8 +16,8 @@
           "default":"Pause"
         },
         {
-          "label":"Continue button text",
-          "default":"Continue"
+          "label": "Continue button text",
+          "default": "Continue"
         },
         {
           "label":"نص زر التنزيل",
