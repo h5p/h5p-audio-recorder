@@ -8,76 +8,76 @@
       "label": "Lokalisierung",
       "fields": [
         {
-          "label": "Text des Aufnahme-Buttons",
+          "label": "Text für den Aufnahme-Button",
           "default": "Aufnahme"
         },
         {
-          "label": "Schaltflächentext Pause",
+          "label": "Text für den Pause-Button",
           "default": "Pause"
         },
         {
-          "label": "Schaltflächentext Weiterfahren",
+          "label": "Text für den Fortfahren-Button",
           "default": "Fortfahren"
         },
         {
-          "label": "Schaltflächentext herunterladen",
+          "label": "Text für den Herunterladen-Button",
           "default": "Herunterladen"
         },
         {
-          "label": "Text des Fertig-Buttons",
+          "label": "Text für den Fertig-Buttons",
           "default": "Fertig"
         },
         {
-          "label": "Schaltflächentext wiederholen",
+          "label": "Text für den Wiederholen-Button",
           "default": "Wiederholen"
         },
         {
-          "label": "Fehlermeldung Mikrofon wird nicht unterstützt",
-          "default": "Mikrofon nicht unterstützt. Stellen Sie sicher, dass Sie einen Browser benützen, der Mikrofon-Aufnahmen ermöglicht."
+          "label": "Fehlermeldung: Mikrofon wird nicht unterstützt",
+          "default": "Das Mikrofon wird nicht unterstützt. Stelle sicher, dass du einen Browser benutzt, der Mikrofon-Aufnahmen ermöglicht."
         },
         {
-          "label": "Fehlermeldung Mikrofon nicht verfügbar",
-          "default": "Mikrofon ist nicht verfügbar. Stellen Sie sicher, dass das Browser-Mikrofon aktiviert ist."
+          "label": "Fehlermeldung: Mikrofon nicht verfügbar",
+          "default": "Das Mikrofon ist nicht verfügbar. Stelle sicher, dass das Mikrofon aktiviert ist."
         },
         {
           "label": "Meldung, die angezeigt wird, wenn ein unsicherer Zugriff nicht erlaubt ist",
-          "description": "Einige Browser erlauben nicht das Mikrofon verwenden, wenn die Seite über HTTP bereitgestellt ist. Diese Meldung wird angezeigt, wenn das der Fall ist.",
-          "default": "Der Zugriff auf das Mikrofon ist in Ihrem Browser nicht freigegeben, da diese Seite mit HTTPS nicht erreichbar ist. Bitte kontaktieren Sie den Autor, und bitten Sie ihn, die Seiten über HTTPS zur Verfügung zu stellen."
+          "description": "Einige Browser erlauben nicht das Mikrofon zu verwenden, wenn die Seite über HTTP bereitgestellt wird. Diese Meldung wird angezeigt, wenn das der Fall ist.",
+          "default": "Der Zugriff auf das Mikrofon ist in deinem Browser nicht freigegeben, da diese Seite mit HTTPS nicht erreichbar ist. Bitte kontaktiere den Autor, und bitte ihn, die Seiten über HTTPS zur Verfügung zu stellen."
         },
         {
-          "label": "Statusmeldung Aufnahmebereit",
-          "default": "Drücken Sie den unteren Knopf, um ihre Antwort aufzunehmen."
+          "label": "Statusmeldung: Aufnahmebereit",
+          "default": "Drücke den unteren Knopf, um deine Antwort aufzunehmen."
         },
         {
-          "label": "Statusmeldung Aufnahme läuft",
-          "default": "Aufnahme..."
+          "label": "Statusmeldung: Aufnahme läuft",
+          "default": "Aufnahme ..."
         },
         {
           "label": "Statusmeldung Pause",
-          "default": "Die Aufzeichnung wurde angehalten. Drücken Sie eine Taste um die Aufzeichnung fortzusetzen."
+          "default": "Die Aufzeichnung wurde angehalten. Drücke eine Taste, um die Aufzeichnung fortzusetzen."
         },
         {
           "label": "Statusmeldung Aufnahme abgeschlossen",
-          "default": "Sie haben Ihre Aufnahme erfolgreich aufgezeichnet. Hören Sie Ihre Aufnahme an."
+          "default": "Du hast deine Aufnahme erfolgreich aufgezeichnet. Höre die deine Aufnahme an."
         },
         {
           "label": "Die Aufnahme herunterladen",
           "default": "Aufnahme herunterladen oder wiederholen."
         },
         {
-          "label": "Titeltext Aufnahme wiederholen",
+          "label": "Titelzeile für \"Aufnahme wiederholen\"",
           "default": "Aufnahme wiederholen?"
         },
         {
-          "label": "Dialogbox Aufnahme wiederholen",
-          "default": "Durch Drücken der Taste \"Aufnahme wiederholen\" verlieren Sie Ihre aktuelle Aufnahme."
+          "label": "Dialogbox \"Aufnahme wiederholen\"",
+          "default": "Durch Drücken der Taste \"Aufnahme wiederholen\" verlierst du deine aktuelle Aufnahme."
         },
         {
-          "label": "Dialogbox Bestätigen",
+          "label": "Dialogbox \"Wiederholen\"",
           "default": "Wiederholen"
         },
         {
-          "label": "Dialogbox Wiederholen abbrechen",
+          "label": "Dialogbox \"Abbrechen\"",
           "default": "Abbrechen"
         },
         {
