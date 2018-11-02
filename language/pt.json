@@ -1,88 +1,88 @@
 {
   "semantics": [
     {
-      "label": "Task Description",
-      "description": "Optional text to display above the audio recorder"
+      "label": "Descrição da atividade",
+      "description": "Texto opcional para mostrar acima do gravador de áudio"
     },
     {
-      "label": "Localization",
+      "label": "Localizar",
       "fields": [
         {
-          "label": "Record button text",
-          "default": "Record"
+          "label": "Texto do botão gravar",
+          "default": "Gravar"
         },
         {
-          "label": "Pause button text",
-          "default": "Pause"
+          "label": "Texto do botão pausa",
+          "default": "Pausa"
         },
         {
-          "label": "Continue button text",
-          "default": "Continue"
+          "label": "Texto do botão continuar",
+          "default": "Continuar"
         },
         {
-          "label": "Download button text",
-          "default": "Download"
+          "label": "Texto do botão descarregar",
+          "default": "Descarregar"
         },
         {
-          "label": "Done button text",
-          "default": "Done"
+          "label": "Texto do botão concluir",
+          "default": "Concluir"
         },
         {
-          "label": "Retry button text",
-          "default": "Retry"
+          "label": "Texto do botão repetir",
+          "default": "Repetir"
         },
         {
-          "label": "Microphone not supported error message",
-          "default": "Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label": "Mensagem de erro de microfone não suportado",
+          "default": "Microfone não suportado. Verifique se está a utilizar um browser que permita a captura de áudio."
         },
         {
-          "label": "Microphone inaccessible error message",
-          "default": "Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label": "Mensagem de microfone inacessível",
+          "default": "Não foi possível aceder ao microfone. Verifique o microfone se encontra ativado no seu browser."
         },
         {
-          "label": "Message displayed when insecure access is not allowed",
-          "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label": "Mensagem a mostrar quando o acesso inseguro está desabilitado",
+          "description": "Alguns browsers só permitem a utilização do microfone se a página tiver certificado de segurança. Esta mensagem será mostrada nesse caso.",
+          "default": "A utilização de microfone neste site só é permitida sobre HTTPS (certificado de segurança). Contacte o administrador do seu site."
         },
         {
-          "label": "Ready to record status message",
-          "default": "Press a button below to record your answer."
+          "label": "Mensagem de pronto para gravar",
+          "default": "Carregue no botão para gravar a sua resposta."
         },
         {
-          "label": "Recording status message",
-          "default": "Recording..."
+          "label": "Mensagem de gravação em curso",
+          "default": "A gravar..."
         },
         {
-          "label": "Paused status message",
-          "default": "Recording paused. Press a button to continue recording."
+          "label": "Mensagem de pausa",
+          "default": "Gravação em pausa. Carregue no botão para continuar a gravar."
         },
         {
-          "label": "Finished recording status message",
-          "default": "You have successfully recorded your answer! Listen to the recording below."
+          "label": "Mensagem de gravação concluída",
+          "default": "Concluiu com sucesso a gravação da sua resposta. Agora pode ouvir o que gravou."
         },
         {
-          "label": "Download recording message",
-          "default": "Download this recording or retry."
+          "label": "Mensagem de descarregar gravação",
+          "default": "Descarregue esta gravação ou repita a gravação."
         },
         {
-          "label": "Retry dialog header text",
-          "default": "Retry recording?"
+          "label": "Título da caixa de diálogo de repetir gravação",
+          "default": "Repetir gravação?"
         },
         {
-          "label": "Retry dialog body text",
-          "default": "By pressing \"Retry\" you will loose your current recording."
+          "label": "Texto da caixa de diálogo de repetir gravação",
+          "default": "Ao pressionar \"Repetir\" para voltar a gravar vai perder a gravação anterior."
         },
         {
-          "label": "Retry dialog confirm text",
-          "default": "Retry"
+          "label": "Texto de confirmação da caixa de diálogo da repetição",
+          "default": "Repetir"
         },
         {
-          "label": "Retry dialog cancel text",
-          "default": "Cancel"
+          "label": "Texto de cancelamento da caixa de diálogo da repetição",
+          "default": "Cancelar"
         },
         {
-          "label": "Can't create audio file status message",
-          "default": "Can't create the audio file."
+          "label": "Mensagem de falha na criação de ficheiro áudio",
+          "default": "Não foi possível criar o ficheiro de áudio."
         }
       ]
     }
