@@ -70,7 +70,7 @@
         },
         {
           "label":"نص اعادة محاولة الحوار",
-          "default":"By pressing \"Retry\" you will loose your current recording."
+          "default":"By pressing \"Retry\" you will lose your current recording."
         },
         {
           "label":"نص تاكيد مربع حوار اعادة المحاولة",

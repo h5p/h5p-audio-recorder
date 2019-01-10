@@ -70,7 +70,7 @@
         },
         {
           "label": "Retry dialog body text",
-          "default": "By pressing \"Retry\" you will loose your current recording."
+          "default": "By pressing \"Retry\" you will lose your current recording."
         },
         {
           "label": "Retry dialog confirm text",
