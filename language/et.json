@@ -1,8 +1,8 @@
-{
+Ôªø{
   "semantics": [
     {
       "label": "Tegevuse kirjeldus",
-      "description": "Helisalvesti kohal n‰idatav valikuline tekst (ei ole kohustuslik)"
+      "description": "Helisalvesti kohal n√§idatav valikuline tekst (ei ole kohustuslik)"
     },
     {
       "label": "Kohandamine",
@@ -16,8 +16,8 @@
           "default": "Paus"
         },
         {
-          "label": "J‰tka nupu tekst",
-          "default": "J‰tka"
+          "label": "J√§tka nupu tekst",
+          "default": "J√§tka"
         },
         {
           "label": "Allalaadimisnupu tekst",
@@ -33,16 +33,16 @@
         },
         {
           "label": "Veateate mikrofon ei ole toetatud tekst",
-          "default": "Mikrofon ei ole toetatud. Veendu, et kasutad brauserit, mis vıimaldab salvestamiseks mikrofoni kasutamist."
+          "default": "Mikrofon ei ole toetatud. Veendu, et kasutad brauserit, mis v√µimaldab salvestamiseks mikrofoni kasutamist."
         },
         {
           "label": "Veateate mikrofon ei ole kasutatav tekst",
           "default": "Mikrofoni ei saa kasutada. Veendu, et brauseril on lubatud mikrofoni kasutada."
         },
         {
-          "label": "Keelatud turvamata juurdep‰‰su teade",
-          "description": "Mıned brauserid ei luba mikrofoni kasutada, kui lehek¸lg kasutab HTTP protokolli. Sellisel juhul n‰idatakse seda teadet.",
-          "default": "Brauser ei vıimalda mikrofoni kasutada, sest seda lehek¸lge ei avatud turvalise HTTPS protokolli abil. Palun vıta ¸hendust lehe autoriga ja palu tal teha leht k‰ttesaadavaks HTTPS protokolli abil."
+          "label": "Keelatud turvamata juurdep√§√§su teade",
+          "description": "M√µned brauserid ei luba mikrofoni kasutada, kui lehek√ºlg kasutab HTTP protokolli. Sellisel juhul n√§idatakse seda teadet.",
+          "default": "Brauser ei v√µimalda mikrofoni kasutada, sest seda lehek√ºlge ei avatud turvalise HTTPS protokolli abil. Palun v√µta √ºhendust lehe autoriga ja palu tal teha leht k√§ttesaadavaks HTTPS protokolli abil."
         },
         {
           "label": "Salvestamiseks valmis oleku teade",
@@ -54,34 +54,34 @@
         },
         {
           "label": "Pausioleku teade",
-          "default": "Salvestamispaus. Salvestamise j‰tkamiseks vajuta nuppu."
+          "default": "Salvestamispaus. Salvestamise j√§tkamiseks vajuta nuppu."
         },
         {
-          "label": "Salvestamine lıpetatud oleku sınum",
+          "label": "Salvestamine l√µpetatud oleku s√µnum",
           "default": "Oled oma vastuse edukalt salvestanud! Kuula salvestust allpool."
         },
         {
           "label": "Salvestuse allalaadimise teade",
-          "default": "Laadi see salvestus alla vıi proovi uuesti."
+          "default": "Laadi see salvestus alla v√µi proovi uuesti."
         },
         {
-          "label": "Proovi uuesti dialoogi p‰isetekst",
+          "label": "Proovi uuesti dialoogi p√§isetekst",
           "default": "Kas proovida uuesti salvestada?"
         },
         {
           "label": "Proovi uuesti dialoogi sisutekst",
-          "default": "Kui vajutad \"Proovi uuesti\", siis l‰heb jooksev salvestus kaduma."
+          "default": "Kui vajutad \"Proovi uuesti\", siis l√§heb jooksev salvestus kaduma."
         },
         {
           "label": "Proovi uuesti dialoogi kinnitustekst",
           "default": "Proovi uuesti"
         },
         {
-          "label": "Proovi uuesti t¸histustekst",
+          "label": "Proovi uuesti t√ºhistustekst",
           "default": "Ei proovi"
         },
         {
-          "label": "Helifaili loomise tırke oleku teade",
+          "label": "Helifaili loomise t√µrke oleku teade",
           "default": "Ei saa helifaili luua."
         }
       ]
