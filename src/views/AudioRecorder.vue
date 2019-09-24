@@ -147,6 +147,15 @@
   $screen-small: 576px;
   $record-button-width: 8.2em;
 
+  @mixin blueGlow {
+    outline: 0;
+    box-shadow: 0.06em 0 0.6em 0.1em lighten(#0a78d1, 30%);
+  }
+
+  .h5p-content:not(.using-mouse) .h5p-audio-recorder-view .button:focus {
+    @include blueGlow
+  }
+
   .h5p-audio-recorder-view {
     font-size: 1em;
     padding: 0.9em;
@@ -304,11 +313,6 @@
       }
     }
 
-    @mixin blueGlow {
-      outline: 0;
-      box-shadow: 0.06em 0 0.6em 0.1em lighten(#0a78d1, 30%);
-    }
-
     .button {
       font-size: 1.042em;
       font-family: 'Open Sans', sans-serif;
@@ -324,10 +328,6 @@
 
       [class^="fa-"] {
         font-weight: 400;
-      }
-
-      &:focus {
-        @include blueGlow
       }
 
       &.small {
