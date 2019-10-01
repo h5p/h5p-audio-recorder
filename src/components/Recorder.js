@@ -92,6 +92,8 @@ export default class Recorder extends H5P.EventDispatcher {
 
     const loadAudioUrl = new Promise((resolve, reject) => {
       this.once('wav-delivered', e => {
+        console.log('Uploading audio to the server...')
+        this._uploadAudioToServer(e.data);
         resolve(URL.createObjectURL(e.data));
       });
 
@@ -105,6 +107,17 @@ export default class Recorder extends H5P.EventDispatcher {
     });
 
     return loadAudioUrl;
+  }
+
+  _uploadAudioToServer(blob) {
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = function() {
+        const base64data = reader.result;
+        dispatchEvent(new CustomEvent('tapestry-h5p-audio-recorder', { 
+          detail: { base64data }
+        }));
+    }
   }
 
   /**

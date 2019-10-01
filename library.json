@@ -2,7 +2,7 @@
   "title": "Audio Recorder",
   "description": "Record audio and download it",
   "machineName": "H5P.AudioRecorder",
-  "majorVersion": 1,
+  "majorVersion": 2,
   "minorVersion": 0,
   "patchVersion": 15,
   "runnable": 1,
