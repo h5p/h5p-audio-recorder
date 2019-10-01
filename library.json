@@ -1,8 +1,8 @@
 {
-  "title": "Audio Recorder",
+  "title": "Audio Recorder Saver",
   "description": "Record audio and download it",
-  "machineName": "H5P.AudioRecorder",
-  "majorVersion": 2,
+  "machineName": "H5P.AudioRecorderSaver",
+  "majorVersion": 1,
   "minorVersion": 0,
   "patchVersion": 15,
   "runnable": 1,
