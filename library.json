@@ -11,6 +11,11 @@
   "embedTypes": [
     "iframe"
   ],
+  "preloadedCss": [
+    {
+      "path": "fonts/h5p-audio-recorder-font-open-sans.css"
+    }
+  ],
   "preloadedJs": [
     {
       "path": "dist/h5p-audio-recorder.js"
