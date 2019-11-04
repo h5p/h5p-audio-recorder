@@ -92,7 +92,19 @@ export default class Recorder extends H5P.EventDispatcher {
 
     const loadAudioUrl = new Promise((resolve, reject) => {
       this.once('wav-delivered', e => {
-        resolve(URL.createObjectURL(e.data));
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          var reader = new FileReader();
+    
+          reader.onload = (e) => {
+            resolve(reader.result);
+          }
+          reader.readAsDataURL(e.data);
+        }
+        else {
+          resolve(URL.createObjectURL(e.data));
+        }
       });
 
       this.once('worker-error', e => {
