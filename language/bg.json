@@ -12,77 +12,77 @@
           "default": "Запис"
         },
         {
-          "label": "Pause button text",
-          "default": "Pause"
+          "label": "Текст за бутона за пауза",
+          "default": "Пауза"
         },
         {
-          "label": "Continue button text",
-          "default": "Continue"
+          "label": "Текст за бутона за продължаване",
+          "default": "Продължаване"
         },
         {
-          "label": "Download button text",
-          "default": "Download"
+          "label": "Текст за бутона за изтегляне",
+          "default": "Изтегляне"
         },
         {
-          "label": "Done button text",
-          "default": "Done"
+          "label": "Текст за бутона за готово",
+          "default": "Готово"
         },
         {
-          "label": "Retry button text",
-          "default": "Retry"
+          "label": "Текст за бутона за повторен опит",
+          "default": "Повторен опит"
         },
         {
-          "label": "Microphone not supported error message",
-          "default": "Microphone not supported. Make sure you are using a browser that allows microphone recording."
+          "label": "Съобщение за грешка, че микрофонът не се поддържа",
+          "default": "Микрофонът не се поддържа. Уверете се, че използвате браузър, който позволява запис на микрофон."
         },
         {
-          "label": "Microphone inaccessible error message",
-          "default": "Microphone is not accessible. Make sure that the browser microphone is enabled."
+          "label": "Съобщение за грешка, че микрофонът не е достъпен",
+          "default": "Микрофонът не е достъпен. Уверете се, че микрофонът на браузъра е активиран."
         },
         {
-          "label": "Message displayed when insecure access is not allowed",
-          "description": "Some browsers do not allow using the microphone when the page is served using HTTP. This message will be displayed if that is the case",
-          "default": "Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS"
+          "label": "Съобщение, което се показва, когато не е разрешен незащитен достъп",
+          "description": "Някои браузъри не позволяват използването на микрофона, когато страницата се обслужва с HTTP. Това съобщение ще се покаже, ако случаят е такъв",
+          "default": "Достъпът до микрофон не е разрешен във вашия браузър, тъй като тази страница не се обслужва с HTTPS. Моля, свържете се с автора и го помолете да я направи достъпна чрез HTTPS"
         },
         {
-          "label": "Ready to record status message",
-          "default": "Press a button below to record your answer."
+          "label": "Съобщение за състояние - Готовност за запис",
+          "default": "Натиснете бутона отдолу, за да запишете отговора си."
         },
         {
-          "label": "Recording status message",
-          "default": "Recording..."
+          "label": "Съобщение за състояние - Запис",
+          "default": "Запис..."
         },
         {
-          "label": "Paused status message",
-          "default": "Recording paused. Press a button to continue recording."
+          "label": "Съобщение за състояние - Пауза",
+          "default": "Записът е на пауза. Натиснете бутона, за да продължите записа."
         },
         {
-          "label": "Finished recording status message",
-          "default": "You have successfully recorded your answer! Listen to the recording below."
+          "label": "Съобщение за състояние - Завършен запис",
+          "default": "Успешно записахте отговора си! Чуйте записа по-долу."
         },
         {
-          "label": "Download recording message",
-          "default": "Download this recording or retry."
+          "label": "Съобщение за изтегляне на запис",
+          "default": "Изтеглете този запис или опитайте отново."
         },
         {
-          "label": "Retry dialog header text",
-          "default": "Retry recording?"
+          "label": "Заглавен текст на диалога за повторен запис",
+          "default": "Повторен запис?"
         },
         {
-          "label": "Retry dialog body text",
-          "default": "By pressing \"Retry\" you will lose your current recording."
+          "label": "Основен текст на диалога за повторен запис",
+          "default": "С натискане на \"Повторен опит\" ще загубите текущия си запис."
         },
         {
-          "label": "Retry dialog confirm text",
-          "default": "Retry"
+          "label": "Текст за потвърждение на диалога за повторен запис",
+          "default": "Повторен опит"
         },
         {
-          "label": "Retry dialog cancel text",
-          "default": "Cancel"
+          "label": "Текст за отказ на диалога за повторен запис",
+          "default": "Отказ"
         },
         {
-          "label": "Can't create audio file status message",
-          "default": "Can't create the audio file."
+          "label": "Съобщение за състояние - Аудио файлът не може да бъде създаден",
+          "default": "Аудио файлът не може да бъде създаден."
         }
       ]
     }
