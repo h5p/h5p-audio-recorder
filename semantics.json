@@ -12,6 +12,7 @@
     "label": "Localization",
     "name": "l10n",
     "type": "group",
+    "common": true,
     "fields": [
       {
         "name": "recordAnswer",
