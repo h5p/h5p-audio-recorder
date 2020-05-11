@@ -24,7 +24,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "browser-env": "^2.0.30",
     "cross-env": "^4.0.0",
-    "css-loader": "^0.26.2",
+    "css-loader": "^3.5.3",
     "extract-text-webpack-plugin": "^2.0.0",
     "node-sass": "^4.14.1",
     "raw-loader": "^0.5.1",
