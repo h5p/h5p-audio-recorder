@@ -4,7 +4,7 @@
 
     <div v-if="state !== 'done'  && title" class="title" v-html="title" />
 
-    <div role="status" v-bind:class="state">{{statusMessages[state] | unEscape}}</div>
+    <div role="status" v-bind:class="state" v-html="statusMessages[state]" />
 
     <div class="h5p-audio-recorder-player" v-if="state === 'done' && audioSrc !== ''">
       <audio controls="controls">
