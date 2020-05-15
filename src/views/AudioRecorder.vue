@@ -2,7 +2,7 @@
   <div class="h5p-audio-recorder-view">
     <vuMeter :avgMicFrequency="avgMicFrequency" :enablePulse="state === 'recording'"></vuMeter>
 
-    <div v-if="state !== 'done'  && title" class="title">{{ title }}</div>
+    <div v-if="state !== 'done'  && title" class="title" v-html="title" />
 
     <div role="status" v-bind:class="state">{{statusMessages[state] | unEscape}}</div>
 
