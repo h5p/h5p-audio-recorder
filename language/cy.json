@@ -65,24 +65,24 @@
           "default": "Lawrlwythwch y recordiad hwn neu ailgeisiwch."
         },
         {
-          "label": "Retry dialog header text",
-          "default": "Retry recording?"
+          "label": "Testun pennyn y deialog ailgeisio",
+          "default": "Ailgiesio recordio?"
         },
         {
-          "label": "Retry dialog body text",
-          "default": "By pressing \"Retry\" you will lose your current recording."
+          "label": "Testun corff y deialog ailgeisio",
+          "default": "Gan bwyso \"Ailgeisio\" byddwch yn colli eich recordiad cyfredol."
         },
         {
-          "label": "Retry dialog confirm text",
-          "default": "Retry"
+          "label": "Testun cadarnhau y deialog ailgeisio",
+          "default": "Ailgeisio"
         },
         {
-          "label": "Retry dialog cancel text",
-          "default": "Cancel"
+          "label": "Testun diddymu'r deialog ailgeisio",
+          "default": "Diddymu"
         },
         {
-          "label": "Can't create audio file status message",
-          "default": "Can't create the audio file."
+          "label": "Neges statws methu â chreu ffeil sain",
+          "default": "Methu â chreu'r ffeil sain."
         }
       ]
     }
