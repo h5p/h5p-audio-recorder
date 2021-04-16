@@ -41,11 +41,11 @@
         },
         {
           "label": "Mensaje mostrado cuando no está permitido el acceso inseguro",
-          "description": "Algunos navegadores no permitenusar el micrófono cuando lapágina es servida usando HTTP. Este mensaje será mostrado si ese fuera el caso",
+          "description": "Algunos navegadores no permiten usar el micrófono cuando la página es servida usando HTTP. Este mensaje será mostrado si ese fuera el caso",
           "default": "Acceso al micrófono no está permitido en su navegador porque esta página no es servida usando HTTPS. Por favor póngase en contacto con el autor, y pídale que haga esto disponible usando HTTPS"
         },
         {
-          "label": "Mensaje de estado Listo para grabar",
+          "label": "Mensaje de estado para Listo para grabar",
           "default": "Presione un botón debajo para grabar su respuesta."
         },
         {
@@ -53,11 +53,11 @@
           "default": "Grabando..."
         },
         {
-          "label": "Mensaje de estado Pausado",
+          "label": "Mensaje de estado para Pausado",
           "default": "Grabación pausada. Presione un botón para continuar grabando."
         },
         {
-          "label": "Mensaje de estado Grabación terminada",
+          "label": "Mensaje de estado para Grabación terminada",
           "default": "¡Usted ha grabado exitosamente su respuesta! Oiga la grabación debajo."
         },
         {
