@@ -46,7 +46,7 @@
         },
         {
           "label": "Ready to record status message",
-          "default": "Press a button below to record your answer."
+          "default": "Press the button below to record your answer."
         },
         {
           "label": "Recording status message",
