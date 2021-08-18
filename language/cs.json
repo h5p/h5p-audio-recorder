@@ -1,15 +1,15 @@
 {
   "semantics": [
     {
-      "label": "Task Popis",
-      "description": "Volitelný text, který se  zobrazí nad zvukovým záznamníkem"
+      "label": "Popis úlohy",
+      "description": "Volitelný text, který se zobrazí nad zvukovým záznamníkem"
     },
     {
       "label": "Lokalizace",
       "fields": [
         {
-          "label": "Text tlačítka Nahrávání",
-          "default": "Nahrávání"
+          "label": "Text tlačítka Nahrát",
+          "default": "Nahrát"
         },
         {
           "label": "Text tlačítka Pozastavit",
@@ -36,7 +36,7 @@
           "default": "Mikrofon není podporován. Ujistěte se, že používáte prohlížeč, který umožňuje nahrávání mikrofonem."
         },
         {
-          "label": "Chybová zpráva nepřístupný mikrofon ",
+          "label": "Chybová zpráva nepřístupný mikrofon",
           "default": "Mikrofon není přístupný. Ujistěte se, že je v prohlížeči povolen mikrofon."
         },
         {
@@ -70,7 +70,7 @@
         },
         {
           "label": "Text těla dialogu opakovat",
-          "default": "Stisknutím  \"Opakovat\" ztratíte aktuální nahrávku."
+          "default": "Stisknutím \"Opakovat\" ztratíte aktuální nahrávku."
         },
         {
           "label": "Text potvrzení dialogu opakovat",
