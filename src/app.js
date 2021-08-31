@@ -4,6 +4,7 @@ import VUMeter from './views/VUMeter.vue';
 import Timer from './views/Timer.vue';
 import Recorder from 'components/Recorder';
 import State from 'components/State';
+import Util from 'components/Util';
 
 const AUDIO_SRC_NOT_SPECIFIED = '';
 
