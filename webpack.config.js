@@ -3,7 +3,6 @@ const webpack = require('webpack');
 
 const config = {
   entry: "./src/entries/dist.js",
-  devtool: 'inline-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: "h5p-audio-recorder.js",
