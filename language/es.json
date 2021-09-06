@@ -46,7 +46,7 @@
         },
         {
           "label": "Mensaje de estado para Listo para grabar",
-          "default": "Presione un botón debajo para grabar su respuesta."
+          "default": "Presione el botón inferior para grabar su respuesta."
         },
         {
           "label": "Mensaje de estado Grabando",
