@@ -76,7 +76,8 @@ export default class {
       l10n: params.l10n,
       audioSrc: AUDIO_SRC_NOT_SPECIFIED,
       audioFilename: '',
-      avgMicFrequency: 0
+      avgMicFrequency: 0,
+      isSubcontent: !this.isRoot()
     });
 
     // Create recording wrapper view

@@ -122,6 +122,28 @@
       },
 
       retry: function() {
+        let dialogParent = this.$el;
+
+        /*
+         * If AudioRecorder is subcontent, the dialog may be hidden behind
+         * other elements if it is not attached to the h5p-content element
+         */
+        if (this.isSubcontent) {
+          const findH5PContent = function(element) {
+            if (!element) {
+              return null;
+            }
+            else if (element.className.indexOf('h5p-content') !== -1) {
+              return element;
+            }
+            else {
+              return findH5PContent(element.parentNode);
+            }
+          }
+
+          dialogParent = findH5PContent(this.$el) || this.$el;
+        }
+
         const dialog = new H5P.ConfirmationDialog(
           {
             headerText: this.l10n.retryDialogHeaderText,
@@ -130,7 +152,7 @@
             confirmText: this.l10n.retryDialogConfirmText
           }
         );
-        dialog.appendTo(this.$el);
+        dialog.appendTo(dialogParent);
         dialog.show();
         dialog.on('confirmed', () => {
           this.state = State.READY;
