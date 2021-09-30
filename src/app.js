@@ -88,6 +88,11 @@ export default class {
       }
     });
 
+    // Resize player view
+    this.on('resize', () => {
+      viewModel.resize();
+    });
+
     // resize iframe on state change
     viewModel.$watch('state', () => this.trigger('resize'));
 
