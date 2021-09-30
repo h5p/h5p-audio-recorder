@@ -6,6 +6,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 const config = {
   mode: nodeEnv,
   entry: "./src/entries/dist.js",
+  devtool: (nodeEnv === 'production') ? undefined : 'inline-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: "h5p-audio-recorder.js",
