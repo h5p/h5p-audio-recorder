@@ -42,15 +42,15 @@
         {
           "label": "Getoond bericht als de toegang niet is verleend in verband een onveilige verbinding",
           "description": "Sommige browsers staan het gebruik van de microfoon niet toe als de pagina toegankelijk is via HTTP. Als dit het geval is, wordt dit bericht getoond",
-          "default": "Doordat deze pagina geen gebruik maakt van HTTPS, heb je geen toegang tot je microfoon. Neem contact op met de auteur en vraag om dit beschikbaar te maken via HTTPS."
+          "default": "Doordat deze pagina geen gebruik maakt van HTTPS, heb je geen toegang tot je microfoon. Neem contact op met de auteur en vraag om dit beschikbaar te maken via HTTPS"
         },
         {
           "label": "Statusbericht klaar om op te nemen",
-          "default": "Druk op de onderstaande knop om je spraak op te nemen."
+          "default": "Druk op de onderstaande knop om je antwoord op te nemen."
         },
         {
           "label": "Statusbericht opnamen",
-          "default": "Opnamen..."
+          "default": "Opnemen..."
         },
         {
           "label": "Statusbericht pauze",
