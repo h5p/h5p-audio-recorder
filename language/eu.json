@@ -42,7 +42,7 @@
         {
           "label": "Segurua ez den sarrera saioa onartzen ez denaren mezua",
           "description": "Zenbait nabigatzailek ez dute onartzen mikrofonorik orria HTTP zerbitzari batek hornitzen badu. Mezu hau bistaratuko da hau bada kasua",
-          "default": "Zure nabigatzaileak ez du mikrofonoaren erabilera onartzen  orria ez bada HTTPS bidez hornitzen. Jarri kontaktuan egilearekin eta eskatu iezaiozu erabiltzeko HTTPS."
+          "default": "Zure nabigatzaileak ez du mikrofonoaren erabilera onartzen orria ez bada HTTPS bidez hornitzen. Jarri kontaktuan egilearekin eta eskatu iezaiozu erabiltzeko HTTPS"
         },
         {
           "label": "Grabatzeko prest egoeraren mezua",
