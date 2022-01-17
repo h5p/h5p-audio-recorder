@@ -1,4 +1,4 @@
 {
-  "presets": ["latest", "stage-3"],
-  "plugins": ["transform-object-assign", "transform-object-rest-spread"]
+  "presets": ["@babel/preset-env"],
+  "plugins": ["@babel/plugin-transform-object-assign", "transform-object-rest-spread"]
 }
