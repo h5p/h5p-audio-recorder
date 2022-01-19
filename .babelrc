@@ -1,4 +1,7 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": ["@babel/plugin-transform-object-assign", "transform-object-rest-spread"]
+  "plugins": [
+    "@babel/plugin-transform-object-assign", 
+    "@babel/plugin-proposal-object-rest-spread"
+  ]
 }
