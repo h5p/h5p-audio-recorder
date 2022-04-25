@@ -209,6 +209,26 @@ export default class Recorder extends H5P.EventDispatcher {
    * Start or resume a recording
    */
   start() {
+     
+    var xAPIEvent = this.createXAPIEventTemplate({
+      id: 'http://activitystrea.ms/schema/1.0/consume',
+      display: {
+        'en-US': 'consumed'
+      }
+    }, {
+      result: {
+        completion: true
+      }
+    });
+  
+    Object.assign(xAPIEvent.data.statement.object.definition, {
+      name:{
+        'en-US': "Recorder"
+      }
+    });
+  
+    this.trigger(xAPIEvent);
+
     this.grabMic()
       .then(() => {
         this._setState(RecorderState.recording);
@@ -217,6 +237,7 @@ export default class Recorder extends H5P.EventDispatcher {
         this.trigger(e);
       });
   }
+
 
   /**
    * Stop/pause a recording
@@ -251,6 +272,9 @@ export default class Recorder extends H5P.EventDispatcher {
     this.audioContext.close();
 
     delete this.userMedia;
+
+      this.triggerXAPI('completed');
+    
   }
 
   /**
