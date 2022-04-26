@@ -56,7 +56,7 @@ export default class Recorder extends H5P.EventDispatcher {
   /**
    * @constructor
    */
-  constructor() {
+  constructor(contentId, contentData = {}) {
     super();
 
     this.config = {
@@ -80,6 +80,10 @@ export default class Recorder extends H5P.EventDispatcher {
     this.worker.onerror = e => {
       this.trigger('worker-error', e);
     };
+
+    // for xapi
+    this.contentId = contentId;
+    this.contentData = contentData;
   }
 
   /**
@@ -209,26 +213,7 @@ export default class Recorder extends H5P.EventDispatcher {
    * Start or resume a recording
    */
   start() {
-     
-    var xAPIEvent = this.createXAPIEventTemplate({
-      id: 'http://activitystrea.ms/schema/1.0/consume',
-      display: {
-        'en-US': 'consumed'
-      }
-    }, {
-      result: {
-        completion: true
-      }
-    });
-  
-    Object.assign(xAPIEvent.data.statement.object.definition, {
-      name:{
-        'en-US': "Recorder"
-      }
-    });
-  
-    this.trigger(xAPIEvent);
-
+    this.triggerXAPIInteracted();
     this.grabMic()
       .then(() => {
         this._setState(RecorderState.recording);
@@ -286,5 +271,19 @@ export default class Recorder extends H5P.EventDispatcher {
   _setState(state) {
     this.state = state;
     this.trigger(this.state);
+  }
+
+  /**
+   * Trigger the XAPI Interacted
+   */
+  triggerXAPIInteracted() {
+    let xAPIEvent = this.createXAPIEventTemplate('interacted');
+    const title = this.contentData && this.contentData.hasOwnProperty("metadata") && this.contentData.metadata.hasOwnProperty("title") ? this.contentData.metadata.title : 'Audio Recorder';
+    Object.assign(xAPIEvent.data.statement.object.definition, {
+      name:{
+        'en-US': title
+      }
+    });
+    this.trigger(xAPIEvent);
   }
 }

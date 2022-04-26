@@ -32,7 +32,7 @@ export default class {
     const rootElement = document.createElement('div');
     rootElement.classList.add('h5p-audio-recorder');
 
-    const recorder = this.recorder = new Recorder();
+    const recorder = this.recorder = new Recorder(contentId, contentData);
 
     const statusMessages = {};
     statusMessages[State.UNSUPPORTED] = params.l10n.microphoneNotSupported;
