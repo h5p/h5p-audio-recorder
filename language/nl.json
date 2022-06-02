@@ -70,7 +70,7 @@
         },
         {
           "label": "Hoofdtekst \"Opnieuw\" dialoog",
-          "default": "Als je op \"Opnieuw\" drukt, verlies je de huidige opname."
+          "default": "Door op \"Opnieuw\" te klikken, verlies je de huidige opname."
         },
         {
           "label": "Tekst van \"Opnieuw\" bevestigingsdialoog",

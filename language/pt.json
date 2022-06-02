@@ -41,12 +41,12 @@
         },
         {
           "label": "Mensagem a exibir quando o acesso inseguro não é permitido",
-          "description": "Alguns navegadores não permitem usar o microfone se a página está a usar HTTP. Esta mensagem será mostrada nesse caso.",
+          "description": "Alguns navegadores não permitem usar o microfone quando a página está a usar HTTP. Esta mensagem será mostrada nesse caso",
           "default": "O acesso ao microfone não é permitido no seu navegador porque esta página não usa HTTPS. Contacte o autor e solicite-lhe a disponibilização da página via HTTPS"
         },
         {
           "label": "Mensagem de pronto para gravar",
-          "default": "Carregue no botão para gravar a sua resposta."
+          "default": "Pressione o botão abaixo para gravar a sua resposta."
         },
         {
           "label": "Mensagem de estado da gravação",
