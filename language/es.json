@@ -1,8 +1,8 @@
 {
   "semantics": [
     {
-      "label": "Descripción del trabajo",
-      "description": "Texto opcional a mostrar arriba de la grabadora de audio"
+      "label": "Descripción de la tarea",
+      "description": "Texto opcional a mostrar encima de la grabadora de audio"
     },
     {
       "label": "Localización",
@@ -28,60 +28,60 @@
           "default": "Hecho"
         },
         {
-          "label": "Texto botón Reintentar",
-          "default": "Reintentar"
+          "label": "Texto botón Intentar de nuevo",
+          "default": "Intentar de nuevo"
         },
         {
           "label": "Mensaje de error de Micrófono no soportado",
-          "default": "Micrófono no soportado. Asegúrese de usar un navegador que permita grabación con micrófono."
+          "default": "Micrófono no soportado. Asegúrate de usar un navegador que permita grabación con micrófono."
         },
         {
-          "label": "Mensaje de error Micrófono inaccesible",
-          "default": "El Micrófono no es accesible. Asegúrese de que el micrófono del navegador esté habilitado."
+          "label": "Mensaje de error micrófono inaccesible",
+          "default": "El micrófono no es accesible. Asegúrate de que el micrófono del navegador esté habilitado."
         },
         {
-          "label": "Mensaje mostrado cuando no está permitido el acceso inseguro",
-          "description": "Algunos navegadores no permiten usar el micrófono cuando la página es servida usando HTTP. Este mensaje será mostrado si ese fuera el caso",
-          "default": "Acceso al micrófono no está permitido en su navegador porque esta página no es servida usando HTTPS. Por favor póngase en contacto con el autor, y pídale que haga esto disponible usando HTTPS"
+          "label": "Mensaje mostrado cuando no está permitido el acceso no seguro",
+          "description": "Algunos navegadores no permiten usar el micrófono cuando la página se sirve usando HTTP. Este mensaje se mostrará en ese caso",
+          "default": "El acceso al micrófono no está permitido en tu navegador porque esta página no está disponible usando HTTPS. Por favor ponte en contacto con el autor, y pídele que la haga disponible usando HTTPS"
         },
         {
-          "label": "Mensaje de estado para Listo para grabar",
-          "default": "Presione el botón inferior para grabar su respuesta."
+          "label": "Mensaje de estado para listo para grabar",
+          "default": "Presiona el botón inferior para grabar tu respuesta."
         },
         {
-          "label": "Mensaje de estado Grabando",
+          "label": "Mensaje de estado grabando",
           "default": "Grabando..."
         },
         {
-          "label": "Mensaje de estado para Pausado",
-          "default": "Grabación pausada. Presione un botón para continuar grabando."
+          "label": "Mensaje de estado para en pausa",
+          "default": "Grabación en pausa. Presiona un botón para continuar grabando."
         },
         {
-          "label": "Mensaje de estado para Grabación terminada",
-          "default": "¡Usted ha grabado exitosamente su respuesta! Oiga la grabación debajo."
+          "label": "Mensaje de estado para grabación terminada",
+          "default": "¡Has grabado tu respuesta correctamente! Puedes escuchar tu grabación en la parte inferior."
         },
         {
-          "label": "Mensaje para Descargar grabación",
-          "default": "Descargar esta grabación o reintentarlo."
+          "label": "Mensaje para descargar grabación",
+          "default": "Descargar esta grabación o intentarlo de nuevo."
         },
         {
-          "label": "Texto del encabezado de diálogo para Reintentar",
-          "default": "¿Reintentar grabación?"
+          "label": "Texto de encabezado del diálogo para intentar de nuevo",
+          "default": "¿Intentar grabación de nuevo?"
         },
         {
-          "label": "Texto del cuerpo del diálogo para Reintentar",
-          "default": "Al presionar \"Reintentar\" Usted perderá su grabación actual."
+          "label": "Texto del cuerpo del diálogo para intentar de nuevo",
+          "default": "Al presionar \"Intentar de nuevo\" perderás tu grabación actual."
         },
         {
-          "label": "Texto para confirmar diálogo Reintentar",
-          "default": "Reintentar"
+          "label": "Texto para el diálogo de confirmación de Intentar de nuevo",
+          "default": "Intentar de nuevo"
         },
         {
-          "label": "Texto para Cancelar diálogo Reintentar",
+          "label": "Texto de diálogo de cancelación para Intentar de nuevo",
           "default": "Cancelar"
         },
         {
-          "label": "Mensaje de estado cuando No se puede crear archivo de audio",
+          "label": "Mensaje de estado cuando no se puede crear archivo de audio",
           "default": "No se puede crear el archivo de audio."
         }
       ]
