@@ -31,29 +31,33 @@
 
         <button class="button retry small"
                 v-if="state === 'recording' || state === 'paused'"
+                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 v-on:click="retry">
           <span class="fa-undo"></span>
-          <span class="small-screen-hidden">{{ l10n.retry }}</span>
+          <span class="label">{{ l10n.retry }}</span>
         </button>
         <button class="button pause"
+                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 ref="button-pause"
                 v-if="state === 'recording'"
                 v-on:click="pause">
           <span class="fa-pause"></span>
-          <span class="small-screen-hidden">{{ l10n.pause }}</span>
+          <span class="label">{{ l10n.pause }}</span>
         </button>
         <button class="button record"
+                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 ref="button-continue"
                 v-if="state === 'paused'"
                 v-on:click="record">
           <span class="fa-circle"></span>
-          <span class="small-screen-hidden">{{ l10n.continue }}</span>
+          <span class="label">{{ l10n.continue }}</span>
         </button>
         <button class="button done small"
+                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 v-if="state === 'recording' || state === 'paused'"
                 v-on:click="done">
           <span class="fa-play-circle"></span>
-          <span class="small-screen-hidden">{{ l10n.done }}</span>
+          <span class="label">{{ l10n.done }}</span>
         </button>
       </div>
 
@@ -73,7 +77,7 @@
                 v-if="state === 'done' || state === 'cant-create-audio-file'"
                 v-on:click="retry">
           <span class="fa-undo"></span>
-          <span class="small-screen-hidden">{{ l10n.retry }}</span>
+          <span class="label">{{ l10n.retry }}</span>
         </button>
       </span>
     </div>
@@ -90,8 +94,19 @@
   refToFocusOnStateChange[State.PAUSED] = 'button-continue';
   refToFocusOnStateChange[State.DONE] = 'button-download';
 
+  const viewStateBreakPoint = 576; // px, container width to toggle viewState at
+
   export default {
     methods: {
+      // Resize buttons. Not using media queries to allow being subcontent
+      resize: function() {
+        if (!this.$el) {
+          return; // Not attached yet
+        }
+
+        this.viewState = (this.$el.offsetWidth <= viewStateBreakPoint) ? 'small' : 'large';
+      },
+
       record: function() {
         this.$emit(State.RECORDING);
       },
@@ -107,6 +122,28 @@
       },
 
       retry: function() {
+        let dialogParent = this.$el;
+
+        /*
+         * If AudioRecorder is subcontent, the dialog may be hidden behind
+         * other elements if it is not attached to the h5p-content element
+         */
+        if (this.isSubcontent) {
+          const findH5PContent = function(element) {
+            if (!element) {
+              return null;
+            }
+            else if (element.className.indexOf('h5p-content') !== -1) {
+              return element;
+            }
+            else {
+              return findH5PContent(element.parentNode);
+            }
+          }
+
+          dialogParent = findH5PContent(this.$el) || this.$el;
+        }
+
         const dialog = new H5P.ConfirmationDialog(
           {
             headerText: this.l10n.retryDialogHeaderText,
@@ -115,7 +152,7 @@
             confirmText: this.l10n.retryDialogConfirmText
           }
         );
-        dialog.appendTo(this.$el);
+        dialog.appendTo(dialogParent);
         dialog.show();
         dialog.on('confirmed', () => {
           this.state = State.READY;
@@ -144,7 +181,6 @@
 </script>
 
 <style lang="scss" type="text/scss">
-  $screen-small: 576px;
   $record-button-width: 8.2em;
 
   @mixin blueGlow {
@@ -227,10 +263,6 @@
       }
     }
 
-    .small-screen-hidden {
-      display: none;
-    }
-
     .h5p-audio-recorder-download {
       font-size: 1.2em;
       padding: 2em;
@@ -258,12 +290,6 @@
       .button-row-right {
         text-align: left;
         flex: 1;
-      }
-    }
-
-    @media (min-width: $screen-small) {
-      .small-screen-hidden {
-        display: inherit;
       }
     }
 
@@ -354,7 +380,13 @@
         @include button-inverse(white, #d95354);
       }
 
-      @media (min-width: $screen-small) {
+      &.small-screen {
+        .label {
+          display: none;
+        }
+      }
+
+      &:not(.small-screen) {
         [class^="fa-"] {
           margin-right: 0.4em;
         }

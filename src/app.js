@@ -4,6 +4,7 @@ import VUMeter from './views/VUMeter.vue';
 import Timer from './views/Timer.vue';
 import Recorder from 'components/Recorder';
 import State from 'components/State';
+import Util from 'components/Util';
 
 const AUDIO_SRC_NOT_SPECIFIED = '';
 
@@ -29,6 +30,30 @@ export default class {
    * @param {object} contentData
    */
   constructor(params, contentId, contentData = {}) {
+    params = Util.extend({
+      l10n: {
+        recordAnswer: 'Record',
+        pause: 'Pause',
+        continue: 'Continue',
+        download: 'Download',
+        done: 'Done',
+        retry: 'Retry',
+        microphoneNotSupported: 'Microphone not supported. Make sure you are using a browser that allows microphone recording.',
+        microphoneInaccessible: 'Microphone is not accessible. Make sure that the browser microphone is enabled.',
+        insecureNotAllowed: 'Access to microphone is not allowed in your browser since this page is not served using HTTPS. Please contact the author, and ask him to make this available using HTTPS',
+        statusReadyToRecord: 'Press a button below to record your answer.',
+        statusRecording: 'Recording...',
+        statusPaused: 'Recording paused. Press a button to continue recording.',
+        statusFinishedRecording: 'You have successfully recorded your answer! Listen to the recording below.',
+        downloadRecording: 'Download this recording or retry.',
+        retryDialogHeaderText: 'Retry recording?',
+        retryDialogBodyText: 'By pressing "Retry" you will lose your current recording.',
+        retryDialogConfirmText: 'Retry',
+        retryDialogCancelText: 'Cancel',
+        statusCantCreateTheAudioFile: 'Can\'t create the audio file.'
+      }
+    }, params);
+
     const rootElement = document.createElement('div');
     rootElement.classList.add('h5p-audio-recorder');
 
@@ -51,7 +76,8 @@ export default class {
       l10n: params.l10n,
       audioSrc: AUDIO_SRC_NOT_SPECIFIED,
       audioFilename: '',
-      avgMicFrequency: 0
+      avgMicFrequency: 0,
+      isSubcontent: !this.isRoot()
     });
 
     // Create recording wrapper view
@@ -61,6 +87,11 @@ export default class {
         timer: Timer,
         vuMeter: VUMeter
       }
+    });
+
+    // Resize player view
+    this.on('resize', () => {
+      viewModel.resize();
     });
 
     // resize iframe on state change

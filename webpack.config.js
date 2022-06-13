@@ -1,8 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+const nodeEnv = process.env.NODE_ENV || 'development';
+const { VueLoaderPlugin } = require('vue-loader');
 
 const config = {
+  mode: nodeEnv,
   entry: "./src/entries/dist.js",
+  devtool: (nodeEnv === 'production') ? undefined : 'inline-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: "h5p-audio-recorder.js",
@@ -23,32 +27,35 @@ const config = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          preserveWhitespace: false,
-          loaders: {
-            scss: 'vue-style-loader!css-loader!sass-loader'
-          }
+          preserveWhitespace: false
         },
       },
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: 'babel-loader'
       },
       {
-        test: /\.css$/,
-        loader: "css-loader"
+        test: /\.(s[ac]ss|css)$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.(svg)$/,
         include: path.join(__dirname, 'src/images'),
-        loader: 'url-loader?limit=10000'
-      } // inline base64 URLs for <=10k images, direct URLs for the rest
+        type: 'asset/inline'
+      }
     ]
   },
-
   plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        'NODE_ENV': JSON.stringify(nodeEnv)
       }
     }),
   ]
