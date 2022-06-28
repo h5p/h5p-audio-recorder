@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const { VueLoaderPlugin } = require('vue-loader');
+const libraryName = process.env.npm_package_name;
 
 const config = {
   mode: nodeEnv,
@@ -9,12 +10,13 @@ const config = {
   devtool: (nodeEnv === 'production') ? undefined : 'inline-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: "h5p-audio-recorder.js",
+    filename: `${libraryName}.js`,
     sourceMapFilename: '[file].map'
   },
   resolve: {
+    extensions: [ '.tsx', '.ts', '.js', '.vue' ],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+        'vue': '@vue/runtime-dom'
     },
     modules: [
       path.resolve('./src'),
