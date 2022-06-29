@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "H5P content type for recording audio",
   "scripts": {
+    "dev": "cross-env NODE_ENV='development' webpack",
     "build": "cross-env NODE_ENV='production' webpack",
     "watch": "webpack --watch"
   },
