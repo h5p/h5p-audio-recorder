@@ -19,7 +19,6 @@
     "@babel/plugin-transform-object-assign": "^7.14.5",
     "@babel/preset-env": "^7.15.0",
     "babel-loader": "^8.2.2",
-    "browser-env": "^3.3.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.2.0",
     "raw-loader": "^4.0.2",
