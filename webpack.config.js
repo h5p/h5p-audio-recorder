@@ -6,7 +6,8 @@ const libraryName = process.env.npm_package_name;
 
 const config = {
   mode: nodeEnv,
-  entry: "./src/entries/dist.js",
+  context: path.resolve(__dirname, 'src'),
+  entry: "./entries/dist.js",
   devtool: (nodeEnv === 'production') ? undefined : 'inline-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
