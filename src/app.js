@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import AudioRecorderView from './views/AudioRecorder.vue';
 import VUMeter from './views/VUMeter.vue';
 import Timer from './views/Timer.vue';
@@ -81,7 +81,7 @@ export default class {
     });
 
     // Create recording wrapper view
-    const viewModel = new Vue({
+    const viewModel = createApp({
       ...AudioRecorderView,
       components: {
         timer: Timer,
