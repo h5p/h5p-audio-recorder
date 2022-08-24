@@ -175,6 +175,7 @@
         if(refToFocusOnStateChange[state]) {
           this.$nextTick(() => this.$refs[refToFocusOnStateChange[state]].focus());
         }
+        this.$emit('resize');
       }
     }
   }
