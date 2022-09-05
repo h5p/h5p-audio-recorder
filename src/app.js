@@ -87,47 +87,45 @@ export default class {
         timer: Timer,
         vuMeter: VUMeter
       }
+    }, {
+      // Start recording when record button is pressed
+      onRecording() {
+        recorder.start();
+      },
+      onDone() {
+        recorder.stop();
+        recorder.getWavURL().then(url => {
+          recorder.releaseMic();
+          viewModel.audioSrc = url;
+  
+          // Create a filename using the title
+          if(params.title && params.title.length > 0) {
+            const filename = params.title.substr(0, 20);
+            viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+          }
+  
+          this.trigger('resize')
+        }).catch(e => {
+          viewModel.state = State.CANT_CREATE_AUDIO_FILE;
+          console.error(params.l10n.statusCantCreateTheAudioFile, e);
+        });
+      },
+      onRetry() {
+        recorder.releaseMic();
+        viewModel.audioSrc = AUDIO_SRC_NOT_SPECIFIED;
+      },
+      onPaused() {
+        recorder.stop();
+      },
+      // resize iframe on state change
+      onResize() {
+        this.trigger('resize');
+      }
     });
 
     // Resize player view
     this.on('resize', () => {
       viewModel.resize();
-    });
-
-    // resize iframe on state change
-    viewModel.$watch('state', () => this.trigger('resize'));
-
-    // Start recording when record button is pressed
-    viewModel.$on('recording', () => {
-      recorder.start();
-    });
-
-    viewModel.$on('done', () => {
-      recorder.stop();
-      recorder.getWavURL().then(url => {
-        recorder.releaseMic();
-        viewModel.audioSrc = url;
-
-        // Create a filename using the title
-        if(params.title && params.title.length > 0) {
-          const filename = params.title.substr(0, 20);
-          viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
-        }
-
-        this.trigger('resize')
-      }).catch(e => {
-        viewModel.state = State.CANT_CREATE_AUDIO_FILE;
-        console.error(params.l10n.statusCantCreateTheAudioFile, e);
-      });
-    });
-
-    viewModel.$on('retry', () => {
-      recorder.releaseMic();
-      viewModel.audioSrc = AUDIO_SRC_NOT_SPECIFIED;
-    });
-
-    viewModel.$on('paused', () => {
-      recorder.stop();
     });
 
     // Update UI when on recording events
