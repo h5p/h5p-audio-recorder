@@ -57,9 +57,7 @@ const config = {
     // make sure to include the plugin for the magic
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(nodeEnv)
-      }
+      'process.env': JSON.stringify(process.env)
     }),
   ]
 };

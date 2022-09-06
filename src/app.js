@@ -30,6 +30,7 @@ export default class {
    * @param {object} contentData
    */
   constructor(params, contentId, contentData = {}) {
+    H5P.EventDispatcher.call(this);
     params = Util.extend({
       l10n: {
         recordAnswer: 'Record',
@@ -69,6 +70,11 @@ export default class {
     statusMessages[State.INSECURE_NOT_ALLOWED] = params.l10n.insecureNotAllowed;
     statusMessages[State.CANT_CREATE_AUDIO_FILE] = params.l10n.statusCantCreateTheAudioFile;
 
+    let vm;
+
+    // setting reference to current class
+    const that = this;
+
     AudioRecorderView.data = () => ({
       title: params.title,
       state: recorder.supported() ? State.READY : State.UNSUPPORTED,
@@ -77,7 +83,7 @@ export default class {
       audioSrc: AUDIO_SRC_NOT_SPECIFIED,
       audioFilename: '',
       avgMicFrequency: 0,
-      isSubcontent: !this.isRoot()
+      isSubcontent: !that.hasOwnProperty('isRoot') || !that.isRoot()
     });
 
     // Create recording wrapper view
@@ -96,41 +102,41 @@ export default class {
         recorder.stop();
         recorder.getWavURL().then(url => {
           recorder.releaseMic();
-          viewModel.audioSrc = url;
+          vm.$data.audioSrc = url;
   
           // Create a filename using the title
-          if(params.title && params.title.length > 0) {
+          if (params.title && params.title.length > 0) {
             const filename = params.title.substr(0, 20);
-            viewModel.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
+            vm.$data.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
           }
   
-          this.trigger('resize')
+          that.trigger('resize')
         }).catch(e => {
-          viewModel.state = State.CANT_CREATE_AUDIO_FILE;
+          vm.$data.state = State.CANT_CREATE_AUDIO_FILE;
           console.error(params.l10n.statusCantCreateTheAudioFile, e);
         });
       },
       onRetry() {
         recorder.releaseMic();
-        viewModel.audioSrc = AUDIO_SRC_NOT_SPECIFIED;
+        vm.$data.audioSrc = AUDIO_SRC_NOT_SPECIFIED;
       },
       onPaused() {
         recorder.stop();
       },
       // resize iframe on state change
       onResize() {
-        this.trigger('resize');
+        that.trigger('resize');
       }
     });
 
     // Resize player view
     this.on('resize', () => {
-      viewModel.resize();
+      vm.resize();
     });
 
     // Update UI when on recording events
     recorder.on('recording', () => {
-      viewModel.state = State.RECORDING;
+      vm.$data.state = State.RECORDING;
 
       // Start update loop for microphone frequency
       this.updateMicFrequency();
@@ -138,12 +144,12 @@ export default class {
 
     // Blocked probably means user has no mic, or has not allowed access to one
     recorder.on('blocked', () => {
-      viewModel.state = State.BLOCKED;
+      vm.$data.state = State.BLOCKED;
     });
 
     // May be sent from Chrome, which don't allow use of mic when using http (need https)
     recorder.on('insecure-not-allowed', () => {
-      viewModel.state = State.INSECURE_NOT_ALLOWED;
+      vm.$data.state = State.INSECURE_NOT_ALLOWED;
     });
 
     /**
@@ -151,13 +157,13 @@ export default class {
      */
     this.updateMicFrequency = function () {
       // Stop updating if no longer recording
-      if (viewModel.state !== State.RECORDING) {
+      if (vm.$data.state !== State.RECORDING) {
         window.cancelAnimationFrame(this.animateVUMeter);
         return;
       }
 
       // Grab average microphone frequency
-      viewModel.avgMicFrequency = recorder.getAverageMicFrequency();
+      vm.$data.avgMicFrequency = recorder.getAverageMicFrequency();
 
       // Throttle updating slightly
       setTimeout(() => {
@@ -174,7 +180,7 @@ export default class {
      */
     this.attach = function ($wrapper) {
       $wrapper.get(0).appendChild(rootElement);
-      viewModel.$mount(rootElement);
+      vm = viewModel.mount(rootElement);
     };
   }
 }
