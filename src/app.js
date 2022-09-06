@@ -30,6 +30,7 @@ export default class {
    * @param {object} contentData
    */
   constructor(params, contentId, contentData = {}) {
+    H5P.EventDispatcher.call(this);
     params = Util.extend({
       l10n: {
         recordAnswer: 'Record',
@@ -109,7 +110,7 @@ export default class {
             vm.$data.audioFilename = filename.toLowerCase().replace(/ /g, '-') + '.wav';
           }
   
-          recorder.trigger('resize')
+          that.trigger('resize')
         }).catch(e => {
           vm.$data.state = State.CANT_CREATE_AUDIO_FILE;
           console.error(params.l10n.statusCantCreateTheAudioFile, e);
@@ -124,12 +125,12 @@ export default class {
       },
       // resize iframe on state change
       onResize() {
-        recorder.trigger('resize');
+        that.trigger('resize');
       }
     });
 
-    // // Resize player view
-    recorder.on('resize', () => {
+    // Resize player view
+    this.on('resize', () => {
       vm.resize();
     });
 
