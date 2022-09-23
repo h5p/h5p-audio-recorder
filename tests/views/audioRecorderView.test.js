@@ -7,7 +7,7 @@ import State from '../../src/components/State';
 
 const statusMessages = {};
 statusMessages[State.RECORDING] = "Recording...";
-statusMessages[State.READY] = "Press a button below to record your answer.";
+statusMessages[State.READY] = "Press the button below to record your answer.";
 
 // setup initial state for audio recorder
 const initialData = {

@@ -46,7 +46,7 @@
         },
         {
           "label": "Messaggio di stato: pronto per la registrazione",
-          "default": "Premere il pulsante qui sotto per registrare la tua risposta"
+          "default": "Premere il pulsante qui sotto per registrare la tua risposta."
         },
         {
           "label": "Messaggio di stato: registrazione in corso",
@@ -54,15 +54,15 @@
         },
         {
           "label": "Messaggio di stato: pausa",
-          "default": "Registrazione in pausa. Premere un tasto per continuare a registrare"
+          "default": "Registrazione in pausa. Premere un tasto per continuare a registrare."
         },
         {
           "label": "Messaggio di stato: registrazione completata",
-          "default": "Hai registrato con successo la tua risposta! Ascolta la registrazione qui sotto"
+          "default": "Hai registrato con successo la tua risposta! Ascolta la registrazione qui sotto."
         },
         {
           "label": "Scarica il messaggio di registrazione",
-          "default": "Scarica questa registrazione o riprova"
+          "default": "Scarica questa registrazione o riprova."
         },
         {
           "label": "Etichetta dell'intestazione del messaggio \"Riprova\"",
@@ -70,7 +70,7 @@
         },
         {
           "label": "Etichetta del corpo del messaggio \"Riprova\"",
-          "default": "Premendo \"Riprova\" perderai la registrazione in corso"
+          "default": "Premendo \"Riprova\" perderai la registrazione in corso."
         },
         {
           "label": "Etichetta di conferma del messaggio \"Riprova\"",
@@ -82,7 +82,7 @@
         },
         {
           "label": "Impossibile creare il messaggio di stato per il file audio",
-          "default": "Impossibile creare il file audio"
+          "default": "Impossibile creare il file audio."
         }
       ]
     }
