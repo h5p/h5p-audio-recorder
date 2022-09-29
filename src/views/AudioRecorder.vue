@@ -154,25 +154,29 @@
         );
         dialog.appendTo(dialogParent);
         dialog.show();
-        dialog.on('confirmed', () => {
-          this.state = State.READY;
-          if(this.$refs.timer) {
-            this.$refs.timer.reset();
+        
+        // References the current component
+        const that = this;
+        
+        dialog.on('confirmed', function() {
+          that.state = State.READY;
+          if (that.$refs.timer) {
+            that.$refs.timer.reset();
           }
-          this.$emit('retry');
+          that.$emit('retry');
         });
       }
     },
 
-    filters: {
-      unEscape: function(str) {
-        return str.replace(/&#039;/g, '\'');
-      },
+    computed: {
+      unEscape() {
+        return this.statusMessages[this.state].replace(/&#039;/g, '\'');
+      }
     },
 
     watch: {
       state: function(state){
-        if(refToFocusOnStateChange[state]) {
+        if (refToFocusOnStateChange[state]) {
           this.$nextTick(() => this.$refs[refToFocusOnStateChange[state]].focus());
         }
         this.$emit('resize');
