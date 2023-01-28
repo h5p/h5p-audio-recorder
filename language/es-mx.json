@@ -5,7 +5,7 @@
       "description": "Texto opcional a mostrar arriba de la grabadora de audio"
     },
     {
-      "label": "Localización",
+      "label": "Adaptación local",
       "fields": [
         {
           "label": "Texto botón Grabar",
