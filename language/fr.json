@@ -41,12 +41,12 @@
         },
         {
           "label": "Message d'erreur lors d'un accès non sécurisé",
-          "description": "Certains navigateurs n'autorisent pas l'utilisation du micro si la page n'est pas sécurisée avec HTTPS. Ce message apparaît si la page n'est pas sécurisée (HTTP).",
+          "description": "Certains navigateurs n'autorisent pas l'utilisation du micro si la page n'est pas sécurisée avec HTTPS. Ce message apparaît si la page n'est pas sécurisée (HTTP)",
           "default": "L'accès au micro n'est pas autorisé par votre navigateur car cette page n'utilise pas le protocole HTTPS. Contacter l'auteur pour lui demander de rendre ce contenu accessible en utilisant HTTPS."
         },
         {
           "label": "Message à afficher avant l'enregistrement",
-          "default": "Cliquer sur le bouton ci-dessous pour enregistrer."
+          "default": "Cliquer sur la touche ci-dessous pour enregistrer votre réponse."
         },
         {
           "label": "Message pendant l'enregistrement",
