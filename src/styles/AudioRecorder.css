@@ -1,0 +1,165 @@
+.h5p-content:not(.using-mouse) .h5p-audio-recorder-view .button:focus {
+  outline: 0;
+  box-shadow: 0.06em 0 0.6em 0.1em #7bc1f9; }
+
+.h5p-audio-recorder {
+  background-color: var(--h5p-theme-ui-base); }
+
+.h5p-audio-recorder-view {
+  font-size: 1em;
+  padding: 0.9em;
+  text-align: center;
+  font-family: Arial, 'Open Sans', sans-serif;
+  /* status bar */ }
+  .h5p-audio-recorder-view [class^="fa-"] {
+    font-family: 'H5PFontAwesome4'; }
+  .h5p-audio-recorder-view .fa-microphone {
+    width: 60%;
+    height: 60%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-size: 2.5em;
+    border-radius: 50%;
+    background-color: white;
+    line-height: 2.5em; }
+  .h5p-audio-recorder-view .h5p-audio-recorder-player {
+    box-sizing: border-box;
+    margin: 1.25em 1em 0 1em; }
+    .h5p-audio-recorder-view .h5p-audio-recorder-player audio {
+      width: 100%; }
+  .h5p-audio-recorder-view .title {
+    color: var(--h5p-theme-text-primary);
+    font-size: 1.250em;
+    margin-bottom: 1em;
+    line-height: 1.5em; }
+  .h5p-audio-recorder-view .icon-download:before {
+    font-family: 'H5PFontIcons';
+    content: '\e918'; }
+  .h5p-audio-recorder-view [role="status"] {
+    background-color: var(--h5p-theme-alternative-base);
+    color: var(--h5p-theme-text-primary);
+    padding: var(--h5p-theme-spacing-xs); }
+    .h5p-audio-recorder-view [role="status"].recording {
+      background-color: #f9e5e6;
+      color: #da5254; }
+    .h5p-audio-recorder-view [role="status"].done {
+      background-color: #e0f9e3;
+      color: #20603d; }
+    .h5p-audio-recorder-view [role="status"].blocked, .h5p-audio-recorder-view [role="status"].unsupported, .h5p-audio-recorder-view [role="status"].insecure-not-allowed, .h5p-audio-recorder-view [role="status"].cant-create-audio-file {
+      background-color: var(--h5p-theme-feedback-incorrect-secondary);
+      color: var(--h5p-theme-feedback-incorrect-main); }
+  .h5p-audio-recorder-view .h5p-audio-recorder-download {
+    font-size: 1.2em;
+    padding: 2em; }
+  .h5p-audio-recorder-view .h5p-confirmation-dialog-popup {
+    top: 5em;
+    width: 35em;
+    max-width: 100%;
+    min-width: 0; }
+  .h5p-audio-recorder-view .button-row {
+    margin-bottom: 1em; }
+    .h5p-audio-recorder-view .button-row .button-row-double {
+      width: 100%; }
+    .h5p-audio-recorder-view .button-row .button-row-left {
+      text-align: right;
+      flex: 1; }
+    .h5p-audio-recorder-view .button-row .button-row-right {
+      text-align: left;
+      flex: 1; }
+  .h5p-audio-recorder-view .button {
+    font-size: 1.042em;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0.708em 1.250em;
+    border-radius: 2em;
+    margin: 0 0.5em;
+    border: 0;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap; }
+    .h5p-audio-recorder-view .button [class^="fa-"] {
+      font-weight: 400; }
+    .h5p-audio-recorder-view .button.small {
+      font-size: 0.85em; }
+    .h5p-audio-recorder-view .button.done {
+      background-color: white;
+      color: #1f824c;
+      border: 2px solid #1f824c;
+      box-sizing: border-box; }
+      .h5p-audio-recorder-view .button.done:hover {
+        color: #29ab64;
+        border-color: #29ab64; }
+      .h5p-audio-recorder-view .button.done:active {
+        color: #155934;
+        border-color: #155934; }
+      .h5p-audio-recorder-view .button.done[disabled], .h5p-audio-recorder-view .button.done[aria-disabled] {
+        color: #8ae3b2;
+        border-color: #8ae3b2; }
+    .h5p-audio-recorder-view .button.retry {
+      background-color: #5e5e5e;
+      color: white;
+      border-color: #5e5e5e;
+      border: 2px solid #5e5e5e;
+      box-sizing: border-box; }
+      .h5p-audio-recorder-view .button.retry:hover {
+        background-color: #515151;
+        border-color: #515151; }
+      .h5p-audio-recorder-view .button.retry:active {
+        background-color: #454545;
+        border-color: #454545; }
+      .h5p-audio-recorder-view .button.retry[disabled] {
+        background-color: #c4c4c4;
+        border-color: #c4c4c4; }
+    .h5p-audio-recorder-view .button.record {
+      background-color: #d95354;
+      color: white;
+      border-color: #d95354;
+      border: 2px solid #d95354;
+      box-sizing: border-box; }
+      .h5p-audio-recorder-view .button.record:hover {
+        background-color: #d43e3f;
+        border-color: #d43e3f; }
+      .h5p-audio-recorder-view .button.record:active {
+        background-color: #cc2d2e;
+        border-color: #cc2d2e; }
+      .h5p-audio-recorder-view .button.record[disabled] {
+        background-color: #fefafa;
+        border-color: #fefafa; }
+    .h5p-audio-recorder-view .button.download {
+      background-color: #1f824c;
+      color: white;
+      border-color: #1f824c;
+      border: 2px solid #1f824c;
+      box-sizing: border-box; }
+      .h5p-audio-recorder-view .button.download:hover {
+        background-color: #1a6d40;
+        border-color: #1a6d40; }
+      .h5p-audio-recorder-view .button.download:active {
+        background-color: #155934;
+        border-color: #155934; }
+      .h5p-audio-recorder-view .button.download[disabled] {
+        background-color: #8ae3b2;
+        border-color: #8ae3b2; }
+    .h5p-audio-recorder-view .button.pause {
+      background-color: white;
+      color: #d95354;
+      border: 2px solid #d95354;
+      box-sizing: border-box; }
+      .h5p-audio-recorder-view .button.pause:hover {
+        color: #e27d7e;
+        border-color: #e27d7e; }
+      .h5p-audio-recorder-view .button.pause:active {
+        color: #cc2d2e;
+        border-color: #cc2d2e; }
+      .h5p-audio-recorder-view .button.pause[disabled], .h5p-audio-recorder-view .button.pause[aria-disabled] {
+        color: #fefafa;
+        border-color: #fefafa; }
+    .h5p-audio-recorder-view .button.small-screen .label {
+      display: none; }
+    .h5p-audio-recorder-view .button:not(.small-screen) [class^="fa-"] {
+      margin-right: 0.4em; }
+    .h5p-audio-recorder-view .button:not(.small-screen).record, .h5p-audio-recorder-view .button:not(.small-screen).pause {
+      min-width: 8.2em; }

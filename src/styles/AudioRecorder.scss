@@ -9,6 +9,10 @@ $record-button-width: 8.2em;
   @include blueGlow
 }
 
+.h5p-audio-recorder{
+  background-color:var(--h5p-theme-ui-base);
+}
+
 .h5p-audio-recorder-view {
   font-size: 1em;
   padding: 0.9em;
@@ -42,10 +46,10 @@ $record-button-width: 8.2em;
   }
 
   .title {
-    color: black;
-    font-size: 1.250em;
-    margin-bottom: 1em;
-    line-height: 1.5em;
+     color: var(--h5p-theme-text-primary);
+      font-size: 1.250em;
+      margin-bottom: 1em;
+      line-height: 1.5em;
   }
 
   .icon-download {
@@ -57,9 +61,9 @@ $record-button-width: 8.2em;
 
   /* status bar */
   [role="status"] {
-    background-color: #f8f8f8;
-    color: #777777;
-    padding: 0.6em;
+      background-color: var(--h5p-theme-alternative-base);
+      color: var(--h5p-theme-text-primary);
+      padding: var(--h5p-theme-spacing-xs);
 
     &.recording {
       background-color: #f9e5e6;
@@ -75,8 +79,9 @@ $record-button-width: 8.2em;
     &.unsupported,
     &.insecure-not-allowed,
     &.cant-create-audio-file {
-      background-color: #db8b8b;
-      color: black;
+    background-color: var(--h5p-theme-feedback-incorrect-secondary);
+        color: var(--h5p-theme-feedback-incorrect-main);
+
     }
   }
 

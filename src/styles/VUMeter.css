@@ -6,17 +6,13 @@
   line-height: 9.375em;
   color: var(--h5p-theme-text-third);
   position: relative;
-  margin-bottom: 1em;
-}
+  margin-bottom: 1em; }
 
 .h5p-audio-recorder-vu-meter {
   height: 100%;
   width: 100%;
-  background-image: url('../images/recording-indicator.svg');
+  background-image: url("../images/recording-indicator.svg");
   position: absolute;
-  transform: scale(0.8);
-
-  &.hidden {
-    display: none;
-  }
-}
+  transform: scale(0.8); }
+  .h5p-audio-recorder-vu-meter.hidden {
+    display: none; }
