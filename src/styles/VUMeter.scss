@@ -1,12 +1,12 @@
 .recording-indicator-wrapper {
-  height: 9.375em;
-  width: 9.375em;
+  height: calc(9.375em*var(--h5p-theme-scaling));
+  width: calc(9.375em*var(--h5p-theme-scaling));
   margin-left: auto;
   margin-right: auto;
-  line-height: 9.375em;
+  line-height: calc(9.375em*var(--h5p-theme-scaling));
   color: var(--h5p-theme-text-third);
   position: relative;
-  margin-bottom: 1em;
+  margin-bottom: var(--h5p-theme-spacing-xxs);
 }
 
 .h5p-audio-recorder-vu-meter {

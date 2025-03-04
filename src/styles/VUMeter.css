@@ -13,6 +13,7 @@
   width: 100%;
   background-image: url("../images/recording-indicator.svg");
   position: absolute;
-  transform: scale(0.8); }
+  transform: scale(0.8);
+  fill: green; }
   .h5p-audio-recorder-vu-meter.hidden {
     display: none; }
