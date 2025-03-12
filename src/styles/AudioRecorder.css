@@ -1,3 +1,4 @@
+/*$record-button-width: 8.2em;*/
 .h5p-content:not(.using-mouse) .h5p-audio-recorder-view .button:focus {
   outline: 0;
   box-shadow: 0.06em 0 0.6em 0.1em #7bc1f9; }
@@ -33,8 +34,7 @@
   .h5p-audio-recorder-view .title {
     color: var(--h5p-theme-text-primary);
     font-size: var(--h5p-theme-font-size-m);
-    margin-bottom: var(--h5p-theme-spacing-s);
-    line-height: 1.5em; }
+    margin-bottom: var(--h5p-theme-spacing-s); }
   .h5p-audio-recorder-view .icon-download:before {
     font-family: 'h5p-theme';
     content: '\e911'; }
@@ -69,7 +69,7 @@
     max-width: 100%;
     min-width: 0; }
   .h5p-audio-recorder-view .button-row {
-    margin-bottom: 1em; }
+    margin-bottom: var(--h5p-theme-spacing-s); }
     .h5p-audio-recorder-view .button-row .button-row-double {
       width: 100%; }
     .h5p-audio-recorder-view .button-row .button-row-left {
@@ -78,45 +78,40 @@
     .h5p-audio-recorder-view .button-row .button-row-right {
       text-align: left;
       flex: 1; }
-  .h5p-audio-recorder-view .button {
-    font-size: 1.042em;
-    font-family: var(--h5p-theme-font-name);
-    padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l));
-    border: solid 3px var(--h5p-theme-main-cta-base);
-    border-radius: var(--h5p-theme-border-radius-medium);
-    margin: 0 0.5em;
-    border: 0;
-    display: inline-block;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: var(--h5p-theme-font-size-l);
-    white-space: nowrap; }
-    .h5p-audio-recorder-view .button [class^="fa-"] {
-      font-weight: 400; }
-    .h5p-audio-recorder-view .button.small {
-      font-size: var(--h5p-theme-font-size-s-large); }
-    .h5p-audio-recorder-view .button.retry {
-      background-color: #5e5e5e;
-      color: white;
-      border-color: #5e5e5e;
-      border: 2px solid #5e5e5e;
-      box-sizing: border-box; }
-      .h5p-audio-recorder-view .button.retry:hover {
-        background-color: #515151;
-        border-color: #515151; }
-      .h5p-audio-recorder-view .button.retry:active {
-        background-color: #454545;
-        border-color: #454545; }
-      .h5p-audio-recorder-view .button.retry[disabled] {
-        background-color: #c4c4c4;
-        border-color: #c4c4c4; }
-    .h5p-audio-recorder-view .button.small-screen .label {
-      display: none; }
-    .h5p-audio-recorder-view .button:not(.small-screen) [class^="fa-"] {
-      margin-right: 0.5rem; }
-    .h5p-audio-recorder-view .button:not(.small-screen).record, .h5p-audio-recorder-view .button:not(.small-screen).pause {
-      min-width: 8.2em; }
+  .h5p-audio-recorder-view .button [class^="fa-"] {
+    font-weight: 400; }
+  .h5p-audio-recorder-view .button.small {
+    font-size: var(--h5p-theme-font-size-s-large); }
+  .h5p-audio-recorder-view .button.retry {
+    background-color: #5e5e5e;
+    color: white;
+    border-color: #5e5e5e;
+    border: 2px solid #5e5e5e;
+    box-sizing: border-box; }
+    .h5p-audio-recorder-view .button.retry:hover {
+      background-color: #515151;
+      border-color: #515151; }
+    .h5p-audio-recorder-view .button.retry:active {
+      background-color: #454545;
+      border-color: #454545; }
+    .h5p-audio-recorder-view .button.retry[disabled] {
+      background-color: #c4c4c4;
+      border-color: #c4c4c4; }
+  .h5p-audio-recorder-view .button.small-screen .label {
+    display: none; }
+  .h5p-audio-recorder-view .button:not(.small-screen) [class^="fa-"] {
+    margin-right: var(--h5p-theme-spacing-xxs); }
+  .h5p-audio-recorder-view .button:not(.small-screen).record, .h5p-audio-recorder-view .button:not(.small-screen).pause {
+    /*min-width: $record-button-width;*/
+    line-height: 1;
+    margin: 0 var(--h5p-theme-spacing-xxs);
+    padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-m)); }
+  .h5p-audio-recorder-view .button:not(.small-screen).record:hover, .h5p-audio-recorder-view .button:not(.small-screen).pause:hover {
+    text-indent: 0;
+    padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-m)); }
+  .h5p-audio-recorder-view .button:not(.small-screen).pause:hover {
+    background-color: var(--h5p-theme-feedback-incorrect-main);
+    color: var(--h5p-theme-feedback-incorrect-secondary); }
   .h5p-audio-recorder-view .button.done, .h5p-audio-recorder-view .button.download {
     background-color: var(--h5p-theme-feedback-correct-main);
     color: var(--h5p-theme-feedback-correct-secondary);
@@ -130,192 +125,7 @@
     color: var(--h5p-theme-feedback-incorrect-main);
     border: solid 3px var(--h5p-theme-feedback-incorrect-main); }
 
-.h5p-audio-recorder .h5p-theme-secondary-cta:before {
-  display: none; }
-
-/* trying out audio styler */
-audio {
-  height: var(--h5p-theme-spacing-xl); }
-
-audio::-webkit-media-controls,
-audio::-webkit-media-controls-enclosure {
-  width: 100%;
-  max-width: 800px;
-  height: var(--h5p-theme-spacing-xl);
-  flex-shrink: 0;
-  bottom: 0;
-  text-indent: 0;
-  padding: 0;
-  box-sizing: border-box; }
-
-audio::-webkit-media-controls-panel {
-  align-self: center;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* We use flex-start here to ensure that the play button is visible even
-   * if we are too small to show all controls.
-   */
-  justify-content: flex-start;
-  -webkit-user-select: none;
-  position: relative;
-  width: 100%;
-  z-index: 0;
-  overflow: hidden;
-  text-align: right;
-  bottom: auto;
-  height: var(--h5p-theme-spacing-xl);
-  background-color: var(--h5p-theme-alternative-base);
-  border-radius: var(--h5p-theme-border-radius-large);
-  /* The duration is also specified in MediaControlElements.cpp and LayoutTests/media/media-controls.js */
-  transition: opacity 0.3s; }
-
-audio:-webkit-full-page-media {
-  max-height: 100%;
-  max-width: 100%; }
-
-audio:-webkit-full-page-media::-webkit-media-controls-panel,
-audio::-webkit-media-controls-mute-button {
-  -webkit-appearance: media-mute-button;
-  display: flex;
-  flex: none;
-  border: none;
-  box-sizing: border-box;
-  width: 35px;
-  height: 30px;
-  line-height: 30px;
-  margin: 0 6px 0 0;
-  padding: 0;
-  background-color: initial;
-  color: inherit; }
-
-audio::-webkit-media-controls-overlay-enclosure {
-  display: none; }
-
-audio::-webkit-media-controls-play-button {
-  -webkit-appearance: media-play-button;
-  display: flex;
-  flex: none;
-  border: none;
-  box-sizing: border-box;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  margin-left: 9px;
-  margin-right: 9px;
-  padding: 0;
-  background-color: initial;
-  color: inherit; }
-
-audio::-webkit-media-controls-timeline-container {
-  -webkit-appearance: media-controls-background;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1 1;
-  -webkit-user-select: none;
-  height: 16px;
-  min-width: 0; }
-
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display {
-  -webkit-appearance: media-current-time-display;
-  -webkit-user-select: none;
-  flex: none;
-  display: flex;
-  border: none;
-  cursor: default;
-  height: 30px;
-  margin: 0 9px 0 0;
-  padding: 0;
-  line-height: 30px;
-  font-family: var(--h5p-theme-font-name);
-  font-variant-numeric: tabular-nums;
-  font-size: 13px;
-  font-weight: bold;
-  font-style: normal;
-  color: var(--h5p-theme-text-primary);
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0;
-  text-shadow: none;
-  text-decoration: none; }
-
-audio::-webkit-media-controls-timeline {
-  -webkit-appearance: media-slider;
-  display: flex;
-  flex: 1 1 auto;
-  padding: 0;
-  background-color: transparent;
-  min-width: 25px;
-  color: inherit; }
-
-audio::-webkit-media-controls-volume-slider {
-  -webkit-appearance: media-volume-slider;
-  display: flex;
-  /* The 1.9 value was empirically chosen to match old-flexbox behaviour
-   * and be aesthetically pleasing.
-   */
-  flex: 1 1.9 auto;
-  max-width: 70px;
-  margin: 0;
-  padding: 0 10px;
-  background-color: transparent;
-  min-width: 15px;
-  border: initial;
-  color: inherit;
-  align-self: center; }
-
-/* FIXME these shouldn't use special pseudoShadowIds, but nicer rules.
-   https://code.google.com/p/chromium/issues/detail?id=112508
-   https://bugs.webkit.org/show_bug.cgi?id=62218
-*/
-input[type="range" i]::-webkit-media-slider-container {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  /* This property is updated by C++ code. */
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  border: 1px solid rgba(230, 230, 230, 0.35);
-  border-radius: 4px;
-  background-color: transparent;
-  /* Background drawing is managed by C++ code to draw ranges. */ }
-
-/* The negative right margin causes the track to overflow its container. */
-input[type="range" i]::-webkit-media-slider-container > div {
-  margin-right: -14px; }
-
-input[type="range" i]::-webkit-media-slider-thumb {
-  margin-left: -7px;
-  margin-right: -7px; }
-
-audio::-webkit-media-controls-fullscreen-button {
-  -webkit-appearance: media-enter-fullscreen-button;
-  display: flex;
-  flex: none;
-  border: none;
-  box-sizing: border-box;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  margin-left: -5px;
-  margin-right: 9px;
-  padding: 0;
-  background-color: initial;
-  color: inherit; }
-
-audio::-webkit-media-controls-toggle-closed-captions-button {
-  display: none; }
-
-audio::-webkit-media-controls-fullscreen-volume-slider {
-  display: none; }
-
-audio::-webkit-media-controls-fullscreen-volume-min-button {
-  display: none; }
-
-audio::-webkit-media-controls-fullscreen-volume-max-button {
-  display: none; }
+.h5p-theme-secondary-cta.h5p-theme-download {
+  text-decoration: none;
+  margin: 0 0.5em 0 0;
+  display: inline-block; }

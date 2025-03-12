@@ -21,7 +21,7 @@
 
     <div class="button-row">
       <div class="button-row-double">
-        <button class="button record"
+        <button class="button record h5p-theme-primary-cta"
                 v-if="state === 'ready' || state === 'blocked'"
                 ref="button-record"
                 v-on:click="record">
@@ -29,14 +29,13 @@
           {{ l10n.recordAnswer }}
         </button>
 
-        <button class="button retry small"
+        <button class="h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry"
                 v-if="state === 'recording' || state === 'paused'"
                 v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 v-on:click="retry">
-          <span class="fa-undo"></span>
           <span class="label">{{ l10n.retry }}</span>
         </button>
-        <button class="button pause"
+        <button class="button pause h5p-theme-primary-cta"
                 v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 ref="button-pause"
                 v-if="state === 'recording'"
@@ -44,7 +43,7 @@
           <span class="fa-pause"></span>
           <span class="label">{{ l10n.pause }}</span>
         </button>
-        <button class="button record"
+        <button class="button record h5p-theme-primary-cta"
                 v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 ref="button-continue"
                 v-if="state === 'paused'"
@@ -52,17 +51,16 @@
           <span class="fa-circle"></span>
           <span class="label">{{ l10n.continue }}</span>
         </button>
-        <button class="button done small"
+        <button class="h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-done"
                 v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 v-if="state === 'recording' || state === 'paused'"
                 v-on:click="done">
-          <span class="fa-play-circle"></span>
           <span class="label">{{ l10n.done }}</span>
         </button>
       </div>
 
       <span class="button-row-left">
-        <a class="button download"
+        <a class="h5p-theme-secondary-cta h5p-theme-download h5p-joubelui-button"
            ref="button-download"
            v-if="state === 'done'"
            v-bind:href="audioSrc"
@@ -73,10 +71,9 @@
       </span>
 
       <span class="button-row-right">
-        <button class="button retry"
+        <button class="h5p-theme-secondary-cta h5p-theme-retry h5p-joubelui-button"
                 v-if="state === 'done' || state === 'cant-create-audio-file'"
                 v-on:click="retry">
-          <span class="fa-undo"></span>
           <span class="label">{{ l10n.retry }}</span>
         </button>
       </span>
