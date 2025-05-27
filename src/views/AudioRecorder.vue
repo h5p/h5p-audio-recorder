@@ -146,7 +146,8 @@
             headerText: this.l10n.retryDialogHeaderText,
             dialogText: this.l10n.retryDialogBodyText,
             cancelText: this.l10n.retryDialogCancelText,
-            confirmText: this.l10n.retryDialogConfirmText
+            confirmText: this.l10n.retryDialogConfirmText,
+            theme: true
           }
         );
         dialog.appendTo(dialogParent);
