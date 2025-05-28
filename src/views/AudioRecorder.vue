@@ -29,7 +29,7 @@
           {{ l10n.recordAnswer }}
         </button>
 
-        <button class="h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry"
+        <button class="button h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry"
                 v-if="state === 'recording' || state === 'paused'"
                 v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 v-on:click="retry">
@@ -51,7 +51,7 @@
           <span class="fa-circle"></span>
           <span class="label">{{ l10n.continue }}</span>
         </button>
-        <button class="h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-done"
+        <button class="button h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-done"
                 v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 v-if="state === 'recording' || state === 'paused'"
                 v-on:click="done">
@@ -60,18 +60,20 @@
       </div>
 
       <span class="button-row-left">
-        <a class="h5p-theme-secondary-cta h5p-theme-download h5p-joubelui-button"
+        <a class="button h5p-theme-secondary-cta h5p-theme-download h5p-joubelui-button"
+           v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
            ref="button-download"
            v-if="state === 'done'"
            v-bind:href="audioSrc"
            v-bind:download="audioFilename">
           <span class="icon-download"></span>
-          {{ l10n.download }}
+          <span class="label">{{ l10n.download }}</span>
         </a>
       </span>
 
       <span class="button-row-right">
-        <button class="h5p-theme-secondary-cta h5p-theme-retry h5p-joubelui-button"
+        <button class="button h5p-theme-secondary-cta h5p-theme-retry h5p-joubelui-button"
+                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
                 v-if="state === 'done' || state === 'cant-create-audio-file'"
                 v-on:click="retry">
           <span class="label">{{ l10n.retry }}</span>
