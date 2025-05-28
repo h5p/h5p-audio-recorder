@@ -2,7 +2,7 @@
   <div class="h5p-audio-recorder-view">
     <vuMeter :avgMicFrequency="avgMicFrequency" :enablePulse="state === 'recording'"></vuMeter>
 
-    <div v-if="state !== 'done'  && title" class="title" v-html="title" />
+    <div v-if="state !== 'done' && title" class="title" v-html="title" />
 
     <div role="status" v-bind:class="state" v-html="statusMessages[state]" />
 
@@ -20,93 +20,125 @@
     </div>
 
     <div class="button-row">
-      <div class="button-row-double">
-        <div
-          v-if="state === 'ready' || state === 'blocked'"
-          ref="recordButtonContainer">
-        </div>
-
-        <button class="h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry"
-                v-if="state === 'recording' || state === 'paused'"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                v-on:click="retry">
-          <span class="label">{{ l10n.retry }}</span>
-        </button>
-        <button class="button pause h5p-theme-primary-cta"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                ref="button-pause"
-                v-if="state === 'recording'"
-                v-on:click="pause">
-          <span class="fa-pause"></span>
-          <span class="label">{{ l10n.pause }}</span>
-        </button>
-        <button class="button record h5p-theme-primary-cta"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                ref="button-continue"
-                v-if="state === 'paused'"
-                v-on:click="record">
-          <span class="fa-circle"></span>
-          <span class="label">{{ l10n.continue }}</span>
-        </button>
-        <button class="h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-done"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                v-if="state === 'recording' || state === 'paused'"
-                v-on:click="done">
-          <span class="label">{{ l10n.done }}</span>
-        </button>
-      </div>
-
-      <span class="button-row-left">
-        <a class="h5p-theme-secondary-cta h5p-theme-download h5p-joubelui-button"
-           ref="button-download"
-           v-if="state === 'done'"
-           v-bind:href="audioSrc"
-           v-bind:download="audioFilename">
-          <span class="icon-download"></span>
-          {{ l10n.download }}
-        </a>
-      </span>
-
-      <span class="button-row-right">
-        <button class="h5p-theme-secondary-cta h5p-theme-retry h5p-joubelui-button"
-                v-if="state === 'done' || state === 'cant-create-audio-file'"
-                v-on:click="retry">
-          <span class="label">{{ l10n.retry }}</span>
-        </button>
-      </span>
+      <div class="button-row-double" ref="buttonRowDouble"></div>
     </div>
   </div>
 </template>
 
 <script>
   import State from '../components/State';
-  import { ref, onMounted } from 'vue';
-
   // focus on ref when state is changed
   const refToFocusOnStateChange = {};
   refToFocusOnStateChange[State.READY] = 'recordButtonContainer';
-  refToFocusOnStateChange[State.RECORDING] = 'button-pause';
-  refToFocusOnStateChange[State.PAUSED] = 'button-continue';
-  refToFocusOnStateChange[State.DONE] = 'button-download';
+  refToFocusOnStateChange[State.RECORDING] = 'pauseButtonContainer';
+  refToFocusOnStateChange[State.PAUSED] = 'continueButtonContainer';
+  refToFocusOnStateChange[State.DONE] = 'doneButtonContainer';
 
   const viewStateBreakPoint = 576; // px, container width to toggle viewState at
 
-  // Use H5P Button component
-  const recordButtonContainer = ref(null);
-
-  onMounted(() => {
-    const recordButton = H5P.Components.Button({
-      label: l10n.recordAnswer,
-      icon: 'record',
-      classes: 'button record',
-      onClick: record,
-    });
-
-    recordButtonContainer.value.appendChild(recordButton);
-  });
-
   export default {
+    mounted :function() {
+      this.insertButtonsForState(this.state);
+    },
+
     methods: {
+      downloadAudio: function() {
+        const a = document.createElement('a');
+        a.href = this.audioSrc;
+        a.download = this.audioFilename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      },
+
+      clearButtonRow: function() {
+        const container = this.$refs.buttonRowDouble;
+        if (container) {
+          while (container.firstChild) {
+            container.removeChild(container.firstChild);
+          }
+        }
+      },
+
+      injectButtons: function(buttons) {
+        const container = this.$refs.buttonRowDouble;
+        if (!container) return;
+
+        buttons.forEach(({ label, icon, classes, onClick }) => {
+          const btn = H5P.Components.Button({ label, icon, classes, onClick });
+          container.appendChild(btn);
+        });
+      },
+
+
+      insertButtonsForState: function(state) {
+        this.clearButtonRow();
+
+        const buttons = [];
+
+        if (state === State.READY || state === State.BLOCKED) {
+          buttons.push({
+            label: this.l10n.recordAnswer,
+            icon: 'record',
+            classes: 'button record h5p-theme-primary-cta',
+            onClick: this.record
+          });
+        }
+
+        if (state === State.RECORDING) {
+          buttons.push({
+            label: this.l10n.pause,
+            icon: 'pause',
+            classes: 'button pause h5p-theme-primary-cta',
+            onClick: this.pause
+          });
+        }
+
+        if (state === State.PAUSED) {
+          buttons.push({
+            label: this.l10n.continue,
+            icon: 'circle',
+            classes: 'button record h5p-theme-primary-cta',
+            onClick: this.record
+          });
+        }
+
+        if (state === State.RECORDING || state === State.PAUSED) {
+          buttons.push({
+            label: this.l10n.done,
+            icon: null,
+            classes: 'h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-done',
+            onClick: this.done
+          }, {
+            label: this.l10n.retry,
+            icon: null,
+            classes: 'h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry',
+            onClick: this.retry
+          });
+        }
+
+        if (state === State.DONE || state === 'cant-create-audio-file') {
+          buttons.push({
+            label: this.l10n.retry,
+            icon: null,
+            classes: 'h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry',
+            onClick: this.retry
+          });
+        }
+        
+        if (state === State.DONE) {
+          buttons.push({
+            label: this.l10n.download,
+            icon: 'download',
+            classes: 'h5p-theme-secondary-cta h5p-theme-download h5p-joubelui-button',
+            onClick: this.downloadAudio
+          });
+        }
+
+        this.injectButtons(buttons);
+      },
+
       // Resize buttons. Not using media queries to allow being subcontent
       resize: function() {
         if (!this.$el) {
@@ -184,10 +216,15 @@
     },
 
     watch: {
-      state: function(state){
-        if (refToFocusOnStateChange[state]) {
-          this.$nextTick(() => this.$refs[refToFocusOnStateChange[state]].focus());
-        }
+      state: function(newState) {
+        this.$nextTick(() => {
+          this.insertButtonsForState(newState);
+
+          const refName = refToFocusOnStateChange[newState];
+          if (refName && this.$refs[refName]?.focus) {
+            this.$refs[refName].focus();
+          }
+        });
         this.$emit('resize');
       }
     }
