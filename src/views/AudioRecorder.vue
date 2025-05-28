@@ -37,7 +37,7 @@
   const viewStateBreakPoint = 576; // px, container width to toggle viewState at
 
   export default {
-    mounted :function() {
+    mounted: function() {
       this.insertButtonsForState(this.state);
     },
 
