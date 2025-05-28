@@ -21,13 +21,10 @@
 
     <div class="button-row">
       <div class="button-row-double">
-        <button class="button record h5p-theme-primary-cta"
-                v-if="state === 'ready' || state === 'blocked'"
-                ref="button-record"
-                v-on:click="record">
-          <span class="fa-circle"></span>
-          {{ l10n.recordAnswer }}
-        </button>
+        <div
+          v-if="state === 'ready' || state === 'blocked'"
+          ref="recordButtonContainer">
+        </div>
 
         <button class="h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry"
                 v-if="state === 'recording' || state === 'paused'"
@@ -83,15 +80,30 @@
 
 <script>
   import State from '../components/State';
+  import { ref, onMounted } from 'vue';
 
   // focus on ref when state is changed
   const refToFocusOnStateChange = {};
-  refToFocusOnStateChange[State.READY] = 'button-record';
+  refToFocusOnStateChange[State.READY] = 'recordButtonContainer';
   refToFocusOnStateChange[State.RECORDING] = 'button-pause';
   refToFocusOnStateChange[State.PAUSED] = 'button-continue';
   refToFocusOnStateChange[State.DONE] = 'button-download';
 
   const viewStateBreakPoint = 576; // px, container width to toggle viewState at
+
+  // Use H5P Button component
+  const recordButtonContainer = ref(null);
+
+  onMounted(() => {
+    const recordButton = H5P.Components.Button({
+      label: l10n.recordAnswer,
+      icon: 'record',
+      classes: 'button record',
+      onClick: record,
+    });
+
+    recordButtonContainer.value.appendChild(recordButton);
+  });
 
   export default {
     methods: {
