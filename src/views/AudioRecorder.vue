@@ -81,7 +81,7 @@
           buttons.push({
             label: this.l10n.recordAnswer,
             icon: 'record',
-            classes: 'button record h5p-theme-primary-cta',
+            classes: 'button record',
             onClick: this.record
           });
         }
@@ -90,7 +90,7 @@
           buttons.push({
             label: this.l10n.pause,
             icon: 'pause',
-            classes: 'button pause h5p-theme-primary-cta',
+            classes: 'button pause',
             onClick: this.pause
           });
         }
@@ -100,7 +100,7 @@
             label: this.l10n.continue,
             icon: 'circle',
             styleType: 'secondary',
-            classes: 'button record h5p-theme-primary-cta',
+            classes: 'button record',
             onClick: this.record
           });
         }
@@ -110,13 +110,12 @@
             label: this.l10n.done,
             icon: null,
             styleType: 'secondary',
-            classes: 'h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-done',
+            classes: 'h5p-theme-done',
             onClick: this.done
           }, {
             label: this.l10n.retry,
-            icon: null,
+            icon: 'retry',
             styleType: 'secondary',
-            classes: 'h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry',
             onClick: this.retry
           });
         }
@@ -124,9 +123,8 @@
         if (state === State.DONE || state === 'cant-create-audio-file') {
           buttons.push({
             label: this.l10n.retry,
-            icon: null,
+            icon: 'retry',
             styleType: 'secondary',
-            classes: 'h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry',
             onClick: this.retry
           });
         }
@@ -136,7 +134,6 @@
             label: this.l10n.download,
             icon: 'download',
             styleType: 'secondary',
-            classes: 'h5p-theme-secondary-cta h5p-theme-download h5p-joubelui-button',
             onClick: this.downloadAudio
           });
         }
