@@ -55,12 +55,17 @@
       },
 
       clearButtonRow: function() {
-        const container = this.$refs.buttonRowDouble;
-        if (container) {
-          while (container.firstChild) {
-            container.removeChild(container.firstChild);
+        [
+          this.$refs.buttonRowDouble,
+          this.$refs.buttonRowLeft,
+          this.$refs.buttonRowRight
+        ].forEach((container) => {
+          if (container) {
+            while (container.firstChild) {
+              container.removeChild(container.firstChild);
+            }
           }
-        }
+        });
       },
 
       injectButtons: function(buttons, buttonRef) {
