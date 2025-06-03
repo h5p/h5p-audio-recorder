@@ -7,7 +7,7 @@
   @include blueGlow
 }
 
-.h5p-audio-recorder{
+.h5p-audio-recorder {
   background-color:var(--h5p-theme-ui-base);
 }
 
@@ -45,26 +45,26 @@
   }
 
   .title {
-     color: var(--h5p-theme-text-primary);
-     font-size: var(--h5p-theme-font-size-m);
-     margin-bottom: var(--h5p-theme-spacing-s);
+    color: var(--h5p-theme-text-primary);
+    font-size: var(--h5p-theme-font-size-m);
+    margin-bottom: var(--h5p-theme-spacing-s);
   }
 
-  .icon-download {
-    &:before {
-      font-family: 'h5p-theme';
-      content: '\e911';
-      margin-right: var(--h5p-theme-spacing-xxs);
-    }
+  .h5p-theme-download:before {
+    font-family: 'h5p-theme';
+    content: '\e911';
+    margin-right: var(--h5p-theme-spacing-xxs);
   }
-  
-  .fa-circle:before{
+
+  .h5p-theme-record:before {
     content: '\e928';
   }
-  .fa-pause:before{
+
+  .h5p-theme-pause:before {
     content: '\e929';
   }
-  .fa-microphone:before{
+
+  .fa-microphone:before {
     content: '\e927';
   }
 
@@ -181,7 +181,7 @@
       font-size: var(--h5p-theme-font-size-s-large);
     }
 
-    &.retry {
+    &.h5p-theme-retry {
       @include button-filled(#5e5e5e, white);
     }
 
@@ -222,7 +222,7 @@
     }
   }
 
-  .button.done, .button.download {
+  .h5p-theme-done, .h5p-theme-download {
     background-color: var(--h5p-theme-feedback-correct-main);
     color: var(--h5p-theme-feedback-correct-secondary);
     border: solid 3px var(--h5p-theme-feedback-correct-main);
@@ -241,7 +241,8 @@
   }
 }
 
-.h5p-audio-recorder .h5p-joubelui-button:first-child:last-child {
+.h5p-audio-recorder .h5p-theme-primary-cta:first-child:last-child,
+.h5p-audio-recorder .h5p-theme-secondary-cta:first-child:last-child {
   margin:  unset;
 }
 
