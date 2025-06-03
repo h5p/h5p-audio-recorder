@@ -21,6 +21,8 @@
 
     <div class="button-row">
       <div class="button-row-double" ref="buttonRowDouble"></div>
+      <div class="button-row-left" ref="buttonRowLeft"></div>
+      <div class="button-row-right" ref="buttonRowRight"></div>
     </div>
   </div>
 </template>
@@ -61,24 +63,25 @@
         }
       },
 
-      injectButtons: function(buttons) {
-        const container = this.$refs.buttonRowDouble;
-        if (!container) return;
-
-        buttons.forEach(({ label, icon, classes, onClick }) => {
-          const btn = H5P.Components.Button({ label, icon, classes, onClick });
-          container.appendChild(btn);
-        });
+      injectButtons: function(buttons, buttonRef) {
+        if (buttons.length && buttonRef) {
+          buttons.forEach((params) => {
+            const btn = H5P.Components.Button(params);
+            buttonRef.appendChild(btn);
+          });
+        }
       },
 
 
       insertButtonsForState: function(state) {
         this.clearButtonRow();
 
-        const buttons = [];
+        const buttonsDouble = [];
+        const buttonsLeft = [];
+        const buttonsRight = [];
 
         if (state === State.READY || state === State.BLOCKED) {
-          buttons.push({
+          buttonsDouble.push({
             label: this.l10n.recordAnswer,
             icon: 'record',
             classes: 'button record',
@@ -87,7 +90,7 @@
         }
 
         if (state === State.RECORDING) {
-          buttons.push({
+          buttonsDouble.push({
             label: this.l10n.pause,
             icon: 'pause',
             classes: 'button pause',
@@ -96,7 +99,7 @@
         }
 
         if (state === State.PAUSED) {
-          buttons.push({
+          buttonsDouble.push({
             label: this.l10n.continue,
             icon: 'circle',
             styleType: 'secondary',
@@ -106,11 +109,10 @@
         }
 
         if (state === State.RECORDING || state === State.PAUSED) {
-          buttons.push({
+          buttonsDouble.push({
             label: this.l10n.done,
-            icon: null,
+            icon: 'done',
             styleType: 'secondary',
-            classes: 'h5p-theme-done',
             onClick: this.done
           }, {
             label: this.l10n.retry,
@@ -121,16 +123,16 @@
         }
 
         if (state === State.DONE || state === 'cant-create-audio-file') {
-          buttons.push({
+          buttonsRight.push({
             label: this.l10n.retry,
             icon: 'retry',
             styleType: 'secondary',
             onClick: this.retry
           });
         }
-        
+
         if (state === State.DONE) {
-          buttons.push({
+          buttonsLeft.push({
             label: this.l10n.download,
             icon: 'download',
             styleType: 'secondary',
@@ -138,7 +140,9 @@
           });
         }
 
-        this.injectButtons(buttons);
+        this.injectButtons(buttonsDouble, this.$refs.buttonRowDouble);
+        this.injectButtons(buttonsLeft, this.$refs.buttonRowLeft);
+        this.injectButtons(buttonsRight, this.$refs.buttonRowRight);
       },
 
       // Resize buttons. Not using media queries to allow being subcontent
