@@ -19,7 +19,11 @@
       {{ l10n.downloadRecording }}
     </div>
 
-    <div class="button-row">
+    <div
+      class="button-row"
+      v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
+      ref="buttonRow"
+    >
       <div class="button-row-double" ref="buttonRowDouble"></div>
       <div class="button-row-left" ref="buttonRowLeft"></div>
       <div class="button-row-right" ref="buttonRowRight"></div>
@@ -29,12 +33,13 @@
 
 <script>
   import State from '../components/State';
+
   // focus on ref when state is changed
   const refToFocusOnStateChange = {};
-  refToFocusOnStateChange[State.READY] = 'recordButtonContainer';
-  refToFocusOnStateChange[State.RECORDING] = 'pauseButtonContainer';
-  refToFocusOnStateChange[State.PAUSED] = 'continueButtonContainer';
-  refToFocusOnStateChange[State.DONE] = 'doneButtonContainer';
+  refToFocusOnStateChange[State.READY] = 'record';
+  refToFocusOnStateChange[State.RECORDING] = 'pause';
+  refToFocusOnStateChange[State.PAUSED] = 'continue';
+  refToFocusOnStateChange[State.DONE] = 'done';
 
   const viewStateBreakPoint = 576; // px, container width to toggle viewState at
 
@@ -108,7 +113,7 @@
             label: this.l10n.continue,
             icon: 'circle',
             styleType: 'secondary',
-            classes: 'button record',
+            classes: 'button record continue',
             onClick: this.record
           });
         }
@@ -118,11 +123,13 @@
             label: this.l10n.done,
             icon: 'done',
             styleType: 'secondary',
+            classes: 'button done',
             onClick: this.done
           }, {
             label: this.l10n.retry,
             icon: 'retry',
             styleType: 'secondary',
+            classes: 'button',
             onClick: this.retry
           });
         }
@@ -132,6 +139,7 @@
             label: this.l10n.retry,
             icon: 'retry',
             styleType: 'secondary',
+            classes: 'button',
             onClick: this.retry
           });
         }
@@ -141,6 +149,7 @@
             label: this.l10n.download,
             icon: 'download',
             styleType: 'secondary',
+            classes: 'button',
             onClick: this.downloadAudio
           });
         }
@@ -201,7 +210,8 @@
             headerText: this.l10n.retryDialogHeaderText,
             dialogText: this.l10n.retryDialogBodyText,
             cancelText: this.l10n.retryDialogCancelText,
-            confirmText: this.l10n.retryDialogConfirmText
+            confirmText: this.l10n.retryDialogConfirmText,
+            theme: true
           }
         );
         dialog.appendTo(dialogParent);
@@ -232,10 +242,12 @@
           this.insertButtonsForState(newState);
 
           const refName = refToFocusOnStateChange[newState];
-          if (refName && this.$refs[refName]?.focus) {
-            this.$refs[refName].focus();
+          const focusedElement = this.$refs.buttonRow?.querySelector('.' + refName);
+          if (refName && focusedElement) {
+            focusedElement.focus();
           }
         });
+
         this.$emit('resize');
       }
     }
