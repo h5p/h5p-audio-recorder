@@ -212,16 +212,16 @@
 
     &.record:hover,
     &.pause:hover {
-      background-color: var(--h5p-theme-feedback-incorrect-main-light);
-      border-color: var(--h5p-theme-feedback-incorrect-main-light);
+      background-color: var(--h5p-theme-feedback-incorrect-main);
+      border-color: var(--h5p-theme-feedback-incorrect-main);
       text-indent: 0;
       padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-m));
     }
 
     &.record:active,
     &.pause:active {
-      background-color: var(--h5p-theme-feedback-incorrect-main-dark);
-      border-color: var(--h5p-theme-feedback-incorrect-main-dark);
+      background-color: var(--h5p-theme-feedback-incorrect-main);
+      border-color: var(--h5p-theme-feedback-incorrect-main);
     }
 
     &.pause:hover {
