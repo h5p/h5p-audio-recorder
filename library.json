@@ -4,7 +4,7 @@
   "machineName": "H5P.AudioRecorder",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 32,
+  "patchVersion": 34,
   "runnable": 1,
   "author": "Joubel",
   "license": "MIT",
@@ -29,6 +29,11 @@
     },
     {
       "machineName": "H5P.FontIcons",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5P.Components",
       "majorVersion": 1,
       "minorVersion": 0
     }

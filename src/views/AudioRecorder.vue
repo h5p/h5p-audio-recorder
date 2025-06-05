@@ -2,7 +2,7 @@
   <div class="h5p-audio-recorder-view">
     <vuMeter :avgMicFrequency="avgMicFrequency" :enablePulse="state === 'recording'"></vuMeter>
 
-    <div v-if="state !== 'done'  && title" class="title" v-html="title" />
+    <div v-if="state !== 'done' && title" class="title" v-html="title" />
 
     <div role="status" v-bind:class="state" v-html="statusMessages[state]" />
 
@@ -19,66 +19,14 @@
       {{ l10n.downloadRecording }}
     </div>
 
-    <div class="button-row">
-      <div class="button-row-double">
-        <button class="button record h5p-theme-primary-cta"
-                v-if="state === 'ready' || state === 'blocked'"
-                ref="button-record"
-                v-on:click="record">
-          <span class="fa-circle"></span>
-          {{ l10n.recordAnswer }}
-        </button>
-
-        <button class="button h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-retry"
-                v-if="state === 'recording' || state === 'paused'"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                v-on:click="retry">
-          <span class="label">{{ l10n.retry }}</span>
-        </button>
-        <button class="button pause h5p-theme-primary-cta"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                ref="button-pause"
-                v-if="state === 'recording'"
-                v-on:click="pause">
-          <span class="fa-pause"></span>
-          <span class="label">{{ l10n.pause }}</span>
-        </button>
-        <button class="button record h5p-theme-primary-cta"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                ref="button-continue"
-                v-if="state === 'paused'"
-                v-on:click="record">
-          <span class="fa-circle"></span>
-          <span class="label">{{ l10n.continue }}</span>
-        </button>
-        <button class="button h5p-theme-secondary-cta h5p-joubelui-button h5p-theme-done"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                v-if="state === 'recording' || state === 'paused'"
-                v-on:click="done">
-          <span class="label">{{ l10n.done }}</span>
-        </button>
-      </div>
-
-      <span class="button-row-left">
-        <a class="button h5p-theme-secondary-cta h5p-theme-download h5p-joubelui-button"
-           v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-           ref="button-download"
-           v-if="state === 'done'"
-           v-bind:href="audioSrc"
-           v-bind:download="audioFilename">
-          <span class="icon-download"></span>
-          <span class="label">{{ l10n.download }}</span>
-        </a>
-      </span>
-
-      <span class="button-row-right">
-        <button class="button h5p-theme-secondary-cta h5p-theme-retry h5p-joubelui-button"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                v-if="state === 'done' || state === 'cant-create-audio-file'"
-                v-on:click="retry">
-          <span class="label">{{ l10n.retry }}</span>
-        </button>
-      </span>
+    <div
+      class="button-row"
+      v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
+      ref="buttonRow"
+    >
+      <div class="button-row-double" ref="buttonRowDouble"></div>
+      <div class="button-row-left" ref="buttonRowLeft"></div>
+      <div class="button-row-right" ref="buttonRowRight"></div>
     </div>
   </div>
 </template>
@@ -88,15 +36,129 @@
 
   // focus on ref when state is changed
   const refToFocusOnStateChange = {};
-  refToFocusOnStateChange[State.READY] = 'button-record';
-  refToFocusOnStateChange[State.RECORDING] = 'button-pause';
-  refToFocusOnStateChange[State.PAUSED] = 'button-continue';
-  refToFocusOnStateChange[State.DONE] = 'button-download';
+  refToFocusOnStateChange[State.READY] = 'record';
+  refToFocusOnStateChange[State.RECORDING] = 'pause';
+  refToFocusOnStateChange[State.PAUSED] = 'continue';
+  refToFocusOnStateChange[State.DONE] = 'done';
 
   const viewStateBreakPoint = 576; // px, container width to toggle viewState at
 
   export default {
+    mounted: function() {
+      this.insertButtonsForState(this.state);
+    },
+
     methods: {
+      downloadAudio: function() {
+        const a = document.createElement('a');
+        a.href = this.audioSrc;
+        a.download = this.audioFilename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      },
+
+      clearButtonRow: function() {
+        [
+          this.$refs.buttonRowDouble,
+          this.$refs.buttonRowLeft,
+          this.$refs.buttonRowRight
+        ].forEach((container) => {
+          if (container) {
+            while (container.firstChild) {
+              container.removeChild(container.firstChild);
+            }
+          }
+        });
+      },
+
+      injectButtons: function(buttons, buttonRef) {
+        if (buttons.length && buttonRef) {
+          buttons.forEach((params) => {
+            const btn = H5P.Components.Button(params);
+            buttonRef.appendChild(btn);
+          });
+        }
+      },
+
+
+      insertButtonsForState: function(state) {
+        this.clearButtonRow();
+
+        const buttonsDouble = [];
+        const buttonsLeft = [];
+        const buttonsRight = [];
+
+        if (state === State.READY || state === State.BLOCKED) {
+          buttonsDouble.push({
+            label: this.l10n.recordAnswer,
+            icon: 'record',
+            classes: 'button record',
+            onClick: this.record
+          });
+        }
+
+        if (state === State.RECORDING) {
+          buttonsDouble.push({
+            label: this.l10n.pause,
+            icon: 'pause',
+            classes: 'button pause',
+            onClick: this.pause
+          });
+        }
+
+        if (state === State.PAUSED) {
+          buttonsDouble.push({
+            label: this.l10n.continue,
+            icon: 'circle',
+            styleType: 'secondary',
+            classes: 'button record continue',
+            onClick: this.record
+          });
+        }
+
+        if (state === State.RECORDING || state === State.PAUSED) {
+          buttonsDouble.push({
+            label: this.l10n.done,
+            icon: 'done',
+            styleType: 'secondary',
+            classes: 'button done',
+            onClick: this.done
+          }, {
+            label: this.l10n.retry,
+            icon: 'retry',
+            styleType: 'secondary',
+            classes: 'button',
+            onClick: this.retry
+          });
+        }
+
+        if (state === State.DONE || state === 'cant-create-audio-file') {
+          buttonsRight.push({
+            label: this.l10n.retry,
+            icon: 'retry',
+            styleType: 'secondary',
+            classes: 'button',
+            onClick: this.retry
+          });
+        }
+
+        if (state === State.DONE) {
+          buttonsLeft.push({
+            label: this.l10n.download,
+            icon: 'download',
+            styleType: 'secondary',
+            classes: 'button',
+            onClick: this.downloadAudio
+          });
+        }
+
+        this.injectButtons(buttonsDouble, this.$refs.buttonRowDouble);
+        this.injectButtons(buttonsLeft, this.$refs.buttonRowLeft);
+        this.injectButtons(buttonsRight, this.$refs.buttonRowRight);
+      },
+
       // Resize buttons. Not using media queries to allow being subcontent
       resize: function() {
         if (!this.$el) {
@@ -175,10 +237,17 @@
     },
 
     watch: {
-      state: function(state){
-        if (refToFocusOnStateChange[state]) {
-          this.$nextTick(() => this.$refs[refToFocusOnStateChange[state]].focus());
-        }
+      state: function(newState) {
+        this.$nextTick(() => {
+          this.insertButtonsForState(newState);
+
+          const refName = refToFocusOnStateChange[newState];
+          const focusedElement = this.$refs.buttonRow?.querySelector('.' + refName);
+          if (refName && focusedElement) {
+            focusedElement.focus();
+          }
+        });
+
         this.$emit('resize');
       }
     }
