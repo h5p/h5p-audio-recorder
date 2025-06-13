@@ -1,0 +1,23 @@
+.recording-indicator-wrapper {
+  height: calc(9.375em*var(--h5p-theme-scaling));
+  width: calc(9.375em*var(--h5p-theme-scaling));
+  margin-left: auto;
+  margin-right: auto;
+  line-height: calc(9.375em*var(--h5p-theme-scaling));
+  color: var(--h5p-theme-text-third);
+  position: relative;
+  margin-bottom: var(--h5p-theme-spacing-xxs);
+}
+
+.h5p-audio-recorder-vu-meter {
+  height: 100%;
+  width: 100%;
+  background-color: var(--h5p-theme-feedback-incorrect-main);
+  mask-image: url("../images/recording-indicator.svg");
+  position: absolute;
+  transform: scale(0.8);
+
+  &.hidden {
+    display: none;
+  }
+}

@@ -2,7 +2,7 @@
   <div class="h5p-audio-recorder-view">
     <vuMeter :avgMicFrequency="avgMicFrequency" :enablePulse="state === 'recording'"></vuMeter>
 
-    <div v-if="state !== 'done'  && title" class="title" v-html="title" />
+    <div v-if="state !== 'done' && title" class="title" v-html="title" />
 
     <div role="status" v-bind:class="state" v-html="statusMessages[state]" />
 
@@ -19,67 +19,14 @@
       {{ l10n.downloadRecording }}
     </div>
 
-    <div class="button-row">
-      <div class="button-row-double">
-        <button class="button record"
-                v-if="state === 'ready' || state === 'blocked'"
-                ref="button-record"
-                v-on:click="record">
-          <span class="fa-circle"></span>
-          {{ l10n.recordAnswer }}
-        </button>
-
-        <button class="button retry small"
-                v-if="state === 'recording' || state === 'paused'"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                v-on:click="retry">
-          <span class="fa-undo"></span>
-          <span class="label">{{ l10n.retry }}</span>
-        </button>
-        <button class="button pause"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                ref="button-pause"
-                v-if="state === 'recording'"
-                v-on:click="pause">
-          <span class="fa-pause"></span>
-          <span class="label">{{ l10n.pause }}</span>
-        </button>
-        <button class="button record"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                ref="button-continue"
-                v-if="state === 'paused'"
-                v-on:click="record">
-          <span class="fa-circle"></span>
-          <span class="label">{{ l10n.continue }}</span>
-        </button>
-        <button class="button done small"
-                v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
-                v-if="state === 'recording' || state === 'paused'"
-                v-on:click="done">
-          <span class="fa-play-circle"></span>
-          <span class="label">{{ l10n.done }}</span>
-        </button>
-      </div>
-
-      <span class="button-row-left">
-        <a class="button download"
-           ref="button-download"
-           v-if="state === 'done'"
-           v-bind:href="audioSrc"
-           v-bind:download="audioFilename">
-          <span class="icon-download"></span>
-          {{ l10n.download }}
-        </a>
-      </span>
-
-      <span class="button-row-right">
-        <button class="button retry"
-                v-if="state === 'done' || state === 'cant-create-audio-file'"
-                v-on:click="retry">
-          <span class="fa-undo"></span>
-          <span class="label">{{ l10n.retry }}</span>
-        </button>
-      </span>
+    <div
+      class="button-row"
+      v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
+      ref="buttonRow"
+    >
+      <div class="button-row-double" ref="buttonRowDouble"></div>
+      <div class="button-row-left" ref="buttonRowLeft"></div>
+      <div class="button-row-right" ref="buttonRowRight"></div>
     </div>
   </div>
 </template>
@@ -89,15 +36,129 @@
 
   // focus on ref when state is changed
   const refToFocusOnStateChange = {};
-  refToFocusOnStateChange[State.READY] = 'button-record';
-  refToFocusOnStateChange[State.RECORDING] = 'button-pause';
-  refToFocusOnStateChange[State.PAUSED] = 'button-continue';
-  refToFocusOnStateChange[State.DONE] = 'button-download';
+  refToFocusOnStateChange[State.READY] = 'record';
+  refToFocusOnStateChange[State.RECORDING] = 'pause';
+  refToFocusOnStateChange[State.PAUSED] = 'continue';
+  refToFocusOnStateChange[State.DONE] = 'done';
 
   const viewStateBreakPoint = 576; // px, container width to toggle viewState at
 
   export default {
+    mounted: function() {
+      this.insertButtonsForState(this.state);
+    },
+
     methods: {
+      downloadAudio: function() {
+        const a = document.createElement('a');
+        a.href = this.audioSrc;
+        a.download = this.audioFilename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      },
+
+      clearButtonRow: function() {
+        [
+          this.$refs.buttonRowDouble,
+          this.$refs.buttonRowLeft,
+          this.$refs.buttonRowRight
+        ].forEach((container) => {
+          if (container) {
+            while (container.firstChild) {
+              container.removeChild(container.firstChild);
+            }
+          }
+        });
+      },
+
+      injectButtons: function(buttons, buttonRef) {
+        if (buttons.length && buttonRef) {
+          buttons.forEach((params) => {
+            const btn = H5P.Components.Button(params);
+            buttonRef.appendChild(btn);
+          });
+        }
+      },
+
+
+      insertButtonsForState: function(state) {
+        this.clearButtonRow();
+
+        const buttonsDouble = [];
+        const buttonsLeft = [];
+        const buttonsRight = [];
+
+        if (state === State.READY || state === State.BLOCKED) {
+          buttonsDouble.push({
+            label: this.l10n.recordAnswer,
+            icon: 'record',
+            classes: 'button record',
+            onClick: this.record
+          });
+        }
+
+        if (state === State.RECORDING) {
+          buttonsDouble.push({
+            label: this.l10n.pause,
+            icon: 'pause',
+            classes: 'button pause',
+            onClick: this.pause
+          });
+        }
+
+        if (state === State.PAUSED) {
+          buttonsDouble.push({
+            label: this.l10n.continue,
+            icon: 'circle',
+            styleType: 'secondary',
+            classes: 'button record continue',
+            onClick: this.record
+          });
+        }
+
+        if (state === State.RECORDING || state === State.PAUSED) {
+          buttonsDouble.push({
+            label: this.l10n.done,
+            icon: 'done',
+            styleType: 'secondary',
+            classes: 'button done',
+            onClick: this.done
+          }, {
+            label: this.l10n.retry,
+            icon: 'retry',
+            styleType: 'secondary',
+            classes: 'button',
+            onClick: this.retry
+          });
+        }
+
+        if (state === State.DONE || state === 'cant-create-audio-file') {
+          buttonsRight.push({
+            label: this.l10n.retry,
+            icon: 'retry',
+            styleType: 'secondary',
+            classes: 'button',
+            onClick: this.retry
+          });
+        }
+
+        if (state === State.DONE) {
+          buttonsLeft.push({
+            label: this.l10n.download,
+            icon: 'download',
+            styleType: 'secondary',
+            classes: 'button',
+            onClick: this.downloadAudio
+          });
+        }
+
+        this.injectButtons(buttonsDouble, this.$refs.buttonRowDouble);
+        this.injectButtons(buttonsLeft, this.$refs.buttonRowLeft);
+        this.injectButtons(buttonsRight, this.$refs.buttonRowRight);
+      },
+
       // Resize buttons. Not using media queries to allow being subcontent
       resize: function() {
         if (!this.$el) {
@@ -149,7 +210,8 @@
             headerText: this.l10n.retryDialogHeaderText,
             dialogText: this.l10n.retryDialogBodyText,
             cancelText: this.l10n.retryDialogCancelText,
-            confirmText: this.l10n.retryDialogConfirmText
+            confirmText: this.l10n.retryDialogConfirmText,
+            theme: true
           }
         );
         dialog.appendTo(dialogParent);
@@ -175,10 +237,17 @@
     },
 
     watch: {
-      state: function(state){
-        if (refToFocusOnStateChange[state]) {
-          this.$nextTick(() => this.$refs[refToFocusOnStateChange[state]].focus());
-        }
+      state: function(newState) {
+        this.$nextTick(() => {
+          this.insertButtonsForState(newState);
+
+          const refName = refToFocusOnStateChange[newState];
+          const focusedElement = this.$refs.buttonRow?.querySelector('.' + refName);
+          if (refName && focusedElement) {
+            focusedElement.focus();
+          }
+        });
+
         this.$emit('resize');
       }
     }
@@ -186,221 +255,5 @@
 </script>
 
 <style lang="scss" type="text/scss">
-  $record-button-width: 8.2em;
-
-  @mixin blueGlow {
-    outline: 0;
-    box-shadow: 0.06em 0 0.6em 0.1em lighten(#0a78d1, 30%);
-  }
-
-  .h5p-content:not(.using-mouse) .h5p-audio-recorder-view .button:focus {
-    @include blueGlow
-  }
-
-  .h5p-audio-recorder-view {
-    font-size: 1em;
-    padding: 0.9em;
-    text-align: center;
-    font-family: Arial, 'Open Sans', sans-serif;
-
-    [class^="fa-"] {
-      font-family: 'H5PFontAwesome4';
-    }
-
-    .fa-microphone {
-      width: 60%;
-      height: 60%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      position: absolute;
-      font-size: 2.5em;
-      border-radius: 50%;
-      background-color: white;
-      line-height: 2.5em;
-    }
-
-    .h5p-audio-recorder-player {
-      box-sizing: border-box;
-      margin: 1.25em 1em 0 1em;
-
-      audio {
-        width: 100%;
-      }
-    }
-
-    .title {
-      color: black;
-      font-size: 1.250em;
-      margin-bottom: 1em;
-      line-height: 1.5em;
-    }
-
-    .icon-download {
-      &:before {
-        font-family: 'H5PFontIcons';
-        content: '\e918';
-      }
-    }
-
-    /* status bar */
-    [role="status"] {
-      background-color: #f8f8f8;
-      color: #777777;
-      padding: 0.6em;
-
-      &.recording {
-       background-color: #f9e5e6;
-       color: #da5254;
-      }
-
-      &.done {
-        background-color: #e0f9e3;
-        color:  #20603d;
-      }
-
-      &.blocked,
-      &.unsupported,
-      &.insecure-not-allowed,
-      &.cant-create-audio-file {
-        background-color: #db8b8b;
-        color: black;
-      }
-    }
-
-    .h5p-audio-recorder-download {
-      font-size: 1.2em;
-      padding: 2em;
-    }
-
-    .h5p-confirmation-dialog-popup {
-      top: 5em;
-      width: 35em;
-      max-width: 100%;
-      min-width: 0;
-    }
-
-    .button-row {
-      margin-bottom: 1em;
-
-      .button-row-double {
-        width: 100%;
-      }
-
-      .button-row-left {
-        text-align: right;
-        flex: 1;
-      }
-
-      .button-row-right {
-        text-align: left;
-        flex: 1;
-      }
-    }
-
-    @mixin button-filled($background-color, $color) {
-      background-color: $background-color;
-      color: $color;
-      border-color: $background-color;
-      border: 2px solid $background-color;
-      box-sizing: border-box;
-
-      &:hover {
-        background-color: darken($background-color, 5%);
-        border-color: darken($background-color, 5%);
-      }
-
-      &:active {
-        background-color: darken($background-color, 10%);
-        border-color: darken($background-color, 10%);
-      }
-
-      &[disabled] {
-        background-color: lighten($background-color, 40%);
-        border-color: lighten($background-color, 40%);
-      }
-    }
-
-    @mixin button-inverse($background-color, $color) {
-      background-color: $background-color;
-      color: $color;
-      border: 2px solid $color;
-      box-sizing: border-box;
-
-      &:hover {
-        color: lighten($color, 10%);
-        border-color: lighten($color, 10%);
-      }
-
-      &:active {
-        color: darken($color, 10%);
-        border-color: darken($color, 10%);
-      }
-
-      &[disabled],
-      &[aria-disabled] {
-        color: lighten($color, 40%);
-        border-color: lighten($color, 40%);
-      }
-    }
-
-    .button {
-      font-size: 1.042em;
-      font-family: 'Open Sans', sans-serif;
-      padding: 0.708em 1.250em;
-      border-radius: 2em;
-      margin: 0 0.5em;
-      border: 0;
-      display: inline-block;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-      white-space: nowrap;
-
-      [class^="fa-"] {
-        font-weight: 400;
-      }
-
-      &.small {
-        font-size: 0.85em;
-      }
-
-      &.done {
-        @include button-inverse(white, #1f824c);
-      }
-
-      &.retry {
-        @include button-filled(#5e5e5e, white);
-      }
-
-      &.record {
-        @include button-filled(#d95354, white);
-      }
-
-      &.download {
-        @include button-filled(#1f824c, white);
-      }
-
-      &.pause {
-        @include button-inverse(white, #d95354);
-      }
-
-      &.small-screen {
-        .label {
-          display: none;
-        }
-      }
-
-      &:not(.small-screen) {
-        [class^="fa-"] {
-          margin-right: 0.4em;
-        }
-
-        &.record,
-        &.pause {
-          min-width: $record-button-width;
-        }
-      }
-    }
-  }
+  @import '../styles/AudioRecorder.scss';
 </style>

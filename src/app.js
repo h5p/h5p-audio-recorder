@@ -57,6 +57,7 @@ export default class {
 
     const rootElement = document.createElement('div');
     rootElement.classList.add('h5p-audio-recorder');
+    rootElement.classList.add('h5p-theme');
 
     const recorder = this.recorder = new Recorder();
 

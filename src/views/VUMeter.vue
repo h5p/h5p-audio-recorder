@@ -56,26 +56,5 @@
 </script>
 
 <style lang="scss" type="text/scss">
-  .recording-indicator-wrapper {
-    height: 9.375em;
-    width: 9.375em;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 9.375em;
-    color: #8e8e8e;
-    position: relative;
-    margin-bottom: 1em;
-  }
-
-  .h5p-audio-recorder-vu-meter {
-    height: 100%;
-    width: 100%;
-    background-image: url('../images/recording-indicator.svg');
-    position: absolute;
-    transform: scale(0.8);
-
-    &.hidden {
-      display: none;
-    }
-  }
+  @import '../styles/VUMeter.scss';
 </style>

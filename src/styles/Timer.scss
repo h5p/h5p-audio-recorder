@@ -1,0 +1,9 @@
+.audio-recorder-timer {
+    font-size: calc(2*var(--h5p-theme-font-size-xl-large));
+    font-weight: 600;
+    color: var(--h5p-theme-text-primary);
+    margin: var(--h5p-theme-spacing-m) 0;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -1px;
+}
