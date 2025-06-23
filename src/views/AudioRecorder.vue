@@ -24,9 +24,6 @@
       v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
       ref="buttonRow"
     >
-      <div class="button-row-double" ref="buttonRowDouble"></div>
-      <div class="button-row-left" ref="buttonRowLeft"></div>
-      <div class="button-row-right" ref="buttonRowRight"></div>
     </div>
   </div>
 </template>
@@ -60,17 +57,9 @@
       },
 
       clearButtonRow: function() {
-        [
-          this.$refs.buttonRowDouble,
-          this.$refs.buttonRowLeft,
-          this.$refs.buttonRowRight
-        ].forEach((container) => {
-          if (container) {
-            while (container.firstChild) {
-              container.removeChild(container.firstChild);
-            }
-          }
-        });
+        while (this.$refs.buttonRow.firstChild) {
+          this.$refs.buttonRow.removeChild(this.$refs.buttonRow.firstChild);
+        }
       },
 
       injectButtons: function(buttons, buttonRef) {
@@ -82,16 +71,13 @@
         }
       },
 
-
       insertButtonsForState: function(state) {
         this.clearButtonRow();
 
-        const buttonsDouble = [];
-        const buttonsLeft = [];
-        const buttonsRight = [];
+        const buttons = [];
 
         if (state === State.READY || state === State.BLOCKED) {
-          buttonsDouble.push({
+          buttons.push({
             label: this.l10n.recordAnswer,
             icon: 'record',
             classes: 'button record',
@@ -99,8 +85,28 @@
           });
         }
 
+        if (state === State.DONE) {
+          buttons.push({
+            label: this.l10n.download,
+            icon: 'download',
+            styleType: 'secondary',
+            classes: 'button',
+            onClick: this.downloadAudio
+          });
+        }
+
+        if (state === State.RECORDING || state === State.PAUSED) {
+          buttons.push({
+            label: this.l10n.retry,
+            icon: 'retry',
+            styleType: 'secondary',
+            classes: 'button',
+            onClick: this.retry
+          });
+        }
+
         if (state === State.RECORDING) {
-          buttonsDouble.push({
+          buttons.push({
             label: this.l10n.pause,
             icon: 'pause',
             classes: 'button pause',
@@ -109,7 +115,7 @@
         }
 
         if (state === State.PAUSED) {
-          buttonsDouble.push({
+          buttons.push({
             label: this.l10n.continue,
             icon: 'circle',
             styleType: 'secondary',
@@ -119,23 +125,17 @@
         }
 
         if (state === State.RECORDING || state === State.PAUSED) {
-          buttonsDouble.push({
+          buttons.push({
             label: this.l10n.done,
             icon: 'done',
             styleType: 'secondary',
             classes: 'button done',
             onClick: this.done
-          }, {
-            label: this.l10n.retry,
-            icon: 'retry',
-            styleType: 'secondary',
-            classes: 'button',
-            onClick: this.retry
           });
         }
 
         if (state === State.DONE || state === 'cant-create-audio-file') {
-          buttonsRight.push({
+          buttons.push({
             label: this.l10n.retry,
             icon: 'retry',
             styleType: 'secondary',
@@ -144,19 +144,7 @@
           });
         }
 
-        if (state === State.DONE) {
-          buttonsLeft.push({
-            label: this.l10n.download,
-            icon: 'download',
-            styleType: 'secondary',
-            classes: 'button',
-            onClick: this.downloadAudio
-          });
-        }
-
-        this.injectButtons(buttonsDouble, this.$refs.buttonRowDouble);
-        this.injectButtons(buttonsLeft, this.$refs.buttonRowLeft);
-        this.injectButtons(buttonsRight, this.$refs.buttonRowRight);
+        this.injectButtons(buttons, this.$refs.buttonRow);
       },
 
       // Resize buttons. Not using media queries to allow being subcontent
@@ -216,10 +204,10 @@
         );
         dialog.appendTo(dialogParent);
         dialog.show();
-        
+
         // References the current component
         const that = this;
-        
+
         dialog.on('confirmed', function() {
           that.state = State.READY;
           if (that.$refs.timer) {
