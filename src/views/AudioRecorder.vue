@@ -109,6 +109,7 @@
           buttons.push({
             label: this.l10n.pause,
             icon: 'pause',
+            styleType: 'secondary',
             classes: 'button pause',
             onClick: this.pause
           });
