@@ -163,18 +163,21 @@
       font-size: var(--h5p-theme-font-size-s-large);
     }
 
+    &.continue:hover,
     &.record:hover,
     &.pause:hover {
       background-color: var(--h5p-theme-feedback-incorrect-main);
       border-color: var(--h5p-theme-feedback-incorrect-main);
     }
 
+    &.continue:active,
     &.record:active,
     &.pause:active {
       background-color: var(--h5p-theme-feedback-incorrect-main);
       border-color: var(--h5p-theme-feedback-incorrect-main);
     }
 
+    &.continue:hover,
     &.pause:hover {
       color: var(--h5p-theme-feedback-incorrect-secondary) ;
     }
@@ -223,6 +226,7 @@
     border: solid 3px var(--h5p-theme-feedback-incorrect-main);
   }
 
+  .button.continue,
   .button.pause {
     background-color: var(--h5p-theme-ui-base);
     color: var(--h5p-theme-feedback-incorrect-main);

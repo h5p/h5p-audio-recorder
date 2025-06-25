@@ -120,7 +120,7 @@
             label: this.l10n.continue,
             icon: 'circle',
             styleType: 'secondary',
-            classes: 'button record continue',
+            classes: 'button continue',
             onClick: this.record
           });
         }
