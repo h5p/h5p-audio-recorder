@@ -21,7 +21,6 @@
 
     <div
       class="button-row"
-      v-bind:class="{ 'small-screen' : this.viewState === 'small' }"
       ref="buttonRow"
     >
     </div>
@@ -154,7 +153,8 @@
           return; // Not attached yet
         }
 
-        this.viewState = (this.$el.offsetWidth <= viewStateBreakPoint) ? 'small' : 'large';
+        const isSmallScreen = this.$el.offsetWidth <= viewStateBreakPoint;
+        this.$refs.buttonRow.classList.toggle('small-screen', isSmallScreen);
       },
 
       record: function() {
