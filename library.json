@@ -14,17 +14,11 @@
   "preloadedCss": [
     {
       "path": "fonts/h5p-audio-recorder-font-open-sans.css"
-    },
-    {
-      "path": "@legacy/fonts/h5p-audio-recorder-font-open-sans.css"
     }
   ],
   "preloadedJs": [
     {
       "path": "dist/h5p-audio-recorder.js"
-    },
-    {
-      "path": "@legacy/dist/h5p-audio-recorder.js"
     }
   ],
   "preloadedDependencies": [
