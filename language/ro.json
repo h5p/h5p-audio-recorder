@@ -1,0 +1,90 @@
+{
+  "semantics": [
+    {
+      "label": "Descrierea sarcinii",
+      "description": "Text opțional de afișat deasupra înregistratorului audio"
+    },
+    {
+      "label": "Localizare",
+      "fields": [
+        {
+          "label": "Text buton Înregistrează",
+          "default": "Înregistrează"
+        },
+        {
+          "label": "Text buton Pauză",
+          "default": "Pauză"
+        },
+        {
+          "label": "Text buton Continuă",
+          "default": "Continuă"
+        },
+        {
+          "label": "Text buton Descarcă",
+          "default": "Descarcă"
+        },
+        {
+          "label": "Text buton Terminat",
+          "default": "Terminat"
+        },
+        {
+          "label": "Text buton Reîncearcă",
+          "default": "Reîncearcă"
+        },
+        {
+          "label": "Mesaj de eroare microfon neacceptat",
+          "default": "Microfonul nu este acceptat. Asigurați-vă că folosiți un browser care permite înregistrarea cu microfonul."
+        },
+        {
+          "label": "Mesaj de eroare microfon inaccesibil",
+          "default": "Microfonul nu este accesibil. Asigurați-vă că microfonul este activat în browser."
+        },
+        {
+          "label": "Mesaj afișat când accesul nesecurizat nu este permis",
+          "description": "Unele browsere nu permit utilizarea microfonului atunci când pagina este servită prin HTTP. Acest mesaj va fi afișat dacă este cazul.",
+          "default": "Accesul la microfon nu este permis în browserul dumneavoastră, deoarece această pagină nu este servită prin HTTPS. Vă rugăm să contactați autorul și să solicitați ca această pagină să fie disponibilă prin HTTPS."
+        },
+        {
+          "label": "Mesaj de stare: gata de înregistrare",
+          "default": "Apăsați butonul de mai jos pentru a vă înregistra răspunsul."
+        },
+        {
+          "label": "Mesaj de stare: se înregistrează",
+          "default": "Se înregistrează..."
+        },
+        {
+          "label": "Mesaj de stare: înregistrare întreruptă",
+          "default": "Înregistrare întreruptă. Apăsați un buton pentru a continua înregistrarea."
+        },
+        {
+          "label": "Mesaj de stare: înregistrare finalizată",
+          "default": "Ați înregistrat cu succes răspunsul! Ascultați înregistrarea mai jos."
+        },
+        {
+          "label": "Mesaj descărcare înregistrare",
+          "default": "Descărcați această înregistrare sau reîncercați."
+        },
+        {
+          "label": "Text antet dialog Reîncercare",
+          "default": "Reîncercați înregistrarea?"
+        },
+        {
+          "label": "Text corp dialog Reîncercare",
+          "default": "Apăsând \"Reîncearcă\" veți pierde înregistrarea curentă."
+        },
+        {
+          "label": "Text confirmare dialog Reîncercare",
+          "default": "Reîncearcă"
+        },
+        {
+          "label": "Text anulare dialog Reîncercare",
+          "default": "Anulează"
+        },
+        {
+          "label": "Mesaj de stare: nu se poate crea fișierul audio",
+          "default": "Nu se poate crea fișierul audio."
+        }
+      ]
+    }
+  ]
+}
