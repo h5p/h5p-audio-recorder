@@ -243,3 +243,12 @@
   text-decoration: none;
   display: inline-block;
 }
+
+/* only dialogs we scoped in JS */
+.h5p-audio-recorder-local {
+  position: absolute; /* instead of fixed-to-viewport */
+  inset: 0;           /* fill the parent bounds */
+  z-index: 20;        /* above local UI, below global nav */
+  display: grid;      /* easy centering */
+  place-items: center;
+}

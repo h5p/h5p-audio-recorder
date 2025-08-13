@@ -172,48 +172,34 @@
       },
 
       retry: function() {
-        let dialogParent = this.$el;
+        let parent = this.$el.closest('li') || this.$el;
 
-        /*
-         * If AudioRecorder is subcontent, the dialog may be hidden behind
-         * other elements if it is not attached to the h5p-content element
-         */
-        if (this.isSubcontent) {
-          const findH5PContent = function(element) {
-            if (!element) {
-              return null;
-            }
-            else if (element.className.indexOf('h5p-content') !== -1) {
-              return element;
-            }
-            else {
-              return findH5PContent(element.parentNode);
-            }
-          }
+        const dialog = new H5P.ConfirmationDialog({
+          headerText: this.l10n.retryDialogHeaderText,
+          dialogText: this.l10n.retryDialogBodyText,
+          cancelText: this.l10n.retryDialogCancelText,
+          confirmText: this.l10n.retryDialogConfirmText,
+          theme: true
+        });
 
-          dialogParent = findH5PContent(this.$el) || this.$el;
-        }
-
-        const dialog = new H5P.ConfirmationDialog(
-          {
-            headerText: this.l10n.retryDialogHeaderText,
-            dialogText: this.l10n.retryDialogBodyText,
-            cancelText: this.l10n.retryDialogCancelText,
-            confirmText: this.l10n.retryDialogConfirmText,
-            theme: true
-          }
-        );
-        dialog.appendTo(dialogParent);
+        dialog.appendTo(parent);
         dialog.show();
 
-        // References the current component
-        const that = this;
-
-        dialog.on('confirmed', function() {
-          that.state = State.READY;
-          if (that.$refs.timer) {
-            that.$refs.timer.reset();
+        this.$nextTick(() => {
+          const bg = parent.querySelector(':scope > .h5p-confirmation-dialog-background');
+          if (bg) {
+            bg.classList.add('h5p-audio-recorder-local');
+            const popup = bg.querySelector('.h5p-confirmation-dialog-popup');
+            if (popup) {
+              popup.style.top = 'auto';
+            }
           }
+        });
+
+        const that = this;
+        dialog.on('confirmed', function () {
+          that.state = State.READY;
+          if (that.$refs.timer) that.$refs.timer.reset();
           that.$emit('retry');
         });
       }
