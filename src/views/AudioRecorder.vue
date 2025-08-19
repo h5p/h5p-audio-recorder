@@ -171,51 +171,74 @@
         this.$emit(State.DONE);
       },
 
-      retry: function() {
-        let dialogParent = this.$el;
+      retry: function () {
+        // 1) Find the big container (Column/IB/h5p-content)
+        const findDialogContainer = (el) => {
+          const isDialogHost = (n) => {
+            if (!n) return false;
+            return (
+              n.classList?.contains('h5p-interactive-book') ||
+              n.classList?.contains('h5p-column') ||
+              n.classList?.contains('h5p-content')
+            );
+          };
 
-        /*
-         * If AudioRecorder is subcontent, the dialog may be hidden behind
-         * other elements if it is not attached to the h5p-content element
-         */
-        if (this.isSubcontent) {
-          const findH5PContent = function(element) {
-            if (!element) {
-              return null;
-            }
-            else if (element.className.indexOf('h5p-content') !== -1) {
-              return element;
-            }
-            else {
-              return findH5PContent(element.parentNode);
-            }
+          let cur = el;
+          while (cur && cur !== document.body && !isDialogHost(cur)) {
+            cur = cur.parentNode;
           }
+          return cur || document.body;
+        };
 
-          dialogParent = findH5PContent(this.$el) || this.$el;
-        }
+        const dialogContainer = findDialogContainer(this.$el);
 
-        const dialog = new H5P.ConfirmationDialog(
-          {
-            headerText: this.l10n.retryDialogHeaderText,
-            dialogText: this.l10n.retryDialogBodyText,
-            cancelText: this.l10n.retryDialogCancelText,
-            confirmText: this.l10n.retryDialogConfirmText,
-            theme: true
-          }
-        );
-        dialog.appendTo(dialogParent);
+        const dialog = new H5P.ConfirmationDialog({
+          headerText: this.l10n.retryDialogHeaderText,
+          dialogText: this.l10n.retryDialogBodyText,
+          cancelText: this.l10n.retryDialogCancelText,
+          confirmText: this.l10n.retryDialogConfirmText,
+          theme: true
+        });
+
+        dialog.appendTo(dialogContainer);
         dialog.show();
 
-        // References the current component
-        const that = this;
+        // 2) Position the popup over THIS recorder (not top of container)
+        const positionPopup = () => {
+          const bg = dialogContainer.querySelector(':scope > .h5p-confirmation-dialog-background');
+          if (!bg) return;
 
-        dialog.on('confirmed', function() {
-          that.state = State.READY;
-          if (that.$refs.timer) {
-            that.$refs.timer.reset();
-          }
-          that.$emit('retry');
+          const popup = bg.querySelector('.h5p-confirmation-dialog-popup');
+          if (!popup) return;
+
+          const contRect = dialogContainer.getBoundingClientRect();
+          const recRect = this.$el.getBoundingClientRect();
+
+          const relTop = recRect.top - contRect.top + (recRect.height / 2);
+          const relLeft = recRect.left - contRect.left + (recRect.width / 2);
+
+          popup.style.top = `${relTop}px`;
+          popup.style.left = `${relLeft}px`;
+        };
+
+        requestAnimationFrame(positionPopup);
+        window.addEventListener('resize', positionPopup, { passive: true });
+        dialogContainer.addEventListener('scroll', positionPopup, { passive: true });
+
+        // 3) Wire actions
+        const cleanup = () => {
+          window.removeEventListener('resize', positionPopup);
+          dialogContainer.removeEventListener('scroll', positionPopup);
+        };
+
+        dialog.on('confirmed', () => {
+          cleanup();
+          this.state = State.READY;
+          if (this.$refs.timer) this.$refs.timer.reset();
+          this.$emit('retry');
         });
+
+        dialog.on('canceled', cleanup);
       }
     },
 
