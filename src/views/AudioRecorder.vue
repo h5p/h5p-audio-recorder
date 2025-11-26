@@ -211,14 +211,13 @@
           const popup = bg.querySelector('.h5p-confirmation-dialog-popup');
           if (!popup) return;
 
-          const contRect = dialogContainer.getBoundingClientRect();
-          const recRect = this.$el.getBoundingClientRect();
+          const contRect = this.$el.getBoundingClientRect();
+          const containerCenter = contRect.top + contRect.height / 2;
+          
+          const popupHalf = popup.getBoundingClientRect().height / 2;
 
-          const relTop = recRect.top - contRect.top + (recRect.height / 2);
-          const relLeft = recRect.left - contRect.left + (recRect.width / 2);
-
+          const relTop = containerCenter - popupHalf;
           popup.style.top = `${relTop}px`;
-          popup.style.left = `${relLeft}px`;
         };
 
         requestAnimationFrame(positionPopup);
