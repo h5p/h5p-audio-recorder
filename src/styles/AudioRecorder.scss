@@ -173,6 +173,7 @@
     &.record:active,
     &.pause:active {
       background-color: var(--h5p-theme-feedback-incorrect-main);
+      color: var(--h5p-theme-feedback-incorrect-secondary);
       border-color: var(--h5p-theme-feedback-incorrect-main);
     }
 
