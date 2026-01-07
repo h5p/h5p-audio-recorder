@@ -2,7 +2,7 @@ import recorderWorker from 'raw-loader!./RecorderWorker.js.txt';
 
 const RecorderState = {
   inactive: 'inactive',
-  recording: 'recording'
+  recording: 'recording',
 };
 
 /**
@@ -12,7 +12,7 @@ const frequencyAnalyserSettings = {
   minDecibels: -90,
   maxDecibels: -10,
   smoothingTimeConstant: 0.85,
-  fftSize: 256
+  fftSize: 256,
 };
 
 /**
@@ -52,7 +52,6 @@ const frequencyAnalyserSettings = {
  * @fires Recorder#blocked
  */
 export default class Recorder extends H5P.EventDispatcher {
-
   /**
    * @constructor
    */
@@ -61,7 +60,7 @@ export default class Recorder extends H5P.EventDispatcher {
 
     this.config = {
       bufferLength: 4096,
-      numChannels: 1
+      numChannels: 1,
     };
 
     this.state = RecorderState.inactive;
@@ -69,15 +68,15 @@ export default class Recorder extends H5P.EventDispatcher {
     // Create a worker. This is normally done using a URL to the js-file
     const workerBlob = new Blob(
       [recorderWorker],
-      {type: 'text/javascript'}
+      { type: 'text/javascript' },
     );
     this.worker = new Worker(URL.createObjectURL(workerBlob));
 
-    this.worker.onmessage = e => {
+    this.worker.onmessage = (e) => {
       this.trigger(e.data.command, e.data.blob);
     };
 
-    this.worker.onerror = e => {
+    this.worker.onerror = (e) => {
       this.trigger('worker-error', e);
     };
   }
@@ -91,17 +90,17 @@ export default class Recorder extends H5P.EventDispatcher {
     this.stop();
 
     const loadAudioUrl = new Promise((resolve, reject) => {
-      this.once('wav-delivered', e => {
+      this.once('wav-delivered', (e) => {
         resolve(URL.createObjectURL(e.data));
       });
 
-      this.once('worker-error', e => {
+      this.once('worker-error', (e) => {
         reject(e);
       });
     });
 
     this.worker.postMessage({
-      command: 'export-wav'
+      command: 'export-wav',
     });
 
     return loadAudioUrl;
@@ -122,15 +121,16 @@ export default class Recorder extends H5P.EventDispatcher {
     this.scriptProcessorNode = this.audioContext.createScriptProcessor(
       this.config.bufferLength,
       this.config.numChannels,
-      this.config.numChannels);
+      this.config.numChannels,
+    );
 
     // Handle the actual input
     // If in recording mode, sends the recorded data to the worker
-    this.scriptProcessorNode.onaudioprocess = e => {
+    this.scriptProcessorNode.onaudioprocess = (e) => {
       if (this.state === RecorderState.recording) {
         this.worker.postMessage({
           command: 'record',
-          buffer: [e.inputBuffer.getChannelData(0)]
+          buffer: [e.inputBuffer.getChannelData(0)],
         });
       }
     };
@@ -160,9 +160,7 @@ export default class Recorder extends H5P.EventDispatcher {
    */
   getAverageMicFrequency() {
     this.freqAnalyser.getByteFrequencyData(this.freqDataArray);
-    const sum = this.freqDataArray.reduce((prev, curr) => {
-      return prev + curr;
-    }, 0);
+    const sum = this.freqDataArray.reduce((prev, curr) => prev + curr, 0);
 
     // Average the frequency
     return sum / this.freqBufferLength;
@@ -180,8 +178,7 @@ export default class Recorder extends H5P.EventDispatcher {
 
     if (this.userMedia === undefined) {
       // Ask for access to the user's microphone
-      this.userMedia = navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
-
+      this.userMedia = navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
         this._setupAudioProcessing(stream);
 
         // Initialize the worker
@@ -189,10 +186,10 @@ export default class Recorder extends H5P.EventDispatcher {
           command: 'init',
           config: {
             sampleRate: this.sourceNode.context.sampleRate,
-            numChannels: this.config.numChannels
-          }
+            numChannels: this.config.numChannels,
+          },
         });
-      }).catch(e => {
+      }).catch((e) => {
         let reason = 'blocked';
         if (e.name && ['NotSupportedError', 'NotSupportedError', 'NotAllowedError'].indexOf(e.name) !== -1) {
           reason = 'insecure-not-allowed';
@@ -213,7 +210,7 @@ export default class Recorder extends H5P.EventDispatcher {
       .then(() => {
         this._setState(RecorderState.recording);
       })
-      .catch(e => {
+      .catch((e) => {
         this.trigger(e);
       });
   }
@@ -242,10 +239,10 @@ export default class Recorder extends H5P.EventDispatcher {
     this._setState(RecorderState.inactive);
     // Clear the buffers:
     this.worker.postMessage({
-      command: 'clear'
+      command: 'clear',
     });
 
-    this.stream.getAudioTracks().forEach(track => track.stop());
+    this.stream.getAudioTracks().forEach((track) => track.stop());
     this.sourceNode.disconnect();
     this.scriptProcessorNode.disconnect();
     if (this.audioContext.state !== 'closed') {

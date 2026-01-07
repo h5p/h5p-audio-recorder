@@ -1,5 +1,5 @@
 .h5p-audio-recorder {
-  background-color:var(--h5p-theme-ui-base);
+  background-color: var(--h5p-theme-ui-base);
 }
 
 .h5p-audio-recorder-view {
@@ -17,7 +17,7 @@
     height: 60%;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     position: absolute;
     font-size: calc(2.5rem*var(--h5p-theme-scaling));
     border-radius: 50%;
@@ -41,45 +41,45 @@
     margin-bottom: var(--h5p-theme-spacing-s);
   }
 
-  .h5p-theme-download:before {
+  .h5p-theme-download::before {
     font-family: 'h5p-theme';
     content: '\e911';
     margin-right: var(--h5p-theme-spacing-xxs);
   }
 
-  .h5p-theme-record:before {
+  .h5p-theme-record::before {
     content: '\e928';
   }
 
-  .h5p-theme-pause:before {
+  .h5p-theme-pause::before {
     content: '\e929';
   }
 
-  .h5p-theme-circle:before {
+  .h5p-theme-circle::before {
     content: '\e928';
   }
 
-  .fa-microphone:before {
+  .fa-microphone::before {
     content: '\e927';
   }
 
   /* status bar */
   [role="status"] {
-      background-color: var(--h5p-theme-alternative-base);
-      color: var(--h5p-theme-text-primary);
-      padding: var(--h5p-theme-spacing-xs);
-      border-radius: var(--h5p-theme-border-radius-small);
+    background-color: var(--h5p-theme-alternative-base);
+    color: var(--h5p-theme-text-primary);
+    padding: var(--h5p-theme-spacing-xs);
+    border-radius: var(--h5p-theme-border-radius-small);
 
     &.recording {
       background-color: var(--h5p-theme-feedback-incorrect-secondary);
-      color:  var(--h5p-theme-feedback-incorrect-main);
+      color: var(--h5p-theme-feedback-incorrect-main);
     }
 
     &.blocked,
     &.unsupported,
     &.insecure-not-allowed,
     &.cant-create-audio-file {
-    background-color: var(--h5p-theme-feedback-incorrect-secondary);
+      background-color: var(--h5p-theme-feedback-incorrect-secondary);
       color: var(--h5p-theme-feedback-incorrect-main);
     }
   }
@@ -98,145 +98,45 @@
   }
 
   .button-row {
+    container-type: inline-size;
     align-items: center;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     gap: var(--h5p-theme-spacing-s);
     justify-content: center;
     margin-bottom: var(--h5p-theme-spacing-s);
   }
 
-  @mixin button-filled($background-color, $color) {
-    background-color: $background-color;
-    color: $color;
-    border-color: $background-color;
-    border: 2px solid $background-color;
-    box-sizing: border-box;
+  .button-record {
+    background-color: var(--h5p-theme-feedback-incorrect-main);
+    color: var(--h5p-theme-feedback-incorrect-secondary);
+    border: solid 3px var(--h5p-theme-feedback-incorrect-main);
 
-    &:hover {
-      background-color: darken($background-color, 5%);
-      border-color: darken($background-color, 5%);
-    }
-
+    &:hover,
     &:active {
-      background-color: darken($background-color, 10%);
-      border-color: darken($background-color, 10%);
-    }
-
-    &[disabled] {
-      background-color: lighten($background-color, 40%);
-      border-color: lighten($background-color, 40%);
-    }
-  }
-
-  @mixin button-inverse($background-color, $color) {
-    background-color: $background-color;
-    color: $color;
-    border: 2px solid $color;
-    box-sizing: border-box;
-
-    &:hover {
-      color: lighten($color, 10%);
-      border-color: lighten($color, 10%);
-    }
-
-    &:active {
-      color: darken($color, 10%);
-      border-color: darken($color, 10%);
-    }
-
-    &[disabled],
-    &[aria-disabled] {
-      color: lighten($color, 40%);
-      border-color: lighten($color, 40%);
-    }
-  }
-
-  .button {
-    [class^="fa-"] {
-      font-weight: 400;
-    }
-
-    &.small {
-      font-size: var(--h5p-theme-font-size-s-large);
-    }
-
-    &.continue:hover,
-    &.record:hover,
-    &.pause:hover {
       background-color: var(--h5p-theme-feedback-incorrect-main);
       border-color: var(--h5p-theme-feedback-incorrect-main);
     }
+  }
 
-    &.continue:active,
-    &.record:active,
-    &.pause:active {
+  .button-continue,
+  .button-pause {
+    background-color: var(--h5p-theme-ui-base);
+    color: var(--h5p-theme-feedback-incorrect-main);
+    border: solid 3px var(--h5p-theme-feedback-incorrect-main);
+
+    &:hover,
+    &:active {
       background-color: var(--h5p-theme-feedback-incorrect-main);
       color: var(--h5p-theme-feedback-incorrect-secondary);
       border-color: var(--h5p-theme-feedback-incorrect-main);
     }
-
-    &.continue:hover,
-    &.pause:hover {
-      color: var(--h5p-theme-feedback-incorrect-secondary) ;
-    }
-  }
-
-  .button-row {
-    &.small-screen {
-      .h5p-theme-primary-cta,
-      .h5p-theme-secondary-cta {
-        padding: 0;
-        height: var(--h5p-theme-spacing-xl);
-        min-width: var(--h5p-theme-spacing-xl);
-      }
-
-      .h5p-theme-primary-cta:hover,
-      .h5p-theme-secondary-cta:hover {
-        text-indent: 0;
-        padding: 0;
-      }
-
-      .h5p-theme-primary-cta:before,
-      .h5p-theme-secondary-cta:before {
-        position: unset;
-        width: 100%;
-        opacity: 1;
-        transform: translate(0, 0);
-        text-indent: 0;
-        margin-right: 0;
-      }
-
-      .h5p-theme-label {
-        display: none;
-      }
-    }
-
-    &:not(.small-screen) .button {
-      [class^="fa-"] {
-        margin-right: var(--h5p-theme-spacing-xxs);
-      }
-    }
-  }
-
-  .button.record {
-    background-color: var(--h5p-theme-feedback-incorrect-main);
-    color: var(--h5p-theme-feedback-incorrect-secondary);
-    border: solid 3px var(--h5p-theme-feedback-incorrect-main);
-  }
-
-  .button.continue,
-  .button.pause {
-    background-color: var(--h5p-theme-ui-base);
-    color: var(--h5p-theme-feedback-incorrect-main);
-    border: solid 3px var(--h5p-theme-feedback-incorrect-main);
   }
 }
 
 .h5p-audio-recorder .h5p-theme-primary-cta:first-child:last-child,
 .h5p-audio-recorder .h5p-theme-secondary-cta:first-child:last-child {
-  margin:  unset;
+  margin: unset;
 }
 
 .h5p-audio-recorder .h5p-theme-download {
