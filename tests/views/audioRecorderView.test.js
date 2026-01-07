@@ -6,8 +6,8 @@ import VUMeter from '../../src/views/VUMeter.vue';
 import State from '../../src/components/State';
 
 const statusMessages = {};
-statusMessages[State.RECORDING] = "Recording...";
-statusMessages[State.READY] = "Press the button below to record your answer.";
+statusMessages[State.RECORDING] = 'Recording...';
+statusMessages[State.READY] = 'Press the button below to record your answer.';
 
 // setup initial state for audio recorder
 const initialData = {
@@ -17,23 +17,23 @@ const initialData = {
   l10n: {},
   audioSrc: '',
   audioFilename: '',
-  avgMicFrequency: 0
+  avgMicFrequency: 0,
 };
 
 AudioRecorderView.data = () => initialData;
 
 // prepare viewModel
-test.beforeEach(t => {
+test.beforeEach((t) => {
   t.context.vm = new Vue({
     ...AudioRecorderView,
     components: {
       timer: Timer,
-      vuMeter: VUMeter
-    }
+      vuMeter: VUMeter,
+    },
   }).$mount();
 });
 
-test('ready state', async t => {
+test('ready state', async (t) => {
   t.plan(4);
 
   Vue.nextTick(() => {
@@ -55,7 +55,7 @@ test('ready state', async t => {
   });
 });
 
-test('change state to "RECORDING"', async t => {
+test('change state to "RECORDING"', async (t) => {
   t.plan(5);
 
   // set state to recording
