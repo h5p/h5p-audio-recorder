@@ -127,6 +127,7 @@
             label: this.l10n.done,
             icon: 'done',
             styleType: 'secondary',
+            classes: 'button-done',
             onClick: this.done
           });
         }

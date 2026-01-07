@@ -48,10 +48,10 @@ test('ready state', async (t) => {
     t.is(statusEl.textContent, statusMessages[State.READY]);
 
     // check that pulse and record button is present
-    t.truthy(el.querySelector('.button.record'));
+    t.truthy(el.querySelector('.button-record'));
 
     // check that only 1 buttons is showing
-    t.is(el.querySelectorAll('.button').length, 1);
+    t.is(el.querySelectorAll('[class*="button"]').length, 1);
   });
 });
 
@@ -69,11 +69,11 @@ test('change state to "RECORDING"', async (t) => {
     t.is(statusEl.textContent, statusMessages[State.RECORDING]);
 
     // check that pulse, pause button, finish button is present
-    t.truthy(el.querySelector('.button.retry'));
-    t.truthy(el.querySelector('.button.pause'));
-    t.truthy(el.querySelector('.button.done'));
+    t.truthy(el.querySelector('.button-retry'));
+    t.truthy(el.querySelector('.button-pause'));
+    t.truthy(el.querySelector('.button-done'));
 
     // check that only 2 buttons are showing
-    t.is(el.querySelectorAll('.button').length, 3);
+    t.is(el.querySelectorAll('[class*="button"]').length, 3);
   });
 });
