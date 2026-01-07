@@ -79,7 +79,7 @@
           buttons.push({
             label: this.l10n.recordAnswer,
             icon: 'record',
-            classes: 'button record',
+            classes: 'button-record',
             onClick: this.record
           });
         }
@@ -89,7 +89,6 @@
             label: this.l10n.download,
             icon: 'download',
             styleType: 'secondary',
-            classes: 'button',
             onClick: this.downloadAudio
           });
         }
@@ -99,7 +98,6 @@
             label: this.l10n.retry,
             icon: 'retry',
             styleType: 'secondary',
-            classes: 'button',
             onClick: this.retry
           });
         }
@@ -109,7 +107,7 @@
             label: this.l10n.pause,
             icon: 'pause',
             styleType: 'secondary',
-            classes: 'button pause',
+            classes: 'button-pause',
             onClick: this.pause
           });
         }
@@ -119,7 +117,7 @@
             label: this.l10n.continue,
             icon: 'circle',
             styleType: 'secondary',
-            classes: 'button continue',
+            classes: 'button-continue',
             onClick: this.record
           });
         }
@@ -129,7 +127,6 @@
             label: this.l10n.done,
             icon: 'done',
             styleType: 'secondary',
-            classes: 'button done',
             onClick: this.done
           });
         }
@@ -139,7 +136,6 @@
             label: this.l10n.retry,
             icon: 'retry',
             styleType: 'secondary',
-            classes: 'button',
             onClick: this.retry
           });
         }
