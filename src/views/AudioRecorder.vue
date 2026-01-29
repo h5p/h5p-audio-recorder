@@ -217,7 +217,24 @@
           popup.style.top = `${relTop}px`;
         };
 
-        requestAnimationFrame(positionPopup);
+        const focusDialog = () => {
+          const popup = dialogContainer.querySelector('.h5p-confirmation-dialog-popup');
+
+          const buttons = Array.from(popup.querySelectorAll('button'));
+          const confirmButton = buttons.find((button) => {
+            const label = button.getAttribute('aria-label');
+            return label === 'Retry';
+          });
+
+          if (confirmButton) {
+            confirmButton.focus();
+          }
+        };
+
+        requestAnimationFrame(() => {
+          focusDialog();
+        });
+
         window.addEventListener('resize', positionPopup, { passive: true });
         dialogContainer.addEventListener('scroll', positionPopup, { passive: true });
 
