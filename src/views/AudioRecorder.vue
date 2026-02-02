@@ -4,7 +4,13 @@
 
     <div v-if="state !== 'done' && title" class="title" v-html="title" />
 
-    <div role="status" v-bind:class="state" v-html="statusMessages[state]" />
+    <div
+      role="status"
+      tabindex="-1"
+      ref="status"
+      v-bind:class="state"
+      v-html="statusMessages[state]"
+    />
 
     <div class="h5p-audio-recorder-player" v-if="state === 'done' && audioSrc !== ''">
       <audio controls="controls">
@@ -248,6 +254,11 @@
       state: function(newState) {
         this.$nextTick(() => {
           this.insertButtonsForState(newState);
+
+          if (newState === State.RECORDING && this.$refs.status) {
+            this.$refs.status.focus();
+            return;
+          }
 
           const refName = refToFocusOnStateChange[newState];
           const focusedElement = this.$refs.buttonRow?.querySelector('.' + refName);
