@@ -41,7 +41,7 @@
   refToFocusOnStateChange[State.READY] = 'record';
   refToFocusOnStateChange[State.RECORDING] = 'pause';
   refToFocusOnStateChange[State.PAUSED] = 'continue';
-  refToFocusOnStateChange[State.DONE] = 'done';
+  refToFocusOnStateChange[State.DONE] = 'download';
 
   const viewStateBreakPoint = 576; // px, container width to toggle viewState at
 
@@ -95,6 +95,7 @@
             label: this.l10n.download,
             icon: 'download',
             styleType: 'secondary',
+            classes: 'button-download',
             onClick: this.downloadAudio
           });
         }
@@ -255,13 +256,8 @@
         this.$nextTick(() => {
           this.insertButtonsForState(newState);
 
-          if (newState === State.RECORDING && this.$refs.status) {
-            this.$refs.status.focus();
-            return;
-          }
-
           const refName = refToFocusOnStateChange[newState];
-          const focusedElement = this.$refs.buttonRow?.querySelector('.' + refName);
+          const focusedElement = this.$refs.buttonRow?.querySelector('.button-' + refName);
           if (refName && focusedElement) {
             focusedElement.focus();
           }
