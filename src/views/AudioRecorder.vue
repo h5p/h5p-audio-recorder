@@ -4,7 +4,13 @@
 
     <div v-if="state !== 'done' && title" class="title" v-html="title" />
 
-    <div role="status" v-bind:class="state" v-html="statusMessages[state]" />
+    <div
+      role="status"
+      tabindex="-1"
+      ref="status"
+      v-bind:class="state"
+      v-html="statusMessages[state]"
+    />
 
     <div class="h5p-audio-recorder-player" v-if="state === 'done' && audioSrc !== ''">
       <audio controls="controls">
@@ -35,7 +41,7 @@
   refToFocusOnStateChange[State.READY] = 'record';
   refToFocusOnStateChange[State.RECORDING] = 'pause';
   refToFocusOnStateChange[State.PAUSED] = 'continue';
-  refToFocusOnStateChange[State.DONE] = 'done';
+  refToFocusOnStateChange[State.DONE] = 'download';
 
   const viewStateBreakPoint = 576; // px, container width to toggle viewState at
 
@@ -89,6 +95,7 @@
             label: this.l10n.download,
             icon: 'download',
             styleType: 'secondary',
+            classes: 'button-download',
             onClick: this.downloadAudio
           });
         }
@@ -250,7 +257,7 @@
           this.insertButtonsForState(newState);
 
           const refName = refToFocusOnStateChange[newState];
-          const focusedElement = this.$refs.buttonRow?.querySelector('.' + refName);
+          const focusedElement = this.$refs.buttonRow?.querySelector('.button-' + refName);
           if (refName && focusedElement) {
             focusedElement.focus();
           }
