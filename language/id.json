@@ -1,0 +1,90 @@
+{
+  "semantics": [
+    {
+      "label": "Deskripsi Tugas",
+      "description": "Teks opsional untuk ditampilkan di atas perekam audio"
+    },
+    {
+      "label": "Lokalisasi",
+      "fields": [
+        {
+          "label": "Teks tombol rekam",
+          "default": "Rekam"
+        },
+        {
+          "label": "Teks tombol jeda",
+          "default": "Jeda"
+        },
+        {
+          "label": "Teks tombol lanjutkan",
+          "default": "Lanjutkan"
+        },
+        {
+          "label": "Teks tombol unduh",
+          "default": "Unduh"
+        },
+        {
+          "label": "Teks tombol selesai",
+          "default": "Selesai"
+        },
+        {
+          "label": "Teks tombol coba lagi",
+          "default": "Coba lagi"
+        },
+        {
+          "label": "Pesan galat mikrofon tidak didukung",
+          "default": "Mikrofon tidak didukung. Pastikan Anda menggunakan peramban yang mendukung perekaman mikrofon."
+        },
+        {
+          "label": "Pesan galat mikrofon tidak dapat diakses",
+          "default": "Mikrofon tidak dapat diakses. Pastikan mikrofon peramban diaktifkan."
+        },
+        {
+          "label": "Pesan ditampilkan ketika akses tidak aman tidak diizinkan",
+          "description": "Beberapa peramban tidak mengizinkan penggunaan mikrofon ketika halaman disajikan menggunakan HTTP. Pesan ini akan ditampilkan jika demikian halnya",
+          "default": "Akses ke mikrofon tidak diizinkan di peramban Anda karena halaman ini tidak disajikan menggunakan HTTPS. Silakan hubungi penulis konten, dan tanyakan dia untuk membuat ini tersedia menggunakan HTTPS"
+        },
+        {
+          "label": "Pesan status siap merekam",
+          "default": "Tekan tombol di bawah untuk merekam jawaban Anda."
+        },
+        {
+          "label": "Pesan status merekam",
+          "default": "Merekam..."
+        },
+        {
+          "label": "Pesan status dijeda",
+          "default": "Perekaman dijeda. Tekan tombol untuk melanjutkan perekaman."
+        },
+        {
+          "label": "Pesan status selesai merekam",
+          "default": "Anda telah berhasil merekam jawaban Anda! Dengarkan rekaman di bawah ini."
+        },
+        {
+          "label": "Pesan unduh rekaman",
+          "default": "Unduh rekaman ini atau coba lagi."
+        },
+        {
+          "label": "Teks header dialog coba lagi",
+          "default": "Coba lagi perekaman?"
+        },
+        {
+          "label": "Teks isi dialog coba lagi",
+          "default": "Dengan menekan \"Coba lagi\" Anda akan kehilangan rekaman Anda saat ini."
+        },
+        {
+          "label": "Teks konfirmasi dialog coba lagi",
+          "default": "Coba lagi"
+        },
+        {
+          "label": "Teks batal dialog coba lagi",
+          "default": "Batal"
+        },
+        {
+          "label": "Pesan status tidak dapat membuat berkas audio",
+          "default": "Tidak dapat membuat berkas audio."
+        }
+      ]
+    }
+  ]
+}
